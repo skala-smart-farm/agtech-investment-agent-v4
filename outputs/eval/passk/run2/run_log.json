@@ -1,0 +1,6039 @@
+{
+  "run_date": "2026-09-30",
+  "elapsed_sec": 1462.2,
+  "mode": "scenario",
+  "threshold": 1.0,
+  "end_reason": "max_evaluations",
+  "status": "SUCCESS",
+  "errors": [],
+  "review": null,
+  "models": {
+    "generator": "gpt-4.1-mini",
+    "judge": "gpt-4.1-mini",
+    "temperature": 0,
+    "max_output_tokens": {
+      "default": 2500,
+      "report": 4000,
+      "summarize": 1500
+    },
+    "price_per_mtok": {
+      "gpt-4.1-mini": [
+        0.4,
+        1.6
+      ],
+      "gpt-4.1-nano": [
+        0.1,
+        0.4
+      ]
+    }
+  },
+  "embedding": "nlpai-lab/KURE-v1",
+  "discovery_rounds": 1,
+  "evaluated": 10,
+  "screened": [
+    {
+      "name": "메타파머스",
+      "region": "KR",
+      "stage": "Pre-A",
+      "round_date": "2025-08",
+      "founded_date": "2022-09-02",
+      "ceo": "이규화",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "A.투자뉴스",
+        "B.공공프로그램",
+        "D.수상전시",
+        "T.TIPS선정",
+        "W.투자기사피드"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "Nature Robots",
+      "region": "GLOBAL",
+      "stage": "Seed",
+      "round_date": "2026-03",
+      "founded_date": null,
+      "ceo": null,
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "F.해외투자뉴스"
+      ],
+      "dart": null
+    },
+    {
+      "name": "트랙팜",
+      "region": "KR",
+      "stage": "Seed",
+      "round_date": "2023-10",
+      "founded_date": "2021-12-15",
+      "ceo": "윤찬녕",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "B.공공프로그램",
+        "T.TIPS선정"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "대동애그테크",
+      "region": "KR",
+      "stage": "Series A",
+      "round_date": "2026-09",
+      "founded_date": null,
+      "ceo": "원유현",
+      "eligible": false,
+      "reason": "G5 상장사·대기업 계열 (독립 스타트업 아님)",
+      "gate_search_failed": false,
+      "channels": [
+        "C.스타트업DB",
+        "D.수상전시",
+        "W.투자기사피드"
+      ],
+      "dart": {
+        "status": "matched",
+        "match": "exact",
+        "identity": "대표자 일치",
+        "corp_code": "01919963",
+        "corp_name": "대동애그테크",
+        "corp_cls": "E",
+        "market": "기타법인(비상장)",
+        "listed": false,
+        "stock_code": "",
+        "est_dt": "2022-02-15",
+        "ceo_nm": "원유현",
+        "acc_mt": "12",
+        "filings_5y": 1,
+        "audit_reports": 1,
+        "latest_audit": {
+          "report_nm": "감사보고서 (2025.12)",
+          "rcept_no": "20260323000196",
+          "rcept_dt": "2026-03-23",
+          "flr_nm": "광교회계법인"
+        },
+        "revenue": [
+          {
+            "year": 2025,
+            "period": "2025.12",
+            "amount": 31069737635,
+            "prior": 24243504085,
+            "basis": "감사보고서 손익계산서",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_no": "20260323000196",
+            "rcept_dt": "2026-03-23",
+            "flr_nm": "광교회계법인"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Upside Robotics",
+      "region": "GLOBAL",
+      "stage": "Seed",
+      "round_date": "2026-02",
+      "founded_date": null,
+      "ceo": null,
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "F.해외투자뉴스"
+      ],
+      "dart": null
+    },
+    {
+      "name": "리비타",
+      "region": "KR",
+      "stage": "Seed",
+      "round_date": "2026-04",
+      "founded_date": null,
+      "ceo": "엄상혁",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "A.투자뉴스",
+        "W.투자기사피드"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "새팜",
+      "region": "KR",
+      "stage": "Pre-A",
+      "round_date": "2026-07",
+      "founded_date": "2022-06-15",
+      "ceo": "정승환",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "A.투자뉴스",
+        "T.TIPS선정"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "Bonsai Robotics",
+      "region": "GLOBAL",
+      "stage": "Series A",
+      "round_date": "2025-01",
+      "founded_date": null,
+      "ceo": null,
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "F.해외투자뉴스"
+      ],
+      "dart": null
+    },
+    {
+      "name": "퓨처커넥트",
+      "region": "KR",
+      "stage": "Series A",
+      "round_date": "2025-11",
+      "founded_date": "2020-08-06",
+      "ceo": "강길모",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "A.투자뉴스",
+        "W.투자기사피드"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "엠트리센",
+      "region": "KR",
+      "stage": "Series A",
+      "round_date": "2023-01",
+      "founded_date": null,
+      "ceo": "서만형",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "A.투자뉴스",
+        "C.스타트업DB"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "핼터",
+      "region": "GLOBAL",
+      "stage": "Unknown",
+      "round_date": "",
+      "founded_date": null,
+      "ceo": null,
+      "eligible": false,
+      "reason": "G2 투자 단계 'Unknown' (Seed~Series C 아님 또는 확인 불가); G5 AI 농업 생산성 기술 확인 불가",
+      "gate_search_failed": false,
+      "channels": [
+        "W.투자기사피드"
+      ],
+      "dart": null
+    },
+    {
+      "name": "에임비랩",
+      "region": "KR",
+      "stage": "Pre-A",
+      "round_date": "2023-09",
+      "founded_date": "2020-04-17",
+      "ceo": "고병수",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "B.공공프로그램",
+        "T.TIPS선정"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "터빈크루",
+      "region": "KR",
+      "stage": "Pre-A",
+      "round_date": "2026-06",
+      "founded_date": "2022-11-04",
+      "ceo": "전기은",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "B.공공프로그램",
+        "T.TIPS선정"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "바르카",
+      "region": "KR",
+      "stage": "Pre-A",
+      "round_date": "",
+      "founded_date": "2022-05-24",
+      "ceo": "전현균",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "C.스타트업DB",
+        "T.TIPS선정"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "아이티테크",
+      "region": "KR",
+      "stage": "Seed",
+      "round_date": "",
+      "founded_date": "2019-12-06",
+      "ceo": "김동로",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "C.스타트업DB",
+        "T.TIPS선정"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "대봉유통",
+      "region": "KR",
+      "stage": "Seed",
+      "round_date": "2025-09",
+      "founded_date": "2025-03-18",
+      "ceo": "최재혁",
+      "eligible": false,
+      "reason": "G5 AgTech 분야가 아님",
+      "gate_search_failed": false,
+      "channels": [
+        "T.TIPS선정",
+        "W.투자기사피드"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "팜스태프",
+      "region": "KR",
+      "stage": "Seed",
+      "round_date": "2024",
+      "founded_date": "2022-01-06",
+      "ceo": "김정우",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "T.TIPS선정",
+        "W.투자기사피드"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    },
+    {
+      "name": "루트릭스",
+      "region": "KR",
+      "stage": "Series A",
+      "round_date": "2026-02",
+      "founded_date": "2021-11-03",
+      "ceo": "안정록",
+      "eligible": true,
+      "reason": "통과",
+      "gate_search_failed": false,
+      "channels": [
+        "T.TIPS선정",
+        "W.투자기사피드"
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
+    }
+  ],
+  "evaluations": [
+    {
+      "name": "메타파머스",
+      "region": "KR",
+      "stage": "Pre-A",
+      "decision": "투자",
+      "hold_type": null,
+      "multiplier": 1.0278,
+      "score100": 102.8,
+      "reasons": [
+        "동종 평균 대비 102.8(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 106.9(동종 평균 100) — 동종 평균 이상",
+        "Deal-killer 없음"
+      ],
+      "flip": null,
+      "roi": {
+        "computable": true,
+        "round_amount_raw": "30억원",
+        "round_amount_usd_m": 2.14,
+        "stage": "Pre-A",
+        "stage_median_usd_m": 1,
+        "vs_stage_median": 2.14,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": [
+          10.71,
+          21.43
+        ],
+        "target_multiple": 10,
+        "required_exit_usd_m": [
+          107.1,
+          214.3
+        ],
+        "assumptions": [
+          "환율 가정: 1달러 = 1,400원",
+          "Pre-A 중앙값은 앞 단계 값($1M)을 쓴 가정",
+          "지분율 가정 10%~20%: post-money = 라운드 금액 ÷ 지분율",
+          "목표 회수 배수 가정 10배(VC Method): 필요 Exit = post-money × 10"
+        ],
+        "source_ids": [
+          "Wef018",
+          "Wfc65b",
+          "W2a166"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": null
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 106.9,
+          "peer_mean": 0.111,
+          "contribution": 0.3208
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 95.8,
+          "peer_mean": 0.333,
+          "contribution": 0.2396
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 101.4,
+          "peer_mean": 0.222,
+          "contribution": 0.1521
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 91.7,
+          "peer_mean": 0.167,
+          "contribution": 0.0917
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 3,
+          "no": 0,
+          "unknown": 1,
+          "n": 4,
+          "pct": 125.0,
+          "peer_mean": 0.25,
+          "contribution": 0.125
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "YES",
+          "rationale": "이규화 대표가 서울대 기계공학부 박사 과정 중이며 스마트팩토리 구축 경험을 통해 관련 기술 분야에서 연구·실무 경험을 쌓았다는 구체적 경력 근거가 있음.",
+          "quote": "대표인 저는 서울대학교 기계공학부 박사 과정 중 스마트팩토리 구축 경험을 통해 실제 현장에 적용 가능한 자동화 솔루션 개발에 관한 다양한 경험을 갖고 있습니다.",
+          "evidence_ids": [
+            "Wc091e"
+          ],
+          "confidence": "중",
+          "verifier": "인용과 주변 원문은 창업자 및 경영진이 기계공학 및 자동화 분야에서 경험이 있음을 보여주나, 농업 현장이나 농업 관련 기술 분야에서의 연구·실무·사업 경험 또는 농학·축산·수의·원예 전공 경력은 명확히 제시하지 않아 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "학력·전공만 있고 특허·논문·연구·경력 이력이 인용에 없음 → UNKNOWN 강등 (이규화 대표가 서울대 기계공학부 박사 과정 중이며 스마트팩토리와 AI 로봇기술 연구 경험이 있어 기술 책임자의 기술 이력이 확인됨.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내에 2023년 시드 투자, 2025년 프리A 투자, 2026년 정부 주관 경진대회 수상 및 우수기업 선정 등 2건 이상의 날짜가 명시된 마일스톤이 확인됨.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 명확하지 않고, 수치의 일관성이나 제3자 확인 근거가 부족하여 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "근거 문서에서 BIS Research 등 공공기관 및 연구기관 문서에 의해 글로벌 스마트 농업 시장 규모가 2023년 174억 달러에서 2034년 1,172억 달러로 성장할 것으로 명확히 제시되어 있어, 목표 시장 규모가 수치와 기준 연도로 확인됨.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": "인용과 주변 원문은 글로벌 스마트 농업 시장 규모에 대한 수치를 제시하지만, 메타파머스에 대한 구체적 사실을 직접 언급하지 않아 질문의 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "M2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 2년 이내 발행된 근거에서 글로벌 애그테크 투자액이 2024년 대비 2025년에 73% 증가한 수치가 제시되어 해당 분야가 성장 중임을 뒷받침함.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "경제적 효과에 대한 수치가 일부 제시되었으나, 대표 발언에 근거한 내용으로 제3자 출처가 아니며, 구체적 수치도 부족하여 YES 판정 요건을 충족하지 못한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "UNKNOWN",
+          "rationale": "인용이 예정·계획·방침·추진 문장 (실제 수익 모델·효과가 아님) → UNKNOWN 강등 (근거 문서에 구독형 요금제와 작물 수확량에 따른 과금 방식이 명확히 서술되어 있어, 과금 방식이 확인된다는 질문에 부합한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "UNKNOWN",
+          "rationale": "실증·예정 단계 (인용 주변에 예정·목표·실증·PoC·시범 표현) → UNKNOWN 강등 (근거에 메타파머스의 다목적 농작업 로봇 '옴니파머'가 전국 다수의 농장에서 운영 중이라는 문장이 있어, 시제품 단계를 지나 실제 농장 등에서 상용으로 운영 중임을 직접 뒷받침한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (근거에 공공기관·대학·지자체 등 제3자 실증 근거는 명시되어 있지 않으나, '오이 로봇 실증 프로젝트'라는 표현과 여러 지역에서 실증이 진행 중임이 확인되어, 성능이 여러 작기 또는 여러 지역의 현장 실증으로 제시되는 것으로 판단된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "YES",
+          "rationale": "근거에 메타파머스가 로봇용 온디바이스 AI 기술과 작물별 최적화된 그리퍼를 자체 개발했다는 문장이 있어, 핵심 기술이 자체 개발임을 보여주는 근거가 있다.",
+          "quote": "로봇용 온디바이스 AI 기술과 작물과 농작업에 최적화된 그리퍼를 자체적으로 개발하여 딸기, 토마토, 오이와 같은 과채류를 자동으로 수확하거나.",
+          "evidence_ids": [
+            "Weeb95"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "P4",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 인허가·검정 관련 내용이 확인되지 않아, 해당 사항에 대한 판단 근거가 부족하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 메타파머스의 특허 등록 또는 출원에 관한 직접적인 언급이 없으며, 특허 관련 정보가 확인되지 않아 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "제공된 [근거] 문서 내에는 메타파머스와 국내외 경쟁사 2곳 이상을 구체적으로 비교하며 성능, 가격, 적용 작목, 범위 등에서 차별점을 명확히 기술한 문장이 없습니다. 회사 측 주장은 있으나, 이는 대표나 회사 측 발언으로 제3자 근거가 아니며, 구체적 비교 근거가 확인되지 않아 판정할 수 없습니다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 메타파머스 제품의 데이터 축적이나 설치·연동으로 인한 교체 비용 구조에 관한 구체적 내용이 없어 판단 근거가 부족하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 메타파머스가 농협, 농기계·농자재 기업, 지자체, 대형 유통, 해외 파트너 등과 계약이나 공동사업을 체결했다는 구체적 사실이 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 매출액이 명확히 기재되어 있지 않고, 프로 플랜 필요로 표시되어 있어 매출액과 연도가 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (유료 고객 수나 설치 규모에 대한 구체적 수치가 근거에 없으며, 실증 및 PoC 단계로 상용 운영 중이라는 근거가 없다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "재계약이나 여러 해 연속 사용에 대한 구체적 근거가 근거 문서에 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 민간 매출 근거가 명확히 제시되어 있지 않다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "YES",
+          "rationale": "2025-08 Pre-A 30억원 — 적격성 검증에서 원문 인용으로 확인 (코드 판정)",
+          "quote": "AI 로봇 ‘메타파머스’, 30억원 규모 프리A 시리즈 투자 유치",
+          "evidence_ids": [
+            "Wef018",
+            "Wfc65b",
+            "W2a166"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "YES",
+          "rationale": "근거에 스마일게이트인베스트먼트, 퓨처플레이, 옥타곤벤처파트너스 등 기관투자자 이름이 명시되어 있어 기관투자자 참여가 확인됨.",
+          "quote": "투자사:스마일게이트인베스트먼트, 퓨처플레이, 옥타곤벤처파트너스",
+          "evidence_ids": [
+            "Wf7a68"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 기업가치나 투자 지분율에 관한 구체적 수치가 없고, 비공개임을 추정할 수 있으나 명확한 수치가 없어 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "YES",
+          "rationale": "근거에 대규모 자체 시설이 필요 없는 다목적 농작업 로봇 모델임이 명확히 기술되어 있고, 전략적 투자자 확보(스마일게이트인베스트먼트 등)도 확인되어 YES 판정.",
+          "quote": "옴니파머는 AI 로보틱스 기반으로 수확·수분·선별·예찰 등 다양한 농작업을 단일 플랫폼에서 처리하며",
+          "evidence_ids": [
+            "W2a166"
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 옴니파머 로봇의 기술적 특성과 활용 범위에 대해 설명하지만, 상업화 전에 대규모 자체 시설이 필요한지 여부나 전략적 투자자·비희석 자금 확보 여부에 대한 구체적 사실을 직접적으로 언급하지 않는다."
+        }
+      ]
+    },
+    {
+      "name": "Nature Robots",
+      "region": "GLOBAL",
+      "stage": "Seed",
+      "decision": "보류",
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 0.9181,
+      "score100": 91.8,
+      "reasons": [
+        "창업자 기준 80.6(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 91.8(동종 평균 100) — 동종 평균 이하 (미확인 문항 78%)"
+      ],
+      "flip": {
+        "qids": [
+          "F1",
+          "F2",
+          "F4"
+        ],
+        "items": [
+          "F1 창업팀 이력",
+          "F2 기술 책임자 이력",
+          "F4 제3자 교차 확인"
+        ],
+        "new_multiplier": 1.0306,
+        "reached": true,
+        "note": "F1·F2·F4 이(가) YES 로 확인되면 동종 평균 대비 103.1(동종 평균 100) → 투자"
+      },
+      "roi": {
+        "computable": false,
+        "round_amount_raw": "€4 million",
+        "round_amount_usd_m": null,
+        "stage": "Seed",
+        "stage_median_usd_m": 1,
+        "vs_stage_median": null,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": null,
+        "target_multiple": 10,
+        "required_exit_usd_m": null,
+        "assumptions": [],
+        "source_ids": [
+          "W0a516",
+          "Wc981a",
+          "W864ea",
+          "We882a",
+          "Wa4638",
+          "Webfb2",
+          "Wff9a4"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": "라운드 금액 '€4 million' 을(를) 달러·원화로 읽을 수 없어 산정 불가 (실사 항목)"
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 0,
+          "no": 1,
+          "unknown": 3,
+          "n": 4,
+          "pct": 80.6,
+          "peer_mean": 0.139,
+          "contribution": 0.2417
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 94.4,
+          "peer_mean": 0.361,
+          "contribution": 0.2361
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 0,
+          "no": 0,
+          "unknown": 3,
+          "n": 3,
+          "pct": 85.2,
+          "peer_mean": 0.296,
+          "contribution": 0.1278
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 3,
+          "no": 0,
+          "unknown": 1,
+          "n": 4,
+          "pct": 123.6,
+          "peer_mean": 0.278,
+          "contribution": 0.1236
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "UNKNOWN",
+          "rationale": "The company is a spin-off from a research center, suggesting some research background, but there is no direct information about the founder or CEO's personal agricultural or technical experience before founding the company.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "While the company is based on extensive research in AI and robotics, there is no specific information about the core technology leader's personal patents, publications, or prior research/industry experience.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "NO",
+          "rationale": "The evidence shows only one milestone within the recent 24 months (a seed funding round in March 2026). There is no second milestone with a date in the [근거] to satisfy the requirement of two or more milestones. Therefore, the answer is NO.",
+          "quote": "Nature Robots has raised $4.6M in total funding. The most recent round was Seed. The last funding was announced in March 2026.",
+          "evidence_ids": [
+            "Wce8fe"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "No core company metrics such as customer numbers, performance, or revenue are confirmed by third-party sources in the evidence.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "근거 문서에서 BIS Research 등 공공기관 및 연구기관 문서에 의해 글로벌 스마트 농업 시장 규모가 2023년 174억 달러에서 2034년 1,172억 달러로 성장할 것으로 명확히 수치와 기준 연도와 함께 확인되므로 YES 판정한다.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (2024~2025년 최근 2년 내 발행된 근거에서 글로벌 애그테크 투자액이 73% 증가했다는 수치가 명확히 제시되어 있어 해당 분야가 성장 중임을 뒷받침하므로 YES 판정한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "판정 누락",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "UNKNOWN",
+          "rationale": "판정 누락",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "UNKNOWN",
+          "rationale": "[근거] 원문에 '현재는 시제품 단계'라는 직접적인 문장이 없고, 상용 운영을 입증하는 설치 수, 면적, 두수, 고객명 등의 구체적 사실이 확인되지 않아 판정이 불가능하다. 요약 문장은 인용 불가하므로 근거 부족으로 UNKNOWN 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음, 제품명 포함) → NO 대신 UNKNOWN (근거에 제시된 실증은 시범단지에서의 시범 운영으로, Nature Robots 제품에 대한 제3자 기관의 여러 작기 또는 여러 지역에 걸친 현장 실증 근거가 명확하지 않다. 또한 시범 운영은 상용 운영이 아니며, 특정 제품에 대한 다년간 다지역 실증 근거가 없으므로 YES 요건을 충족하지 않는다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "UNKNOWN",
+          "rationale": "근거에는 Nature Robots가 자체 개발하는 모듈형 자율 운영체제를 개발 중이라는 설명이 있으나, 자사 특허, 논문, 자체 데이터셋, 자체 하드웨어 등 핵심 기술의 자체 개발을 명확히 입증하는 구체적 근거가 없다. 회사 측 발언 위주이며, 특허 등록 등 객관적 증거가 없어 판단이 불분명하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "근거에 따르면 Nature Robots 제품은 농기계 검정기준 및 인허가 대상이 아니며, 관련 기준이 현재 마련 중인 단계로 회사 제품에 대한 인허가 신청이나 등록 사실이 없다. 따라서 해당 항목은 해당 사항 없음(N/A)으로 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 Nature Robots의 핵심 기술 관련 특허 등록 또는 출원에 관한 직접적인 언급이 없어 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거에 미국과 중국 경쟁사 대비 3배 이상 이동 성능이 우수하다는 구체적 차별점이 명시되어 있어 경쟁 우위가 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "자체 데이터 축적이나 설치·연동에 따른 교체 비용 구조에 관한 근거가 근거 문단에 없어 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "UNKNOWN",
+          "rationale": "유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 근거가 제시되어 있지 않아 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에 Nature Robots의 매출액이나 연도별 매출 금액에 관한 구체적 언급이 없다. 투자 유치 금액(€4 million seed funding)만 확인되며, 이는 매출액이 아니다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "유료 고객 수, 설치 규모, 농가 수, 면적, 두수, 계약 금액 등 구체적 수치가 근거 문단에 나타나지 않는다. 따라서 수치로 확인되는 유료 고객이나 설치 규모 근거가 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "같은 고객의 재계약, 확대 도입, 여러 해 연속 사용에 관한 근거가 없다. 재사용 근거가 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 매출(민간 판매, 수출, 기업 간 계약) 근거가 근거 문단에 없다. 투자 유치 및 보조금 관련 내용만 확인된다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "YES",
+          "rationale": "2026-03 Seed €4 million — 적격성 검증에서 원문 인용으로 확인 (코드 판정)",
+          "quote": "Nature Robots lands €4 million to automate organic and regenerative agriculture",
+          "evidence_ids": [
+            "W0a516",
+            "Wc981a",
+            "W864ea",
+            "We882a",
+            "Wa4638",
+            "Webfb2",
+            "Wff9a4"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "YES",
+          "rationale": "근거 [Wce8fe]에 기관투자자(VC, CVC, 정책 펀드 등)로 Bayern Kapital, Climentum Capital, EIC Accelerator 등이 참여한 것으로 명시되어 있어 기관투자자 참여가 확인된다.",
+          "quote": "Nature Robots's investors include Marc Matthaeus, Bayern Kapital, Climentum Capital, EIC Accelerator, Planetary Impact Ventures.",
+          "evidence_ids": [
+            "Wce8fe"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 [W9b5a0]는 기업가치(Valuation) 정보가 있음을 안내하지만 구체적 수치가 공개되어 있지 않고, 비공개 또는 실사 필요로 표기되어 있어 수치 근거가 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "YES",
+          "rationale": "근거 [Wff9a4]에 Nature Robots가 대규모 자체 시설 없이 소프트웨어 중심 사업 모델을 운영하며, 전략적 투자자(Climentum Capital, Bayern Kapital, Planetary Impact Ventures)로부터 400만 유로 시드 투자를 유치한 사실이 명확히 기재되어 있어 YES 판정한다.",
+          "quote": "Nature Robots closed a €4 million seed financing round led by strategic investors Climentum Capital, Bayern Kapital, and Planetary Impact Ventures.",
+          "evidence_ids": [
+            "Wff9a4"
+          ],
+          "confidence": "상",
+          "verifier": null
+        }
+      ]
+    },
+    {
+      "name": "리비타",
+      "region": "KR",
+      "stage": "Seed",
+      "decision": "보류",
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 0.9729,
+      "score100": 97.3,
+      "reasons": [
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 97.3(동종 평균 100) — 동종 평균 이하 (미확인 문항 74%)"
+      ],
+      "flip": {
+        "qids": [
+          "F1"
+        ],
+        "items": [
+          "F1 창업팀 이력"
+        ],
+        "new_multiplier": 1.0104,
+        "reached": true,
+        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 101.0(동종 평균 100) → 투자"
+      },
+      "roi": {
+        "computable": false,
+        "round_amount_raw": "",
+        "round_amount_usd_m": null,
+        "stage": "Seed",
+        "stage_median_usd_m": 1,
+        "vs_stage_median": null,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": null,
+        "target_multiple": 10,
+        "required_exit_usd_m": null,
+        "assumptions": [],
+        "source_ids": [
+          "We75e2",
+          "W903d5",
+          "W01bf7"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": "라운드 금액 비공개 → 산정 불가 (실사 항목)"
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 106.9,
+          "peer_mean": 0.361,
+          "contribution": 0.2674
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 1,
+          "no": 1,
+          "unknown": 1,
+          "n": 3,
+          "pct": 85.2,
+          "peer_mean": 0.296,
+          "contribution": 0.1278
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 109.7,
+          "peer_mean": 0.306,
+          "contribution": 0.1097
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "UNKNOWN",
+          "rationale": "창업자 엄상혁 대표의 구체적인 농업 현장 또는 관련 기술 분야 경력이나 학력 정보가 근거 문서에서 확인되지 않아 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 핵심 기술 책임자인 엄상혁 대표의 기술 이력(특허, 논문, 연구소·기업 경력)에 관한 구체적인 정보가 확인되지 않아 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 2026년 4월 시드 투자 유치와 2026년 8월 국민연금 가입이라는 두 건의 마일스톤이 명확히 날짜와 함께 제시되어 있어 최근 24개월 내 2건 이상의 마일스톤이 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 수치(고객 수, 매출 등)에 대해 제3자 근거가 없고, 회사 측 설명 위주로 확인되어 제3자 근거로 확인된 수치가 없어 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "글로벌 스마트 농업 시장 규모가 여러 공공기관 및 연구기관 문서에서 수치와 기준 연도로 명확히 확인되어 M1 요건을 충족한다.",
+          "quote": "글로벌 스마트 농업 시장 규모 예측|분석기관|분석기간|분석기간 동안의 시장규모|연평균 성장률|BIS Research|2023~2034|174억 달러~1,172억 달러|19.1%|Grand View Research|2023~2030|226억 5천만 달러~556억 4천만 달러|13.7%|Statista|2022~2027|150억 달러~330억 달러|17.1%|Marketsand Markets|2024~2029|144억 4천만 달러~233억 8천만 달러|10.2%|Global Market Insights|2022~2032|185억 달러~574억 6천만 달러|12% 이상",
+          "evidence_ids": [
+            "D66bcb",
+            "D5b883"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 글로벌 스마트 농업 시장 규모 예측을 제시하지만, 평가 기준일인 2026-09-30 기준의 수치와 기준 연도를 명확히 확인할 수 없어 질문의 조건을 직접 충족하지 않는다."
+        },
+        {
+          "qid": "M2",
+          "answer": "YES",
+          "rationale": "최근 24개월 내 발행된 근거에서 스마트 농업 시장이 연평균 10% 이상 성장할 것으로 예측되어 성장 중임을 확인할 수 있다.",
+          "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "경제적 효과가 수치로 제시되지 않고, 제3자 출처가 아니며 회사 측 설명에 의존하므로 YES 판정 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "UNKNOWN",
+          "rationale": "과금 방식에 대한 구체적 근거가 없고, 지불 의향도 추정에 불과하여 YES 판정 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "NO",
+          "rationale": "근거에 따르면 리비타의 제품은 2026년 5월 말 출시 예정으로 시제품 단계이며, 상용 운영 중이라는 직접적 근거가 없어 상용 운영 중이라고 보기 어렵다.",
+          "quote": "2026년 5월 말 출시 예정인 노지 스마트팜 상단영역 인베스트 | invest 본문영역 이 기사를 공유합니다 [시드] '전기 없는 밭도 스마트팜으로' 리비타, 시드 투자 유치로 '노지 스마트팜' 상용화 박차 입력 2026.04.14",
+          "evidence_ids": [
+            "W903d5"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "여러 작기 또는 여러 지역에서의 제3자 실증 근거가 없고, 독립적 검증 자료가 확인되지 않아 성능 실증 여부를 판단할 근거가 부족하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "YES",
+          "rationale": "근거에 리비타가 자체 개발한 핵심 기술과 제품이 명확히 기술되어 있어 자체 개발 근거가 있다.",
+          "quote": "리비타의 핵심 기술: 태양광 기반 저전력 프로세서와 엣지 AI, 다분광 카메라, LTE·LoRa·GPS 통신 기능을 결합한 노지 스마트팜 솔루션",
+          "evidence_ids": [
+            "W903d5"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 리비타의 핵심 기술 구성 요소를 나열하지만, 자체 개발 근거인 특허, 논문, 자체 데이터셋, 자체 하드웨어에 대한 구체적 사실을 제시하지 않는다."
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "제품 유형상 별도의 인허가 대상이 아니며, 근거에 인허가 정보가 없다고 명시되어 있어 해당 사항이 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 리비타의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적 정보가 확인되지 않아 판정할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 리비타가 경쟁사와 구체적으로 비교한 성능, 가격, 적용 작목, 범위 등의 차별점에 대한 직접적인 문장이 없으며, 경쟁사와의 구체적 비교 근거가 확인되지 않는다. 회사 측 주장은 있으나 제3자 근거가 아니고 구체적 비교 내용도 없어 YES 판정 요건을 충족하지 못한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 리비타 제품의 사용 증가에 따른 자체 데이터 축적이나 설치·연동으로 인한 교체 비용 발생 구조에 관한 구체적 근거가 확인되지 않아 판정할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 리비타가 농협, 농기계·농자재 기업, 지자체, 대형 유통, 해외 파트너 등과 계약이나 공동사업을 체결했다는 구체적 근거가 확인되지 않아 판정할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 매출액과 연도가 명확히 확인되지 않아, 매출액이 기업 DB·공시·보도로 확인되는지 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "유료 고객 수나 설치 규모에 대한 구체적인 수치가 근거 문서에 포함되어 있지 않아 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "같은 고객의 재계약·확대 도입 또는 여러 해 연속 사용에 관한 근거가 근거 문서에 존재하지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 매출에 관한 구체적인 민간 판매, 수출, 기업 간 계약 근거가 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "UNKNOWN",
+          "rationale": "2026-04 Seed 라운드 금액 비공개 (코드 판정)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "YES",
+          "rationale": "근거에 초기 스타트업 전문 운용사 지디벤처스(ZDVC)가 시드 투자자로 참여한 사실이 명확히 확인된다.",
+          "quote": "초기 스타트업 투자사 지디벤처스(ZDVC)가 노지(露地) 스마트팜 솔루션을 개발하는 애그테크 스타트업 '리비타'에 시드투자를 했다고 8일 밝혔다.",
+          "evidence_ids": [
+            "We75e2",
+            "W01bf7"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "기업가치나 투자 지분율에 관한 수치가 공개되어 있지 않고, 금액도 비공개로 명시되어 있어 수치 근거가 부족하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "YES",
+          "rationale": "근거에 리비타는 대규모 자체 시설이 필요 없는 노지 스마트팜 솔루션을 개발하는 사업 모델임이 확인되며, 전략적 투자자 확보 사실도 확인되어 YES 판정이 가능하다.",
+          "quote": "기존 스마트팜 기술이 온실과 시설 원예에 집중된 것과 달리, 국내 농업 활동의 약 95% 이상이 이뤄지는 노지 영역에 주목해 '현장에서 바로 사용할 수 있는' 디지털 농업 장비를 개발하고 있다.",
+          "evidence_ids": [
+            "W903d5"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 리비타가 노지 스마트팜 장비를 개발하고 시드 투자를 유치했다는 사실을 말하지만, 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보 여부에 대해 구체적으로 언급하지 않아 인정 조건을 직접 충족하지 않는다."
+        }
+      ]
+    },
+    {
+      "name": "새팜",
+      "region": "KR",
+      "stage": "Pre-A",
+      "decision": "보류",
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 1.0285,
+      "score100": 102.8,
+      "reasons": [
+        "창업자 기준 94.4(동종 평균 100) — 팀이 동종 평균 미만"
+      ],
+      "flip": {
+        "qids": [
+          "F1"
+        ],
+        "items": [
+          "F1 창업팀 이력"
+        ],
+        "new_multiplier": 1.066,
+        "reached": true,
+        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 106.6(동종 평균 100) → 투자"
+      },
+      "roi": {
+        "computable": false,
+        "round_amount_raw": "",
+        "round_amount_usd_m": null,
+        "stage": "Pre-A",
+        "stage_median_usd_m": 1,
+        "vs_stage_median": null,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": null,
+        "target_multiple": 10,
+        "required_exit_usd_m": null,
+        "assumptions": [
+          "Pre-A 중앙값은 앞 단계 값($1M)을 쓴 가정"
+        ],
+        "source_ids": [
+          "W15c26"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": "라운드 금액 비공개 → 산정 불가 (실사 항목)"
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 94.4,
+          "peer_mean": 0.111,
+          "contribution": 0.2833
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 3,
+          "no": 0,
+          "unknown": 1,
+          "n": 4,
+          "pct": 120.8,
+          "peer_mean": 0.333,
+          "contribution": 0.3021
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 1,
+          "no": 0,
+          "unknown": 2,
+          "n": 3,
+          "pct": 103.7,
+          "peer_mean": 0.259,
+          "contribution": 0.1556
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 105.6,
+          "peer_mean": 0.139,
+          "contribution": 0.1056
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 83.3,
+          "peer_mean": 0.333,
+          "contribution": 0.0833
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 창업자 정승환 대표의 창업 이전 경력이나 농업 현장·기술 분야 경험에 대한 구체적 정보가 없어 확인 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "기술 책임자의 특허, 논문, 연구소·기업 경력에 관한 구체적 근거가 없으므로 확인 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 2022년 6월 새팜 설립 및 TIPS 선정과 2026년 5월 풀무원으로부터 전략적 투자 유치라는 두 건의 날짜가 명확한 마일스톤이 있어, 최근 24개월 내 2건 이상의 마일스톤이 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "회사 공개 핵심 수치(고객 수, 매출 등)를 제3자 출처에서 확인한 근거가 없고, 모순 근거도 없어 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "근거 [D5b883], [Deaac5], [D66bcb]는 모두 공공기관인 한국농촌경제연구원의 2024년 보고서로, 2023년부터 2034년까지 글로벌 스마트농업 시장 규모가 174억 달러에서 1,172억 달러로 연평균 19.1% 성장할 것으로 수치와 기준 연도가 명확히 제시되어 있어, 질문에 부합하는 공공기관 문서에서 시장 규모 수치가 확인된다.",
+          "quote": "<표 1> 글로벌 스마트농업 시장 규모 예측 ... BIS Research 2023~2034 174억 달러~1,172억 달러 19.1%",
+          "evidence_ids": [
+            "D5b883",
+            "D66bcb"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 글로벌 스마트농업 시장 규모 예측에 관한 내용이며, 특정 회사인 새팜에 대한 시장 규모 수치를 직접적으로 제시하지 않는다."
+        },
+        {
+          "qid": "M2",
+          "answer": "YES",
+          "rationale": "최근 24개월 이내 발행된 2024년 자료에 근거하여 글로벌 스마트 농업 시장이 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장할 것으로 전망되어 해당 분야가 성장 중임을 명확히 뒷받침한다.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 2023년과 이후 기간의 시장 규모 및 성장률 전망을 제시하지만, 2023년 이전의 투자액·도입률·정책 예산 증가 등 최근 성장 근거를 직접적으로 제시하지 않아 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (새팜 솔루션 도입 농가에서 비용 절감과 수확량 증가 등 경제적 효과가 수치로 제시되었고, 이는 제3자 출처인 농기평에서 확인된 내용으로 고객 문제와 경제적 효과가 명확히 입증되었다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "YES",
+          "rationale": "과금 방식으로 월 구독형 모델이 명확히 서술되어 있으며, 이는 고객이 실제 비용을 지불하는 방식임을 보여준다.",
+          "quote": "월 12달러 수준의 구독형 모델은 기존 정밀농업 솔루션 대비 98% 저렴해 글로벌 농가의 접근성을 획기적으로 끌어올렸다",
+          "evidence_ids": [
+            "Wbb501"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 [W15c26]에 '국내 8000여 농가와 전 세계 20만ha에 적용되어 재배량 18% 증가 및 병충해·이상 징후 탐지율 95%를 확인했다'는 문장이 있어, 시제품 단계를 넘어 실제 농장 및 넓은 면적에서 상용 운영 중임을 명확히 뒷받침한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (공공기관 및 지자체(의성군, 괴산군 등)에서 적용된 실증 사례와 경기 연천 지역 농가 데이터를 활용한 성능 검증이 있어 제3자 실증 근거가 충족된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "YES",
+          "rationale": "새팜은 인공위성 데이터와 AI 기술을 자체 결합하여 작물 생육 진단 및 재배 가이드 솔루션을 개발한 것으로 명시되어 있어 핵심 기술의 자체 개발 근거가 있다.",
+          "quote": "인공위성 데이터와 AI를 결합해 필지 단위 작물 생육 상태를 진단하고 재배 가이드를 제공하는 솔루션 개발",
+          "evidence_ids": [
+            "W15c26"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 새팜이 인공위성 데이터와 AI를 결합해 솔루션을 개발했다고 하나, 자체 특허·논문·데이터셋·하드웨어 등 구체적 자체 개발 근거는 제시하지 않아 인정 조건을 직접 충족하지 않는다."
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "새팜의 제품은 농작물 재배 솔루션으로 인허가 대상이 아니며, 별도의 인허가나 검정 신청 사실이 없으므로 해당 사항이 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 새팜의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적인 정보가 확인되지 않아 판정할 수 없습니다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (근거 문서에서 새팜과 동일한 제품 유형과 기능, 적용 작목이 겹치는 경쟁사나 적격성 검증을 통과한 회사가 확인되지 않는다고 명시하고 있어, 구체적인 경쟁사와의 차별점 비교 근거가 없다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 사용이 늘수록 자체 데이터가 쌓여 성능이 좋아지거나 설치·연동으로 인한 교체 비용 구조에 관한 구체적 내용이 없어 판정할 수 없습니다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "YES",
+          "rationale": "근거에 새팜이 지역농협, 풀무원, 의성군, 괴산군 등과 계약 또는 공동사업을 진행하고 있음을 명확히 확인할 수 있어 YES 판정입니다.",
+          "quote": "새팜의 솔루션은 지역농협(벼)·풀무원(콩) 계약농가를 비롯해 의성군(마늘)·괴산군(콩) 등 지자체까지 적용 범위를 넓혔다.",
+          "evidence_ids": [
+            "W15c26"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (2024년 매출액이 금융감독원 전자공시 감사보고서로 확인되어 연도와 매출액이 명확히 제시됨.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "고객 수나 설치 규모에 관한 수치가 없고, 직원 수만 제시되어 유료 고객이나 설치 규모 수치 근거가 아님.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "재계약·확대 도입이나 여러 해 연속 사용에 관한 근거가 전혀 없음.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 매출 근거가 확인되지 않음.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "UNKNOWN",
+          "rationale": "2026-07 Pre-A 라운드 금액 비공개 (코드 판정)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "UNKNOWN",
+          "rationale": "기관투자자 참여 여부가 투자사 이름으로 명확히 확인되지 않아 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "기업가치 또는 투자 지분율에 관한 수치가 공개되지 않아 판정 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "UNKNOWN",
+          "rationale": "대규모 자체 시설 필요 여부 및 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없어 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        }
+      ]
+    },
+    {
+      "name": "Upside Robotics",
+      "region": "GLOBAL",
+      "stage": "Seed",
+      "decision": "보류",
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 0.975,
+      "score100": 97.5,
+      "reasons": [
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 97.5(동종 평균 100) — 동종 평균 이하 (미확인 문항 83%)"
+      ],
+      "flip": {
+        "qids": [
+          "F1"
+        ],
+        "items": [
+          "F1 창업팀 이력"
+        ],
+        "new_multiplier": 1.0125,
+        "reached": true,
+        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 101.2(동종 평균 100) → 투자"
+      },
+      "roi": {
+        "computable": true,
+        "round_amount_raw": "$7.5 million",
+        "round_amount_usd_m": 7.5,
+        "stage": "Seed",
+        "stage_median_usd_m": 1,
+        "vs_stage_median": 7.5,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": [
+          37.5,
+          75.0
+        ],
+        "target_multiple": 10,
+        "required_exit_usd_m": [
+          375.0,
+          750.0
+        ],
+        "assumptions": [
+          "지분율 가정 10%~20%: post-money = 라운드 금액 ÷ 지분율",
+          "목표 회수 배수 가정 10배(VC Method): 필요 Exit = post-money × 10"
+        ],
+        "source_ids": [
+          "Wfd35b",
+          "Wa8af5",
+          "Wfc709"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": null
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 108.3,
+          "peer_mean": 0.333,
+          "contribution": 0.2708
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 0,
+          "no": 0,
+          "unknown": 3,
+          "n": 3,
+          "pct": 83.3,
+          "peer_mean": 0.333,
+          "contribution": 0.125
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 111.1,
+          "peer_mean": 0.278,
+          "contribution": 0.1111
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (창업자 Sam Dugan는 10세부터 로봇 제작 경험이 있고, Jana Tian은 화학공학 경력과 농업 로봇 분야 전문성을 보유하여 창업 전부터 관련 분야 경험이 확인됨.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (기술 책임자인 Sam Dugan가 어릴 때부터 로봇 제작 경험을 쌓았고, Jana Tian도 관련 분야 전문성을 갖추어 핵심 기술 책임자의 기술 이력이 확인됨.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 2026년 2월 7.5백만 달러 시드 펀딩 유치와 2026년 3월 현장 시험 확대 등 최근 24개월 내 마일스톤 2건 이상이 명확히 제시되어 있어 YES 판정한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 명확하지 않고, 모순 근거도 없어 확인 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "글로벌 스마트 농업 시장 규모가 2023년 174억 달러에서 2034년 1,172억 달러로 성장할 것으로 공공기관 문서에서 수치와 기준 연도로 확인되어 YES 판정함.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 BIS Research의 글로벌 스마트 농업시장 규모 추정치를 제시하지만, Upside Robotics에 대한 구체적 사실을 직접 언급하지 않아 질문의 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "M2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 [D6b653]에 2024~2025년 글로벌 애그테크 투자 총액이 22억 달러에서 38억 달러로 73% 증가했다는 최근(2024~2025년) 수치가 명확히 제시되어 있어, 해당 분야가 성장 중임을 직접 뒷받침한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (TechCrunch 2026년 2월 기사에서 Upside Robotics가 고객의 실제 문제인 비료 사용량을 70% 절감하여 에이커당 약 150달러 비용 절감 효과를 제3자 출처로 수치 제시하고 있어 경제적 효과가 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "YES",
+          "rationale": "Upside Robotics의 비즈니스 모델이 하드웨어 판매와 하드웨어+구독 방식임을 caplight.com 2024년 자료에서 확인할 수 있어 과금 방식이 명확히 제시되었다.",
+          "quote": "Hardware Sales, Hardware + Subscription AI Layer Application Keywords",
+          "evidence_ids": [
+            "W835e4"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 200개 이상의 농장이 대기 중이라는 문장은 있으나, 실제 상용 운영 중인 설치 수·면적·두수·고객명에 대한 직접적인 언급이 없고, '대기 중'은 상용 운영 상태를 의미하지 않으므로 YES 판정 요건을 충족하지 않는다. 또한, 3,000에이커 농지 적용 중이라는 문장은 근거 원문에 없으므로 인용 불가이다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음, 제품명 포함) → NO 대신 UNKNOWN (Upside Robotics의 기술에 대한 제3자(공공기관 등) 현장 실증 근거가 명확히 제시되어 있지 않고, 언급된 시범단지는 일반 농기계 시범 운영으로, 회사 제품의 여러 작기 또는 여러 지역 실증 근거로 보기 어렵다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 자체 개발 기술을 뒷받침하는 특허, 논문, 자체 데이터셋, 자체 하드웨어 등에 대한 구체적 언급이 없으며, 회사 소개 문구 수준의 기술 설명만 있어 자체 개발 근거로 보기 어렵다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "농업용 로봇은 현재 농기계 검정기준이 마련 중인 단계로, 개별 제품에 대한 인허가 대상이 아니므로 해당 사항이 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 Upside Robotics의 특허 등록 또는 출원에 관한 구체적 정보가 확인되지 않아 판정할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 경쟁사들과 비교하여 대상 회사가 비료 살포에 특화된 자율주행 농업 로봇을 명확히 제시한 곳은 없다는 구체적인 차별점이 명시되어 있어 YES 판정함.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 데이터 축적이나 연동 구조에 따른 교체 비용 발생에 관한 구체적 정보가 없어 판정할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 정보가 확인되지 않아 판정할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 매출 금액과 연도가 명확히 확인되지 않으며, 투자 유치 금액만 언급되어 매출액 확인 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [W0e24c]에 2024년 70에이커, 2025년 1,200에이커, 2026년 3,000에이커 이상 농지에 적용 중이라는 구체적 수치가 있어 유료 고객 또는 설치 규모가 수치로 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [W0e24c]에 '100% 고객 유지율'이라는 문장이 있어 같은 고객의 재계약·확대 도입 또는 여러 해 연속 사용 근거가 있다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 민간 매출 근거가 명확하지 않고, 매출액이나 계약 금액 수치가 없어 근거 부족으로 UNKNOWN.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "YES",
+          "rationale": "2026-02 Seed $7.5 million — 적격성 검증에서 원문 인용으로 확인 (코드 판정)",
+          "quote": "$7.5 million seed funding helps Upside Robotics plant the seeds for success",
+          "evidence_ids": [
+            "Wfd35b",
+            "Wa8af5",
+            "Wfc709"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "YES",
+          "rationale": "근거 [Wfc709]에 기관투자자인 Plural과 Garage Capital이 Seed 라운드에 참여한 사실이 명확히 확인되어 YES 판정한다.",
+          "quote": "Upside Robotics raised a $7.5 million seed round, with Plural leading the investment and Garage Capital also participating.",
+          "evidence_ids": [
+            "Wfc709"
+          ],
+          "confidence": "상",
+          "verifier": "인용문에 투자사 이름은 있으나, 기관투자자(VC, CVC, 정책 펀드, TIPS 운영사)인지 여부가 명확하지 않아 인정 조건을 직접 충족한다고 보기 어렵다."
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 [W835e4]에 기업가치(Valuation) 정보가 공개되어 있지 않다고 명시되어 있어, 수치 근거가 없으므로 UNKNOWN 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 사업 모델이 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보 관련 구체적 내용이 없어 판단 불가하므로 UNKNOWN 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        }
+      ]
+    },
+    {
+      "name": "터빈크루",
+      "region": "KR",
+      "stage": "Pre-A",
+      "decision": "보류",
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 0.9775,
+      "score100": 97.8,
+      "reasons": [
+        "창업자 기준 93.8(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 97.8(동종 평균 100) — 동종 평균 이하 (미확인 문항 83%)"
+      ],
+      "flip": {
+        "qids": [
+          "F1"
+        ],
+        "items": [
+          "F1 창업팀 이력"
+        ],
+        "new_multiplier": 1.015,
+        "reached": true,
+        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 101.5(동종 평균 100) → 투자"
+      },
+      "roi": {
+        "computable": true,
+        "round_amount_raw": "7억 3000만원",
+        "round_amount_usd_m": 0.52,
+        "stage": "Pre-A",
+        "stage_median_usd_m": 1,
+        "vs_stage_median": 0.52,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": [
+          2.61,
+          5.21
+        ],
+        "target_multiple": 10,
+        "required_exit_usd_m": [
+          26.1,
+          52.1
+        ],
+        "assumptions": [
+          "환율 가정: 1달러 = 1,400원",
+          "Pre-A 중앙값은 앞 단계 값($1M)을 쓴 가정",
+          "지분율 가정 10%~20%: post-money = 라운드 금액 ÷ 지분율",
+          "목표 회수 배수 가정 10배(VC Method): 필요 Exit = post-money × 10"
+        ],
+        "source_ids": [
+          "We2ed2"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": null
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 93.8,
+          "peer_mean": 0.125,
+          "contribution": 0.2812
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 107.5,
+          "peer_mean": 0.35,
+          "contribution": 0.2687
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 0,
+          "no": 0,
+          "unknown": 3,
+          "n": 3,
+          "pct": 85.0,
+          "peer_mean": 0.3,
+          "contribution": 0.1275
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 103.8,
+          "peer_mean": 0.175,
+          "contribution": 0.1038
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 98.8,
+          "peer_mean": 0.025,
+          "contribution": 0.0988
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 97.5,
+          "peer_mean": 0.3,
+          "contribution": 0.0975
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "UNKNOWN",
+          "rationale": "창업자 전기은 대표의 창업 이전 경력이나 농업·기술 분야 경력에 대한 구체적 정보가 근거에 없어 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 기술 책임자의 특허, 논문, 연구소·기업 경력 등 구체적 기술 이력이 근거에 나타나지 않아 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거에 2023년 5월 투자 유치와 2024년 1월 TIPS 선정 및 후속 투자 유치라는 두 건 이상의 날짜가 명확한 마일스톤이 있어 YES 판정한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 수치(고객 수, 매출 등)를 제3자 근거로 확인할 수 없고, 수치에 관한 구체적 정보가 없어 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "근거 [D5b883], [Deaac5], [D66bcb]에 글로벌 스마트 농업 시장 규모와 연평균 성장률이 공공기관 문서에서 수치와 기준 연도로 명확히 제시되어 있어, 목표 시장 규모가 확인된다.",
+          "quote": "<표 1> 글로벌 스마트농업 시장 규모 예측",
+          "evidence_ids": [
+            "D5b883",
+            "D66bcb"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 [D6b653]에 2024~2025년 글로벌 애그테크 투자액 증가 수치가 명확히 제시되어 있어, 해당 분야가 최근 2년 내 성장 중임을 뒷받침한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M3",
+          "answer": "YES",
+          "rationale": "제3자 출처 뉴스 기사에서 농가 운영비 절감, 수확량 증가, 자원 사용량 감소 등 구체적 수치가 제시되어 고객 문제와 경제적 효과가 수치로 확인된다.",
+          "quote": "AI 기반 위성 농장 모니터링 기술을 공개한 새팜은 ... 농가 운영비를 18% 줄이고 수확량을 20% 늘릴 수 있으며, 물·비료 사용량도 15% 절감할 수 있다는 수치를 제시했다.",
+          "evidence_ids": [
+            "W6aaf8"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 새팜의 AI 기반 위성 농장 모니터링 기술에 대한 수치와 효과를 제시하고 있으나, 질문은 터빈크루의 고객 문제와 경제적 효과에 관한 것이므로 인용 내용이 질문 대상과 다르다."
+        },
+        {
+          "qid": "M4",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 과금 방식이나 누가 비용을 지불하는지에 대한 구체적 설명이 없어 과금 방식 확인 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "UNKNOWN",
+          "rationale": "상용 규모 근거 없음 (인용에 설치 수·면적·두수·고객명이 없음) → UNKNOWN 강등 (근거 [W8564d]에 터빈크루의 소형 풍력발전기가 다양한 장소에서 운영 가능하다고 명시되어 있어, 시제품 단계를 지나 실제 현장에서 상용 운영 중임을 직접 뒷받침한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (근거 [W6aaf8]에 제3자인 뉴스 매체가 보도한 내용으로, 드론과 AI를 활용한 병해충 데이터 수집 및 분석 성능이 구체적으로 제시되어 있어 여러 작기 또는 지역에서의 현장 실증 성능 근거로 인정된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "UNKNOWN",
+          "rationale": "특허 보유가 회사 측 주장에 그치고 구체적이고 객관적인 특허 등록 내역이나 자체 개발 근거가 명확하지 않아 자체 개발 근거로 인정하기 어려움.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "근거에 회사 제품이 농업용 로봇 및 자율주행 농기계가 아니며 관련 인허가 대상이 아니라고 명시되어 있어 인허가 대상이 아님.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "YES",
+          "rationale": "근거에 터빈크루가 특허 및 PCT 포함 20개 이상의 지식재산을 보유하고 있다고 명시되어 있어, 핵심 기술 관련 특허가 1건 이상 확인된다.",
+          "quote": "특허 및 PCT 등 20개 이상 지식재산을 보유",
+          "evidence_ids": [
+            "We8e74"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 국내외 경쟁사 2곳 이상과 구체적인 차별점(성능·가격·적용 작목·범위)을 직접 비교하는 문장이 없으며, 회사 측 주장은 제3자 검증 근거가 아니므로 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 사용이 늘수록 자체 데이터가 쌓여 성능이 좋아지거나 설치·연동으로 인한 교체 비용 구조에 관한 직접적이고 구체적인 내용이 없다. 회사 측 주장이나 계획만 있어 근거 부족으로 판단한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "UNKNOWN",
+          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음, 제품명 포함) → NO 대신 UNKNOWN (근거에 MOU나 합작법인 설립은 있으나, 계약이나 공동사업에 대한 구체적 내용이나 상대방 명칭이 불분명하여 계약 근거로 인정하기 어렵다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 2023~2025년 재무제표가 언급되나, 매출액과 연도가 구체적으로 공개되어 있지 않고, 프로 플랜 필요로 상세 정보 확인이 불가능하여 매출액과 연도 확인이 불명확하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "유료 고객 수나 설치 규모에 대한 구체적인 수치가 근거 문서에 포함되어 있지 않으며, 고객 수나 면적 등의 수치 확인이 불가능하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "같은 고객의 재계약이나 확대 도입, 여러 해 연속 사용에 관한 구체적 근거가 근거 문서에 존재하지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 명확히 확인되지 않으며, 관련 계약이나 매출 내역이 공개되어 있지 않다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "YES",
+          "rationale": "2026-06 Pre-A 7억 3000만원 — 적격성 검증에서 원문 인용으로 확인 (코드 판정)",
+          "quote": "터빈크루  Pre-A  7억 3000만원",
+          "evidence_ids": [
+            "We2ed2"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "UNKNOWN",
+          "rationale": "투자자 수는 확인되나 기관투자자(VC, CVC, 정책 펀드, TIPS 운영사) 이름이 구체적으로 공개되어 있지 않아 참여 여부를 확정할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "기업가치 또는 투자 지분율에 관한 구체적 수치가 공개되어 있지 않고, 비공개 상태로 확인되어 판정 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "UNKNOWN",
+          "rationale": "사업 모델에 대한 구체적 자금 구조나 전략적 투자자·비희석 자금 확보에 관한 근거가 없어 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        }
+      ]
+    },
+    {
+      "name": "루트릭스",
+      "region": "KR",
+      "stage": "Series A",
+      "decision": "투자",
+      "hold_type": null,
+      "multiplier": 1.115,
+      "score100": 111.5,
+      "reasons": [
+        "동종 평균 대비 111.5(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 106.2(동종 평균 100) — 동종 평균 이상",
+        "Deal-killer 없음"
+      ],
+      "flip": null,
+      "roi": {
+        "computable": true,
+        "round_amount_raw": "45억원",
+        "round_amount_usd_m": 3.21,
+        "stage": "Series A",
+        "stage_median_usd_m": 7,
+        "vs_stage_median": 0.46,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": [
+          16.07,
+          32.14
+        ],
+        "target_multiple": 10,
+        "required_exit_usd_m": [
+          160.7,
+          321.4
+        ],
+        "assumptions": [
+          "환율 가정: 1달러 = 1,400원",
+          "지분율 가정 10%~20%: post-money = 라운드 금액 ÷ 지분율",
+          "목표 회수 배수 가정 10배(VC Method): 필요 Exit = post-money × 10"
+        ],
+        "source_ids": [
+          "W4f62b",
+          "W92745",
+          "W1856b",
+          "W868ac",
+          "W7f576",
+          "Wedc50"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": null
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 106.2,
+          "peer_mean": 0.125,
+          "contribution": 0.3187
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 107.5,
+          "peer_mean": 0.35,
+          "contribution": 0.2687
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 2,
+          "no": 0,
+          "unknown": 1,
+          "n": 3,
+          "pct": 118.3,
+          "peer_mean": 0.3,
+          "contribution": 0.1775
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 3,
+          "no": 0,
+          "unknown": 1,
+          "n": 4,
+          "pct": 128.8,
+          "peer_mean": 0.175,
+          "contribution": 0.1288
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 123.8,
+          "peer_mean": 0.025,
+          "contribution": 0.1238
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 97.5,
+          "peer_mean": 0.3,
+          "contribution": 0.0975
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "YES",
+          "rationale": "창업자 안정록 대표가 하버드 건축대학원 조경설계석사 학위를 보유하고 2021년 11월 루트릭스를 설립하여 조경산업과 수목 유통 분야에 전문성을 갖추었음을 근거에서 확인할 수 있다. 이름과 경력이 함께 명시되어 있어 YES 판정 기준에 부합한다.",
+          "quote": "안정록 루트릭스 대표는 하버드 건축대학원 조경설계석사 졸업 후 올바른 조경산업 문화 정착을 통한 기후 문제 해결을 목표로 루트릭스를 설립했다",
+          "evidence_ids": [
+            "Wc816f"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 안정록 대표의 학력과 설립 목표를 언급하지만, 농업 현장이나 해당 기술 분야에서의 연구·실무·사업 경험에 대한 구체적 사실을 제공하지 않는다."
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 기술 책임자의 특허, 논문, 연구소 또는 기업 경력 등 구체적인 기술 이력이 명시되어 있지 않고, 단지 학력과 창업 목표만 언급되어 있어 YES 요건을 충족하지 못함.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거에 2021년 11월 TIPS 선정과 2026년 2월 45억원 규모 시리즈 A 투자 유치라는 두 건의 날짜가 명확한 마일스톤이 있어 최근 24개월 내 2건 이상의 마일스톤이 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 수치(고객 수, 매출 등)가 회사 측 자료로 제시되었으나, 제3자 출처에서 동일 수치가 확인되거나 모순 여부가 명확하지 않아 YES 또는 NO 판정 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "글로벌 스마트 농업 시장 규모가 공공기관 문서(한국농촌경제연구원 보고서)에서 2023년 174억 달러로 확인되고, 2034년까지 성장 전망 수치가 명확히 제시되어 있어 M1 요건을 충족한다.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M2",
+          "answer": "YES",
+          "rationale": "최근 24개월 이내 발행된 제3자 출처의 시장 규모 및 성장률 수치가 명확히 제시되어 있어 해당 분야가 성장 중임을 뒷받침한다.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 2023년과 이후의 시장 규모 및 성장률 전망을 제시하지만, 2023년의 투자액이나 도입률, 정책 예산 증가 등 해당 분야가 성장 중임을 직접 입증하는 구체적 수치를 제공하지 않아 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (제3자 출처 기사에서 고객의 실제 문제와 제품의 경제적 효과(비용 절감)를 수치로 제시하고 있어 요건을 충족한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "UNKNOWN",
+          "rationale": "인용이 예정·계획·방침·추진 문장 (실제 수익 모델·효과가 아님) → UNKNOWN 강등 (과금 방식은 명확히 서술되어 있지 않으나, 카카오톡 채널을 통한 견적 요청 및 납품 시스템이 구축되어 있어 과금 방식과 관련된 서비스 모델이 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "YES",
+          "rationale": "루트릭스는 102개 조경 시공기업 고객을 확보하고 누적 매출 85억 원을 기록하여 실제 농장·온실·축사에서 상용으로 운영 중임을 보여준다. 이는 설치 수·고객명·매출 실적을 포함한 상용 운영의 직접적 근거이다.",
+          "quote": "102개 조경 시공기업과 누적 매출 85억 원 달성",
+          "evidence_ids": [
+            "W92745"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 102개 조경 시공기업과의 누적 매출 85억 원 달성을 언급하지만, 시제품 단계를 지나 실제 농장·온실·축사에서 상용으로 운영 중임을 나타내는 설치 수·면적·두수·고객명 등의 구체적 사실을 제공하지 않는다."
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 공공기관, 대학, 지자체 등 제3자에 의한 여러 작기 또는 여러 지역 현장 실증에 관한 직접적 언급이나 근거가 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "YES",
+          "rationale": "루트릭스는 라이다, 3D 스캐닝, 딥러닝 기반 수목 계측 기술을 자체 개발하였으며, 특허 3건 보유 및 4건 출원 중인 점이 명확히 근거에 나타나 있어 핵심 기술의 자체 개발 근거가 충분하다.",
+          "quote": "라이다(LiDAR), 3D 스캐닝, 딥러닝 기반 수목 계측 기술을 자체 개발하여 특허 3건 보유, 4건 출원 성과를 거두었고",
+          "evidence_ids": [
+            "W5bbbe"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "루트릭스의 제품은 조경수 데이터 수집 및 유통 플랫폼으로, 농업기계 검정, 농약·비료·동물용 의약품 등록 등 인허가 대상이 아니므로 해당 사항 없음으로 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "YES",
+          "rationale": "근거 [W5bbbe]에 루트릭스가 라이다, 3D 스캐닝, 딥러닝 기반 수목 계측 기술을 자체 개발하여 특허 3건 보유, 4건 출원 중임이 명확히 기술되어 있어 특허 보유가 확인된다.",
+          "quote": "라이다(LiDAR), 3D 스캐닝, 딥러닝 기반 수목 계측 기술을 자체 개발하여 특허 3건 보유, 4건 출원 성과를 거두었고",
+          "evidence_ids": [
+            "W5bbbe"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "YES",
+          "rationale": "근거 문서에서 루트릭스가 경쟁사인 트랙팜과 리비타와 달리 라이다, 3D 스캐닝, 딥러닝 기반 수목 계측 기술을 자체 개발하고 특허를 보유하며, 수종·규격별 실거래 가격 DB를 구축하는 등 구체적인 차별점이 명확히 확인된다.",
+          "quote": "루트릭스는 농장 현장 데이터를 표준 규격으로 수집해 수종·규격별 실거래 가격 DB를 구축했다. 나아가 라이다(LiDAR), 3D 스캐닝, 딥러닝 기반 수목 계측 기술을 자체 개발하여 특허 3건 보유, 4건 출원 성과를 거두었고",
+          "evidence_ids": [
+            "W5bbbe"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 루트릭스의 기술력과 데이터 구축에 대해 설명하지만, 국내외 경쟁사 2곳 이상과의 구체적인 차별점(성능·가격·적용 작목·범위)에 대한 비교 근거를 직접적으로 제시하지 않는다."
+        },
+        {
+          "qid": "C3",
+          "answer": "YES",
+          "rationale": "근거 [Wd4509]에 데이터 축적과 고도화 계획이 명시되어 있으며, 라이다 및 딥러닝 기술을 활용한 데이터 기반 플랫폼임이 확인되어 데이터 축적 및 연동 구조가 존재함이 확인된다.",
+          "quote": "현재까지 20여곳의 대형농원과 MOU를 맺고 데이터를 쌓고 있어요. 향후에는 별도 입력 없이 규격이나 수종이 자동으로 분석되도록 고도화 할 계획이죠.",
+          "evidence_ids": [
+            "Wd4509"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 데이터 축적과 향후 자동 분석 고도화 계획을 언급하지만, 사용 증가에 따른 성능 향상이나 설치·연동으로 인한 교체 비용 발생 구조에 대한 구체적 사실은 제시하지 않는다."
+        },
+        {
+          "qid": "C4",
+          "answer": "UNKNOWN",
+          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (근거에 계약이나 공동사업이 아닌 MOU 체결만 언급되어 있으며, 계약 상대방과의 계약 체결 근거가 없어 YES 요건을 충족하지 못한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서에서 2026년 2월 시리즈 A 투자 유치와 함께 85억 원 누적 매출을 명확히 언급하고 있어, 매출액과 연도가 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "YES",
+          "rationale": "102개 조경 시공기업이라는 수치가 명확히 제시되어 유료 고객 수가 수치로 확인된다.",
+          "quote": "102개 조경 시공기업 네트워크를 구축하며",
+          "evidence_ids": [
+            "W610aa"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "YES",
+          "rationale": "102개 조경 시공사가 주요 고객으로 명시되어 있고, 누적 매출 85억 원 달성 언급이 있어 같은 고객의 재계약·확대 도입 또는 여러 해 연속 사용 근거로 인정 가능하다.",
+          "quote": "102개 조경 시공사가 루트릭스의 주요 고객이 됐다",
+          "evidence_ids": [
+            "W5bbbe"
+          ],
+          "confidence": "중",
+          "verifier": "인용과 주변 원문은 루트릭스의 주요 고객 수와 기술력, 서비스에 대해 설명하지만, 같은 고객의 재계약이나 확대 도입, 여러 해 연속 사용에 대한 구체적 사실은 제시하지 않는다."
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "민간 판매나 수출 등 매출 근거는 있으나, 정부 보조사업이 아닌 매출에 대한 구체적 근거가 명확히 제시되지 않아 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "YES",
+          "rationale": "2026-02 Series A 45억원 — 적격성 검증에서 원문 인용으로 확인 (코드 판정)",
+          "quote": "루트릭스, 45억원 시리즈A 투자 유치",
+          "evidence_ids": [
+            "W4f62b",
+            "W92745",
+            "W1856b",
+            "W868ac",
+            "W7f576",
+            "Wedc50"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거에 시리즈 A 라운드에 기관 VC가 주요 투자자로 참여했다는 내용이 있어, 최근 라운드에 기관투자자 참여가 확인됨.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 일반적인 시리즈 A 기업가치 범위는 제시되었으나, 루트릭스의 구체적 기업가치나 투자 지분율은 공개되지 않아 확인 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 사업 모델은 SaaS 및 플랫폼으로 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 내용이 없어 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        }
+      ]
+    },
+    {
+      "name": "Bonsai Robotics",
+      "region": "GLOBAL",
+      "stage": "Series A",
+      "decision": "투자",
+      "hold_type": null,
+      "multiplier": 1.0507,
+      "score100": 105.1,
+      "reasons": [
+        "동종 평균 대비 105.1(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 106.9(동종 평균 100) — 동종 평균 이상",
+        "Deal-killer 없음"
+      ],
+      "flip": null,
+      "roi": {
+        "computable": true,
+        "round_amount_raw": "$15 million",
+        "round_amount_usd_m": 15.0,
+        "stage": "Series A",
+        "stage_median_usd_m": 7,
+        "vs_stage_median": 2.14,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": [
+          75.0,
+          150.0
+        ],
+        "target_multiple": 10,
+        "required_exit_usd_m": [
+          750.0,
+          1500.0
+        ],
+        "assumptions": [
+          "지분율 가정 10%~20%: post-money = 라운드 금액 ÷ 지분율",
+          "목표 회수 배수 가정 10배(VC Method): 필요 Exit = post-money × 10"
+        ],
+        "source_ids": [
+          "W6b0bd",
+          "W4331e",
+          "W57d1d"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": null
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 106.9,
+          "peer_mean": 0.111,
+          "contribution": 0.3208
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 94.4,
+          "peer_mean": 0.361,
+          "contribution": 0.2361
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 3,
+          "no": 0,
+          "unknown": 1,
+          "n": 4,
+          "pct": 129.2,
+          "peer_mean": 0.167,
+          "contribution": 0.1937
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 111.1,
+          "peer_mean": 0.278,
+          "contribution": 0.1111
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "YES",
+          "rationale": "The founders Tyler Niday and Ugur Oezdemir have documented prior experience in agriculture-related technology fields before founding Bonsai Robotics in 2022. Tyler Niday worked 7 years at John Deere and Blue River Technology developing agricultural autonomous systems, and Ugur Oezdemir has leadership experience in vision-based autonomy at Airbus, Blue River, and John Deere. These details confirm relevant prior experience before founding the company.",
+          "quote": "Bonsai Robotics was founded in 2022 by Tyler Niday and [...]",
+          "evidence_ids": [
+            "W6b0bd",
+            "Wf06e0"
+          ],
+          "confidence": "상",
+          "verifier": "인용과 주변 원문에 창업자나 경영진의 이름과 함께 농업 현장이나 해당 기술 분야에서의 연구·실무·사업 경험이 구체적으로 명시되어 있지 않다."
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (기술 책임자인 Tyler Niday의 특허·논문·연구·경력에 관한 구체적 근거가 있으며, Blue River Technology와 John Deere에서 7년간 근무하며 핵심 역할을 수행한 경력이 명시되어 있다. Ugur Oezdemir CTO도 Airbus, Blue River, John Deere에서 비전 기반 자율주행 기술 리더 경험이 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내에 2023-10 시드 펀딩과 2025-01 시리즈 A 펀딩 등 2건 이상의 마일스톤(투자 유치)이 명확히 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "While funding amounts and rounds are reported, there is no third-party independent confirmation of core company metrics such as customer count or revenue. Also, some data sources are company-related or lack third-party verification. Therefore, the core numbers are not confirmed by independent third-party sources.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "근거 문서에서 BIS Research 등 여러 기관의 글로벌 스마트 농업 시장 규모와 성장률이 구체적 수치와 함께 명확히 제시되어 있어, 목표 시장 규모가 공공기관 문서에서 확인됨을 입증한다.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 2년 내 발행된 근거에서 글로벌 애그테크 투자액이 크게 증가한 수치가 제시되어 해당 분야가 성장 중임을 명확히 보여준다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "경제적 효과 수치가 일부 있으나, 제3자 출처인지 불분명하고 고객의 실제 문제와 직접 연결된 수치가 부족하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 과금 방식(장비 판매, 구독, 서비스, 수수료, 공공 조달)에 대한 구체적 설명이나 확인 가능한 정보가 없어 판정 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "YES",
+          "rationale": "근거 [Wa50c7]에 400대 이상 배치 및 1백만 에이커 이상 데이터 수집으로 상용 운영 중임이 명확히 나타나 있어 YES 판정한다.",
+          "quote": "400+ machines deployed 50M+ real-world data samples 1M+ acres covered",
+          "evidence_ids": [
+            "Wa50c7"
+          ],
+          "confidence": "하",
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "YES",
+          "rationale": "근거 [W3eb63]에 Cornell, Rev Ithaca Startup Works Hardware Accelerator Program과 협력하며 500에이커 상업용 농장과 현장 실증을 진행한 제3자 실증 근거가 있어 YES 판정한다.",
+          "quote": "The team partnered with Crist Bros Orchards, a 500-acre commercial apple operation",
+          "evidence_ids": [
+            "W3eb63"
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 Bonsai Robotics의 기술이 Crist Bros Orchards에서 사용되었음을 언급하지만, 여러 작기 또는 여러 지역에서의 현장 실증에 대한 구체적 사실이나 공공기관·대학·지자체 등 제3자 실증 근거를 직접적으로 제시하지 않는다."
+        },
+        {
+          "qid": "P3",
+          "answer": "YES",
+          "rationale": "The quote explicitly describes the use of computer vision, machine learning, and depth sensing technologies integrated into the Amiga platform developed by Bonsai Robotics, indicating proprietary development of core AI and hardware components, which supports the claim of having self-developed core technology.",
+          "quote": "Built as an arm-mounted attachment on the Amiga platform from Bonsai Robotics, the system pairs computer vision, machine learning and depth sensing",
+          "evidence_ids": [
+            "W3eb63"
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 Bonsai Robotics의 Amiga 플랫폼에 장착된 시스템에 대해 설명하지만, 자체 개발 근거인 특허, 논문, 자체 데이터셋, 자체 하드웨어에 대한 구체적 사실을 직접적으로 언급하지 않는다."
+        },
+        {
+          "qid": "P4",
+          "answer": "UNKNOWN",
+          "rationale": "근거 [D204c5]는 농기계 검정기준 마련에 관한 정부 계획을 언급하나, Bonsai Robotics 제품의 인허가·검정 신청 또는 획득 사실은 명확하지 않아 UNKNOWN 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 Bonsai Robotics의 특허 등록 또는 출원에 관한 직접적인 언급이 없어 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서 내에 Bonsai Robotics와 경쟁사 2곳 이상을 구체적으로 비교하며 성능, 가격, 적용 작목, 범위 등 차별점을 명확히 기술한 문장이 존재하지 않는다. 제시된 문장은 회사 주장으로 보이며, 경쟁사와의 직접 비교 근거가 부족하여 YES 판정 요건을 충족하지 못한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에서 데이터 축적에 따른 성능 향상이나 설치·연동으로 인한 교체 비용 구조에 관한 직접적인 언급이 없어 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에 Bonsai Robotics가 농협, 농기계·농자재 기업, 지자체, 대형 유통, 해외 파트너 등과 계약이나 공동사업을 체결했다는 구체적인 내용이 없어 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [Wefba5]에 2021년 2월에 660만 달러 매출을 기록했다는 문장이 있어, 연도와 매출액이 명확히 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [Wefba5]에 1,600명의 고객 수가 수치로 명확히 확인되어 유료 고객 수가 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "재계약이나 여러 해 연속 사용에 대한 구체적 근거가 근거 문서 내에 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 명확히 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "YES",
+          "rationale": "2025-01 Series A $15 million — 적격성 검증에서 원문 인용으로 확인 (코드 판정)",
+          "quote": "Bonsai Robotics raises $15M Series A led by Bison Ventures to advance AI-driven agricultural autonomy and expand global commercialization",
+          "evidence_ids": [
+            "W6b0bd",
+            "W4331e",
+            "W57d1d"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "YES",
+          "rationale": "근거 [W6b0bd]에 Bison Ventures, Acre Venture Partners, Astanor Ventures 등 기관투자자 명단이 명확히 기재되어 있어 기관투자자 참여가 확인된다.",
+          "quote": "Bonsai Robotics's investors include Bison Ventures, Acre Venture Partners, Astanor Ventures, Momofuku, Pioneer Fund.",
+          "evidence_ids": [
+            "W6b0bd"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 [Wdd8a5]에 투자 지분율이나 기업가치 수치가 공개되어 있지 않고, 금액도 일부 가려져 있어 기업가치 또는 지분율 공개 근거가 불충분하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 사업 모델이 자율주행 농기계임은 확인되나, 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없어 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        }
+      ]
+    },
+    {
+      "name": "퓨처커넥트",
+      "region": "KR",
+      "stage": "Series A",
+      "decision": "보류",
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 1.0354,
+      "score100": 103.5,
+      "reasons": [
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만"
+      ],
+      "flip": {
+        "qids": [
+          "F1"
+        ],
+        "items": [
+          "F1 창업팀 이력"
+        ],
+        "new_multiplier": 1.0729,
+        "reached": true,
+        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 107.3(동종 평균 100) → 투자"
+      },
+      "roi": {
+        "computable": true,
+        "round_amount_raw": "86억 원",
+        "round_amount_usd_m": 6.14,
+        "stage": "Series A",
+        "stage_median_usd_m": 7,
+        "vs_stage_median": 0.88,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": [
+          30.71,
+          61.43
+        ],
+        "target_multiple": 10,
+        "required_exit_usd_m": [
+          307.1,
+          614.3
+        ],
+        "assumptions": [
+          "환율 가정: 1달러 = 1,400원",
+          "지분율 가정 10%~20%: post-money = 라운드 금액 ÷ 지분율",
+          "목표 회수 배수 가정 10배(VC Method): 필요 Exit = post-money × 10"
+        ],
+        "source_ids": [
+          "Wa7bc8"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": null
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 3,
+          "no": 0,
+          "unknown": 1,
+          "n": 4,
+          "pct": 120.8,
+          "peer_mean": 0.333,
+          "contribution": 0.3021
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 0,
+          "no": 0,
+          "unknown": 3,
+          "n": 3,
+          "pct": 83.3,
+          "peer_mean": 0.333,
+          "contribution": 0.125
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 118.1,
+          "peer_mean": 0.139,
+          "contribution": 0.1181
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 0,
+          "no": 0,
+          "unknown": 4,
+          "n": 4,
+          "pct": 100.0,
+          "peer_mean": 0.0,
+          "contribution": 0.1
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 111.1,
+          "peer_mean": 0.278,
+          "contribution": 0.1111
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 [W19512]에 창업자 강길모 대표와 CTO 오상현이 서울대 산업공학 박사 출신이며 2020년에 퓨처커넥트를 창업했다는 구체적 경력과 이름이 명시되어 있어, 창업자·팀 항목의 경력 요건을 충족한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "기술책임자의 학력과 창업 전 이력만 언급되어 있으나, 특허 발명자, 논문, 연구소·기업 경력 등 구체적 기술 이력 근거가 없어 YES 요건 미충족으로 UNKNOWN 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (최근 24개월(2024-09-30 기준) 내 마일스톤은 2022-07 프리시리즈A 투자 유치 1건만 확인되며, 2025-11 시리즈A 투자 유치 근거는 [근거]에 없으므로 2건 이상 마일스톤 근거가 부족하여 NO 판정한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 없고, 회사 측 발언 위주로 확인되어 YES 요건 미충족으로 UNKNOWN 판정한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "근거 문서에서 글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 YES 판정함.",
+          "quote": "글로벌 스마트 농업 시장은 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장 전망",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M2",
+          "answer": "YES",
+          "rationale": "근거 [Db474a]에 2024년 발표된 Marketsandmarkets 자료를 인용하여 스마트 농업 시장이 지속적으로 성장할 전망이며 연평균 성장률 10.2%를 기록할 것으로 명시되어 있어, 최근 24개월 내의 성장 근거로 적합하다.",
+          "quote": "스마트 농업 시장은 지속적으로 성장할 전망(‘24, Marketsandmarkets) CAGR 10.2%",
+          "evidence_ids": [
+            "Db474a"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 스마트 농업 시장의 성장 전망을 제시하지만, 2024년 전망치로 미래 예측이며, 평가 기준일인 2026-09-30 이전의 최근 2년 내 발행된 실제 수치나 투자액·도입률·정책 예산 증가에 대한 구체적 근거를 제공하지 않는다."
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "제품의 경제적 효과에 대한 수치가 없고, 효과 수치가 제3자 출처로 명확히 제시되지 않아 YES 판정 요건을 충족하지 못한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "YES",
+          "rationale": "근거 [W008cf]에 FaaS(농사 구독 서비스) 계약 체결과 신선 가공품 납품 서비스 운영 등 과금 방식(구독 형태)이 구체적으로 서술되어 있어 과금 방식 확인이 가능하다.",
+          "quote": "FaaS(Farming as a Service) 계약을 강남구청 자곡문화센터와 체결하고, 공유 오피스에 신선 가공품 납품 서비스를 운영하는 등 비즈니스 모델의 확장 가능성도 보여주었다.",
+          "evidence_ids": [
+            "W008cf"
+          ],
+          "confidence": "상",
+          "verifier": "인용문과 주변 원문은 FaaS 계약과 신선 가공품 납품 서비스 운영을 언급하지만, 누가 돈을 내는지와 구체적인 과금 방식(장비 판매, 구독, 서비스, 수수료, 공공 조달)에 대한 직접적인 설명이 없어 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "P1",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 상용 운영 중임을 직접적으로 보여주는 설치 수, 면적, 두수, 고객명 등의 구체적 정보가 없고, 'series A 투자 유치'만 있어 시제품 단계를 지났다는 확실한 증거가 아님.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 제3자 기관의 여러 작기 또는 여러 지역 실증에 관한 구체적 내용이나 근거가 없어 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 자체 개발을 입증하는 특허, 논문, 자체 데이터셋, 자체 하드웨어 등의 구체적 근거가 없으며, 'AI 기반 자동재배 및 운영 최적화 기술' 등은 분석 요약에만 있고 근거 원문에 없음.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "근거에 스마트팜 솔루션은 농업기계 검정 등 별도 인허가 대상이 아니라고 명시되어 있어 해당 사항이 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서 내에 퓨처커넥트의 핵심 기술 관련 특허(등록 또는 출원) 보유 여부에 대한 직접적 언급이 없다. 특허 관련 내용은 다른 회사 사례에 관한 내용만 존재하며, 퓨처커넥트에 관한 특허 정보는 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서 내에 퓨처커넥트가 국내외 경쟁사 2곳 이상과 구체적으로 비교한 내용이나 차별점에 대한 직접적인 비교 근거가 존재하지 않습니다. 경쟁사가 없다는 내용은 분석 요약에만 있고, 근거 본문에서는 확인되지 않습니다. 따라서 경쟁사와의 구체적 차별점 비교 근거가 없어 판정은 UNKNOWN입니다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "YES",
+          "rationale": "근거에 따르면 퓨처커넥트는 AI 운영 시스템 '리브OS'를 활용하여 도심 유휴 공간에 스마트팜을 구축하고, 실시간 수요 예측 기반의 수요 견인형 생산 방식을 구현하여 생산을 최적화하고 있다. 이는 데이터 축적과 연동 구조에 따른 성능 향상 및 교체 비용 발생 구조를 뒷받침하는 직접적 근거이다.",
+          "quote": "‘리브OS(livOS)’를 활용해 도심 유휴 공간에 스마트팜을 구축하고, 실시간 수요 예측을 통해 생산을 최적화하는 ‘수요 견인형’ 생산 방식을 구현했다.",
+          "evidence_ids": [
+            "Wa7bc8"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 '리브OS'를 활용한 스마트팜 구축과 수요 예측을 통한 생산 최적화에 대해 설명하지만, 사용 증가에 따른 자체 데이터 축적이나 설치·연동으로 인한 교체 비용 발생 구조에 대한 구체적 사실을 직접적으로 언급하지 않는다."
+        },
+        {
+          "qid": "C4",
+          "answer": "YES",
+          "rationale": "근거에 퓨처커넥트가 미국 동부 대형 슈퍼마켓 체인과 파트너십을 체결하여 북미 시장 진출을 본격화하고 있으며, 현지 파트너사와 조인트벤처 구조를 도입해 초기 투자 리스크를 해소하는 전략을 사용하고 있다고 명시되어 있다. 이는 계약이나 공동사업이 있음을 직접적으로 보여준다.",
+          "quote": "미국 동부 대형 슈퍼마켓 체인과 파트너십을 체결하며 북미 시장 진출을 본격화했다.",
+          "evidence_ids": [
+            "Wa7bc8"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 미국 동부 대형 슈퍼마켓 체인과의 파트너십을 언급하지만, 계약 상대방이 농협, 농기계·농자재 기업, 지자체, 대형 유통, 해외 파트너 중 어느 곳인지 구체적으로 명시하지 않아 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 매출액과 연도가 명확히 확인되지 않고, 투자 유치 금액만 언급되어 매출액 확인으로 보기 어렵다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "고객 수나 설치 규모에 대한 구체적 수치가 없고, 고객명도 불분명하여 수치로 확인되는 유료 고객 근거로 보기 어렵다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "재계약이나 여러 해 연속 사용에 대한 직접적 근거가 없고, 계획이나 시스템 설명에 그쳐 재사용 근거로 보기 어렵다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 민간 판매나 수출, 기업 간 계약 매출 근거가 명확하지 않고, 구독 서비스 형태라는 설명만 있어 매출 근거로 보기 어렵다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "YES",
+          "rationale": "2025-11 Series A 86억 원 — 적격성 검증에서 원문 인용으로 확인 (코드 판정)",
+          "quote": "퓨처커넥트, 86억 원 규모 시리즈A 투자 유치… 북미 시장 공략 본격화",
+          "evidence_ids": [
+            "Wa7bc8"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "YES",
+          "rationale": "근거에 KB인베스트먼트, 하나벤처스, 스마일게이트인베스트먼트, 카카오벤처스 등 기관투자자 명칭이 명확히 언급되어 있어, 기관투자자 참여가 확인됨.",
+          "quote": "리딩 투자사 KB인베스트먼트를 비롯해 하나벤처스와 스마일게이트인베스트먼트, 카카오벤처스가 이번 라운드에 참여했다.",
+          "evidence_ids": [
+            "Wd92d1"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 내에 기업가치나 투자 지분율에 대한 구체적 수치가 공개되어 있지 않음. 비공개 또는 보고서에 실사 필요로 표기된 내용도 없으므로, 확인 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 사업 모델에 대한 설명은 있으나, 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없어 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        }
+      ]
+    },
+    {
+      "name": "팜스태프",
+      "region": "KR",
+      "stage": "Seed",
+      "decision": "투자",
+      "hold_type": null,
+      "multiplier": 1.065,
+      "score100": 106.5,
+      "reasons": [
+        "동종 평균 대비 106.5(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 106.2(동종 평균 100) — 동종 평균 이상",
+        "Deal-killer 없음"
+      ],
+      "flip": null,
+      "roi": {
+        "computable": false,
+        "round_amount_raw": "",
+        "round_amount_usd_m": null,
+        "stage": "Seed",
+        "stage_median_usd_m": 1,
+        "vs_stage_median": null,
+        "stake_assumption": [
+          0.1,
+          0.2
+        ],
+        "post_money_usd_m": null,
+        "target_multiple": 10,
+        "required_exit_usd_m": null,
+        "assumptions": [],
+        "source_ids": [
+          "We1139"
+        ],
+        "stage_median_source": "AgFunder(2026) p.13, 2025 agrifoodtech median deal size by stage",
+        "note": "라운드 금액 비공개 → 산정 불가 (실사 항목)"
+      },
+      "criteria": [
+        {
+          "dim": "founder",
+          "name": "창업자·팀 (Owner)",
+          "weight": 30,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 106.2,
+          "peer_mean": 0.125,
+          "contribution": 0.3187
+        },
+        {
+          "dim": "market",
+          "name": "시장성 (Opportunity Size)",
+          "weight": 25,
+          "yes": 2,
+          "no": 0,
+          "unknown": 2,
+          "n": 4,
+          "pct": 107.5,
+          "peer_mean": 0.35,
+          "contribution": 0.2687
+        },
+        {
+          "dim": "product",
+          "name": "제품/기술력",
+          "weight": 15,
+          "yes": 2,
+          "no": 0,
+          "unknown": 1,
+          "n": 3,
+          "pct": 118.3,
+          "peer_mean": 0.3,
+          "contribution": 0.1775
+        },
+        {
+          "dim": "competition",
+          "name": "경쟁 우위",
+          "weight": 10,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 103.8,
+          "peer_mean": 0.175,
+          "contribution": 0.1038
+        },
+        {
+          "dim": "traction",
+          "name": "실적",
+          "weight": 10,
+          "yes": 1,
+          "no": 0,
+          "unknown": 3,
+          "n": 4,
+          "pct": 111.2,
+          "peer_mean": 0.025,
+          "contribution": 0.1113
+        },
+        {
+          "dim": "deal",
+          "name": "투자조건 (Deal Terms)",
+          "weight": 10,
+          "yes": 1,
+          "no": 1,
+          "unknown": 2,
+          "n": 4,
+          "pct": 85.0,
+          "peer_mean": 0.3,
+          "contribution": 0.085
+        }
+      ],
+      "rows": [
+        {
+          "qid": "F1",
+          "answer": "YES",
+          "rationale": "근거 [W4dbfe]에 김정우 대표가 유통과 스마트팜 관련 연구 경력을 쌓았다는 구체적 사실이 명시되어 있어, 창업자·팀 항목의 경력 요건을 충족한다.",
+          "quote": "김정우 팜스태프 대표는 과거 유통 대기업에서 유통 경력을, 화학 대기업에서 그린 바이오와 스마트팜 연구 경력을 각각 쌓았다.",
+          "evidence_ids": [
+            "W4dbfe"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "F2",
+          "answer": "UNKNOWN",
+          "rationale": "기술 책임자의 특허, 논문, 연구소·기업 경력에 대한 구체적 근거가 없고 회사 기술 소개나 출신 학교만 언급되어 YES 요건을 충족하지 못한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F3",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 2022년 2월과 11월, 2023년 3월 등 최근 24개월 내에 2건 이상의 마일스톤(투자 유치 및 정부 과제 선정)이 명확히 기재되어 있어 YES 판정한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "F4",
+          "answer": "UNKNOWN",
+          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 없고, 회사 측 발표 위주로 확인되어 YES 요건을 충족하지 못한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M1",
+          "answer": "YES",
+          "rationale": "근거 [D5b883], [Deaac5], [D66bcb]는 모두 공공기관인 한국농촌경제연구원의 2024년 보고서에서 글로벌 스마트농업 시장 규모와 성장률을 표와 수치로 명확히 제시하고 있어, 시장 규모가 공공기관 문서에서 수치와 기준 연도로 확인됨을 직접 뒷받침한다. 따라서 M1 질문에 대해 YES 판정이 타당하다.",
+          "quote": "<표 1> 글로벌 스마트농업 시장 규모 예측",
+          "evidence_ids": [
+            "D5b883",
+            "D66bcb"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M2",
+          "answer": "YES",
+          "rationale": "근거 문서에 2023~2029년 및 2023~2034년 기간 동안 글로벌 스마트 농업 시장이 연평균 10.2%~19.1% 성장할 것으로 여러 기관에서 예측한 수치가 명확히 제시되어 있어, 최근 24개월 내 발행된 제3자 출처의 성장 수치가 확인된다.",
+          "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "M3",
+          "answer": "UNKNOWN",
+          "rationale": "고객의 실제 문제와 제품의 경제적 효과에 대한 수치가 제3자 출처로 제시되지 않고, 회사 측 설명과 추정에 그쳐 구체적 수치와 객관적 근거가 부족하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "M4",
+          "answer": "UNKNOWN",
+          "rationale": "과금 방식이나 누가 비용을 부담하는지에 대한 구체적이고 명확한 근거가 없으며, 지불 의향 수치도 확인되지 않아 과금 방식 확인이 불가능하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P1",
+          "answer": "YES",
+          "rationale": "중국 쯔궁시 일대 약 2헥타르 규모 온실 단지에서 프리미엄 토마토 등 고품질 작물 생산을 시작하여 상용 운영 중임을 보여준다.",
+          "quote": "‘쯔궁 스마트팜 프로젝트’는 약 2헥타르 규모의 온실 단지다. 프리미엄 토마토를 중심으로 한 고품질 작물 생산을 시작으로 다양한 사업 ...",
+          "evidence_ids": [
+            "W8a888"
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 약 2헥타르 규모의 온실 단지와 프리미엄 토마토 생산 시작을 언급하지만, 설치 수·면적·두수·고객명 중 상용 운영을 직접 증명하는 구체적 사실(예: 실제 운영 중임을 명확히 하는 내용)이 없어 상용 운영 여부를 판단할 수 없다."
+        },
+        {
+          "qid": "P2",
+          "answer": "UNKNOWN",
+          "rationale": "현장 실증에 대한 공공기관·대학·지자체 등 제3자 실증 근거가 명확히 제시되지 않아 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "P3",
+          "answer": "YES",
+          "rationale": "자체 개발한 스마트팜 데이터 기반 SCM 시스템과 AI 활용 영농 데이터 분석 기술을 보유하고 있음을 명확히 제시한다.",
+          "quote": "스마트팜 기술기반의 농산물 구매 솔루션을 개발하는 애그테크 기업이다. 주요 솔루션으로는 스마트팜에서 생산되는 다양한 데이터 중에서 유통에 필요한 정보만을 가공∙분석해 실시간으로 농장 정보를 고객에게 전달하는 구매 솔루션 ’팜스태프(Farmstaff)' 와 독자기술을 활용한 재배 매니지먼트 솔루션 ’팜시(FarmSee)’가 있다.",
+          "evidence_ids": [
+            "We1139"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 팜스태프가 독자기술을 활용한 솔루션을 개발한다고 언급하지만, 자사 특허, 논문, 자체 데이터셋, 자체 하드웨어 등 구체적인 자체 개발 근거를 직접적으로 제시하지 않아 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "P4",
+          "answer": "N/A",
+          "rationale": "제품 유형이 농산물 SCM 및 AI 데이터 분석 솔루션으로 인허가 대상이 아니므로 해당 사항 없음.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C1",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 팜스태프의 특허 등록 또는 출원에 관한 구체적인 언급이 없으므로 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C2",
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에서 팜스태프가 경쟁사들과 비교하여 스마트팜 데이터 기반 농산물 공급망관리 및 AI 영농 데이터 분석 솔루션을 개발하여 농부 시선에서 고품질 농산물을 다양한 유통 채널에 맞게 제공하고, 생산을 선제기획하여 유통 효율성을 극대화하는 점이 특징이며, 경쟁사들은 주로 특정 분야에 집중하여 팜스태프와 직접적으로 겹치는 부분이 제한적이라는 구체적인 차별점이 명확히 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C3",
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에서 데이터 축적에 따른 성능 향상이나 설치·연동으로 인한 교체 비용 구조에 관한 구체적 언급이 없어 판단할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "C4",
+          "answer": "YES",
+          "rationale": "근거 문서에 팜스태프가 농업 가치 사슬의 모든 분야와 협력하며 핵심 협력사로서 차별화된 농산물의 생산, 유통, 마케팅 분야에서 협력하고, 제반 사업 협력사 및 중국 현지 협력사와도 긴밀한 협력 관계를 구축하고 있다는 구체적 내용이 있어 계약이나 공동사업이 있음을 확인할 수 있다.",
+          "quote": "팜스태프는 농업 분야의 비효율을 혼자 해결할 수 없다고 믿습니다.대기업부터 농장까지 농업 가치 사슬의 모든 분야와 협력하며 함께 해답을 찾아가고 있습니다. 핵심 협력사 I 차별화된 농산물의 생산, 유통, 마케팅 분야에서 협력 ⟶ 제반 사업 협력사 I 사무, 특허, IT 등 다양한 분야에서 긴밀한 협력 관계 구축 ⟶ 중국 현지 협력사 I 다수의 현지 업체와 협업하며, 글로벌화 추진",
+          "evidence_ids": [
+            "W224c3"
+          ],
+          "confidence": "하",
+          "verifier": "인용문은 팜스태프가 다양한 협력사와 협력하고 있음을 일반적으로 언급하지만, 계약 상대방의 구체적 명칭이나 계약 사실을 직접적으로 명시하지 않아 인정 조건을 충족하지 않는다."
+        },
+        {
+          "qid": "R1",
+          "answer": "UNKNOWN",
+          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (매출액과 연도가 명확히 확인되지 않고, 투자 유치 금액은 매출이 아니므로 매출액 확인 근거가 없다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R2",
+          "answer": "UNKNOWN",
+          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (유료 고객(마켓컬리에 토마토 공급 농가)과 서비스 공급계약이 수치 없이 확인되어 설치 규모 일부 근거로 인정 가능하다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R3",
+          "answer": "UNKNOWN",
+          "rationale": "재계약 또는 여러 해 연속 사용에 대한 구체적 근거가 없으므로 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "R4",
+          "answer": "YES",
+          "rationale": "중국 기업과의 민간 계약(LOI 체결)으로 정부 보조사업이 아닌 매출 근거로 인정 가능하다.",
+          "quote": "한국 딸기 품종 도입 및 스마트 온실 재배 협력을 위한 구매의향서(LOI)를 체결했다.",
+          "evidence_ids": [
+            "W48a0b"
+          ],
+          "confidence": "상",
+          "verifier": null
+        },
+        {
+          "qid": "D1",
+          "answer": "NO",
+          "rationale": "최근 라운드가 2024 로 24개월보다 오래됨 (코드 판정)",
+          "quote": "스마트팜 농산물 구매 솔루션 기업 ‘팜스태프’, 소풍벤처스로부터 시드 투자 유치",
+          "evidence_ids": [
+            "We1139"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "D2",
+          "answer": "YES",
+          "rationale": "TIPS 운영사인 소풍벤처스가 팜스태프에 선투자한 사실이 근거에 명시되어 있어, 기관투자자 참여가 확인된다.",
+          "quote": "TIPS 선정 2024년, 운영사(선투자) 소풍벤처스",
+          "evidence_ids": [
+            "W20eed"
+          ],
+          "confidence": "중",
+          "verifier": null
+        },
+        {
+          "qid": "D3",
+          "answer": "UNKNOWN",
+          "rationale": "기업가치나 투자 지분율에 관한 구체적 수치가 근거에 없고, 금액이 미상으로 표기되어 있어 공개 근거로 확인되지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        },
+        {
+          "qid": "D4",
+          "answer": "UNKNOWN",
+          "rationale": "대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없으며, 사업 모델 설명만 있어 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
+        }
+      ]
+    }
+  ],
+  "report": {
+    "mode": "invest",
+    "md": "outputs/eval/passk/run2/investment_report.md",
+    "html": "outputs/eval/passk/run2/investment_report.html",
+    "pdf": "outputs/eval/passk/run2/investment_report.pdf",
+    "submit_pdf": null,
+    "pages": 5,
+    "summary_ratio": 0.233,
+    "cited_ids": [
+      "D66bcb",
+      "Da9a49",
+      "D2c434",
+      "D04131",
+      "D808ef",
+      "D8c04e",
+      "W5bbbe",
+      "Wc816f",
+      "Wd4509",
+      "W4f62b",
+      "W92745",
+      "W1856b",
+      "W868ac",
+      "W610aa",
+      "W7f576",
+      "W28293",
+      "Wc05b3",
+      "We75e2",
+      "Wdd602",
+      "W428f5",
+      "Waae3e",
+      "W0e2a7",
+      "Wedc50",
+      "W5991c"
+    ],
+    "checks": {
+      "pages": 5,
+      "max_pages": 5,
+      "pages_ok": true,
+      "summary_ratio": 0.233,
+      "summary_ok": true,
+      "first_section": "SUMMARY",
+      "last_section": "REFERENCE",
+      "banned_hits": [],
+      "summary_rule_violations": [],
+      "chapter_refs_ok": true,
+      "required_items_ok": true,
+      "refs_match_citations": true,
+      "reference_format_ok": true,
+      "reference_format_bad": [],
+      "conclusion_matches_scorecard": true,
+      "assumptions_labeled": true,
+      "consistency_violations": [],
+      "density_level": 0,
+      "rewrites": 2,
+      "references": 22,
+      "reference_groups": {
+        "기관 보고서": 5,
+        "학술 논문": 0,
+        "웹페이지": 17
+      },
+      "number_audit": {
+        "unsupported": [],
+        "conflicts": [],
+        "cagr": [],
+        "upstream": [
+          "[차별점 주장] '700여 개' 인용 근거에 없음: 700여 개 수목 전문 농장과 102개 조경 시공기업 데이터를 통합하여 투명한 수목 거래 마켓플레이스 구축",
+          "[차별점 주장] '102개' 인용 근거에 없음: 700여 개 수목 전문 농장과 102개 조경 시공기업 데이터를 통합하여 투명한 수목 거래 마켓플레이스 구축"
+        ],
+        "rewrite": "on",
+        "cagr_removed": []
+      },
+      "name_variants": [],
+      "team_table_conflicts": [],
+      "portal_refs": {
+        "resolved": 0,
+        "unresolved": 0
+      },
+      "faithfulness": {
+        "n": 11,
+        "supported": 11,
+        "rate": 1.0,
+        "target": 0.95,
+        "unsupported": [],
+        "failed": [],
+        "recited": [
+          "안정록 대표는 하버드 건축대학원 조경설계석사 출신으로 2021년 루트릭스 설립 후 102개 조경 시공기업과 협력하며 45억 원 규모 시리즈 A 투자 유치 등 실행력을 보임 [W5bbbe, Wc816f, W610aa, Wedc50]",
+          "트랙팜은 농축산 자동화 관제 기술, 리비타는 노지 스마트팜 솔루션을 개발하며, 루트릭스는 수목 수급 불확실성 데이터 관리와 라이다·딥러닝 기반 수목 계측 기술을 보유해 차별화됨 [W5bbbe, Wc05b3, We75e2, W610aa]",
+          "농축산 자동화 관제 기술 개발과 달리 루트릭스는 AI 기반 조경수 관리 SaaS 및 수목 유통 플랫폼을 운영함 [W5bbbe, Waae3e, W610aa, W7f576]",
+          "노지 스마트팜 솔루션과 달리 루트릭스는 수목 수급 불확실성 데이터 기반 관리에 집중함 [Wedc50, W1856b, W868ac, W610aa]"
+        ],
+        "mode": "rewrite"
+      },
+      "citation_coverage": {
+        "claims": 6,
+        "cited": 6,
+        "rate": 1.0,
+        "uncited": [],
+        "added": [
+          "특허 3건 보유 및 4건 출원 중이나 경쟁사 진입장벽 수준은 미확인 [W5bbbe, W7f576, W28293, Wd4509]"
+        ]
+      },
+      "unknown_list_fixed": [],
+      "summary_ratio_of_a4": 0.233,
+      "scorecard_consistency_violations": []
+    },
+    "title": "루트릭스 투자 검토 — 투자 추천(실사 조건부)",
+    "target": "루트릭스",
+    "decision": "투자 추천",
+    "generated_at": "2026-10-12T17:13:34"
+  },
+  "rag_traces": [
+    {
+      "agent": "discovery",
+      "question": "스타트업 사례",
+      "trace": [
+        {
+          "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "top_k": 4
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에 명시된 스마트농업 육성 기본계획의 내용과 일치하며, 기술 개발, 상용화 수준, 기술적 과제에 대해 구체적으로 기술되어 있다. 근거에 없는 내용이나 과장이 없고, 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "농업 로봇·자율주행 농기계 분야 스타트업의 시장성: 국내·글로벌 시장 규모와 성장률, 수요 요인, 지불 의향, 정책·규제, 도입 장벽, 최근 투자 동향",
+      "step": "decompose",
+      "trace": [],
+      "sub_questions": [
+        "2024년 이후 발표된 국내 및 글로벌 농업 로봇·자율주행 농기계 시장 규모는 어떻게 되는가? (market size)",
+        "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 시장의 연평균 성장률은 얼마인가? (market growth rate)",
+        "2024년 이후 국내 및 글로벌 농업 로봇·자율주행 농기계에 대한 수요 요인은 무엇이며, 주요 수요 동향은 어떠한가? (demand factors)",
+        "2024년 이후 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+        "2024년 이후 국내 및 글로벌 농업 로봇·자율주행 농기계 분야에 적용되는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+        "2024년 이후 국내 및 글로벌 애그테크 분야의 최근 투자 동향은 어떠하며, 특히 농업 로봇·자율주행 농기계 분야에 대한 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)"
+      ],
+      "padded_with_defaults": false,
+      "added_investment_question": false
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 발표된 국내 및 글로벌 농업 로봇·자율주행 농기계 시장 규모는 어떻게 되는가? (market size)",
+      "purpose": "시장 규모",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            2,
+            3,
+            5,
+            6
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에 명시된 글로벌 스마트 농업 시장 규모와 성장률 예측을 정확히 인용하고 있으며, 국내 시장 규모에 대한 구체적 수치가 없음을 명확히 밝히고 있다. 따라서 모든 사실과 수치가 근거에 부합한다. 또한 질문에 대해 2024년 이후 발표된 시장 규모 전망을 직접적으로 답변하고 있어 질문에 적절히 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 시장의 연평균 성장률은 얼마인가? (market growth rate)",
+      "purpose": "성장률",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+          "retrieved": 8,
+          "relevant": 6,
+          "kept": 4,
+          "dropped": 2,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에 명시된 글로벌 스마트 농업 시장의 연평균 성장률(10.2%~19.1%)을 정확히 인용하고 있으며, 국내 자율주행 농기계 및 농업용 로봇의 구체적 성장률 수치는 근거에서 확인되지 않는다고 명확히 밝히고 있다. 따라서 모든 사실과 수치가 근거에 부합한다. 또한 질문에 대해 국내 및 글로벌 농업 로봇·자율주행 농기계 시장의 성장률을 묻는 것에 대해 근거 내 수치를 바탕으로 직접 답변하고 있어 질문에 적절히 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 농업 로봇·자율주행 농기계에 대한 수요 요인은 무엇이며, 주요 수요 동향은 어떠한가? (demand factors)",
+      "purpose": "수요",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 수요 요인 수요 동향 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 수요 요인 수요 동향 2024 이후",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            2,
+            7,
+            8
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서들에서 제시된 수요 요인(농업 인력 부족 대응, 지속 가능한 농업, 글로벌 식량 수요 증가, 자원 효율성, 첨단 기술 통합)과 수요 동향(상용화 및 보급 확대, 실증 연구, 성장률 전망, 정밀 농업, 온실 자동화, 혁신적 애플리케이션 활용)을 모두 정확히 반영하고 있다. 수치와 내용 모두 근거에 부합한다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "purpose": "지불 의향",
+      "step": "answer",
+      "route": "docs",
+      "status": "partial",
+      "rewrites": 2,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후 willingness to pay"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후 willingness to pay",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 구매 의사(purchase intention), 지불 가능 금액(payment capacity), 시장 규모(market size), 연평균 성장률(CAGR), 투자 현황(investment status), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 구매 의사(purchase intention), 지불 가능 금액(payment capacity), 시장 규모(market size), 연평균 성장률(CAGR), 투자 현황(investment status), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "web",
+          "query": "2024년 이후 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+          "web_fallback": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 2,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에서 직접적인 지불 의향 수치가 없음을 명확히 밝히고, 관련 시장 규모와 관심 증가를 근거에 기반해 언급하여 사실과 일치한다. 질문에 대해 직접적인 수치가 없음을 명확히 하여 질문에 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 농업 로봇·자율주행 농기계 분야에 적용되는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "purpose": "정책·규제",
+      "step": "answer",
+      "route": "docs",
+      "status": "partial",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 국내 정책과 규제 현황을 근거 문서에 명확히 근거하여 기술하고 있으며, 글로벌 정책 및 규제 현황은 근거에서 확인되지 않는다고 명시하여 근거 밖 내용을 포함하지 않았다. 질문에 대해 국내 및 글로벌 현황을 모두 언급하며, 글로벌 부분은 확인되지 않음을 명확히 하여 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 애그테크 분야의 최근 투자 동향은 어떠하며, 특히 농업 로봇·자율주행 농기계 분야에 대한 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)",
+      "purpose": "투자 동향",
+      "step": "answer",
+      "route": "both",
+      "status": "partial",
+      "rewrites": 0,
+      "regenerations": 1,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "both",
+          "tools": [
+            "search_documents",
+            "web_search"
+          ],
+          "reason": "",
+          "query": "agrifoodtech funding investment trends 2024 2026 agriculture robotics autonomous farm machinery national investment changes",
+          "web_query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 국가별 투자 변화",
+          "recent": true
+        },
+        {
+          "step": "grade",
+          "query": "agrifoodtech funding investment trends 2024 2026 agriculture robotics autonomous farm machinery national investment changes",
+          "retrieved": 8,
+          "relevant": 3,
+          "kept": 3,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "web",
+          "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 국가별 투자 변화",
+          "recent": true,
+          "web_results": 5
+        },
+        {
+          "step": "generate",
+          "context": 8,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "numbers": [
+            "38"
+          ],
+          "check": "not_grounded"
+        },
+        {
+          "step": "generate",
+          "context": 8,
+          "cited": 4,
+          "regeneration": true
+        },
+        {
+          "step": "check",
+          "numbers": [
+            "38"
+          ],
+          "check": "not_grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에 명시된 스마트농업 육성 기본계획의 내용과 일치하며, 기술 개발 일정, 상용화 현황, 기술적 과제, 국내 기술 수준 비교 등 모든 사실과 수치가 근거에 포함되어 있다. 질문에 대해 농업 로봇·자율주행 농기계 분야의 기술 동향, 상용화 수준, 기술적 과제를 직접적으로 답하고 있어 질문에 부합한다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서들에 명시된 위성 및 드론 영상, 기상 및 과거 데이터 활용, 국내 농업용 드론·로봇 기술 개발 현황, 그리고 스마트농업 데이터 거래 가이드라인 부재 및 가치평가 미흡 등 기술적 과제를 정확히 반영하고 있다. 근거에 없는 내용이나 과장된 부분이 없으며, 질문에 직접적으로 기술 동향, 상용화 수준, 기술적 과제를 모두 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "농업 생산 데이터 분석·예측 AI (생육·환경 데이터) 분야 스타트업의 시장성: 국내·글로벌 시장 규모와 성장률, 수요 요인, 지불 의향, 정책·규제, 도입 장벽, 최근 투자 동향",
+      "step": "decompose",
+      "trace": [],
+      "sub_questions": [
+        "2024년 이후 발표된 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 시장 규모는 어떻게 되는가? (market size)",
+        "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야의 연평균 성장률은 얼마인가? (growth rate)",
+        "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야에 대한 수요 요인은 무엇인가? (demand factors)",
+        "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+        "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+        "2026년 기준 국내 및 글로벌 애그테크 분야의 최근 투자 동향은 어떠하며, 특히 농업 생산 데이터 분석·예측 AI 분야에 대한 투자액 증감과 국가별 차이는 어떠한가? (agrifoodtech funding)"
+      ],
+      "padded_with_defaults": false,
+      "added_investment_question": false
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 발표된 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 시장 규모는 어떻게 되는가? (market size)",
+      "purpose": "시장 규모",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에 제시된 모든 시장 규모 수치와 연평균 성장률을 정확히 인용하고 있으며, 국내 시장 규모에 대한 구체적 수치가 없음을 명확히 밝히고 있다. 질문에 대해 시장 규모에 관한 직접적인 답변을 제공하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야의 연평균 성장률은 얼마인가? (growth rate)",
+      "purpose": "성장률",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 생산 데이터 분석 예측 AI 연평균 성장률 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "농업 생산 데이터 분석 예측 AI 연평균 성장률 2024 이후",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에 명시된 글로벌 스마트 농업 시장의 연평균 성장률(10.2%~19.1%)을 정확히 인용하고 있으며, 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야의 구체적 성장률은 근거에 없음을 명확히 밝히고 있다. 따라서 모든 사실과 수치가 근거에 있고 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야에 대한 수요 요인은 무엇인가? (demand factors)",
+      "purpose": "수요",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+          "retrieved": 8,
+          "relevant": 6,
+          "kept": 4,
+          "dropped": 2,
+          "kept_ranks": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변에 제시된 수요 요인들은 근거 [D4f90b], [Deaac5], [Db474a]에 명확히 포함되어 있다. 예를 들어, 글로벌 식량 수요 증가, 자원 효율성 최적화, IoT·AI·로봇공학 통합, 상업용 온실 자동화 및 CEA 도입, 아시아-태평양 지역 개발도상국 인구 증가와 경제 발전 등이 모두 근거 문서에서 확인된다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "purpose": "지불 의향",
+      "step": "answer",
+      "route": "docs",
+      "status": "partial",
+      "rewrites": 2,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 생산 데이터 분석 예측 AI 고객 지불 의향 2024"
+        },
+        {
+          "step": "grade",
+          "query": "농업 생산 데이터 분석 예측 AI 고객 지불 의향 2024",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 스마트농업 및 애그테크 분야에서 생육 및 환경 데이터 기반 농업 생산 예측 AI 서비스의 시장 규모, 연평균 성장률, 투자액과 함께 고객의 지불 의향(willingness to pay)에 관한 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 스마트농업 및 애그테크 분야에서 생육 및 환경 데이터 기반 농업 생산 예측 AI 서비스의 시장 규모, 연평균 성장률, 투자액과 함께 고객의 지불 의향(willingness to pay)에 관한 보고서",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 스마트팜 및 애그테크 시장에서 생육 및 환경 데이터 기반 농업 생산 예측 AI 서비스의 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 그리고 고객의 지불 의향(willingness to pay)에 관한 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 스마트팜 및 애그테크 시장에서 생육 및 환경 데이터 기반 농업 생산 예측 AI 서비스의 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 그리고 고객의 지불 의향(willingness to pay)에 관한 보고서",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "web",
+          "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+          "web_fallback": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 2,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에서 고객의 지불 의향에 대한 구체적인 수치나 정도가 확인되지 않는다고 명확히 밝히고 있으며, 질문에 직접적으로 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "purpose": "정책·규제",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 1,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "2024년 이후 농업 생산 데이터 분석 예측 AI 정책 규제"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 농업 생산 데이터 분석 예측 AI 정책 규제",
+          "retrieved": 8,
+          "relevant": 2,
+          "kept": 2,
+          "dropped": 0,
+          "kept_ranks": [
+            2,
+            3
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI(생육 및 환경 데이터 포함) 관련 정책 현황, 규제 동향, 스마트팜 보급률, 투자액, 시장 규모 및 연평균 성장률 (policy and regulation)",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI(생육 및 환경 데이터 포함) 관련 정책 현황, 규제 동향, 스마트팜 보급률, 투자액, 시장 규모 및 연평균 성장률 (policy and regulation)",
+          "retrieved": 8,
+          "relevant": 3,
+          "kept": 2,
+          "dropped": 1,
+          "kept_ranks": [
+            2,
+            7
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에 명시된 「스마트농업 육성 및 지원에 관한 법률」과 제1차 스마트농업 육성 기본계획, 미국의 농업혁신어젠다(AIA) 내용을 정확히 반영하고 있으며, AI 생육·환경 데이터 분석·예측 관련 구체적 정책이 근거에 없음을 명확히 밝히고 있다. 따라서 모든 사실과 수치가 근거에 있다. 또한 질문에 대해 정책 및 규제 현황을 직접적으로 답변하고 있어 질문에 부합한다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2026년 기준 국내 및 글로벌 애그테크 분야의 최근 투자 동향은 어떠하며, 특히 농업 생산 데이터 분석·예측 AI 분야에 대한 투자액 증감과 국가별 차이는 어떠한가? (agrifoodtech funding)",
+      "purpose": "투자 동향",
+      "step": "answer",
+      "route": "both",
+      "status": "partial",
+      "rewrites": 0,
+      "regenerations": 1,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "both",
+          "tools": [
+            "search_documents",
+            "web_search"
+          ],
+          "reason": "",
+          "query": "agrifoodtech funding investment trends 2026",
+          "web_query": "agrifoodtech funding investment trends 2026",
+          "recent": true
+        },
+        {
+          "step": "grade",
+          "query": "agrifoodtech funding investment trends 2026",
+          "retrieved": 8,
+          "relevant": 7,
+          "kept": 4,
+          "dropped": 3,
+          "kept_ranks": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "web",
+          "query": "agrifoodtech funding investment trends 2026",
+          "recent": true,
+          "web_results": 5
+        },
+        {
+          "step": "generate",
+          "context": 9,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "numbers": [
+            "162",
+            "90"
+          ],
+          "check": "not_grounded"
+        },
+        {
+          "step": "generate",
+          "context": 9,
+          "cited": 3,
+          "regeneration": true
+        },
+        {
+          "step": "check",
+          "numbers": [
+            "162",
+            "90"
+          ],
+          "check": "not_grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제"
+        },
+        {
+          "step": "grade",
+          "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+          "retrieved": 8,
+          "relevant": 7,
+          "kept": 4,
+          "dropped": 3,
+          "kept_ranks": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에 명시된 AI 기술 단계, 머신러닝과 딥러닝 적용, 드론 활용 현황(91.4%), 기술 고도화 계획(2025~2028년), 기술적 과제(한계 극복, 현장 적용성 강화, 다중 작업 확장)를 모두 포함하고 있어 근거와 일치한다. 질문에 대해 작물 생육·병해충 진단 AI 분야의 기술 동향, 상용화 수준, 기술적 과제를 직접적으로 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "작물 생육·병해충 진단 AI 분야 스타트업의 시장성: 국내·글로벌 시장 규모와 성장률, 수요 요인, 지불 의향, 정책·규제, 도입 장벽, 최근 투자 동향",
+      "step": "decompose",
+      "trace": [],
+      "sub_questions": [
+        "2024년 이후 발표된 국내 및 글로벌 작물 생육·병해충 진단 AI 시장 규모는 어떻게 되는가? (market size)",
+        "2024년 이후 국내 및 글로벌 스마트농업·애그테크 분야의 연평균 성장률은 얼마인가? (growth rate)",
+        "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI에 대한 농업 현장의 수요 요인은 무엇인가?",
+        "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에서 농업인 및 관련 기관의 지불 의향은 어느 정도인가? (willingness to pay)",
+        "2023년 이후 국내외 작물 생육·병해충 진단 AI 관련 정책 및 규제 현황은 어떠한가?",
+        "2025년 이후 국내외 애그테크 투자 동향, 특히 작물 생육·병해충 진단 AI 분야의 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)"
+      ],
+      "padded_with_defaults": false,
+      "added_investment_question": false
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 발표된 국내 및 글로벌 작물 생육·병해충 진단 AI 시장 규모는 어떻게 되는가? (market size)",
+      "purpose": "시장 규모",
+      "step": "answer",
+      "route": "docs",
+      "status": "partial",
+      "rewrites": 1,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+          "retrieved": 8,
+          "relevant": 2,
+          "kept": 2,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            2
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 투자액 현황 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 투자액 현황 보고서",
+          "retrieved": 8,
+          "relevant": 3,
+          "kept": 2,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            2
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변의 모든 수치와 성장률은 근거 문서에 명확히 일치하며, 국내 작물 생육·병해충 진단 AI 시장 규모가 근거에 없음을 명확히 밝혀 답변이 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 스마트농업·애그테크 분야의 연평균 성장률은 얼마인가? (growth rate)",
+      "purpose": "성장률",
+      "step": "answer",
+      "route": "docs",
+      "status": "partial",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "스마트팜 시장 규모 연평균 성장률 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "스마트팜 시장 규모 연평균 성장률 2024 이후",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변에 제시된 글로벌 스마트농업 연평균 성장률 수치는 근거의 표와 본문에 모두 정확히 일치하며, 국내 성장률은 근거에서 확인되지 않는다고 명확히 밝히고 있어 근거와 일치한다. 또한 질문에 대해 2024년 이후의 성장률을 구체적으로 제시하고 국내 성장률은 확인되지 않음을 명확히 답변하여 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI에 대한 농업 현장의 수요 요인은 무엇인가?",
+      "purpose": "수요",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후",
+          "retrieved": 8,
+          "relevant": 3,
+          "kept": 3,
+          "dropped": 0,
+          "kept_ranks": [
+            2,
+            5,
+            7
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 3,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에서 언급된 전통적 진단 방법의 한계, AI와 IoT 센서를 활용한 자동화된 진단, 주요 작물(토마토, 고추, 감자, 오이) 대상, 모바일 앱 및 스마트 드론 적용 가능성 등을 정확히 반영하고 있다. 따라서 모든 사실과 수치가 근거에 있으며 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에서 농업인 및 관련 기관의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "purpose": "지불 의향",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 2,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "작물 생육 병해충 진단 AI 지불 의향 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "작물 생육 병해충 진단 AI 지불 의향 2024 이후",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 농업인 및 관련 기관의 연평균 지불 의향(willingness to pay), 스마트팜 보급률과 투자액 현황",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 농업인 및 관련 기관의 연평균 지불 의향(willingness to pay), 스마트팜 보급률과 투자액 현황",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 AI(Artificial Intelligence) 시장의 예상 시장 규모(Market Size), 농업인 및 관련 기관의 지불 의향(Willingness to Pay) 수준, 연평균 성장률(CAGR), 스마트팜 보급률 및 관련 투자액 현황에 관한 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 AI(Artificial Intelligence) 시장의 예상 시장 규모(Market Size), 농업인 및 관련 기관의 지불 의향(Willingness to Pay) 수준, 연평균 성장률(CAGR), 스마트팜 보급률 및 관련 투자액 현황에 관한 보고서",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "web",
+          "query": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에서 농업인 및 관련 기관의 지불 의향은 어느 정도인가? (willingness to pay)",
+          "web_fallback": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에 명시된 AI 병해충 진단 시스템 개발과 AI 상담 서비스 시범 운영 사실을 정확히 반영하고 있으며, 지불 의향에 대한 구체적 수치가 근거에 없음을 명확히 밝히고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2023년 이후 국내외 작물 생육·병해충 진단 AI 관련 정책 및 규제 현황은 어떠한가?",
+      "purpose": "정책·규제",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 1,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "작물 생육 병해충 진단 AI 정책 규제 2023 이후"
+        },
+        {
+          "step": "grade",
+          "query": "작물 생육 병해충 진단 AI 정책 규제 2023 이후",
+          "retrieved": 8,
+          "relevant": 1,
+          "kept": 1,
+          "dropped": 0,
+          "kept_ranks": [
+            2
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2023년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 관련 정책 현황, 규제 동향, 스마트팜 AI 기술 도입 현황, 정부 투자액 및 지원 프로그램, AI 기반 농업 진단 시장 규모와 연평균 성장률",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2023년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 관련 정책 현황, 규제 동향, 스마트팜 AI 기술 도입 현황, 정부 투자액 및 지원 프로그램, AI 기반 농업 진단 시장 규모와 연평균 성장률",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 3,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            2,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 2,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서들에 명시된 정책과 현황을 정확히 반영하고 있으며, 근거에 없는 내용이나 과장은 없다. 또한 질문에 대해 국내외 작물 생육·병해충 진단 AI 관련 정책 및 규제 현황을 구체적으로 설명하고, 규제 현황이 근거에서 확인되지 않음을 명확히 밝혀 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2025년 이후 국내외 애그테크 투자 동향, 특히 작물 생육·병해충 진단 AI 분야의 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)",
+      "purpose": "투자 동향",
+      "step": "answer",
+      "route": "both",
+      "status": "partial",
+      "rewrites": 0,
+      "regenerations": 1,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "both",
+          "tools": [
+            "search_documents",
+            "web_search"
+          ],
+          "reason": "",
+          "query": "agrifoodtech funding investment trend 2025 crop growth pest diagnosis AI",
+          "web_query": "애그테크 투자 동향 작물 생육 병해충 진단 AI 2025 이후",
+          "recent": true
+        },
+        {
+          "step": "grade",
+          "query": "agrifoodtech funding investment trend 2025 crop growth pest diagnosis AI",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            2,
+            3,
+            5,
+            6
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "web",
+          "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI 2025 이후",
+          "recent": true,
+          "web_results": 2
+        },
+        {
+          "step": "generate",
+          "context": 6,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "numbers": [
+            "162",
+            "90",
+            "4400",
+            "6290"
+          ],
+          "check": "not_grounded"
+        },
+        {
+          "step": "generate",
+          "context": 6,
+          "cited": 5,
+          "regeneration": true
+        },
+        {
+          "step": "check",
+          "numbers": [
+            "162",
+            "90"
+          ],
+          "check": "not_grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술 과제",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에 명시된 스마트농업 육성 기본계획의 내용과 일치하며, 기술 개발 일정, 상용화 현황, 기술적 과제, 국내 기술 수준 비교 등 모든 사실과 수치가 근거에 포함되어 있다. 질문에 대해 농업 로봇·자율주행 농기계 분야의 기술 동향, 상용화 수준, 기술적 과제를 직접적으로 답하고 있어 질문에 부합한다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술 과제",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에 명시된 스마트농업 육성 기본계획의 내용과 일치하며, 기술 동향, 상용화 수준, 기술적 과제 모두 근거에 포함되어 있다. 근거에 없는 내용이나 과장, 수치 변형이 없다. 또한 질문에 대해 직접적으로 기술 동향, 상용화 수준, 기술적 과제를 상세히 답변하고 있어 질문에 부합한다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서들에 명시된 위성 및 드론 이미지, 기상 및 과거 데이터 활용, 국내 드론과 로봇 기술 개발 현황, 그리고 스마트농업 데이터 거래 가이드라인 부재 및 상용화 초기 단계 등의 내용을 정확히 반영하고 있다. 근거에 없는 내용이나 과장된 부분이 없다. 또한 질문에 대해 기술 동향, 상용화 수준, 기술적 과제를 모두 직접적으로 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에 명시된 스마트농업 육성 기본계획의 내용과 일치하며, 기술 개발 일정, 시범 보급, 기술적 과제, 국내 기술 수준 비교 등 모두 근거에 포함되어 있다. 질문에 대해 농업 로봇·자율주행 농기계 분야의 기술 동향, 상용화 수준, 기술적 과제를 직접적으로 답하고 있어 질문에 부합한다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제"
+        },
+        {
+          "step": "grade",
+          "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+          "retrieved": 8,
+          "relevant": 6,
+          "kept": 4,
+          "dropped": 2,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서들에서 제시된 스마트팜·시설원예 AI 환경제어 분야의 기술 동향, 상용화 수준, 기술적 과제에 관한 내용을 충실히 요약하고 있으며, 근거에 없는 내용이나 과장, 수치 변형이 없다. 또한 질문에 대해 직접적으로 기술 동향, 상용화 수준, 기술적 과제를 설명하여 질문에 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "스마트팜·시설원예 AI 환경제어 분야 스타트업의 시장성: 국내·글로벌 시장 규모와 성장률, 수요 요인, 지불 의향, 정책·규제, 도입 장벽, 최근 투자 동향",
+      "step": "decompose",
+      "trace": [],
+      "sub_questions": [
+        "2024년 이후 발표된 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시장 규모는 어떻게 되는가? (market size)",
+        "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시장의 연평균 성장률은 얼마인가? (growth rate)",
+        "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어에 대한 수요를 촉진하는 주요 요인은 무엇인가? (demand factors)",
+        "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어떠한가? (willingness to pay)",
+        "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+        "2026년 기준 국내 및 글로벌 애그테크 투자 동향, 특히 스마트팜·시설원예 AI 환경제어 분야의 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)"
+      ],
+      "padded_with_defaults": false,
+      "added_investment_question": false
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 발표된 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시장 규모는 어떻게 되는가? (market size)",
+      "purpose": "시장 규모",
+      "step": "answer",
+      "route": "docs",
+      "status": "partial",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            2,
+            3,
+            4,
+            6
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에 명시된 글로벌 스마트 농업 시장 규모와 성장률을 정확히 인용하고 있으며, 국내 스마트팜 시장 규모도 근거에 부합한다. 다만, 스마트팜·시설원예 AI 환경제어 시장 규모에 대한 구체적 수치는 근거에 없음을 명확히 밝혀 근거 밖 내용을 포함하지 않았다. 또한 질문에 대해 시장 규모에 관한 직접적인 답변을 제공하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시장의 연평균 성장률은 얼마인가? (growth rate)",
+      "purpose": "성장률",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+          "retrieved": 8,
+          "relevant": 4,
+          "kept": 4,
+          "dropped": 0,
+          "kept_ranks": [
+            1,
+            4,
+            5,
+            8
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거에 명시된 글로벌 스마트 농업 시장의 연평균 성장률 범위(10.2%~19.1%)를 정확히 인용하고 있으며, 국내 시장 성장률은 근거에서 확인되지 않는다고 명확히 밝히고 있다. 따라서 모든 사실과 수치가 근거에 부합하고 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어에 대한 수요를 촉진하는 주요 요인은 무엇인가? (demand factors)",
+      "purpose": "수요",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "스마트팜 시설원예 AI 환경제어 수요 촉진 요인 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "스마트팜 시설원예 AI 환경제어 수요 촉진 요인 2024 이후",
+          "retrieved": 8,
+          "relevant": 6,
+          "kept": 4,
+          "dropped": 2,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변의 모든 사실과 수치가 근거 문서에 명확히 포함되어 있으며, 질문에 대해 직접적으로 2024년 이후 스마트팜·시설원예 AI 환경제어 수요를 촉진하는 주요 요인을 설명하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어떠한가? (willingness to pay)",
+      "purpose": "지불 의향",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 2,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+          "retrieved": 8,
+          "relevant": 0,
+          "kept": 0,
+          "dropped": 0,
+          "kept_ranks": [],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 연평균 성장률, 투자액 및 보급률 분석 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 연평균 성장률, 투자액 및 보급률 분석 보고서",
+          "retrieved": 8,
+          "relevant": 1,
+          "kept": 1,
+          "dropped": 0,
+          "kept_ranks": [
+            3
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "rewrite",
+          "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 환경제어 시스템 시장에서 고객의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 보급률(adoption rate) 관련 보고서",
+          "after": "grade"
+        },
+        {
+          "step": "grade",
+          "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 환경제어 시스템 시장에서 고객의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 보급률(adoption rate) 관련 보고서",
+          "retrieved": 8,
+          "relevant": 2,
+          "kept": 2,
+          "dropped": 0,
+          "kept_ranks": [
+            5,
+            6
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 3,
+          "cited": 2,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서에서 확인된 정책 추진과 시장 성장 전망을 바탕으로 고객의 지불 의향이 증가할 가능성이 높다고 추론하고 있으며, 구체적인 지불 의향 수치나 직접 조사 결과가 없음을 명확히 밝히고 있다. 따라서 답변의 사실과 수치가 근거에 부합하며, 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "purpose": "정책·규제",
+      "step": "answer",
+      "route": "docs",
+      "status": "partial",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후"
+        },
+        {
+          "step": "grade",
+          "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+          "retrieved": 8,
+          "relevant": 6,
+          "kept": 4,
+          "dropped": 2,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서들에 명시된 2025~2029년 스마트농업 육성 기본계획의 주요 정책과 제도 개선 사항을 충실히 반영하고 있으며, 글로벌 정책 현황은 근거에 없음을 명확히 밝히고 있다. 따라서 모든 사실과 수치가 근거에 있고 질문에 직접 답하고 있다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "market",
+      "question": "2026년 기준 국내 및 글로벌 애그테크 투자 동향, 특히 스마트팜·시설원예 AI 환경제어 분야의 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)",
+      "purpose": "투자 동향",
+      "step": "answer",
+      "route": "docs",
+      "status": "grounded",
+      "rewrites": 0,
+      "regenerations": 0,
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "agrifoodtech funding 2026 스마트팜 시설원예 AI 환경제어 투자 동향 국가별"
+        },
+        {
+          "step": "grade",
+          "query": "agrifoodtech funding 2026 스마트팜 시설원예 AI 환경제어 투자 동향 국가별",
+          "retrieved": 8,
+          "relevant": 6,
+          "kept": 4,
+          "dropped": 2,
+          "kept_ranks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 3,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변에 제시된 국가별 투자액과 증감률은 근거 문서의 표와 일치한다. 다만, 스마트팜·시설원예 AI 환경제어 분야의 구체적 투자 총액 증감은 근거에서 확인되지 않아 해당 부분은 근거 밖 내용이 아니다. 질문에 대한 답변도 투자 동향과 국가별 변화를 직접적으로 다루고 있어 적절하다.",
+          "check": "grounded"
+        }
+      ]
+    },
+    {
+      "agent": "tech",
+      "question": "기술 동향",
+      "route": "docs",
+      "status": "grounded",
+      "trace": [
+        {
+          "step": "agent",
+          "route": "docs",
+          "tools": [
+            "search_documents"
+          ],
+          "reason": "",
+          "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제"
+        },
+        {
+          "step": "grade",
+          "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+          "retrieved": 8,
+          "relevant": 5,
+          "kept": 4,
+          "dropped": 1,
+          "kept_ranks": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "top_k": 4
+        },
+        {
+          "step": "generate",
+          "context": 4,
+          "cited": 4,
+          "regeneration": false
+        },
+        {
+          "step": "check",
+          "reason": "답변은 근거 문서들에 명시된 기술 동향, 상용화 수준, 기술적 과제를 구체적으로 반영하고 있으며, 근거에 없는 내용이나 과장이 없다. 질문에 직접 답하고 있어 두 문항 모두 true이다.",
+          "check": "grounded"
+        }
+      ]
+    }
+  ],
+  "log": [
+    "[발굴 1라운드] 채널 8개·근거 151건에서 후보 73곳 (국내 69·해외 4, 교차 신호 2채널 이상 14곳) → 검증 18곳(해외 4)",
+    "[적격성 검증] 18곳(국내 14·해외 4) 검사 → 통과 15곳, 탈락 3곳",
+    "[DART] 국내 14곳 조회 → matched 1곳, not_found 13곳 · 공시 확인: 대동애그테크(기타법인(비상장), 설립 2022-02-15, 감사보고서 1건, 매출 2025년)",
+    "[평가 1] 메타파머스 (KR, Pre-A, robotics)",
+    "[창업자] 메타파머스: t0 2022-09-02(TIPS 설립일), 인물 2명(이규화(대표), 윤원재(기술이사(CTO))), 마일스톤 5건(최근 24개월 3건), 근거 9건 → 창업자 YES 1/4",
+    "[기술 요약] 메타파머스: 성숙도 실증, 장점 4·단점 4·주장 4건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 6건 → 제품/기술력 YES 1/4",
+    "[시장성] 농업 로봇·자율주행 농기계: 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 3개), 대표 규모 17400.0(USD_M), 근거 13건 (문서 10건) → 시장성 YES 1/4",
+    "[경쟁사] 메타파머스: 제품 유형 'AI 기반 자율주행 농기계 및 농작업 자동화 로봇', 검색 5건, 근거 속 경쟁사 더그투스, 같은 분야 적격 후보 4곳 → 경쟁사 5곳 비교(확인 5곳: 국내 1·해외 4, 근거 약함 0곳) (우열 단정 고쳐 씀), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] 메타파머스: 동종 평균 대비 102.8(동종 평균 100, 창업자 기준 106.9, 기준 집단 9곳 자기 제외) · YES 6 · NO 0 · 미확인 75% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
+    "[평가 2] Nature Robots (GLOBAL, Seed, robotics)",
+    "[창업자] Nature Robots: t0 2022(근거 속 설립 표현), 인물 1명(Dr. Sebastian Pütz(CEO 및 공동창업자)), 마일스톤 2건(최근 24개월 1건), 근거 9건 → 창업자 YES 0/4",
+    "[기술 요약] Nature Robots: 성숙도 시제품, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 0/3",
+    "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 1/4",
+    "[경쟁사] Nature Robots: 제품 유형 'AI 기반 자율주행 농업 운영체제 및 정밀 농업 소프트웨어', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 4곳 → 경쟁사 4곳 비교(확인 4곳: 국내 2·해외 2, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] Nature Robots: 동종 평균 대비 91.8(동종 평균 100, 창업자 기준 80.6, 기준 집단 9곳 자기 제외) · YES 4 · NO 1 · 미확인 78% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[평가 3] 리비타 (KR, Seed, agdata)",
+    "[창업자] 리비타: t0 2026-01-02(국민연금 최초 가입일), 인물 1명(엄상혁(대표)), 마일스톤 2건(최근 24개월 2건), 근거 7건 → 창업자 YES 0/4",
+    "[기술 요약] 리비타: 성숙도 시제품, 장점 4·단점 4·주장 4건, 홈페이지 주소 없음 → 회사 기사 요약, 기준선 grounded, 근거 5건 → 제품/기술력 YES 1/3",
+    "[시장성] 농업 생산 데이터 분석·예측 AI (생육·환경 데이터): 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 17400.0(USD_M), 근거 12건 (문서 10건) → 시장성 YES 2/4",
+    "[경쟁사] 리비타: 제품 유형 '노지 스마트팜 환경 모니터링 및 데이터 분석 장비', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 5곳 → 경쟁사 4곳 비교(확인 4곳: 국내 4·해외 0, 근거 약함 0곳) (우열 단정 고쳐 씀), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] 리비타: 동종 평균 대비 97.3(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 5 · NO 1 · 미확인 74% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[평가 4] 새팜 (KR, Pre-A, diagnosis)",
+    "[창업자] 새팜: t0 2022-06-15(TIPS 설립일), 인물 1명(정승환(대표)), 마일스톤 3건(최근 24개월 2건), 근거 6건 → 창업자 YES 0/4",
+    "[기술 요약] 새팜: 성숙도 상용, 장점 4·단점 3·주장 4건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 5건 → 제품/기술력 YES 1/3",
+    "[시장성] 작물 생육·병해충 진단 AI: 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 3개), 대표 규모 17400.0(USD_M), 근거 17건 (문서 13건) → 시장성 YES 3/4",
+    "[경쟁사] 새팜: 제품 유형 '작물 생육 및 병해충 진단 AI 솔루션', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 0곳 → 경쟁사 0곳 비교(확인 0곳: 국내 0·해외 0, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 1/4",
+    "[투자 판단] 새팜: 동종 평균 대비 102.8(동종 평균 100, 창업자 기준 94.4, 기준 집단 9곳 자기 제외) · YES 5 · NO 0 · 미확인 78% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[평가 5] Upside Robotics (GLOBAL, Seed, robotics)",
+    "[창업자] Upside Robotics: t0 2023(근거 속 설립 표현), 인물 2명(Sam Dugan(공동창업자, CTO), Jana Tian(공동창업자, CEO)), 마일스톤 2건(최근 24개월 2건), 근거 6건 → 창업자 YES 0/4",
+    "[기술 요약] Upside Robotics: 성숙도 실증, 장점 3·단점 1·주장 3건, 홈페이지 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 0/3",
+    "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 2/4",
+    "[경쟁사] Upside Robotics: 제품 유형 'AI 기반 자율주행 비료 살포 농업 로봇', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 4곳 → 경쟁사 4곳 비교(확인 4곳: 국내 2·해외 2, 근거 약함 0곳), 주장 3건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] Upside Robotics: 동종 평균 대비 97.5(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 4 · NO 0 · 미확인 83% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[평가 6] 터빈크루 (KR, Pre-A, robotics)",
+    "[창업자] 터빈크루: t0 2022-11-04(TIPS 설립일), 인물 1명(전기은(대표이사)), 마일스톤 5건(최근 24개월 3건), 근거 6건 → 창업자 YES 0/4",
+    "[기술 요약] 터빈크루: 성숙도 시제품, 장점 4·단점 4·주장 3건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 4건 → 제품/기술력 YES 0/3",
+    "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 2/4",
+    "[경쟁사] 터빈크루: 제품 유형 'AI 기반 자율주행 농기계 및 스마트 태양광 추적 시스템', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 4곳 → 경쟁사 4곳 비교(확인 4곳: 국내 1·해외 3, 근거 약함 0곳) (우열 단정 고쳐 씀), 주장 3건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 1/4",
+    "[투자 판단] 터빈크루: 동종 평균 대비 97.8(동종 평균 100, 창업자 기준 93.8, 기준 집단 10곳) · YES 4 · NO 0 · 미확인 83% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[평가 7] 루트릭스 (KR, Series A, agdata)",
+    "[창업자] 루트릭스: t0 2021-11-03(TIPS 설립일), 인물 1명(안정록(대표)), 마일스톤 2건(최근 24개월 1건), 근거 11건 → 창업자 YES 1/4",
+    "[기술 요약] 루트릭스: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 20건 → 제품/기술력 YES 2/3",
+    "[시장성] 농업 생산 데이터 분석·예측 AI (생육·환경 데이터): 분석 캐시 재사용 → 시장성 YES 2/4",
+    "[경쟁사] 루트릭스: 제품 유형 'AI 기반 조경수 관리 SaaS 및 수목 유통 플랫폼', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 5곳 → 경쟁사 2곳 비교(확인 2곳: 국내 2·해외 0, 근거 약함 0곳) (우열 단정 고쳐 씀), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 3/4",
+    "[투자 판단] 루트릭스: 동종 평균 대비 111.5(동종 평균 100, 창업자 기준 106.2, 기준 집단 10곳) · YES 11 · NO 0 · 미확인 52% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
+    "[평가 8] Bonsai Robotics (GLOBAL, Series A, robotics)",
+    "[창업자] Bonsai Robotics: t0 2022(적격성 검증 설립연도), 인물 5명(Tyler Niday(Co-Founder & CEO), Ugur Oezdemir(Co-Founder & CTO), John Teeple(Chief Operating Officer (COO)), Brendan Dowdle(Chief Business Officer), Gary Bradski(Chief Science Officer (CSO))), 마일스톤 5건(최근 24개월 4건), 근거 11건 → 창업자 YES 1/4",
+    "[기술 요약] Bonsai Robotics: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 14건 → 제품/기술력 YES 3/4",
+    "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 1/4",
+    "[경쟁사] Bonsai Robotics: 제품 유형 '모듈형 전기 농업용 자율주행 로봇', 검색 5건, 근거 속 경쟁사 Employee Count, 같은 분야 적격 후보 4곳 → 경쟁사 3곳 비교(확인 3곳: 국내 1·해외 2, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] Bonsai Robotics: 동종 평균 대비 105.1(동종 평균 100, 창업자 기준 106.9, 기준 집단 9곳 자기 제외) · YES 7 · NO 0 · 미확인 71% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
+    "[평가 9] 퓨처커넥트 (KR, Series A, greenhouse)",
+    "[창업자] 퓨처커넥트: t0 2020-08-06(TIPS 설립일), 인물 2명(강길모(대표), 오상현(기술책임자(CTO))), 마일스톤 3건(최근 24개월 1건), 근거 7건 → 창업자 YES 0/4",
+    "[기술 요약] 퓨처커넥트: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 9건 → 제품/기술력 YES 0/3",
+    "[시장성] 스마트팜·시설원예 AI 환경제어: 하위 질문 6개 (문서 6·웹 0·직접 0, grounded 4개), 대표 규모 4910.0(USD_M), 근거 15건 (문서 15건) → 시장성 YES 3/4",
+    "[경쟁사] 퓨처커넥트: 제품 유형 '도심형 AI 자동재배 스마트팜 솔루션', 검색 4건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 0곳 → 경쟁사 0곳 비교(확인 0곳: 국내 0·해외 0, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 2/4",
+    "[투자 판단] 퓨처커넥트: 동종 평균 대비 103.5(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 7 · NO 0 · 미확인 70% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[평가 10] 팜스태프 (KR, Seed, agdata)",
+    "[창업자] 팜스태프: t0 2022-01-06(TIPS 설립일), 인물 1명(김정우(대표)), 마일스톤 10건(최근 24개월 4건), 근거 8건 → 창업자 YES 1/4",
+    "[기술 요약] 팜스태프: 성숙도 시제품, 장점 3·단점 3·주장 3건, 홈페이지 요약, 기준선 grounded, 근거 7건 → 제품/기술력 YES 2/3",
+    "[시장성] 농업 생산 데이터 분석·예측 AI (생육·환경 데이터): 분석 캐시 재사용 → 시장성 YES 2/4",
+    "[경쟁사] 팜스태프: 제품 유형 '스마트팜 데이터 기반 농산물 공급망관리 및 AI 영농 데이터 분석 솔루션', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 5곳 → 경쟁사 4곳 비교(확인 4곳: 국내 4·해외 0, 근거 약함 0곳), 주장 3건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 1/4",
+    "[투자 판단] 팜스태프: 동종 평균 대비 106.5(동종 평균 100, 창업자 기준 106.2, 기준 집단 10곳) · YES 8 · NO 1 · 미확인 61% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
+    "[보고서] invest investment_report.pdf 5쪽 (≤5), SUMMARY A4 대비 23%, REFERENCE 22건, 형식 검사 통과, 숫자 대조 경고 2건 (시나리오 실행: 제출 파일 없음)"
+  ],
+  "sources_collected": 965,
+  "failed_searches": [],
+  "llm_cost": {
+    "api_calls": 453,
+    "cache_hits": 0,
+    "input_tokens": 2083004,
+    "output_tokens": 108434,
+    "usd": 0.8912
+  }
+}

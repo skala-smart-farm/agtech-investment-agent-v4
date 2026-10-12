@@ -31,6 +31,7 @@ NODE_LABELS = {
     "market": "📊 시장성 평가<br/>시장성 25% · Agentic RAG",
     "competition": "🥊 경쟁사 비교<br/>경쟁 우위 10%",
     "decide": "🧮 투자 판단<br/>실적·투자조건 20% · 동종 대비 배수",
+    "review": "👤 심사역 검토<br/>--review 일 때만 승인·선택·반려",
     "report": "📝 보고서 생성<br/>A안 투자 · B안 모두 보류 · C안 후보 없음",
     END: "END",
 }
@@ -38,13 +39,14 @@ NODE_LABELS = {
 MAIN_EDGES = [
     (START, "discover", None),
     ("discover", "founder", "평가 대상 있음"),
-    ("discover", "report", "후보 소진 · 적격 후보 없음"),
+    ("discover", "review", "후보 소진 · 적격 후보 없음"),
     ("founder", "tech", None),
     ("tech", "market", None),
     ("market", "competition", None),
     ("competition", "decide", None),
-    ("decide", "report", "투자 추천 또는 평가 상한 도달"),
+    ("decide", "review", "투자 추천 또는 평가 상한 도달"),
     ("decide", "discover", "보류 → 다른 스타트업"),
+    ("review", "report", None),
     ("report", END, None),
 ]
 DESIGN_EDGES = {(a, b) for a, b, _ in MAIN_EDGES}

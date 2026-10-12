@@ -28,3 +28,8 @@ outputs/runs/
 replay/emb/
 # 국민연금 원본 CSV(115MB)는 제외, 회사별 조회 결과만 replay/snapshots/ 에 커밋
 replay/nps/
+
+# 반복 실행 안정성 측정(eval/eval_passk.py): 실행 기록·보고서 md 만 남기고 로그(임시 경로 포함)·PDF·HTML 은 제외
+outputs/eval/passk/*.log
+outputs/eval/passk/**/*.pdf
+outputs/eval/passk/**/*.html

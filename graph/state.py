@@ -61,6 +61,7 @@ class ControlScope(TypedDict, total=False):
     end_reason: str                                    # 종료 사유 invest_found·max_evaluations·exhausted·no_eligible  [discover.exhausted·decide → report]
     errors: Annotated[list[dict], operator.add]        # 노드 실패 기록 {node, candidate, type, message} — 실행은 계속, 해당 후보는 투자 불가  [guard(분석 노드) → decide·report·app]
     status: str                                        # 실행 상태 SUCCESS(실패 0)·PARTIAL(실패 기록 있음)  [report → app(run_log)]
+    review: dict                                       # 👤 심사역 검토 결과 {action approve·pick·reject·invalid, target, reason} (--review 일 때만)  [review → report]
 
 
 class OutputScope(TypedDict, total=False):

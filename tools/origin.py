@@ -38,10 +38,18 @@ def resolve_origin(s: dict) -> dict | None:
         return None
     from tools.web_search import _raw_search
 
-    try:
-        got = _raw_search(f"{title} {outlet or ''}".strip(), "news", None, 5, None) or []
-    except Exception:  # 오프라인 재현에서 캐시에 없는 검색, 공급자 오류 → 원문 미확인으로 둔다
-        return None
+    queries = [f"{title} {outlet or ''}".strip(), f'"{title}"']   # 매체 이름을 붙여 한 번, 못 찾으면 제목만으로 한 번
+    for q in queries:
+        try:
+            got = _raw_search(q, "news", None, 5, None) or []
+        except Exception:  # 오프라인 재현에서 캐시에 없는 검색, 공급자 오류 → 원문 미확인으로 둔다
+            return None
+        if hit := _pick(got, title, outlet):
+            return hit
+    return None
+
+
+def _pick(got: list[dict], title: str, outlet: str | None) -> dict | None:
     for r in got:
         url = r.get("url") or ""
         host = url.split("/")[2].lower() if url.count("/") >= 2 else ""

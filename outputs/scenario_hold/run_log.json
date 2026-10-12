@@ -1,11 +1,12 @@
 {
   "run_date": "2026-09-30",
-  "elapsed_sec": 31.8,
+  "elapsed_sec": 30.9,
   "mode": "scenario",
   "threshold": 1.3,
   "end_reason": "max_evaluations",
   "status": "SUCCESS",
   "errors": [],
+  "review": null,
   "models": {
     "generator": "gpt-4.1-mini",
     "judge": "gpt-4.1-mini",
@@ -4157,7 +4158,8 @@
         "rate": 0.833,
         "uncited": [
           "[4장 공통 원인] 글로벌 스마트 농업 시장은 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장할 전망이나, 농업용 로봇 분야는 기술적 병목과 비용 문제로 보급이 제한"
-        ]
+        ],
+        "added": []
       },
       "unknown_list_fixed": [
         "메타파머스: 평가표 YES 문항을 미확인 목록에서 뺌 — 자본집약도",
@@ -4169,7 +4171,7 @@
     "title": "AgTech AI 스타트업 투자 검토 — 투자 추천 없음 (평가 10곳 모두 보류)",
     "target": "메타파머스",
     "decision": "투자 추천 대상 없음",
-    "generated_at": "2026-10-12T15:44:11"
+    "generated_at": "2026-10-12T17:20:02"
   },
   "rag_traces": [
     {
@@ -6556,7 +6558,7 @@
   "failed_searches": [],
   "llm_cost": {
     "api_calls": 0,
-    "cache_hits": 498,
+    "cache_hits": 506,
     "input_tokens": 0,
     "output_tokens": 0,
     "usd": 0.0

@@ -14,8 +14,8 @@ from core.config import ROOT, get_config
 # v3: 다섯 칸(실행 설정·탐색·후보 작업·제어/실패 기록·산출물)으로 나누고 errors·status 를 더했다 (기존 22키 이름은 그대로)
 C1_KEYS = ["domain", "run_date", "registry", "discovery_rounds", "raw_candidates", "seen", "screened", "queue",
            "current", "iterations", "founder", "tech", "market", "competition", "market_cache", "scorecard",
-           "decision", "end_reason", "errors", "status", "evaluations", "report", "rag_traces", "log"]
-SCOPES = {"RunContext": 3, "DiscoveryScope": 7, "CandidateScope": 7, "ControlScope": 3, "OutputScope": 4}
+           "decision", "end_reason", "errors", "status", "review", "evaluations", "report", "rag_traces", "log"]
+SCOPES = {"RunContext": 3, "DiscoveryScope": 7, "CandidateScope": 7, "ControlScope": 4, "OutputScope": 4}
 DISCOVERY_IN = {"domain", "run_date", "registry", "discovery_rounds", "seen", "queue", "iterations"}
 DISCOVERY_OUT = {"registry", "discovery_rounds", "raw_candidates", "seen", "screened", "queue", "current", "iterations",
                  "founder", "tech", "market", "competition", "scorecard", "end_reason", "rag_traces", "log"}

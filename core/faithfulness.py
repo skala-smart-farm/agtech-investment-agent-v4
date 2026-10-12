@@ -45,8 +45,11 @@ def best_windows(sentence: str, text: str, n: int = 2) -> list[str]:
     return [text[i:i + WINDOW] for i in sorted(picked)]
 
 
-def judge_sentence(sentence: str, ids: list[str], text_of: Callable[[str], str],
-                   source_of: Callable[[str], str]) -> Support:
+class Fixed(BaseModel):
+    sentence: str = Field(description="근거에 맞게 고친 한 문장 (인용 표기 없이). 고칠 수 없으면 빈 문자열")
+
+
+def _evidence(sentence: str, ids: list[str], text_of: Callable[[str], str], source_of: Callable[[str], str]) -> str:
     parts, used = [], 0
     per_id = 2 if len(ids) == 1 else 1   # 여러 근거를 함께 볼 때 앞 근거가 자리를 다 차지하지 않게
     for i in ids:
@@ -55,9 +58,43 @@ def judge_sentence(sentence: str, ids: list[str], text_of: Callable[[str], str],
                 break
             parts.append(f"[{i}] ({source_of(i)}) {w}")
             used += len(w)
-    if not parts:
+    return "\n\n".join(parts)
+
+
+def judge_sentence(sentence: str, ids: list[str], text_of: Callable[[str], str],
+                   source_of: Callable[[str], str]) -> Support:
+    evidence = _evidence(sentence, ids, text_of, source_of)
+    if not evidence:
         return Support(supported=False, reason="인용 근거의 원문이 없다")
-    return bounded(Support, "judge").invoke(render("faithfulness", sentence=sentence, evidence="\n\n".join(parts)))
+    return bounded(Support, "judge").invoke(render("faithfulness", sentence=sentence, evidence=evidence))
+
+
+KEEP_RATIO = 0.6   # 고친 문장의 낱말 중 원래 문장에 있던 비율 하한
+
+
+def keeps_meaning(old: str, new: str) -> bool:
+    """고친 문장이 원래 문장을 고친 것인지(다른 이야기로 바꾼 것이 아닌지) 코드로 확인한다: 고친 문장의 낱말 중
+    KEEP_RATIO 이상이 원래 문장에 있어야 한다. 실측: 보류 원인 문장('확인되지 않은 항목이 많다')을 근거에 있는
+    시장 성장률 문장으로 바꿔 판정만 통과한 사례 → 받지 않는다."""
+    words = [w.lower() for w in _WORDS.findall(new)]
+    if not words:
+        return False
+    o = old.lower()
+    return sum(w in o for w in words) / len(words) >= KEEP_RATIO
+
+
+def fix_sentence(sentence: str, ids: list[str], text_of: Callable[[str], str],
+                 source_of: Callable[[str], str]) -> str | None:
+    """근거가 뒷받침하지 않는 문장 하나만 근거에 맞게 고쳐 쓰고(생성), 다시 판정해(평가) 통과할 때만 돌려준다 — 문장 단위
+    평가-개선 1회. 보고서 전체를 다시 쓰면 다른 문장까지 흔들려 통과율이 떨어진 실측이 있어 문장 하나로 좁혔다.
+    길이가 원래보다 길어지면(SUMMARY 칸 길이 상한) 받지 않는다."""
+    evidence = _evidence(sentence, ids, text_of, source_of)
+    if not evidence:
+        return None
+    new = (bounded(Fixed).invoke(render("faithfulness_fix", sentence=sentence, evidence=evidence)).sentence or "").strip()
+    if not new or len(new) > len(sentence) + 5 or new == sentence or not keeps_meaning(sentence, new):
+        return None
+    return new if judge_sentence(new, ids, text_of, source_of).supported else None
 
 
 def check(units: list[tuple[str, str, list[str]]], text_of: Callable[[str], str], source_of: Callable[[str], str],
@@ -77,16 +114,31 @@ def check(units: list[tuple[str, str, list[str]]], text_of: Callable[[str], str]
             "unsupported": [f"[{f['where']}] {f['sentence'][:120]} — {f['reason']}" for f in failed], "failed": failed}
 
 
-def _overlap(sentence: str, text: str) -> int:
+def _overlap_whole(sentence: str, text: str) -> int:
     t = (text or "").lower()
     return sum(1 for w in {w.lower() for w in _WORDS.findall(sentence)} if w in t)
+
+
+def _overlap(sentence: str, text: str) -> int:
+    """문장 낱말이 근거 원문의 한 구간(WINDOW 글자)에 가장 많이 겹친 수. 원문 전체로 세면 긴 문서가 늘 이긴다."""
+    words = {w.lower() for w in _WORDS.findall(sentence)}
+    t = re.sub(r"\s+", " ", text or "").lower()
+    return max((sum(1 for w in words if w in t[i:i + WINDOW]) for i in range(0, max(1, len(t) - WINDOW + STEP), STEP)),
+               default=0)
 
 
 def recite(sentence: str, pool: list[str], text_of: Callable[[str], str], source_of: Callable[[str], str],
            k: int = 4) -> list[str] | None:
     """근거가 문장을 뒷받침하지 않을 때 문장은 그대로 두고 인용만 바로잡는다: 보고서 입력에 있던 근거 중 문장과 낱말이
     가장 많이 겹치는 k개를 함께 보여 주고 다시 판정해, 뒷받침하면 그 id 들을 돌려준다. 못 찾으면 None (사실이 근거에 없음)."""
-    ranked = sorted(pool, key=lambda i: -_overlap(sentence, text_of(i)))[:k]
-    if not ranked:
-        return None
-    return ranked if judge_sentence(sentence, ranked, text_of, source_of).supported else None
+    # 후보 순위 두 가지를 차례로: ① 원문 전체로 낱말이 많이 겹치는 k개 → 못 찾으면 ② 한 구간에 낱말이 몰린 k개
+    # (①만 쓰면 긴 문서가 늘 앞서고, ②만 쓰면 사실이 여러 근거에 흩어진 문장을 놓친다 — 2026-10-12 보고서 실측)
+    tried: set[tuple] = set()
+    for score in (_overlap_whole, _overlap):
+        ranked = sorted(pool, key=lambda i: -score(sentence, text_of(i)))[:k]
+        if not ranked or tuple(ranked) in tried:
+            continue
+        tried.add(tuple(ranked))
+        if judge_sentence(sentence, ranked, text_of, source_of).supported:
+            return ranked
+    return None

@@ -83,6 +83,9 @@ workflow:
   screen_global: 6                     # (국내만 앞에 두면 해외 후보가 검증에 오지 못함). 한쪽이 모자라면 다른 쪽이 채운다
   max_discovery_rounds: 2              # 후보가 바닥나면 발굴을 다시 도는 횟수 상한
   max_evaluations: 10                  # 심층 평가(기술·시장·경쟁·판단)를 반복할 최대 스타트업 수
+  max_llm_usd: 1.5                     # 1회 실행 LLM 비용 상한(USD). 닿으면 새 호출을 막고 실행을 멈춘다 (core/cost.BudgetExceeded)
+                                       # 실측: 새로 평가 1회 약 $0.6 → 성공 기준($1.00)보다 넉넉히, 폭주(반복 퇴행·루프)만 막는 값
+  human_review: false                  # true(app.py --review)면 보고서 직전에 심사역 승인을 받는다 (graph/review.py, interrupt)
   stop_on_invest: false                # 투자 추천이 나와도 멈추지 않고 평가 상한·후보 소진까지 평가 → 보고서는 투자 기준 통과 후보 중 배수 1위가 대상
                                        # (평가한 후보 안에서는 순서가 결론을 바꾸지 않는다. true 면 노션 Graph(안)처럼 첫 투자 추천에서 보고서로)
   calibrate: false                     # 보정 실행(app.py --calibrate): 상한까지 평가해 동종 기준 집단을 만들고, 보고서 노드는 렌더링하지 않음
@@ -125,7 +128,9 @@ report:
   faithfulness:                        # 문장 충실성: 인용 근거가 문장을 뒷받침하는가 (core/faithfulness.py, 판정 models.judge). checks.faithfulness
     mode: rewrite                      # off | flag(통과율만 기록) | rewrite(목표 미달이면 1회 다시 쓰고, 통과율이 오를 때만 채택)
     target: 0.95                       # 성공 기준: 인용 문장 중 근거가 뒷받침하는 비율 (2026-10-12 수업 예시 Faithfulness ≥ 95%)
-  run_cost_usd: 0.6                    # 새로 평가할 때 1회 LLM 비용(gpt-4.1-mini, 심층 평가 10곳 실측 약 $0.58) — README 표기용
+  run_cost_usd: 0.6                    # 새로 평가할 때 1회 LLM 비용(gpt-4.1-mini, 심층 평가 10곳 실측 약 $0.58) — 제출 때 값(동결)
+  fresh_cost_usd: 0.96                 # v4 실측: 문장 충실성 등 보고서 검사 포함, LLM 캐시 없이 3회 $0.89·$0.91·$0.96 의 최댓값
+                                       # (2026-10-12 eval_passk). README·성공 기준은 이 값을 쓴다
 
 success_criteria:                      # 성공 기준 목표치 (docs/goal.md 의 Goal 명세, 측정은 python -m eval.success_criteria → outputs/eval/success_criteria.*)
   citation_rate: 1.0                   # 근거성: 숫자가 든 사실 문장 중 인용이 붙은 비율

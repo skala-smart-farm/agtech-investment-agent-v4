@@ -10,16 +10,18 @@ graph TD;
 	market(market)
 	competition(competition)
 	decide(decide)
+	review(review)
 	report(report)
 	__end__([<p>__end__</p>]):::last
 	__start__ --> discover\3a__start__;
 	competition --> decide;
 	decide -.-> discover\3a__start__;
-	decide -.-> report;
+	decide -. &nbsp;report&nbsp; .-> review;
 	discover\3a__end__ -.-> founder;
-	discover\3a__end__ -.-> report;
+	discover\3a__end__ -. &nbsp;report&nbsp; .-> review;
 	founder --> tech;
 	market --> competition;
+	review --> report;
 	tech --> market;
 	report --> __end__;
 	subgraph discover

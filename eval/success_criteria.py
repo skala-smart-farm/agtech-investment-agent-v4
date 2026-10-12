@@ -36,7 +36,7 @@ def measure(run: dict, cfg) -> dict:
         "portal_unresolved": (c.get("portal_refs") or {}).get("unresolved"),
         "unsupported_yes": _unsupported_yes(run),
         "node_errors": len(run.get("errors") or []),
-        "run_cost_usd": float(cfg.report.get("run_cost_usd", 0)),
+        "run_cost_usd": float(cfg.report.get("fresh_cost_usd") or cfg.report.get("run_cost_usd", 0)),
     }
 
 
@@ -54,7 +54,7 @@ CRITERIA = [
      lambda v, t: v is not None and v <= t),
     ("unsupported_yes", "오류 처리 — 근거 없는 YES", "인용문·근거 id 없는 YES 판정", lambda t: f"{t}건", lambda v, t: v <= t),
     ("node_errors", "안정 운영 — 노드 실패", "분석 노드 실패 기록(State.errors)", lambda t: f"{t}건", lambda v, t: v <= t),
-    ("run_cost_usd", "비용 — 새로 평가 1회", "심층 평가 10곳, gpt-4.1-mini 실측(config report.run_cost_usd)", lambda t: f"≤ ${t:.2f}",
+    ("run_cost_usd", "비용 — 새로 평가 1회", "심층 평가 10곳, gpt-4.1-mini, LLM 캐시 없이 실측 최댓값(config report.fresh_cost_usd)", lambda t: f"≤ ${t:.2f}",
      lambda v, t: v <= t),
 ]
 
@@ -62,6 +62,8 @@ CRITERIA = [
 def _fmt(k: str, v) -> str:
     if v is None:
         return "-"
+    if k == "stability":
+        return f"{v} 대상 일치"
     if isinstance(v, bool):
         return "통과" if v else "미달"
     if k in ("citation_rate", "faithfulness"):
@@ -82,9 +84,12 @@ def main() -> dict:
         vals = {name: m[k] for name, m in measured.items()}
         rows.append({"key": k, "criterion": label, "how": how, "target": show(t), "values": vals,
                      "pass": all(ok(v, t) for v in vals.values())})
-    rows.append({"key": "stability", "criterion": "안정성 — 반복 실행", "how": "같은 입력 K회 실행 시 대상·결정 일치(PassK)",
-                 "target": "K=3 일치", "values": {name: None for name in measured}, "pass": None,
-                 "note": "미측정 — 시장 분석 프롬프트 한 줄 변경에 1위가 바뀐 사례가 있어 다음 과제에서 측정"})
+    pk = json.loads(path("outputs/eval/passk.json").read_text(encoding="utf-8")) if path("outputs/eval/passk.json").exists() else None
+    rows.append({"key": "stability", "criterion": "안정성 — 반복 실행", "how": "LLM 캐시 없이 K회 새로 실행 시 보고서 대상 일치(PassK)",
+                 "target": "K=3 일치", "pass": pk["pass"] if pk and pk["k"] else None,
+                 "values": {name: (f"{pk['same_target']}/{pk['k']}" if pk and pk["k"] and name == "투자 보고서" else None)
+                            for name in measured},
+                 "note": None if pk and pk["k"] else "미측정 — python -m eval.eval_passk --k 3 (유료)"})
     out = {"targets": targets, "rows": rows,
            "passed": sum(r["pass"] is True for r in rows), "failed": sum(r["pass"] is False for r in rows),
            "unmeasured": sum(r["pass"] is None for r in rows)}

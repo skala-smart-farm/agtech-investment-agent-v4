@@ -7,11 +7,12 @@
     C 시장성 평가       →   market
     D 경쟁사 비교       →   competition
     E 투자 판단         →   decide
+    (추가) 심사역 검토  →   review       (👤 사람 승인 게이트 — workflow.human_review 일 때만 멈춤, 기본은 그냥 통과)
     F 보고서 생성       →   report
 
     START → discover ─(평가 대상 있음)→ founder → tech → market → competition → decide
                │                                                                 ├─(투자·보류, 평가 상한 전)→ discover
-               └─(후보 소진)→ report → END                                        └─(평가 상한 도달)→ report → END
+               └─(후보 소진)→ review → report → END                               └─(평가 상한 도달)→ review → report → END
 
 - 간선 집합은 설계서의 DESIGN_EDGES(계약 C2)와 같다. 병렬 간선은 없다(경쟁사가 tech.claims 를, 투자 판단이 market 을 받아 쓰는 순서 의존).
 - 첫 투자 추천에서 멈추지 않는다(workflow.stop_on_invest=false). 먼저 평가한 후보가 결론이 되지 않도록 상한까지 평가하고,
@@ -29,7 +30,7 @@ from langgraph.graph import END, START, StateGraph
 from graph.routes import route_after_decide, route_after_discover
 from graph.state import InvestmentState
 
-NODE_NAMES = ("discover", "founder", "tech", "market", "competition", "decide", "report")
+NODE_NAMES = ("discover", "founder", "tech", "market", "competition", "decide", "review", "report")
 
 # 노드 이름 → (모듈, 함수). discover 는 서브그래프라 build_discovery_graph() 로 만든다
 _AGENT_NODES = {
@@ -38,6 +39,7 @@ _AGENT_NODES = {
     "market": ("agents.market", "market_node"),                 # 📊 시장성 평가 (시장성 25%, Agentic RAG)
     "competition": ("agents.competition", "competition_node"),  # 🥊 경쟁사 비교 (경쟁 우위 10%)
     "decide": ("agents.decision", "decision_node"),             # 🧮 투자 판단 (실적·투자조건 20% + 동종 대비 배수)
+    "review": ("graph.review", "review_node"),                  # 👤 심사역 검토 (사람 승인 게이트, 기본은 그냥 통과)
     "report": ("agents.report", "report_node"),                 # 📝 보고서 생성
 }
 
@@ -54,7 +56,9 @@ def guard(name: str, fn):
         try:
             return fn(state)
         except Exception as e:
-            if os.getenv("REPLAY_OFFLINE"):
+            from core.cost import BudgetExceeded
+
+            if os.getenv("REPLAY_OFFLINE") or isinstance(e, BudgetExceeded):   # 재현 실행·비용 상한 초과는 실행 전체를 멈춘다
                 raise
             cur = state.get("current") or {}
             cand = cur.get("official_name") or cur.get("name")
@@ -83,8 +87,9 @@ def _default_node(name: str):
     return getattr(importlib.import_module(module), fn)
 
 
-def build_graph(nodes: dict | None = None):
-    """메인 그래프를 컴파일한다. nodes={'decide': 가짜 함수, …} 로 일부 노드를 바꿔 끼울 수 있다(테스트용)."""
+def build_graph(nodes: dict | None = None, checkpointer=None):
+    """메인 그래프를 컴파일한다. nodes={'decide': 가짜 함수, …} 로 일부 노드를 바꿔 끼울 수 있다(테스트용).
+    checkpointer: 사람 승인(--review)처럼 멈췄다 이어서 실행할 때만 준다 (멈춘 지점의 State 를 저장)."""
     nodes = dict(nodes or {})
     unknown = set(nodes) - set(NODE_NAMES)
     if unknown:
@@ -96,11 +101,12 @@ def build_graph(nodes: dict | None = None):
         g.add_node(name, guard(name, fn) if name in GUARDED else _with_status(fn) if name == "report" else fn)
 
     g.add_edge(START, "discover")
-    g.add_conditional_edges("discover", route_after_discover, {"founder": "founder", "report": "report"})
+    g.add_conditional_edges("discover", route_after_discover, {"founder": "founder", "report": "review"})
     g.add_edge("founder", "tech")
     g.add_edge("tech", "market")
     g.add_edge("market", "competition")
     g.add_edge("competition", "decide")
-    g.add_conditional_edges("decide", route_after_decide, {"report": "report", "discover": "discover"})
+    g.add_conditional_edges("decide", route_after_decide, {"report": "review", "discover": "discover"})
+    g.add_edge("review", "report")   # 👤 보고서 직전 사람 승인 (workflow.human_review 일 때만 멈춤)
     g.add_edge("report", END)
-    return g.compile()
+    return g.compile(checkpointer=checkpointer)

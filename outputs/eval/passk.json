@@ -1,0 +1,143 @@
+{
+  "k": 3,
+  "base_target": "메타파머스",
+  "targets": [
+    "메타파머스",
+    "루트릭스",
+    "메타파머스"
+  ],
+  "same_target": 2,
+  "pass": false,
+  "rows": [
+    {
+      "name": "메타파머스",
+      "base": {
+        "decision": "투자",
+        "score100": 107.2
+      },
+      "same_decision": 3,
+      "evaluated": 3,
+      "score_range": [
+        102.8,
+        107.2
+      ]
+    },
+    {
+      "name": "Nature Robots",
+      "base": {
+        "decision": "보류",
+        "score100": 96.8
+      },
+      "same_decision": 3,
+      "evaluated": 3,
+      "score_range": [
+        91.8,
+        98.0
+      ]
+    },
+    {
+      "name": "리비타",
+      "base": {
+        "decision": "보류",
+        "score100": 95.4
+      },
+      "same_decision": 3,
+      "evaluated": 3,
+      "score_range": [
+        92.9,
+        97.3
+      ]
+    },
+    {
+      "name": "새팜",
+      "base": {
+        "decision": "투자",
+        "score100": 107.2
+      },
+      "same_decision": 0,
+      "evaluated": 3,
+      "score_range": [
+        101.6,
+        107.2
+      ]
+    },
+    {
+      "name": "Upside Robotics",
+      "base": {
+        "decision": "보류",
+        "score100": 98.1
+      },
+      "same_decision": 2,
+      "evaluated": 3,
+      "score_range": [
+        95.0,
+        101.9
+      ]
+    },
+    {
+      "name": "퓨처커넥트",
+      "base": {
+        "decision": "보류",
+        "score100": 101.7
+      },
+      "same_decision": 3,
+      "evaluated": 3,
+      "score_range": [
+        93.5,
+        103.5
+      ]
+    },
+    {
+      "name": "트랙팜",
+      "base": {
+        "decision": "보류",
+        "score100": 95.4
+      },
+      "same_decision": 1,
+      "evaluated": 1,
+      "score_range": [
+        95.4,
+        96.7
+      ]
+    },
+    {
+      "name": "Bonsai Robotics",
+      "base": {
+        "decision": "투자",
+        "score100": 106.5
+      },
+      "same_decision": 3,
+      "evaluated": 3,
+      "score_range": [
+        103.2,
+        106.5
+      ]
+    },
+    {
+      "name": "에임비랩",
+      "base": {
+        "decision": "투자",
+        "score100": 102.4
+      },
+      "same_decision": 0,
+      "evaluated": 0,
+      "score_range": null
+    },
+    {
+      "name": "바르카",
+      "base": {
+        "decision": "보류",
+        "score100": 89.9
+      },
+      "same_decision": 0,
+      "evaluated": 0,
+      "score_range": null
+    }
+  ],
+  "usd": [
+    0.9564,
+    0.8912,
+    0.9058
+  ],
+  "candidate_sets_same": false
+}

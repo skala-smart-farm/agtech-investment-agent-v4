@@ -412,7 +412,7 @@ def _success() -> dict | None:
     from eval.success_criteria import _fmt
     names = list((d["rows"][0]["values"] if d["rows"] else {}).keys())
     rows = [{"criterion": r["criterion"], "target": r["target"],
-             "cells": [r.get("note", "-") if r["pass"] is None and not i else _fmt(r["key"], r["values"].get(n))
+             "cells": [(r.get("note") or "-") if r["pass"] is None and not i else _fmt(r["key"], r["values"].get(n))
                         for i, n in enumerate(names)],
              "verdict": {True: "✅", False: "❌", None: "미측정"}[r["pass"]]} for r in d["rows"]]
     return {"names": names, "rows": rows, "passed": d["passed"], "failed": d["failed"], "unmeasured": d["unmeasured"]}

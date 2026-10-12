@@ -18,9 +18,10 @@ from graph.discovery_graph import build_discovery_graph
 from graph.routes import stops_on_invest, route_after_decide, route_after_discover, route_discovery_entry
 
 # 설계서 D.2 그림(Graph(안) + 👤 창업자)과 1:1. 보정 실행도 report 노드에서 끝나므로 discover·decide 에서 END 로 가는 간선은 없다
-DESIGN_EDGES = {(START, "discover"), ("discover", "founder"), ("discover", "report"), ("founder", "tech"),
-                ("tech", "market"), ("market", "competition"), ("competition", "decide"), ("decide", "report"),
-                ("decide", "discover"), ("report", END)}
+# v4: 보고서 직전에 👤 심사역 검토(review) 노드 — 기본은 그냥 통과, --review 일 때만 멈춤
+DESIGN_EDGES = {(START, "discover"), ("discover", "founder"), ("discover", "review"), ("founder", "tech"),
+                ("tech", "market"), ("market", "competition"), ("competition", "decide"), ("decide", "review"),
+                ("decide", "discover"), ("review", "report"), ("report", END)}
 ANALYSIS = ("founder", "tech", "market", "competition")
 
 
@@ -284,7 +285,7 @@ def fake_app(monkeypatch, tmp_path):
 
     fakes = Fakes([["A", "B", "C"]], decisions={"B": "투자"})
     monkeypatch.setattr(app, "_check_browser", lambda: None)
-    monkeypatch.setattr(app, "build_graph", lambda: build_graph(fakes.nodes()))
+    monkeypatch.setattr(app, "build_graph", lambda **k: build_graph(fakes.nodes(), **k))
     monkeypatch.setattr(app, "get_run_date", lambda: "2026-09-30")
     monkeypatch.setattr(app, "path", tmp_path_of)
     return app, fakes, tmp_path
@@ -363,3 +364,66 @@ def test_failed_analysis_node_is_recorded_and_run_continues(monkeypatch):
     monkeypatch.setenv("REPLAY_OFFLINE", "1")
     with pytest.raises(RuntimeError):
         build_graph(nodes).invoke(dict(state), {"recursion_limit": get_config().workflow.recursion_limit})
+
+
+# ── 👤 심사역 검토 (Human-in-the-loop)
+def test_review_parse_validates_answers():
+    from graph.review import parse
+
+    prop = {"target": "B", "passed": [{"name": "B", "score100": 107}, {"name": "C", "score100": 103}]}
+    assert parse("approve", prop) == {"action": "approve", "target": "B", "reason": None}
+    assert parse("pick: C", prop) == {"action": "pick", "target": "C", "reason": None}
+    assert parse("reject:실사 인력 부족", prop) == {"action": "reject", "target": "B", "reason": "실사 인력 부족"}
+    assert parse("pick:Z", prop)["action"] == "invalid" and parse("reject", prop)["action"] == "invalid"   # 기준 통과 후보만·사유 필수
+
+
+@pytest.mark.parametrize("answer, action, target", [("pick:C", "pick", "C"), ("approve", "approve", "B"),
+                                                    ("reject:근거 부족", "reject", "B")])
+def test_review_interrupts_before_report_and_resumes(set_cfg, answer, action, target):
+    """--review: 결정이 끝난 뒤 보고서 직전에 멈추고(interrupt), 심사역 답으로 같은 thread 를 이어서 실행한다."""
+    import app
+    from langgraph.checkpoint.memory import InMemorySaver
+
+    set_cfg("workflow.human_review", True)
+    f = Fakes([["A", "B", "C"]], decisions={"B": "투자", "C": "투자"})
+    shown = []
+    g = build_graph(f.nodes(), checkpointer=InMemorySaver())
+    state = {"registry": {}, "discovery_rounds": 0, "iterations": 0, "queue": [], "seen": [], "evaluations": [],
+             "screened": [], "log": [], "rag_traces": [], "errors": []}
+    cfg = {"recursion_limit": get_config().workflow.recursion_limit, "configurable": {"thread_id": f"t-{action}"}}
+    out = app.run_graph(g, state, cfg, True, answer_fn=lambda _: (shown.append(1), answer)[1])
+    assert shown and out["review"]["action"] == action and out["review"]["target"] == target
+    assert f.calls[-1] == "report" and f.calls.count("report") == 1     # 멈춘 동안 보고서를 쓰지 않았다
+
+
+def test_review_off_by_default_passes_through():
+    out = Fakes([["A", "B"]], decisions={"B": "투자"}).run()
+    assert "review" not in out and out["report"]["mode"] == "invest"
+
+
+# ── 비용 상한
+def test_budget_guard_stops_new_llm_calls(set_cfg, monkeypatch):
+    from core.cost import BudgetExceeded, CostTracker
+    from graph.builder import guard
+
+    t = CostTracker()
+    set_cfg("workflow.max_llm_usd", 0.5)
+    t._check_budget()                       # 상한 전에는 통과
+    t.usd = 0.5
+    with pytest.raises(BudgetExceeded):
+        t.on_chat_model_start({}, [])
+    monkeypatch.delenv("REPLAY_OFFLINE", raising=False)
+
+    def spend(_):
+        raise BudgetExceeded("over")
+    with pytest.raises(BudgetExceeded):     # 분석 노드 실패 처리(guard)는 비용 상한만큼은 삼키지 않고 실행을 멈춘다
+        guard("tech", spend)({"current": {"name": "A"}})
+
+
+def test_cache_options_for_stability_runs(set_cfg):
+    """반복 실행 안정성 측정(eval/eval_passk.py)용: LLM 캐시만 끄고, 캐시 폴더는 사본으로 바꾼다."""
+    import app
+
+    cfg = get_config()
+    app.apply_options(app.parse_args(["--no-llm-cache", "--cache-dir", "/tmp/x", "--out", "o"]), cfg)
+    assert cfg.cache.llm is False and cfg.cache.dir == "/tmp/x" and cfg.report.scenario

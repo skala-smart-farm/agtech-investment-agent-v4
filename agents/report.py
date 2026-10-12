@@ -682,8 +682,7 @@ def _faithfulness(draft: _Body, reg: SourceRegistry, target: float, evals: list[
 def _recite(draft: _Body, faith: dict, reg: SourceRegistry, ctx: dict) -> tuple[_Body, list[str]]:
     """충실성 미달 문장의 인용 바로잡기: 같은 보고서 입력(ctx)의 근거 중 그 문장을 뒷받침하는 근거를 찾으면 인용만 바꾼다.
     문장 내용은 그대로 둔다(LLM 다시 쓰기는 오히려 통과율을 낮춘 실측이 있어 먼저 하지 않는다). 반환 (새 초안, 바꾼 문장 목록)."""
-    pool = [i for i in dict.fromkeys(re.findall(r"[WD][0-9a-f]{5,8}", "\n".join(str(v) for v in ctx.values()))) if reg.get(i)]
-    fixed: dict[str, str] = {}
+    pool, fixed = _pool_ids(ctx, reg), {}
     for f in faith.get("failed") or []:
         ids = faithfulness.recite(f["sentence"], pool, lambda i: _doc_text(reg, i), lambda i: _source_of(reg, i))
         if not ids:
@@ -691,11 +690,67 @@ def _recite(draft: _Body, faith: dict, reg: SourceRegistry, ctx: dict) -> tuple[
         for _, text in _draft_fields(draft):
             for raw in _sentences(text):
                 if CITE.sub("", raw).strip() == f["sentence"]:
-                    body = re.sub(r"\s+([.,;])", r"\1", CITE.sub("", raw)).rstrip()
-                    end = "." if body.endswith(".") else ""
-                    fixed[raw] = f"{body.removesuffix('.')} [{', '.join(ids)}]{end}"
+                    fixed[raw] = _with_cite(raw, ids, raw)
+    return _replace_sentences(draft, fixed), list(fixed.values())
+
+
+def _numeric_claims(draft: _Body) -> list[tuple[str, str]]:
+    """숫자(금액·%·명·곳 등)가 든 사실 문장 (어디, 문장). 각 장 첫 줄 결론은 요약이라 뺀다."""
+    return [(w, s) for w, t in _draft_fields(draft) if "결론" not in w
+            for s in _sentences(t) if _quantities(RULE_WINDOW.sub(" ", CITE.sub("", s)))]
+
+
+def _cite_missing(draft: _Body, reg: SourceRegistry, ctx: dict) -> tuple[_Body, list[str]]:
+    """인용이 빠진 숫자 문장에, 같은 보고서 입력의 근거 중 그 문장을 뒷받침하는 근거를 찾아 인용을 붙인다(문장은 그대로).
+    못 찾으면 그대로 둔다(출처 명시율 미달로 남음). 반환 (새 초안, 고친 문장)."""
+    pool, fixed = _pool_ids(ctx, reg), {}
+    text_of, source_of = (lambda i: _doc_text(reg, i)), (lambda i: _source_of(reg, i))
+    for _, raw in _numeric_claims(draft):
+        if _cite_ids(raw):
+            continue
+        if ids := faithfulness.recite(raw.strip(), pool, text_of, source_of):
+            fixed[raw] = _with_cite(raw, ids, raw)
+            continue
+        top = sorted(pool, key=lambda i: -faithfulness._overlap_whole(raw, text_of(i)))[:4]
+        if top and (new := faithfulness.fix_sentence(CITE.sub("", raw).strip(), top, text_of, source_of)):
+            fixed[raw] = _with_cite(new, top, raw)   # 근거에 맞게 고친 문장 + 그 근거 인용
+    return _replace_sentences(draft, fixed), list(fixed.values())
+
+
+def _pool_ids(ctx: dict, reg: SourceRegistry) -> list[str]:
+    """보고서 입력(ctx)에 나온 근거 id (인용을 바로잡거나 고칠 때 고를 수 있는 근거의 범위)."""
+    return [i for i in dict.fromkeys(re.findall(r"[WD][0-9a-f]{5,8}", "\n".join(str(v) for v in ctx.values()))) if reg.get(i)]
+
+
+def _with_cite(text: str, ids: list[str], like: str) -> str:
+    """문장 끝에 인용을 붙인다. 원래 문장(like)이 마침표로 끝나면 마침표를 유지한다."""
+    body = re.sub(r"\s+([.,;])", r"\1", CITE.sub("", text)).rstrip().removesuffix(".")
+    return f"{body} [{', '.join(ids)}]" + ("." if like.rstrip().endswith(".") else "")
+
+
+def _fix_failed(draft: _Body, faith: dict, reg: SourceRegistry, ctx: dict) -> tuple[_Body, list[str]]:
+    """충실성 미달 문장(인용 바로잡기로도 안 된 것)을 문장 하나씩 근거에 맞게 고쳐 쓰고, 다시 판정해 통과한 것만 바꾼다.
+    근거는 원래 인용 → 못 고치면 같은 입력에서 고른 근거 4개 순으로 쓴다. 평가표 대조(코드)로 판정한 문장은 건드리지 않는다."""
+    pool, fixed = _pool_ids(ctx, reg), {}
+    text_of, source_of = (lambda i: _doc_text(reg, i)), (lambda i: _source_of(reg, i))
+    for f in faith.get("failed") or []:
+        if f["reason"].startswith("평가표 대조(코드)"):
+            continue
+        raw = next((r for _, t in _draft_fields(draft) for r in _sentences(t) if CITE.sub("", r).strip() == f["sentence"]), None)
+        if not raw:
+            continue
+        own = [i for i in _cite_ids(raw) if reg.get(i)]
+        top = sorted(pool, key=lambda i: -faithfulness._overlap_whole(f["sentence"], text_of(i)))[:4]
+        for ids in [x for x in (own, top) if x]:
+            if new := faithfulness.fix_sentence(f["sentence"], ids, text_of, source_of):
+                fixed[raw] = _with_cite(new, ids, raw)
+                break
+    return _replace_sentences(draft, fixed), list(fixed.values())
+
+
+def _replace_sentences(draft: _Body, fixed: dict[str, str]) -> _Body:
     if not fixed:
-        return draft, []
+        return draft
 
     def walk(x):
         if isinstance(x, str):
@@ -707,13 +762,12 @@ def _recite(draft: _Body, faith: dict, reg: SourceRegistry, ctx: dict) -> tuple[
         if isinstance(x, dict):
             return {k: walk(v) for k, v in x.items()}
         return x
-    return type(draft).model_validate(walk(draft.model_dump())), list(fixed.values())
+    return type(draft).model_validate(walk(draft.model_dump()))
 
 
 def _citation_coverage(draft: _Body) -> dict:
     """근거성(출처 명시율): 숫자(금액·%·명·곳 등)가 들어간 사실 문장 중 인용이 붙은 비율. 각 장 첫 줄 결론은 요약이라 뺀다."""
-    claims = [(w, s) for w, t in _draft_fields(draft) if "결론" not in w
-              for s in _sentences(t) if _quantities(RULE_WINDOW.sub(" ", CITE.sub("", s)))]
+    claims = _numeric_claims(draft)
     uncited = [f"[{w}] {s[:100]}" for w, s in claims if not _cite_ids(s)]
     return {"claims": len(claims), "cited": len(claims) - len(uncited),
             "rate": round(1 - len(uncited) / len(claims), 3) if claims else None, "uncited": uncited}
@@ -2024,6 +2078,9 @@ def report_node(state: dict) -> dict:
     if not evals:
         return _no_candidate_report(state, cfg, screened, reg, run_date)
     invested, ranked, target = _pick_target(evals)  # 투자 기준 통과 후보 중 배수 1위
+    review = state.get("review") or {}              # 👤 심사역 검토(--review): pick 이면 심사역이 고른 기준 통과 후보가 대상
+    if review.get("action") == "pick":
+        target = next((e for e in invested if e["name"] == review["target"]), target)
     mode = "invest" if invested else "hold"
     prof, sc = target.get("profile") or {}, target["scorecard"]
     pool = _pool(state, evals, screened, cfg)
@@ -2047,8 +2104,14 @@ def report_node(state: dict) -> dict:
                       f"(동종 평균 100 초과, 창업자 기준 {_s1(sc.get('founder_c'))}), {peer}")
         pick = (f"{len(evals)}곳 평가 → 투자 기준 통과 {len(invested)}곳 중 배수 1위" if len(evals) > 1
                 else f"{evals.index(target) + 1}번째 평가 대상")
+        if review.get("action") == "pick":
+            pick = f"{len(evals)}곳 평가 → 투자 기준 통과 {len(invested)}곳 중 심사역 선택(배수 {ranked.index(target) + 1}위)"
         situation = f"{_funnel(pool)} → {pick} {target['name']}({prof.get('stage') or '-'}, {seg})"
         request = (f"실사 확인 항목 {k_dd}개를 조건으로 투자심의 상정을 진행할까요?" if k_dd else "투자심의 상정을 진행할까요?")
+        if review.get("action") in ("approve", "pick"):
+            request += " (심사역 검토: 승인)" if review["action"] == "approve" else " (심사역 검토: 대상 선택)"
+        elif review.get("action") == "reject":
+            request = f"심사역 반려({review['reason']}) — 상정하지 않고 실사 확인 항목 {k_dd}개를 먼저 보완할까요?"
         title = f"{target['name']} 투자 검토 — 투자 추천(실사 조건부)"
         badge = "투자 추천"
         expect = lambda c: (c.startswith(f"{target['name']} 투자 추천") and target["decision"] == "투자"  # noqa: E731
@@ -2118,6 +2181,10 @@ def report_node(state: dict) -> dict:
     # 1-3) 그래도 성장률 불일치 문장이 남으면 코드로 뺀다 (LLM 호출 없음 — 재현 캐시와 무관)
     draft, cagr_removed = _enforce_cagr(draft, target, reg) if _draft_cagr(draft) else (draft, [])
     draft, unknown_fixed = _enforce_unknown_lists(draft, evals)   # 보류 사유의 미확인 목록 = 평가표 (코드)
+    fcfg0 = cfg.report.get("faithfulness") or {}
+    cited_added: list[str] = []
+    if fcfg0.get("mode", "off") in ("flag", "rewrite"):   # 인용이 빠진 숫자 문장 → 뒷받침하는 근거를 찾아 인용을 붙임
+        draft, cited_added = _cite_missing(draft, reg, ctx)
 
     # 1-4) 문장 충실성: 인용이 붙은 문장마다 '근거가 이 문장을 뒷받침하는가'를 판정(LLM)하고 통과율을 목표와 비교(코드).
     #      mode=rewrite 면 목표 미달일 때 1회 다시 쓰고, 통과율이 오르고 다른 검사가 나빠지지 않을 때만 새 초안을 받는다
@@ -2130,6 +2197,11 @@ def report_node(state: dict) -> dict:
         draft2, recited = _recite(draft, faith, reg, ctx)
         if recited:
             draft, faith = draft2, {**_faithfulness(draft2, reg, ftarget, evals), "recited": recited}
+        if faith["rate"] < ftarget:   # 그래도 미달이면 실패한 문장만 하나씩 근거에 맞게 고쳐 쓰기(문장 단위 평가-개선 1회)
+            draft3, sent_fixed = _fix_failed(draft, faith, reg, ctx)
+            if sent_fixed:
+                draft, faith = draft3, {**_faithfulness(draft3, reg, ftarget, evals), "recited": recited,
+                                        "sentence_fixed": sent_fixed}
     if fmode == "rewrite" and faith["rate"] is not None and faith["rate"] < ftarget:
         fb = ("직전 초안의 다음 문장은 붙인 인용 근거가 내용을 뒷받침하지 않는다. 근거에 적힌 사실로 고치거나, 근거가 없으면 그 내용을 빼라. "
               "다른 문장은 그대로 둬라:\n- " + "\n- ".join(faith["unsupported"][:10]))
@@ -2205,7 +2277,8 @@ def report_node(state: dict) -> dict:
                                                              for n, i in v["names"].items()}} for v in variants],
                "team_table_conflicts": _team_conflicts(team_texts, target, reg),
                "portal_refs": {k: sum(r.get("portal") == k for r in refs) for k in ("resolved", "unresolved")},
-               "faithfulness": faith, "citation_coverage": _citation_coverage(draft), "unknown_list_fixed": unknown_fixed}
+               "faithfulness": faith, "citation_coverage": {**_citation_coverage(draft), "added": cited_added},
+               "unknown_list_fixed": unknown_fixed}
     return _finish(numbered, md, result, cfg, checks, mode, cited, title, target["name"],
                    "투자 추천" if mode == "invest" else "투자 추천 대상 없음")
 

@@ -49,6 +49,7 @@ def test_report_rewrites_once_when_faithfulness_below_target_and_accepts_only_if
     def fake(sent, ids, text_of, source_of):
         return F.Support(supported="47.3%" not in sent, reason="근거에 47.3% 없음")
     monkeypatch.setattr(F, "judge_sentence", fake)
+    monkeypatch.setattr(F, "fix_sentence", lambda *a, **k: None)   # 문장 고쳐 쓰기도 실패 → 보고서 다시 쓰기 단계로
     set_cfg("report.number_check", {"rewrite": False})
     bad = dict(INVEST, market=INVEST["market"] + " 국내 시장은 연평균 47.3% 성장한다 [D72ffc].")
     rep, md, llm = run(_load("invest"), [bad, INVEST])
@@ -137,3 +138,57 @@ def test_enforce_unknown_lists_removes_items_the_scorecard_says_yes():
     assert fixed.candidates[0].why_not == "최근 마일스톤, 민간 매출, 매출 등 공개 근거 없음 [W1a2b3]"
     assert log == ["A: 평가표 YES 문항을 미확인 목록에서 뺌 — 기술 책임자 이력, 자본집약도"]
     assert R._enforce_unknown_lists(fixed, evals)[1] == []
+
+
+def test_overlap_uses_best_window_not_whole_document():
+    """긴 문서가 낱말을 여기저기 조금씩 가져도, 한 구간에 몰려 있는 짧은 근거가 더 높게 잡혀야 한다."""
+    sent = "농업용 로봇 구입 비용 부담으로 구독형 요금제 도입"
+    short = "로봇 구입 비용 부담을 줄이려고 구독형 요금제 도입을 준비한다"
+    long_doc = ("농업용 " + "가" * 1500 + " 로봇 " + "나" * 1500 + " 비용 " + "다" * 1500 + " 도입 ") * 3
+    assert F._overlap(sent, short) > F._overlap(sent, long_doc)
+
+
+def test_cite_missing_adds_citation_to_uncited_numeric_sentence(monkeypatch):
+    reg = SourceRegistry()
+    w = reg.add_web({"url": "https://a.kr/9", "title": "고용", "content": "메타파머스의 국민연금 가입자는 19명이다"}, "founder", "q", "2026-09-30")
+    draft = R.Draft(**dict(INVEST, team="메타파머스의 직원은 19명이다."))
+    monkeypatch.setattr(F, "judge_sentence", lambda s, ids, t, so: F.Support(supported=w in ids, reason=""))
+    fixed, added = R._cite_missing(draft, reg, {"evidence": f"[{w}]"})
+    assert added and fixed.team == f"메타파머스의 직원은 19명이다 [{w}]." and R._citation_coverage(fixed)["rate"] == 1.0
+
+
+def test_resolve_origin_retries_with_title_only(monkeypatch):
+    s = _portal_source(SourceRegistry())
+    calls = []
+
+    def fake(q, *a, **k):
+        calls.append(q)
+        return [] if len(calls) == 1 else [{"url": "https://biz.chosun.com/y/", "title": s["title"]}]
+    monkeypatch.setattr(WS, "_raw_search", fake)
+    assert resolve_origin(s)["url"] == "https://biz.chosun.com/y/" and len(calls) == 2 and calls[1].startswith('"')
+
+
+def test_fix_sentence_rewrites_one_sentence_and_keeps_it_only_if_judged_supported(monkeypatch):
+    texts = {"W1": "메타파머스는 2025년 8월 30억원 프리A 투자를 유치했다. 2022년 9월 설립."}
+
+    class FakeFix:
+        def __init__(self, out):
+            self.out = out
+
+        def invoke(self, prompt):
+            return F.Fixed(sentence=self.out)
+    monkeypatch.setattr(F, "judge_sentence", lambda s, ids, t, so: F.Support(supported="CES" not in s, reason=""))
+    monkeypatch.setattr(F, "bounded", lambda schema, *a, **k: FakeFix("2022년 창업 후 프리A 유치 등 다수 성과 달성"))
+    sent = "2022년 창업 후 프리A 유치와 CES 혁신상 수상 등 다수 성과 달성"
+    assert F.fix_sentence(sent, ["W1"], texts.get, lambda i: "") == "2022년 창업 후 프리A 유치 등 다수 성과 달성"
+    monkeypatch.setattr(F, "bounded", lambda schema, *a, **k: FakeFix("CES 혁신상 수상"))   # 고쳐도 판정 실패 → 안 받음
+    assert F.fix_sentence(sent, ["W1"], texts.get, lambda i: "") is None
+    monkeypatch.setattr(F, "bounded", lambda schema, *a, **k: FakeFix("가" * (len(sent) + 10)))   # 더 길어지면 안 받음
+    assert F.fix_sentence(sent, ["W1"], texts.get, lambda i: "") is None
+
+
+def test_keeps_meaning_rejects_a_different_story():
+    old = "기술·시장·실적 등 주요 항목에서 확인되지 않은 부분이 많고, 글로벌 투자 조정 국면으로 투자 심사 기준이 강화됨"
+    assert not F.keeps_meaning(old, "글로벌 스마트 농업 시장은 2023년부터 2034년까지 연평균 10.2%에서 19.1% 성장할 전망")
+    team = "대표 이규화는 서울대 기계공학과 출신으로 2022년 창업 후 시드 투자, TIPS 선정, 프리A 투자 유치, CES 혁신상 수상"
+    assert F.keeps_meaning(team, "대표 이규화는 서울대 기계공학과 출신으로 2022년 창업 후 시드 투자, TIPS 선정, 2025년 프리A 투자 유치")

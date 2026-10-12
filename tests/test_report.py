@@ -574,3 +574,12 @@ def test_table_captions_do_not_repeat_chapter_numbers(run, can_render):
     html = Path(rep["html"]).read_text(encoding="utf-8")
     caps = re.findall(r'<div class="cap"><b>표 \d+\.</b>([^<]*)</div>', html)
     assert caps and not [c for c in caps if re.match(r"\s*\d", c)], caps
+
+
+def test_report_request_line_shows_reviewer_decision(run):
+    """👤 심사역 검토 결과가 SUMMARY 요청 줄에 남는다: 승인이면 '(심사역 검토: 승인)', 반려면 상정하지 않는다."""
+    state = _load("invest")
+    _, md, _ = run({**state, "review": {"action": "approve", "target": None, "reason": None}}, [INVEST])
+    assert "(심사역 검토: 승인)" in md.split("## 1.")[0]
+    _, md2, _ = run({**state, "review": {"action": "reject", "target": None, "reason": "실사 인력 부족"}}, [INVEST])
+    assert "심사역 반려(실사 인력 부족) — 상정하지 않고" in md2.split("## 1.")[0]

@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")  # 라이브러리 경고로 진행 로그가 
 
 from core.config import ROOT, get_config, path, require_keys
 from core.config import run_date as get_run_date
-from core.cost import TRACKER
+from core.cost import TRACKER, BudgetExceeded
 from graph.builder import build_graph
 from tools import web_search as web_search_mod
 
@@ -69,6 +69,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                         help="재현 테스트: 캐시에 없는 검색·LLM 호출이 생기면 바로 실패 (API 키 없이 실행 가능)")
     parser.add_argument("--retry-failed", action="store_true",
                         help="재현용 캐시에 실패로 표시된 검색만 다시 시도 (검색 한도 초과로 비었던 근거를 새 키로 보강)")
+    parser.add_argument("--review", action="store_true",
+                        help="보고서 직전에 심사역 승인을 받는다 (approve | pick:<후보> | reject:<사유>, graph/review.py)")
+    parser.add_argument("--no-llm-cache", action="store_true",
+                        help="LLM 응답 캐시를 쓰지 않는다(검색·공시 캐시는 그대로) — 반복 실행 안정성 측정용(eval/eval_passk.py)")
+    parser.add_argument("--cache-dir", metavar="DIR", default=None,
+                        help="재현용 캐시 폴더를 바꾼다(기본 replay/). 측정용 사본을 쓸 때")
     parser.add_argument("--threshold", type=float, default=None,
                         help="투자 기준 배수(decision.threshold)를 이번 실행에서만 바꾼다. 제출 보고서를 덮어쓰지 않게 --out 과 함께 쓴다")
     mode = parser.add_mutually_exclusive_group()
@@ -84,8 +90,14 @@ def apply_options(args: argparse.Namespace, cfg) -> str:
     get_config() 캐시 객체의 원본 dict 를 고치므로 이후 노드가 get_config() 로 읽어도 바뀐 값이 보인다."""
     if args.fresh:
         cfg["cache"]["dir"] = "cache_fresh"
+    if getattr(args, "cache_dir", None):
+        cfg["cache"]["dir"] = args.cache_dir
+    if getattr(args, "no_llm_cache", False):
+        cfg["cache"]["llm"] = False
     if args.threshold is not None:
         cfg["decision"]["threshold"] = args.threshold
+    if getattr(args, "review", False):
+        cfg["workflow"]["human_review"] = True
     if args.calibrate:
         cfg["workflow"]["stop_on_invest"] = False
         cfg["workflow"]["calibrate"] = True
@@ -126,6 +138,7 @@ def build_run_log(state: dict, cfg, *, mode: str, run_date: str, elapsed: float)
     return {
         "run_date": run_date, "elapsed_sec": elapsed, "mode": mode, "threshold": cfg.decision.threshold,
         "end_reason": state.get("end_reason"), "status": state.get("status"), "errors": state.get("errors", []),
+        "review": state.get("review"),
         "models": dict(cfg.models), "embedding": cfg.embedding.model,
         "discovery_rounds": state.get("discovery_rounds"), "evaluated": state.get("iterations"),
         "screened": [{k: r.get(k) for k in SCREENED_KEYS} for r in state.get("screened", [])],
@@ -187,6 +200,25 @@ def finish_calibration(state: dict, cfg, run_date: str) -> dict:
             "invest_count_at": sens.get("invest_count_at"), "same_as_v1_evaluated": same}
 
 
+def ask_reviewer(prop: dict, answer_fn=input) -> str:
+    """👤 심사역 검토: 제안(투자 기준 통과 후보·보고서 대상)을 보여 주고 답을 받는다. 형식 검증은 graph/review.parse 가 한다."""
+    print("\n[심사역 검토] 투자 기준 통과 후보 (배수 순):")
+    for i, p in enumerate(prop["passed"], 1):
+        print(f"  {i}. {p['name']} — 동종 평균 대비 {p['score100']}")
+    print(f"  제안 대상: {prop['target']}  |  답: {prop['answers']}")
+    return answer_fn("> ").strip()
+
+
+def run_graph(app, state: dict, config: dict, review: bool, answer_fn=input) -> dict:
+    """그래프 실행. --review 면 멈춘 지점(interrupt)에서 심사역 답을 받아 같은 thread 로 이어서 실행한다."""
+    from langgraph.types import Command
+
+    out = app.invoke(state, config)
+    while review and out.get("__interrupt__"):
+        out = app.invoke(Command(resume=ask_reviewer(out["__interrupt__"][0].value, answer_fn)), config)
+    return out
+
+
 def main(argv: list[str] | None = None) -> None:
     warnings.filterwarnings("ignore")
     if hasattr(sys.stdout, "reconfigure"):
@@ -203,7 +235,12 @@ def main(argv: list[str] | None = None) -> None:
     mode = apply_options(args, cfg)
     if args.fresh or args.retry_failed:  # 새로 호출할 실행은 키가 없으면 중간이 아니라 시작할 때 멈춘다
         require_keys()
-    app = build_graph()
+    checkpointer = None
+    if args.review:  # 멈췄다 이어서 실행하려면 State 를 저장할 체크포인터가 필요하다
+        from langgraph.checkpoint.memory import InMemorySaver
+
+        checkpointer = InMemorySaver()
+    app = build_graph(checkpointer=checkpointer)
     if args.graph_only:
         print(save_graph_image(app))
         return
@@ -216,7 +253,14 @@ def main(argv: list[str] | None = None) -> None:
     print(f"== AgTech 스타트업 투자 평가 시작 ({run_date}, 모드 {mode}, 기준 배수 {cfg.decision.threshold}, "
           f"생성 {cfg.models.generator}, 판정 {cfg.models.judge}, 임베딩 {cfg.embedding.model}, 캐시 {cfg.cache.dir}/) ==")
     print(search_notice(args, cfg))
-    state = app.invoke(initial_state(cfg, run_date), {"recursion_limit": cfg.workflow.recursion_limit})
+    config = {"recursion_limit": cfg.workflow.recursion_limit, "configurable": {"thread_id": f"{mode}-{run_date}"}}
+    try:
+        state = run_graph(app, initial_state(cfg, run_date), config, args.review)
+    except BudgetExceeded as e:  # 비용 상한: 새 호출을 막고 멈춘다. 제출용 run_log 는 덮어쓰지 않고 따로 남긴다
+        _write_json(f"{cfg.report.output_dir}/run_log_stopped.json",
+                    {"run_date": run_date, "mode": mode, "status": "STOPPED_BUDGET", "error": str(e),
+                     "elapsed_sec": round(time.time() - t0, 1), "llm_cost": TRACKER.summary()})
+        raise SystemExit(f"[중단] {e} — 기록: {cfg.report.output_dir}/run_log_stopped.json")
     elapsed = round(time.time() - t0, 1)
 
     out_dir = cfg.report.output_dir
