@@ -397,3 +397,19 @@ def test_rubric_decision_rule_matches_config():
     assert not re.search(r"(?<![\d.])(70|1\.10)(?![\d])", rule), "옛 기준 수치(70 · 1.10)"
     assert not re.search(r"[≥>]=?\s*(1\.1|110|70)", rule) and "YES ≥" not in rule and "미확인 ≥" not in rule
     assert not any(t in rule for t in ("정보 부족", "창업자 근거 없음", "동종 대비 열위", "설계 가정"))
+
+
+def test_rank_key_tie_break_is_order_independent():
+    """동점 규칙(사전 고정): 배수 → 창업자 점수 → 확인된 YES 수 → NO 수 → 이름. 평가 순서가 동점을 가르지 않는다."""
+    from agents.decision import eval_rank_key
+
+    def ev(name, m, fc, yes, no):
+        rows = [{"answer": "YES"}] * yes + [{"answer": "NO"}] * no + [{"answer": "UNKNOWN"}] * (24 - yes - no)
+        return {"name": name, "scorecard": {"multiplier": m, "founder_c": fc, "rows": rows}}
+
+    a, b = ev("새팜", 1.0514, 1.0, 3, 0), ev("메타파머스", 1.0514, 1.0, 4, 0)   # 배수·창업자 동점 → YES 많은 쪽
+    assert sorted([a, b], key=eval_rank_key)[0]["name"] == "메타파머스" == sorted([b, a], key=eval_rank_key)[0]["name"]
+    c, d = ev("가", 1.05, 1.0, 4, 1), ev("나", 1.05, 1.0, 4, 0)                 # YES 도 같으면 NO 적은 쪽
+    assert sorted([c, d], key=eval_rank_key)[0]["name"] == "나"
+    e, f = ev("가", 1.05, 0.95, 9, 0), ev("나", 1.05, 1.05, 1, 0)              # 창업자 점수가 YES 수보다 먼저
+    assert sorted([e, f], key=eval_rank_key)[0]["name"] == "나"

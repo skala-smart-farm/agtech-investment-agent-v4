@@ -184,6 +184,27 @@ def write_reference_class(evaluations: list[dict], path: str, run_date: str) -> 
     return data
 
 
+def rank_key(multiplier: float, founder_c: float | None, yes: int, no: int, name: str) -> tuple:
+    """순위·보고서 대상 정렬 키 (동점 규칙, 결과를 보기 전에 고정): 배수 높은 순 → 창업자 점수 높은 순(Scorecard 팀 우선 원칙)
+    → 확인된 YES 많은 순 → NO 적은 순 → 이름 순. 평가 순서가 동점을 가르지 않게 모든 정렬이 이 키를 쓴다."""
+    return (-round(multiplier or 0.0, 6), -round(founder_c or 0.0, 6), -yes, no, name)
+
+
+def _counts(rows: list[dict]) -> tuple[int, int]:
+    return sum(r["answer"] == "YES" for r in rows), sum(r["answer"] == "NO" for r in rows)
+
+
+def eval_rank_key(e: dict) -> tuple:
+    """평가 결과(dict: scorecard 가 있거나 run_log 형식) → rank_key."""
+    sc = e.get("scorecard") or {}
+    M = sc.get("multiplier", e.get("multiplier"))
+    fc = sc.get("founder_c")
+    if fc is None:
+        fc = next((c["pct"] / 100 for c in e.get("criteria") or [] if c.get("dim") == "founder" and c.get("pct") is not None), None)
+    yes, no = _counts(sc.get("rows") or e.get("rows") or [])
+    return rank_key(M, fc, yes, no, e.get("name", ""))
+
+
 def _peer_scores(data: dict, rubric: dict) -> list[dict]:
     """기준 집단 구성원마다 자기 제외(LOO) 동종 평균으로 구한 배수·창업자 YES·창업자 기준 비율(founder_c)·Deal-killer."""
     d = get_config().decision
@@ -192,8 +213,9 @@ def _peer_scores(data: dict, rubric: dict) -> list[dict]:
         rows = _rows_from_signals(m["signals"], rubric)
         ref = _reference(data, m["name"], rubric, d.reference_min_n)
         M, crit = payne_multiplier(rows, ref["mean"], rubric, d.step, d.clip)
+        yes, no = _counts(rows)
         out.append({"name": m["name"], "multiplier": M, "founder_yes": _founder_yes(rows),
-                    "founder_c": _founder_c(crit), "killers": _killers(rows, rubric)})
+                    "founder_c": _founder_c(crit), "killers": _killers(rows, rubric), "yes": yes, "no": no})
     return out
 
 
@@ -213,7 +235,8 @@ def write_threshold_sensitivity(ref_path: str, out_path: str) -> dict:
                 "founder_c": p["founder_c"], "killers": p["killers"],
                 "decision_at": {k: _decide(p["multiplier"], p["founder_c"], p["killers"], t, d.founder_min_c)
                                 for k, t in keys}}
-               for p in sorted(_peer_scores(data, rubric), key=lambda p: -p["multiplier"])]
+               for p in sorted(_peer_scores(data, rubric),
+                               key=lambda p: rank_key(p["multiplier"], p["founder_c"], p["yes"], p["no"], p["name"]))]
     out = {"thresholds": [t for _, t in keys], "threshold": d.threshold, "reference_n": len(members),
            "members": members,
            "invest_count_at": {k: sum(m["decision_at"][k] == "투자" for m in members) for k, _ in keys}}
@@ -478,7 +501,7 @@ def _ranking(data: dict | None, ref: dict, name: str, me: dict, rubric: dict, cf
             "is_target": False}
            for p in _peer_scores(data, rubric) if norm(p["name"]) != norm(name)]
     out.append({**me, "is_target": True})
-    out.sort(key=lambda e: -e["multiplier"])
+    out.sort(key=lambda e: rank_key(e["multiplier"], e.get("founder_c"), e.get("yes", 0), e.get("no", 0), e["name"]))
     return out, next(i + 1 for i, e in enumerate(out) if e["is_target"]), len(out)
 
 
@@ -535,7 +558,8 @@ def decision_node(state: dict) -> dict:
                 if decision == "보류" else None)
         ranking, target_rank, peer_n = _ranking(
             data, ref, name, {"name": name, "multiplier": M, "founder_yes": founder_yes, "founder_c": founder_c,
-                              "killers": killers, "decision": decision}, rubric, cfg)
+                              "killers": killers, "decision": decision, "yes": _counts(rows)[0], "no": _counts(rows)[1]},
+            rubric, cfg)
         scorecard = {**base, "criteria": criteria, "multiplier": M, "score100": score100,
                      "reference": {k: ref[k] for k in ("n", "loo", "source", "members", "run_date", "note")},
                      "decision": decision, "hold_type": hold_type, "reasons": reasons, "flip": flip,

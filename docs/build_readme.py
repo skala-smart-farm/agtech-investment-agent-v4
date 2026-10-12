@@ -318,9 +318,15 @@ def _escape_tilde(md: str) -> str:
     return "\n".join(out)
 
 
+def eval_rank_key(e: dict) -> tuple:
+    from agents.decision import eval_rank_key as k
+
+    return k(e)
+
+
 def _eval_rows(evals: list[dict]) -> list[dict]:
     """평가한 후보 전체(배수 순)와 판정 — 투자 추천 대상을 어떻게 골랐는지 보인다."""
-    rows = sorted((e for e in evals if e.get("multiplier") is not None), key=lambda e: -e["multiplier"])
+    rows = sorted((e for e in evals if e.get("multiplier") is not None), key=eval_rank_key)
     return [{"name": e["name"], "stage": e.get("stage") or "-", "region": "국내" if e.get("region") == "KR" else "해외",
              "m": _s100(e["multiplier"]),
              "fc": next((f"{c['pct']:.1f}" for c in e.get("criteria") or [] if c.get("dim") == "founder"), "-"),
@@ -328,7 +334,7 @@ def _eval_rows(evals: list[dict]) -> list[dict]:
 
 
 def _hold_rows(evals: list[dict]) -> list[dict]:
-    rows = sorted((e for e in evals if e.get("multiplier") is not None), key=lambda e: -e["multiplier"])
+    rows = sorted((e for e in evals if e.get("multiplier") is not None), key=eval_rank_key)
     return [{"name": e["name"], "m": _s100(e["multiplier"]), "type": e.get("hold_type") or e.get("decision") or "-",
              "flip": _flip(e.get("flip"))} for e in rows[:3]]
 
@@ -418,7 +424,7 @@ def context(run_file: str = "outputs/run_log.json") -> dict:
         conclusion=_conclusion(r, evals, thr100), pipe=_pipeline(run, evals, cfg),
         target=_target(run, r, sens, thr) if mode == "invest" else None,
         hold_rows=_hold_rows(evals) if mode == "hold" else [], eval_rows=_eval_rows(evals),
-        passed=[e["name"] for e in sorted(evals, key=lambda e: -(e.get("multiplier") or 0)) if e.get("decision") == "투자"],
+        passed=[e["name"] for e in sorted(evals, key=eval_rank_key) if e.get("decision") == "투자"],
         hold=_hold_focus(evals, sens, thr) if mode == "hold" else None,
         summary=_summary(md), chapters=_chapters(md), dd=_dd_items(md), summary_pct=f"{(r.get('summary_ratio') or 0) * 100:.0f}%",
         sens=sens, ref_mix=_reference_mix(), rt=_retrieval(cfg), judge=_judge(), elig=_eligibility(),

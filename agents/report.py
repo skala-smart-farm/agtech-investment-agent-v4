@@ -206,11 +206,18 @@ def _reference_gap(evals: list[dict]) -> dict | None:
     return {"unseen": unseen, "n_ref": len(members), "date": data.get("run_date") or "-"}
 
 
+def _rank(e: dict) -> tuple:
+    """정렬 키 = agents.decision.eval_rank_key (배수 → 창업자 점수 → YES 수 → NO 수 → 이름). 순환 import 를 피해 함수 안에서 부른다."""
+    from agents.decision import eval_rank_key
+
+    return eval_rank_key(e)
+
+
 def _pick_target(evals: list[dict]) -> tuple[list[dict], list[dict], dict]:
     """(투자 기준 통과 후보, 배수 순 전체, 보고서 대상). 대상은 투자 기준 통과 후보 중 배수 1위 — 평가 순서와 무관,
     통과 후보가 없으면 배수 1위(모두 보류 보고서)."""
     invested = [e for e in evals if e["decision"] == "투자"]
-    ranked = sorted(evals, key=lambda e: -e["scorecard"]["multiplier"])
+    ranked = sorted(evals, key=_rank)
     target = next(e for e in ranked if e["decision"] == "투자") if invested else ranked[0]
     return invested, ranked, target
 
@@ -1417,7 +1424,7 @@ def _team_blocks(target: dict, d: dict, reg: SourceRegistry, detail: bool) -> li
 
 def _evaluated_blocks(evals: list[dict], target: dict) -> list[dict]:
     """평가한 후보 전체(배수 순)와 대상 선정 방법 — 첫 투자 추천에서 멈추지 않고 비교해 고른 근거를 보인다."""
-    ranked = sorted(evals, key=lambda e: -e["scorecard"]["multiplier"])
+    ranked = sorted(evals, key=_rank)
     rows = [[i, e["name"] + (" (대상)" if e is target else ""),
              f"{e.get('stage') or (e.get('profile') or {}).get('stage') or '-'} · {'국내' if e.get('region') == 'KR' else '해외'}",
              _s1(e["scorecard"]["multiplier"]), _s1(e["scorecard"].get("founder_c")),

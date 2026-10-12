@@ -285,7 +285,8 @@ def test_hold_report_structure(run, can_render):
     ch2 = md.split("## 2. 후보별 보류 사유", 1)[1].split("\n## ", 1)[0]
     blocks = ch2.split("\n### ")[1:]
     assert len(blocks) == len(evals)
-    for b, e in zip(blocks, sorted(evals, key=lambda e: -e["multiplier"])):
+    from agents.decision import eval_rank_key   # 배수 동점(리비타·바르카 0.9562)은 창업자 점수 순 — 평가 순서와 무관
+    for b, e in zip(blocks, sorted(evals, key=eval_rank_key)):
         assert e["name"] in b.splitlines()[0] and e["hold_type"] in b.splitlines()[0]
         assert "- 뒤집힘 조건: " in b and "- 왜 안 되는가: " in b and "- 팀: " in b and "- 사업: " in b
         if e["flip"] and e["flip"].get("new_multiplier"):

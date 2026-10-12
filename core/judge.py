@@ -186,10 +186,16 @@ def _raw_context(quote: str, texts: list[str], window: int = 350) -> str:
     return "(주변 원문을 찾지 못함)"
 
 
-def _verify_yes(q: dict, company: str, quote: str, texts: list[str]) -> Verdict:
+def _source_line(s: dict) -> str:
+    if s.get("kind") == "doc":
+        return f"공공·연구기관 문서 — {s.get('publisher') or ''} {s.get('year') or ''}".strip()
+    return f"웹 — {s.get('site') or ''}, {s.get('date') or '게시일 미상'}"
+
+
+def _verify_yes(q: dict, company: str, quote: str, srcs: list[dict], texts: list[str], run_date: str) -> Verdict:
     return bounded(Verdict, "judge").invoke(render(
-        "verify_yes", company=company, question=q["text"], need=q.get("need", ""), quote=quote,
-        context=_raw_context(quote, texts)))
+        "verify_yes", company=company, question=q["text"], need=q.get("need", ""), quote=quote, run_date=run_date,
+        sources=" / ".join(_source_line(s) for s in srcs) or "-", context=_raw_context(quote, texts)))
 
 
 _norm = norm
@@ -565,7 +571,8 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
                 fail = "학력·전공만 있고 특허·논문·연구·경력 이력이 인용에 없음"
             if not fail and get_config().decision.get("verify_yes", False):
                 # 코드 규칙을 통과한 YES 만 검증자 LLM 이 한 번 더 본다 (인용이 인정 조건을 직접 충족하는가, 애매하면 아님)
-                v = _verify_yes(q, c.get("official_name") or c.get("name", ""), a.quote, [reg.text(i) for i in ev])
+                v = _verify_yes(q, c.get("official_name") or c.get("name", ""), a.quote, [reg.get(i) for i in ev],
+                                [reg.text(i) for i in ev], run_date)
                 if not v.supports:
                     fail = f"검증 단계: 인용이 문항의 인정 조건을 직접 충족하지 않음 — {v.reason}"
             elif q.get("min_competitors") and (n_rivals := int(c.get("confirmed_competitors") or 0)) < q["min_competitors"]:
