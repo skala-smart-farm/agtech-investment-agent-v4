@@ -13,8 +13,10 @@ domain:
     - {id: agdata, name: "농업 생산 데이터 분석·예측 AI (생육·환경 데이터)", ko: "농업 데이터 플랫폼", en: "agriculture data platform AI"}
 
 models:
+  # 모델 고정: gpt-4.1-mini (2026-10-12 팀 결정 — gpt-6-luna 등으로 바꾸면 판정·재현 캐시·평가 수치가 모두 바뀐다).
+  # tests/test_frozen.py 가 이 값의 변경을 막는다
   generator: gpt-4.1-mini              # 분석·보고서 작성
-  judge: gpt-4.1-mini                  # 문서 관련성 판정, 평가 기준 O/X 판정, RAG 답변 평가
+  judge: gpt-4.1-mini                  # 문서 관련성 판정, 평가 기준 O/X 판정, RAG 답변 평가, 문장 충실성·YES 검증
   temperature: 0
   max_output_tokens:                   # v2 에서 새로 부르는 구조화 출력의 출력 상한 (core/llm_bounded.py). 반복 퇴행 방지용
     default: 2500                      # v1 실측 최대: 분석 944·판정 668 토큰
