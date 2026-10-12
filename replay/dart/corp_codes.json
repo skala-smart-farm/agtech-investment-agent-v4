@@ -1,0 +1,65 @@
+{
+ "source": "OpenDART corpCode.xml",
+ "names": {
+  "메타파머스": {
+   "exact": [],
+   "loose": []
+  },
+  "트랙팜": {
+   "exact": [],
+   "loose": []
+  },
+  "대동애그테크": {
+   "exact": [
+    {
+     "corp_code": "01919963",
+     "corp_name": "대동애그테크",
+     "corp_eng_name": "DAEDONG AGTECH CORPORATION",
+     "stock_code": "",
+     "modify_date": "20250512"
+    }
+   ]
+  },
+  "리비타": {
+   "exact": [],
+   "loose": []
+  },
+  "새팜": {
+   "exact": [],
+   "loose": []
+  },
+  "퓨처커넥트": {
+   "exact": [],
+   "loose": []
+  },
+  "엠트리센": {
+   "exact": [],
+   "loose": []
+  },
+  "에임비랩": {
+   "exact": [],
+   "loose": []
+  },
+  "터빈크루": {
+   "exact": [],
+   "loose": []
+  },
+  "바르카": {
+   "exact": [],
+   "loose": []
+  },
+  "아이티테크": {
+   "exact": [],
+   "loose": []
+  },
+  "대봉유통": {
+   "exact": [],
+   "loose": []
+  },
+  "팜스태프": {
+   "exact": [],
+   "loose": []
+  }
+ },
+ "corpcode_date": "2026-10-12"
+}

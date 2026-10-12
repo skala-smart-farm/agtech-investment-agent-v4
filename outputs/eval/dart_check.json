@@ -1,0 +1,313 @@
+{
+ "run_log": "outputs/run_log.json",
+ "run_date": "2026-09-30",
+ "checked": "2026-10-12",
+ "cache_dir": "replay/dart",
+ "method": "corpCode.xml 회사명 정규화 후 정확 일치(없을 때만 기호·공백 무시) → company.json · list.json(기준일 이전 5년, 전체 / 공시 유형 F) · fnlttSinglAcnt(사업보고서) · 최근 감사보고서 원문 요약",
+ "summary": {
+  "screened": 18,
+  "eligible": 14,
+  "evaluated": 10,
+  "domestic_targets": 10,
+  "found_targets": 0,
+  "domestic_reference": 3,
+  "found_reference": 1,
+  "listed": [],
+  "with_audit_report": [
+   "대동애그테크"
+  ],
+  "with_revenue": [
+   "대동애그테크"
+  ]
+ },
+ "rows": [
+  {
+   "company": "메타파머스",
+   "group": "평가",
+   "region": "KR",
+   "tips_founded": "2022-09-02",
+   "tips_ceo": "이규화",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "Nature Robots",
+   "group": "평가",
+   "region": "GLOBAL",
+   "tips_founded": null,
+   "tips_ceo": null,
+   "status": "해외 — 대상 아님"
+  },
+  {
+   "company": "트랙팜",
+   "group": "평가",
+   "region": "KR",
+   "tips_founded": "2021-12-15",
+   "tips_ceo": "윤찬녕",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "대동애그테크",
+   "group": "관문 탈락(참고)",
+   "region": "KR",
+   "tips_founded": null,
+   "tips_ceo": "원유현",
+   "status": "matched",
+   "note": "",
+   "match": "exact",
+   "identity": "대표자 일치",
+   "corp_code": "01919963",
+   "corp_name": "대동애그테크",
+   "corp_cls": "E",
+   "market": "기타법인(비상장)",
+   "listed": false,
+   "est_dt": "2022-02-15",
+   "ceo_dart": "원유현",
+   "filings_5y": 1,
+   "audit_reports": 1,
+   "latest_audit": {
+    "report_nm": "감사보고서 (2025.12)",
+    "rcept_no": "20260323000196",
+    "rcept_dt": "2026-03-23",
+    "flr_nm": "광교회계법인"
+   },
+   "revenue": {
+    "fnltt": null,
+    "fnltt_status": {
+     "2025": "013",
+     "2024": "013"
+    },
+    "audit": {
+     "year": 2025,
+     "period": "2025.12",
+     "amount": 31069737635,
+     "prior": 24243504085,
+     "basis": "감사보고서 손익계산서"
+    },
+    "has_revenue": true
+   }
+  },
+  {
+   "company": "Upside Robotics",
+   "group": "평가",
+   "region": "GLOBAL",
+   "tips_founded": null,
+   "tips_ceo": null,
+   "status": "해외 — 대상 아님"
+  },
+  {
+   "company": "리비타",
+   "group": "평가",
+   "region": "KR",
+   "tips_founded": null,
+   "tips_ceo": "엄상혁",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "새팜",
+   "group": "평가",
+   "region": "KR",
+   "tips_founded": "2022-06-15",
+   "tips_ceo": "정승환",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "Bonsai Robotics",
+   "group": "평가",
+   "region": "GLOBAL",
+   "tips_founded": null,
+   "tips_ceo": null,
+   "status": "해외 — 대상 아님"
+  },
+  {
+   "company": "퓨처커넥트",
+   "group": "평가",
+   "region": "KR",
+   "tips_founded": "2020-08-06",
+   "tips_ceo": "강길모",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "엠트리센",
+   "group": "적격(미평가)",
+   "region": "KR",
+   "tips_founded": null,
+   "tips_ceo": "서만형",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "핼터",
+   "group": "관문 탈락(참고)",
+   "region": "GLOBAL",
+   "tips_founded": null,
+   "tips_ceo": null,
+   "status": "해외 — 대상 아님"
+  },
+  {
+   "company": "에임비랩",
+   "group": "평가",
+   "region": "KR",
+   "tips_founded": "2020-04-17",
+   "tips_ceo": "고병수",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "터빈크루",
+   "group": "관문 탈락(참고)",
+   "region": "KR",
+   "tips_founded": "2022-11-04",
+   "tips_ceo": "전기은",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "오차드 로보틱스",
+   "group": "적격(미평가)",
+   "region": "GLOBAL",
+   "tips_founded": null,
+   "tips_ceo": "Charlie Wu",
+   "status": "해외 — 대상 아님"
+  },
+  {
+   "company": "바르카",
+   "group": "평가",
+   "region": "KR",
+   "tips_founded": "2022-05-24",
+   "tips_ceo": "전현균",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "아이티테크",
+   "group": "적격(미평가)",
+   "region": "KR",
+   "tips_founded": "2019-12-06",
+   "tips_ceo": "김동로",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "대봉유통",
+   "group": "관문 탈락(참고)",
+   "region": "KR",
+   "tips_founded": "2025-03-18",
+   "tips_ceo": "최재혁",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  },
+  {
+   "company": "팜스태프",
+   "group": "적격(미평가)",
+   "region": "KR",
+   "tips_founded": "2022-01-06",
+   "tips_ceo": "김정우",
+   "status": "not_found",
+   "note": "고유번호 목록에 같은 이름 없음"
+  }
+ ],
+ "raw": {
+  "01919963": {
+   "corp_code": "01919963",
+   "fetched": "2026-10-12",
+   "window": {
+    "bgn_de": "20210930",
+    "end_de": "20260930"
+   },
+   "company": {
+    "status": "000",
+    "message": "정상",
+    "corp_code": "01919963",
+    "corp_name": "주식회사 대동애그테크",
+    "corp_name_eng": "DAEDONG AGTECH CORPORATION",
+    "stock_name": "대동애그테크",
+    "stock_code": "",
+    "ceo_nm": "원유현",
+    "corp_cls": "E",
+    "jurir_no": "1101118199542",
+    "bizr_no": "1968802423",
+    "adres": "서울특별시 서초구 효령로 328 (서초동,아트리트21빌딩) 2,3층",
+    "hm_url": "",
+    "ir_url": "",
+    "phn_no": "0234739381",
+    "fax_no": "",
+    "induty_code": "62021",
+    "est_dt": "20220215",
+    "acc_mt": "12"
+   },
+   "list_all": {
+    "status": "000",
+    "message": "정상",
+    "page_no": 1,
+    "page_count": 100,
+    "total_count": 1,
+    "total_page": 1,
+    "list": [
+     {
+      "corp_code": "01919963",
+      "corp_name": "대동애그테크",
+      "stock_code": "",
+      "corp_cls": "E",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_no": "20260323000196",
+      "flr_nm": "광교회계법인",
+      "rcept_dt": "20260323",
+      "rm": ""
+     }
+    ]
+   },
+   "list_audit": {
+    "status": "000",
+    "message": "정상",
+    "page_no": 1,
+    "page_count": 100,
+    "total_count": 1,
+    "total_page": 1,
+    "list": [
+     {
+      "corp_code": "01919963",
+      "corp_name": "대동애그테크",
+      "stock_code": "",
+      "corp_cls": "E",
+      "report_nm": "감사보고서 (2025.12)",
+      "rcept_no": "20260323000196",
+      "flr_nm": "광교회계법인",
+      "rcept_dt": "20260323",
+      "rm": ""
+     }
+    ]
+   },
+   "fnltt": {
+    "2025": {
+     "status": "013",
+     "message": "조회된 데이타가 없습니다."
+    },
+    "2024": {
+     "status": "013",
+     "message": "조회된 데이타가 없습니다."
+    }
+   },
+   "audit_doc": {
+    "rcept_no": "20260323000196",
+    "report_nm": "감사보고서 (2025.12)",
+    "summary": {
+     "TOT_SALES": 31070,
+     "TOT_ASSETS": 30207,
+     "TOT_DEBTS": 8824,
+     "TOT_EMPL": 71
+    },
+    "sales_row": {
+     "label": "Ⅰ. 매출액",
+     "unit": "원",
+     "current": 31069737635,
+     "prior": 24243504085
+    }
+   }
+  }
+ }
+}

@@ -28,7 +28,7 @@ from tools import web_search as web_search_mod
 CALIBRATION_DIR = "outputs/calibration"                          # 보정 실행의 실행 기록 폴더
 SENSITIVITY_FILE = "outputs/eval/threshold_sensitivity.json"     # 기준 배수별 투자 추천 수
 SCREENED_KEYS = ("name", "region", "stage", "round_date", "founded_date", "ceo", "eligible", "reason",
-                 "gate_search_failed", "channels")
+                 "gate_search_failed", "channels", "dart")   # dart: 국내 후보의 DART 공시 조회 요약 (graph/discovery_graph.dart_check)
 EVALUATION_KEYS = ("name", "region", "stage", "decision", "hold_type", "multiplier", "score100", "reasons", "flip")
 ROW_KEYS = ("qid", "answer", "rationale", "quote", "evidence_ids", "confidence")
 

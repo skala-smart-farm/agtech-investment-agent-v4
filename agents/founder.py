@@ -2,9 +2,13 @@
 
 Scorecard 에서 비중이 가장 큰 '창업자 (Owner) 30%' 를 혼자 맡는다 (1 에이전트 = 1 기준, 문항 F1~F4).
 창업 시점(t0)을 먼저 코드로 고정하고, 창업 **전** 전문성(F1·F2)과 창업 **후** 실행력(F3)을 나눠 본다.
-- t0 우선순위: TIPS 공개 목록 설립일(estDt) → 국민연금 사업장 최초 가입일(첫 고용) → 적격성 검증 단계의 설립연도
-  (같은 연도의 설립 표현이 근거에 있으면 그 근거 id 를 붙인다. 보고서 안에서 설립연도가 둘로 갈리지 않게 한다)
-  → 근거 속 가장 이른 설립 표현(근거 id) → 확인 불가. 어느 값을 썼는지 t0_source 에 남긴다.
+- t0 우선순위: TIPS 공개 목록 설립일(estDt) → DART 기업개황 법인 설립일(est_dt) → 국민연금 사업장 최초 가입일(첫 고용)
+  → 적격성 검증 단계의 설립연도 (같은 연도의 설립 표현이 근거에 있으면 그 근거 id 를 붙인다. 보고서 안에서 설립연도가
+  둘로 갈리지 않게 한다) → 근거 속 가장 이른 설립 표현(근거 id) → 확인 불가. 어느 값을 썼는지 t0_source 에 남긴다.
+  TIPS 를 DART 보다 앞에 두는 이유: TIPS 설립일은 창업 7년 요건을 보는 창업일이라 개인사업자로 시작해 법인으로 바꾼 회사도
+  처음 창업한 날이 되고(DART 는 법인 등기일), 이미 정한 t0 와 재현 캐시를 바꾸지 않는다. DART 를 국민연금보다 앞에 두는 이유:
+  국민연금 최초 가입일은 첫 고용 시점이라 설립보다 늦을 수 있다. DART 설립일이 있으면 TIPS·국민연금 값과의 차이를
+  founder['t0_check'] 에 기록만 한다(t0 는 위 순서대로). DART 에 없는 회사는 이 단계를 건너뛰며 아무것도 바뀌지 않는다.
 - 창업자는 인물 검색이 아니라 "회사가 알려진 기사·인터뷰 속 창업자 이력"으로 확인한다. 검색 쿼리 문자열은 v1 그대로다.
 - 검색 스니펫에는 창업자 이름·이력이 잘 안 나온다(예: CTO 이름이 기사 본문 1,300자 뒤에만 있음).
   그래서 기사 본문에서 회사명·창업자 표현(대표, CTO, 창업 …) 주변 문단을 골라 스니펫과 함께 LLM 에 넘긴다.
@@ -22,6 +26,7 @@ from agents.tech import CITE_ID, candidate_line, evidence_blocks, judge_own
 from core.config import get_segment, run_date
 from core.llm_bounded import bounded
 from core.prompts import render
+from tools import dart
 from tools.fetch import enrich
 from tools.grounding import norm
 from tools.sources import SourceRegistry
@@ -162,6 +167,12 @@ def pick_t0(c: dict, reg: SourceRegistry, ids: list[str], keys: list[str], until
     if c.get("founded_date"):
         return {"t0": c["founded_date"], "t0_basis": "TIPS 설립일", "t0_source": "TIPS 공개 목록 설립일(estDt)",
                 "t0_evidence_ids": []}
+    if d := dart.founding(c.get("dart"), until):
+        ev = [d["evidence_id"]] if d.get("evidence_id") else []
+        weak = ", 이름만 일치" if d.get("identity") == "이름만 일치" else ""
+        return {"t0": d["date"], "t0_basis": "DART 설립일", "t0_evidence_ids": ev,
+                "t0_source": f"금융감독원 전자공시시스템(DART) 기업개황 법인 설립일(est_dt{weak})"
+                             + (f" [{ev[0]}]" if ev else "")}
     if nps.get("status") == "matched" and nps.get("first_date"):
         ev = [nps["evidence_id"]] if nps.get("evidence_id") else []
         return {"t0": nps["first_date"], "t0_basis": "국민연금 최초 가입일", "t0_evidence_ids": ev,
@@ -181,6 +192,35 @@ def pick_t0(c: dict, reg: SourceRegistry, ids: list[str], keys: list[str], until
         return {"t0": f["date"], "t0_basis": "근거 속 설립 표현", "t0_evidence_ids": [f["evidence_id"]],
                 "t0_source": f"근거 속 가장 이른 설립 표현 \"{f['quote'].strip()}\" [{f['evidence_id']}]"}
     return {"t0": None, "t0_basis": "없음", "t0_source": "확인 불가", "t0_evidence_ids": []}
+
+
+def t0_cross_check(c: dict, t0: dict, until: str) -> dict | None:
+    """DART 설립일이 있으면 TIPS 설립일·국민연금 최초 가입일과 비교한 차이를 기록한다 (t0 는 바꾸지 않음). 없으면 None.
+    → {'dart_est_dt', 't0', 't0_basis', 'compare': [{'source','date','days_vs_dart'}], 'notes': [...]}"""
+    d = dart.founding(c.get("dart"), until)
+    if not d:
+        return None
+    base = _to_date(d["date"])
+    nps = c.get("nps") or {}
+    others = [("TIPS 설립일", c.get("founded_date")),
+              ("국민연금 최초 가입일", nps.get("first_date") if nps.get("status") == "matched" else None)]
+    compare, notes = [], []
+    for label, when in others:
+        x = _to_date(when)
+        if not x or not base:
+            continue
+        days = (x - base).days
+        compare.append({"source": label, "date": when, "days_vs_dart": days})
+        if days == 0:
+            notes.append(f"{label} {when} = DART 설립일")
+        elif label.startswith("TIPS"):
+            notes.append(f"{label} {when} 은 DART 설립일 {d['date']} 보다 {abs(days)}일 {'빠름' if days < 0 else '늦음'}"
+                         + (" (개인사업자 개업일 등 기준 차이일 수 있음)" if days < 0 else ""))
+        else:
+            notes.append(f"{label} {when} 은 DART 설립일 {d['date']} 보다 {abs(days)}일 {'빠름' if days < 0 else '늦음'}"
+                         + (" (첫 고용 시점)" if days > 0 else " (법인 설립 전 고용 — 사업장·회사 동일성 확인 필요)"))
+    return {"dart_est_dt": d["date"], "identity": d.get("identity"), "t0": t0["t0"], "t0_basis": t0["t0_basis"],
+            "compare": compare, "notes": notes}
 
 
 def _before_t0(background: str, llm_value: bool | None, t0: date | None) -> bool | None:
@@ -299,6 +339,7 @@ def founder_node(state: dict) -> dict:
     names = [name, c.get("name_en") or ""]
 
     t0 = pick_t0(c, reg, ids, names, until)
+    ids += [i for i in t0["t0_evidence_ids"] if i not in ids and reg.get(i)]  # DART 기업개황 근거(다른 출처는 이미 ids 에 있음)
     t0_date = _to_date(t0["t0"])
     years = round((_to_date(until) - t0_date).days / 365.25, 1) if t0_date and _to_date(until) else None
 
@@ -340,6 +381,8 @@ def founder_node(state: dict) -> dict:
         "hires_per_year": round(headcount / max(years, 0.5), 1) if headcount is not None and years is not None else None,
         "team_assessment": res.team_assessment,
     }
+    if check := t0_cross_check(c, t0, until):  # DART 에 있는 회사만 (없으면 founder 결과의 키·값이 이전과 같다)
+        out["t0_check"] = check
     refs = (list(res.evidence_ids) + t0["t0_evidence_ids"] + [i for p in people for i in p["evidence_ids"]]
             + [i for m in milestones for i in m["evidence_ids"]] + CITE_ID.findall(res.team_assessment))
     out["evidence_ids"] = [i for i in dict.fromkeys(refs) if i in valid]
@@ -349,6 +392,8 @@ def founder_node(state: dict) -> dict:
     who = ", ".join(f"{p['name']}({p['role']})" for p in people) or "없음"
     msg = (f"[창업자] {name}: t0 {out['t0'] or '확인 불가'}({t0['t0_basis']}), 인물 {len(people)}명({who})"
            f"{' — 재시도' if retried else ''}, 마일스톤 {len(milestones)}건(최근 24개월 {out['milestones_24m']}건), "
-           f"근거 {len(out['evidence_ids'])}건 → 창업자 YES {crit['yes']}/{crit['n']}")
+           f"근거 {len(out['evidence_ids'])}건 → 창업자 YES {crit['yes']}/{crit['n']}"
+           + (f" · DART 설립일 {check['dart_est_dt']}" + (f"({'; '.join(check['notes'])})" if check["notes"] else "")
+              if check else ""))
     print(msg)
     return {"registry": reg.data, "founder": out, "log": [msg]}
