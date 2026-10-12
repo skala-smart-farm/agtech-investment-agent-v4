@@ -21,9 +21,12 @@ def pytest_configure(config):
 
 
 @pytest.fixture(autouse=True)
-def _fresh_config():
-    """테스트 사이에 설정이 새지 않게 get_config 캐시를 앞뒤로 비운다."""
+def _fresh_config(request):
+    """테스트 사이에 설정이 새지 않게 get_config 캐시를 앞뒤로 비운다.
+    YES 검증자 LLM(decision.verify_yes)은 가짜 LLM 테스트와 맞지 않아 기본으로 끄고, @pytest.mark.verify_yes 테스트만 켠다."""
     get_config.cache_clear()
+    if not request.node.get_closest_marker("verify_yes"):
+        dict.__getitem__(get_config(), "decision")["verify_yes"] = False
     yield
     get_config.cache_clear()
 

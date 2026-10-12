@@ -45,7 +45,7 @@ import yaml
 from pydantic import BaseModel, Field
 from rank_bm25 import BM25Okapi
 
-from core.config import ROOT
+from core.config import ROOT, get_config
 from core.llm_bounded import bounded
 from core.prompts import render
 from core.recency import DONE, future_round, only_future_events, planned_only
@@ -165,6 +165,31 @@ class Answer(BaseModel):
 
 class Answers(BaseModel):
     answers: list[Answer]
+
+
+class Verdict(BaseModel):
+    """YES 검증(prompts/verify_yes.md): 인용이 문항의 인정 조건을 직접 충족하는가 (이진)."""
+    supports: bool = Field(description="인용이 인정 조건을 직접 충족하는 구체적 사실이면 true, 아니거나 애매하면 false")
+    reason: str = Field(description="한 문장 이유")
+
+
+def _raw_context(quote: str, texts: list[str], window: int = 350) -> str:
+    """검증자에게 보여 줄 인용 주변 원문(사람이 읽는 원래 글자). 위치를 못 찾으면 정규화 문맥으로 대신한다."""
+    head = (quote or "").strip()[:20]
+    for t in texts:
+        pos = t.find(head) if head else -1
+        if pos >= 0:
+            return t[max(0, pos - window): pos + len(quote) + window]
+    for t in texts:
+        if (around := _around(quote, t, window)):
+            return around
+    return "(주변 원문을 찾지 못함)"
+
+
+def _verify_yes(q: dict, company: str, quote: str, texts: list[str]) -> Verdict:
+    return bounded(Verdict, "judge").invoke(render(
+        "verify_yes", company=company, question=q["text"], need=q.get("need", ""), quote=quote,
+        context=_raw_context(quote, texts)))
 
 
 _norm = norm
@@ -538,6 +563,11 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
                 fail = "인용이 예정·계획·방침·추진 문장 (실제 수익 모델·효과가 아님)"
             elif q.get("track_record") and _education_only(a.quote, a.rationale):
                 fail = "학력·전공만 있고 특허·논문·연구·경력 이력이 인용에 없음"
+            if not fail and get_config().decision.get("verify_yes", False):
+                # 코드 규칙을 통과한 YES 만 검증자 LLM 이 한 번 더 본다 (인용이 인정 조건을 직접 충족하는가, 애매하면 아님)
+                v = _verify_yes(q, c.get("official_name") or c.get("name", ""), a.quote, [reg.text(i) for i in ev])
+                if not v.supports:
+                    fail = f"검증 단계: 인용이 문항의 인정 조건을 직접 충족하지 않음 — {v.reason}"
             elif q.get("min_competitors") and (n_rivals := int(c.get("confirmed_competitors") or 0)) < q["min_competitors"]:
                 fail = (f"확인된 경쟁사 {n_rivals}곳 — {q['min_competitors']}곳 이상과 비교해야 함 "
                         "(같은 분야 적격 후보이거나 서로 다른 도메인 2곳 이상에서 확인된 경쟁사만 셈)")

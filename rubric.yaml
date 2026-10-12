@@ -34,10 +34,12 @@
 #              표현이 없으면 UNKNOWN (need 의 '출신 학교만으로는 부족'을 코드로 확인)
 # no_plan    : 수익 모델·고객 경제성 문항(Bessemer Q2·Q3·Q7 의 M3·M4·R4). 인용이 완료 표지 없는 예정·계획·방침·도입할·
 #              추진 문장이면 UNKNOWN (core/recency.py planned_only + 추진·검토 중)
-# numeric    : need·text 가 수치를 요구하는 문항(M1·M2·M3·R1·R2·D3). 인용에 숫자나 수량 표현('세 곳'·'절반')이 없으면 UNKNOWN
+# numeric    : need·text 가 수치를 요구하는 문항(F4·M1·M2·M3·R1·R2·D3 — F4 는 '핵심 수치'의 제3자 확인). 인용에 숫자나 수량 표현('세 곳'·'절반')이 없으면 UNKNOWN
 # min_competitors: 경쟁사 비교 문항(C2)의 '국내외 경쟁사 2곳 이상'. 실재가 확인된 경쟁사가 이 수보다 적으면 UNKNOWN.
 #              '확인' = 같은 세부 분야의 적격 후보(적격성 관문 통과) 또는 회사명이 서로 다른 도메인 2곳 이상(그중 1곳은 대상 회사
 #              기사 밖)에서 나온 회사. 1곳뿐인 경쟁사는 '근거 약함'으로 비교표에만 남는다 (agents/competition.py 가 셈)
+# verify     : (설정 decision.verify_yes) 코드 규칙을 통과한 YES 마다 검증자 LLM 이 '인용이 이 문항의 인정 조건(need)을
+#              직접 충족하는가'를 이진 판정한다. 아니라고 하거나 애매하면 UNKNOWN (모든 문항·모든 후보에 같게, D1 은 코드 판정이라 제외)
 # 회사명 근접 검사(market_level 이 아닌 문항)는 회사 제품·서비스 이름(기술 요약 tech.product 에서 뽑음)도 회사명으로 인정한다
 
 dimensions:
@@ -49,7 +51,7 @@ dimensions:
       - {id: F1, short: 창업팀 이력, point: "전문성", bessemer_q: [5, 10], dd_item: "창업자·경영진 이력과 창업 전 경력 증빙", bessemer: "창업자와 팀은 이 분야에서 믿을 만한가 / 창업자가 다음 10년을 이 분야에 쏟을 각오가 있는가(대리지표)", text: "창업자나 경영진이 창업 이전부터 농업 현장이나 해당 기술 분야에서 연구·실무·사업 경험을 쌓았는가? (농학·축산·수의·원예 전공, 관련 연구·실무, 이전 창업 등)", need: "이름과 경력이 함께 적힌 근거", text_en: "founder CEO background prior experience agriculture farming research industry previous startup"}
       - {id: F2, short: 기술 책임자 이력, point: "전문성(기술 역량)", bessemer_q: [5], dd_item: "기술 책임자 이력·특허 발명자·논문 목록", bessemer: "창업자와 팀은 이 분야에서 믿을 만한가", text: "핵심 기술(AI·로봇·센서) 책임자의 기술 이력(특허 발명자, 논문, 연구소·기업 경력)이 확인되는가?", need: "기술 책임자 개인의 특허·논문·연구·경력이 적힌 근거 (회사 기술 소개나 출신 학교만으로는 부족)", track_record: true, text_en: "CTO technical lead engineer patent inventor publication paper research lab previously worked at years"}
       - {id: F3, short: 최근 마일스톤, point: "실행력", bessemer_q: [10], dd_item: "최근 24개월 마일스톤 증빙", bessemer: "(실행력)", text: "최근 24개월 안에 공개된 마일스톤(제품 출시, 현장 설치, 인증, 정부 과제·TIPS 선정, 후속 투자)이 2건 이상 있는가?", need: "날짜가 있는 마일스톤 근거 2개 이상 (투자 유치·수상·정부 선정·혁신상·우수기업 선정·출시·인증)", recent: true, text_en: "launched launch installed certification award selected government grant raised funding milestone"}
-      - {id: F4, short: 제3자 교차 확인, point: "커뮤니케이션(대리지표: 대외 발표 수치의 제3자 확인)", bessemer_q: [5], dd_item: "회사 공개 수치의 원자료", bessemer: "(커뮤니케이션·신뢰)", text: "회사가 공개한 핵심 수치(고객 수·성능·매출 등)가 제3자 근거로도 확인되는가? 서로 모순되는 근거가 있으면 NO", need: "같은 수치를 확인한 제3자 근거 (모순 근거가 있을 때만 NO)", third_party: true, text_en: "customers users performance revenue figures reported independent third party confirmed"}
+      - {id: F4, short: 제3자 교차 확인, point: "커뮤니케이션(대리지표: 대외 발표 수치의 제3자 확인)", bessemer_q: [5], dd_item: "회사 공개 수치의 원자료", bessemer: "(커뮤니케이션·신뢰)", text: "회사가 공개한 핵심 수치(고객 수·성능·매출 등)가 제3자 근거로도 확인되는가? 서로 모순되는 근거가 있으면 NO", need: "같은 수치를 확인한 제3자 근거 (모순 근거가 있을 때만 NO)", third_party: true, text_en: "customers users performance revenue figures reported independent third party confirmed", numeric: true}
   - id: market
     name: 시장성 (Opportunity Size)
     weight: 25
