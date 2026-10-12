@@ -119,8 +119,20 @@ report:
   scenario: false                      # 시나리오 실행(app.py --out DIR): 제출용 파일(RAG-Output_…)을 만들지 않음
   max_rewrites: 2                      # 조판 밀도 초과 시 보고서 축약 재작성 상한
   number_check:                        # 숫자 대조 검사: 보고서 문장 속 숫자 ↔ 입력(근거 본문·점수표). 결과는 checks.number_audit
-    rewrite: false                     # true 면 경고가 있을 때 1회 다시 쓴다 (LLM 호출 1회 추가 → 재현 캐시에 없어 --offline 실행이 멈춘다)
+    rewrite: true                      # 경고가 있을 때 1회 다시 쓰고, 경고가 줄 때만 새 초안을 받는다 (호출 1회 추가, 재현 캐시에 저장됨)
+  faithfulness:                        # 문장 충실성: 인용 근거가 문장을 뒷받침하는가 (core/faithfulness.py, 판정 models.judge). checks.faithfulness
+    mode: rewrite                      # off | flag(통과율만 기록) | rewrite(목표 미달이면 1회 다시 쓰고, 통과율이 오를 때만 채택)
+    target: 0.95                       # 성공 기준: 인용 문장 중 근거가 뒷받침하는 비율 (2026-10-12 수업 예시 Faithfulness ≥ 95%)
   run_cost_usd: 0.6                    # 새로 평가할 때 1회 LLM 비용(gpt-4.1-mini, 심층 평가 10곳 실측 약 $0.58) — README 표기용
+
+success_criteria:                      # 성공 기준 목표치 (docs/goal.md 의 Goal 명세, 측정은 python -m eval.success_criteria → outputs/eval/success_criteria.*)
+  citation_rate: 1.0                   # 근거성: 숫자가 든 사실 문장 중 인용이 붙은 비율
+  faithfulness: 0.95                   # 충실성: 인용 문장 중 근거가 뒷받침하는 비율 (report.faithfulness.target 과 같은 값)
+  contradictions: 0                    # 일관성: 같은 연도 다른 값·성장률 불일치·평가표와 다른 결론·팀 표와 본문 충돌
+  unsupported_yes: 0                   # 오류 처리: 인용·근거 id 없는 YES 판정 (근거가 없으면 '미확인')
+  portal_unresolved: 0                 # 원 출처: 원 매체를 찾지 못한 포털 전재본
+  run_cost_usd: 1.0                    # 비용: 새로 평가할 때 1회 LLM 비용 상한 (심층 평가 10곳)
+  node_errors: 0                       # 안정 운영: 분석 노드 실패 기록(State.errors)
 
 cache:
   dir: replay                          # 제출본 재현용 캐시 (검색 결과·발굴 스냅샷·LLM 응답을 저장소에 포함)

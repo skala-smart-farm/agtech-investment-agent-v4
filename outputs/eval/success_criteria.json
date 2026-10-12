@@ -1,0 +1,127 @@
+{
+  "targets": {
+    "citation_rate": 1.0,
+    "faithfulness": 0.95,
+    "contradictions": 0,
+    "unsupported_yes": 0,
+    "portal_unresolved": 0,
+    "run_cost_usd": 1.0,
+    "node_errors": 0
+  },
+  "rows": [
+    {
+      "key": "citation_rate",
+      "criterion": "근거성 — 출처 명시율",
+      "how": "숫자가 든 사실 문장 중 인용이 붙은 비율",
+      "target": "100%",
+      "values": {
+        "투자 보고서": 1.0,
+        "보류 시나리오": 0.833
+      },
+      "pass": false
+    },
+    {
+      "key": "faithfulness",
+      "criterion": "충실성 — 근거가 문장을 뒷받침",
+      "how": "인용 문장마다 LLM 판정(core/faithfulness.py)",
+      "target": "≥ 95%",
+      "values": {
+        "투자 보고서": 0.905,
+        "보류 시나리오": 0.917
+      },
+      "pass": false
+    },
+    {
+      "key": "complete",
+      "criterion": "완결성 — 필수 항목",
+      "how": "SUMMARY 5칸·목차·장 번호 참조·REFERENCE 와 인용 일치",
+      "target": "100%",
+      "values": {
+        "투자 보고서": true,
+        "보류 시나리오": true
+      },
+      "pass": true
+    },
+    {
+      "key": "contradictions",
+      "criterion": "일관성 — 상충 진술",
+      "how": "같은 연도 다른 값·성장률 불일치·평가표와 다른 결론·팀 표 충돌",
+      "target": "0건",
+      "values": {
+        "투자 보고서": 0,
+        "보류 시나리오": 0
+      },
+      "pass": true
+    },
+    {
+      "key": "format",
+      "criterion": "형식 — 분량·REFERENCE",
+      "how": "5쪽 이내·SUMMARY A4 절반 이내·REFERENCE 3유형 형식(날짜 포함)",
+      "target": "통과",
+      "values": {
+        "투자 보고서": true,
+        "보류 시나리오": true
+      },
+      "pass": true
+    },
+    {
+      "key": "portal_unresolved",
+      "criterion": "원 출처 — 포털 전재본",
+      "how": "원 매체 기사를 찾지 못한 포털 주소 인용",
+      "target": "0건",
+      "values": {
+        "투자 보고서": 0,
+        "보류 시나리오": 1
+      },
+      "pass": false
+    },
+    {
+      "key": "unsupported_yes",
+      "criterion": "오류 처리 — 근거 없는 YES",
+      "how": "인용문·근거 id 없는 YES 판정",
+      "target": "0건",
+      "values": {
+        "투자 보고서": 0,
+        "보류 시나리오": 0
+      },
+      "pass": true
+    },
+    {
+      "key": "node_errors",
+      "criterion": "안정 운영 — 노드 실패",
+      "how": "분석 노드 실패 기록(State.errors)",
+      "target": "0건",
+      "values": {
+        "투자 보고서": 0,
+        "보류 시나리오": 0
+      },
+      "pass": true
+    },
+    {
+      "key": "run_cost_usd",
+      "criterion": "비용 — 새로 평가 1회",
+      "how": "심층 평가 10곳, gpt-4.1-mini 실측(config report.run_cost_usd)",
+      "target": "≤ $1.00",
+      "values": {
+        "투자 보고서": 0.6,
+        "보류 시나리오": 0.6
+      },
+      "pass": true
+    },
+    {
+      "key": "stability",
+      "criterion": "안정성 — 반복 실행",
+      "how": "같은 입력 K회 실행 시 대상·결정 일치(PassK)",
+      "target": "K=3 일치",
+      "values": {
+        "투자 보고서": null,
+        "보류 시나리오": null
+      },
+      "pass": null,
+      "note": "미측정 — 시장 분석 프롬프트 한 줄 변경에 1위가 바뀐 사례가 있어 다음 과제에서 측정"
+    }
+  ],
+  "passed": 6,
+  "failed": 3,
+  "unmeasured": 1
+}

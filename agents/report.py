@@ -31,7 +31,9 @@ from core.prompts import render
 from report.render import html_to_pdf, render_html
 from tools import web_search as search_tool
 from tools.grounding import norm
-from tools.sources import (ACCESS_DATE_NOTE, GROUPS, REFERENCE_FORMATS, SourceRegistry, citable, format_reference,
+from tools.origin import resolve_origin
+from core import faithfulness
+from tools.sources import (ACCESS_DATE_NOTE, GROUPS, REFERENCE_FORMATS, SourceRegistry, citable, format_reference, is_portal,
                            merge_duplicates, naming_domains, reference_group, reference_key, title_key, uses_access_date)
 
 AGENT = "report"
@@ -430,7 +432,9 @@ Q_PCT = re.compile(rf"(?<![\d.])({_N})\s*(?:%|％|퍼센트|percent)", re.I)
 Q_DATE = re.compile(r"(?<!\d)((?:19|20)\d{2})\s?[-./]\s?(?:0?[1-9]|1[0-2])(?:\s?[-./]\s?\d{1,2})?(?!\d)")  # 2025-08, 2024.07.18
 Q_YEAR = re.compile(r"(?<!\d)(?<!\d[.,])((?:19|20)\d{2})(?!\d|[.,]\d|\s*(?:명|곳|건|개|배|대|호|회|억|만|천|원|달러|%))")
 Q_YEAR_ABBR = re.compile(r"[’']\s?(\d{2})(?!\d)")  # 영어 근거의 'BASc ’22' = 2022
-Q_CNT = re.compile(rf"(?<![\d.,A-Za-z])({_N})\s*(?:여|\+)?\s*(명|곳|건|개사|개|배|대(?!표|학|비|상)|호|회(?!사)|kg|ha|㎡|개월|주년|년)")
+Q_CNT = re.compile(rf"(?<![\d.,A-Za-z])({_N})\s*(?:여|\+)?\s*(명|곳|건|개사|개월|개|배|대(?!표|학|비|상)|호|회(?!사)|kg|ha|㎡|주년|년)")
+# 평가 규칙의 기간('최근 24개월', '24개월 이상 경과')은 근거에서 확인할 사실이 아니라 규칙이므로 숫자 대조에서 뺀다
+RULE_WINDOW = re.compile(r"최근\s*24\s*개월|24\s*개월\s*(?:이상|이내|안|내|보다)")
 # 영어 근거의 개수 표현 ('seven years', '80 of its … robots', '45 employees') — 한국어 문장의 '7년'·'80대'·'45명'과 대조용
 _EN_WORDS = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen "
                                          "fifteen sixteen seventeen eighteen nineteen twenty".split())}
@@ -550,6 +554,171 @@ def _cagr_problems(units: list[str]) -> list[str]:
     return out
 
 
+MARKET_FIELDS = ("ev_market", "lead_market", "market")   # 시장 수치가 들어가는 초안 칸 (SUMMARY 근거②·2장 결론·시장 문단)
+
+
+def _draft_cagr(draft: _Body) -> list[str]:
+    """렌더링 전 초안의 시장 문장(SUMMARY 근거②·2장 결론·시장 문단)에서 성장률 불일치를 찾는다 — 다시 쓰기 판단용.
+    (_number_audit 의 cagr 는 렌더링된 md 가 있어야 계산되므로, md 가 없는 다시 쓰기 단계에서는 이것으로 대신한다)"""
+    return _cagr_problems([s for f in MARKET_FIELDS for s in _sentences(getattr(draft, f, "") or "")])
+
+
+def _enforce_cagr(draft: _Body, target: dict, reg: SourceRegistry) -> tuple[_Body, list[str]]:
+    """다시 쓰기 뒤에도 성장률 불일치 문장(서로 다른 기관의 시작 값·끝 값·연평균을 이은 문장)이 남으면 코드로 뺀다.
+    프롬프트 준수는 확률적이라(같은 지시를 받고도 같은 문장을 다시 씀 — 2026-10-12 실측) 결정론적으로 강제한다.
+    - 시장 문단: 그 문장만 빼고, 다 빠지면 대표 수치 문장으로 채운다
+    - SUMMARY 근거②·2장 결론(한 구절): 대표 수치 문장으로 바꾼다
+    대표 수치 문장은 4장 표의 대표 수치 줄과 같은 방법(근거 원문에서 같은 추정의 끝 값·연평균)으로 만든다. 못 만들면 그대로 둔다.
+    반환 (새 초안, 뺀 문장 목록)"""
+    rep = _market_sentence(target, reg)
+    update, removed = {}, []
+    for f in MARKET_FIELDS:
+        text = getattr(draft, f, None)
+        if not text:
+            continue
+        sents = _sentences(text)
+        bad = [s for s in sents if _cagr_problems([s])]
+        if not bad:
+            continue
+        if f == "market":
+            keep = [s for s in sents if s not in bad]
+            if keep or rep:
+                update[f], removed = " ".join(keep) if keep else f"{rep[0]} [{rep[1]}]", removed + bad
+        elif rep:
+            update[f] = f"{rep[0]} [{rep[1]}]" if f == "ev_market" else rep[0]
+            removed += bad
+    return (draft.model_copy(update=update) if update else draft), removed
+
+
+def _market_sentence(target: dict, reg: SourceRegistry) -> tuple[str, str] | None:
+    """대표 시장 규모를 같은 추정의 끝 값·연평균과 함께 한 문장으로 (근거 원문으로 확인한 값만). 반환 (문장, 근거 id)."""
+    m = target.get("market") or {}
+    size = m.get("size") or {}
+    sid = size.get("source_id") or ""
+    if not (size.get("raw") and reg.get(sid)):
+        return None
+    est = _estimate_near(reg.text(sid), size["raw"])
+    text = f"{size.get('scope') or '시장'} 규모 {size['raw']}"
+    if est and est.get("end"):
+        text += f" → {est['end_year'] + '년 ' if est.get('end_year') else ''}{est['end']}"
+    if est and est.get("cagr") is not None:
+        text += f", 연평균 {_num(est['cagr'])}%"
+    return text, sid
+
+
+def _cited_units(draft: _Body, reg: SourceRegistry) -> list[tuple[str, str, list[str]]]:
+    """충실성 검사 단위: 인용이 붙은 문장 (어디, 인용을 뺀 문장, 인용 근거 id)."""
+    out = []
+    for where, text in _draft_fields(draft):
+        for sent in _sentences(text):
+            if ids := [i for i in _cite_ids(sent) if reg.get(i)]:
+                out.append((where, CITE.sub("", sent).strip(), ids))
+    return out
+
+
+def _source_of(reg: SourceRegistry, i: str) -> str:
+    s = reg.get(i) or {}
+    return ", ".join(str(x) for x in (s.get("publisher") or s.get("site"), s.get("year") or s.get("date"), s.get("title")) if x)
+
+
+def _rubric_shorts() -> dict[str, str]:
+    from core.judge import load_rubric
+
+    return {q["short"]: q["id"] for d in load_rubric()["dimensions"] for q in d["questions"]}
+
+
+def _list_item(short: str) -> re.Pattern:
+    """쉼표 목록의 한 항목으로 쓰인 문항 이름 ('민간 매출' 안의 '매출'은 잡지 않는다)."""
+    return re.compile(rf"(^|,\s*){re.escape(short)}(?=[\s,\[]|등|$)")
+
+
+def _answers(evals: list[dict], name: str) -> dict | None:
+    e = next((e for e in evals if _same(e.get("name") or "", name)), None)
+    return {r["qid"]: r["answer"] for r in e.get("rows") or (e.get("scorecard") or {}).get("rows") or []} if e else None
+
+
+def _enforce_unknown_lists(draft: _Body, evals: list[dict]) -> tuple[_Body, list[str]]:
+    """보류 사유의 '미확인 항목 목록'은 평가표와 같아야 한다: 평가표에서 YES 인 문항이 목록에 있으면 코드로 뺀다
+    (LLM 이 쓴 목록에 YES 문항이 섞인 실측 — 2026-10-12 보류 시나리오의 자본집약도·기술 책임자 이력). 반환 (새 초안, 고친 내역)."""
+    if not isinstance(draft, HoldDraft):
+        return draft, []
+    shorts, cands, fixed = _rubric_shorts(), [], []
+    for c in draft.candidates:
+        text, ans = c.why_not, _answers(evals, c.name)
+        listed = [s for s in shorts if _list_item(s).search(text or "")] if ans else []
+        yes = [s for s in listed if ans.get(shorts[s]) == "YES"] if len(listed) >= 3 else []
+        for s in yes:
+            text = _list_item(s).sub(lambda m: m.group(1) if not m.group(1).startswith(",") else "", text, count=1)
+        if yes:
+            text = re.sub(r"^\s*,\s*", "", text)
+            fixed.append(f"{c.name}: 평가표 YES 문항을 미확인 목록에서 뺌 — {', '.join(yes)}")
+        cands.append(c.model_copy(update={"why_not": text}))
+    return (draft.model_copy(update={"candidates": cands}), fixed) if fixed else (draft, [])
+
+
+def _scorecard_claim(evals: list[dict]):
+    """평가표에서 나온 문장(보류 사유의 '미확인 항목 목록')은 근거 기사가 아니라 평가표와 코드로 대조한다:
+    문항 이름(rubric short) 3개 이상을 늘어놓은 '2장 보류 사유(회사)' 문장이면, 나열한 문항이 그 회사 평가표에서 모두 YES 가
+    아닐 때 뒷받침(true), 하나라도 YES 면 false. 그 밖의 문장은 None(LLM 판정)."""
+    shorts = _rubric_shorts()
+
+    def decide(where: str, sent: str) -> faithfulness.Support | None:
+        m = re.search(r"보류 사유\((.+)\)$", where)
+        ans = _answers(evals, m.group(1)) if m else None
+        listed = [s for s in shorts if _list_item(s).search(sent)]
+        if not ans or len(listed) < 3:
+            return None
+        yes = [s for s in listed if ans.get(shorts[s]) == "YES"]
+        return faithfulness.Support(supported=not yes, reason="평가표 대조(코드): " + (
+            f"평가표에서 YES 인 문항을 미확인으로 씀 — {', '.join(yes)}" if yes else f"나열한 {len(listed)}개 문항 모두 평가표에서 YES 아님"))
+    return decide
+
+
+def _faithfulness(draft: _Body, reg: SourceRegistry, target: float, evals: list[dict] | None = None) -> dict:
+    return faithfulness.check(_cited_units(draft, reg), lambda i: _doc_text(reg, i), lambda i: _source_of(reg, i), target,
+                              _scorecard_claim(evals or []))
+
+
+def _recite(draft: _Body, faith: dict, reg: SourceRegistry, ctx: dict) -> tuple[_Body, list[str]]:
+    """충실성 미달 문장의 인용 바로잡기: 같은 보고서 입력(ctx)의 근거 중 그 문장을 뒷받침하는 근거를 찾으면 인용만 바꾼다.
+    문장 내용은 그대로 둔다(LLM 다시 쓰기는 오히려 통과율을 낮춘 실측이 있어 먼저 하지 않는다). 반환 (새 초안, 바꾼 문장 목록)."""
+    pool = [i for i in dict.fromkeys(re.findall(r"[WD][0-9a-f]{5,8}", "\n".join(str(v) for v in ctx.values()))) if reg.get(i)]
+    fixed: dict[str, str] = {}
+    for f in faith.get("failed") or []:
+        ids = faithfulness.recite(f["sentence"], pool, lambda i: _doc_text(reg, i), lambda i: _source_of(reg, i))
+        if not ids:
+            continue
+        for _, text in _draft_fields(draft):
+            for raw in _sentences(text):
+                if CITE.sub("", raw).strip() == f["sentence"]:
+                    body = re.sub(r"\s+([.,;])", r"\1", CITE.sub("", raw)).rstrip()
+                    end = "." if body.endswith(".") else ""
+                    fixed[raw] = f"{body.removesuffix('.')} [{', '.join(ids)}]{end}"
+    if not fixed:
+        return draft, []
+
+    def walk(x):
+        if isinstance(x, str):
+            for a, b in fixed.items():
+                x = x.replace(a, b)
+            return x
+        if isinstance(x, list):
+            return [walk(v) for v in x]
+        if isinstance(x, dict):
+            return {k: walk(v) for k, v in x.items()}
+        return x
+    return type(draft).model_validate(walk(draft.model_dump())), list(fixed.values())
+
+
+def _citation_coverage(draft: _Body) -> dict:
+    """근거성(출처 명시율): 숫자(금액·%·명·곳 등)가 들어간 사실 문장 중 인용이 붙은 비율. 각 장 첫 줄 결론은 요약이라 뺀다."""
+    claims = [(w, s) for w, t in _draft_fields(draft) if "결론" not in w
+              for s in _sentences(t) if _quantities(RULE_WINDOW.sub(" ", CITE.sub("", s)))]
+    uncited = [f"[{w}] {s[:100]}" for w, s in claims if not _cite_ids(s)]
+    return {"claims": len(claims), "cited": len(claims) - len(uncited),
+            "rate": round(1 - len(uncited) / len(claims), 3) if claims else None, "uncited": uncited}
+
+
 def _market_units(md: str) -> list[str]:
     """보고서 md 의 시장 규모 절(A안 2장, B안 3.2)을 검사 단위로: 문단은 문장마다, 대표 수치 목록은 한 단위
     ('다른 추정'으로 표시한 줄은 따로 떼어 둔 것이라 뺀다)."""
@@ -592,7 +761,7 @@ def _number_audit(draft: _Body, ctx: dict, reg: SourceRegistry, md: str = "", ta
             field_ids = _cite_ids(text) or [i for i in (own[0] if own else []) if reg.get(i)]
             for sent in _sentences(text):
                 ids = _cite_ids(sent) or field_ids
-                for q in _quantities(sent):
+                for q in _quantities(RULE_WINDOW.sub(lambda m: " " * len(m.group(0)), sent)):
                     if not any(_same_q(q, x) for x in pool):
                         status = "입력에 없음"
                     elif ids and not any(_same_q(q, x) for x in cited(ids)):
@@ -987,7 +1156,7 @@ def _dart_notes(evals: list[dict]) -> list[str]:
 
 
 def _limitations(cfg, pool: dict, failed_by: dict[str, int], data_limits: list[str], mode: str,
-                 access_dates: list[str], dart_notes: list[str] | None = None) -> list[str]:
+                 access_dates: list[str], dart_notes: list[str] | None = None, portal_unresolved: int = 0) -> list[str]:
     """한계점: 검색 실패, (DART 교차 확인 — 공시가 있는 회사만), 미평가 적격 후보, 상대 평가, 가정, 데이터 한계, 판정 모델 순으로
     최대 6개 + 조회일 표기 1줄 (REFERENCE 는 목록만 싣고, 게시일 대신 조회일을 쓴 사실은 여기서 밝힌다)."""
     out = []
@@ -1014,6 +1183,8 @@ def _limitations(cfg, pool: dict, failed_by: dict[str, int], data_limits: list[s
     out.append(f"문항 판정은 {cfg.models.judge} 가 하고, 코드는 인용이 원문에 있는지·제3자·최근 24개월·상용 운영 요건만 검사한다"
                " (근거 해석 오류는 남을 수 있음)")
     access = [f"{ACCESS_DATE_NOTE}({len(access_dates)}건, 조회일 {', '.join(sorted(set(access_dates)))})"] if access_dates else []
+    if portal_unresolved:
+        access.append(f"포털 전재본 {portal_unresolved}건은 원 매체 기사 주소를 찾지 못해 포털 주소로 적었다(원 매체·기자는 표기)")
     return out[:6] + access
 
 
@@ -1061,9 +1232,12 @@ def _renumber(view: dict, reg: SourceRegistry) -> tuple[dict, list[dict], list[s
     num, refs = {}, []
     for n, g in enumerate(groups, 1):
         num.update({sid: n for sid in g["ids"]})
-        best = merge_duplicates(g["srcs"])
+        best, portal = merge_duplicates(g["srcs"]), None
+        if is_portal(best):  # 포털 전재본 → 원 매체 기사를 찾아 그 주소로 적는다 (2·3차 자료 대신 원 소스, tools/origin.py)
+            o = resolve_origin(best)
+            best, portal = ({**best, "url": o["url"], "site": o["site"]}, "resolved") if o else (best, "unresolved")
         refs.append({"n": n, "group": reference_group(g["srcs"][0]), "text": format_reference(best),
-                     "access_date": best.get("access_date") if uses_access_date(best) else None})
+                     "access_date": best.get("access_date") if uses_access_date(best) else None, "portal": portal})
 
     def repl(m: re.Match) -> str:
         nums = sorted({num[i] for i in re.split(r"\s*[,，]\s*", m.group(1)) if i in num})
@@ -1920,24 +2094,60 @@ def report_node(state: dict) -> dict:
             rewrites += 1
             feedback = "직전 초안의 문제를 모두 고쳐라:\n- " + "\n- ".join(probs)
 
-    # 1-2) 숫자 대조: 기본은 검사만 한다(checks['number_audit']). 위 재작성 루프의 probs 에 넣으면 재작성 지시문이 바뀌어
-    #      재현 캐시에 없는 LLM 호출이 생기므로 따로 둔다. report.number_check.rewrite: true 일 때만 1회 다시 쓰고,
-    #      새 초안이 기존 규칙을 모두 지키면서 숫자 경고가 줄어든 경우에만 받아들인다 (LLM 호출 1회 추가)
-    audit = _number_audit(draft, ctx, reg)
-    flagged = audit["unsupported"] + audit["conflicts"]
+    # 1-2) 숫자 대조(결과는 checks['number_audit']). 위 재작성 루프의 probs 와 따로 둔다 — 섞으면 재작성 지시문이 바뀐다.
+    #      report.number_check.rewrite: true(현재 설정)이면 경고가 있을 때 1회 다시 쓰고, 새 초안이 기존 규칙을 모두 지키면서
+    #      숫자 경고(입력에 없음·인용 근거에 없음·같은 연도 다른 값·성장률 불일치)가 줄어든 경우에만 받아들인다 (LLM 호출 1회 추가)
+    audit = {**_number_audit(draft, ctx, reg), "cagr": _draft_cagr(draft)}
+    flagged = audit["unsupported"] + audit["conflicts"] + audit["cagr"]   # cagr: 서로 다른 기관 추정을 이어 써서 연평균이 안 맞는 문장
     number_rewrite = bool((cfg.report.get("number_check") or {}).get("rewrite"))
     if number_rewrite and flagged:
         fb = ("직전 초안의 다음 숫자는 입력(근거 본문·점수표)에서 확인되지 않거나, 인용한 근거에 없거나, 같은 연도에 출처가 다른 값이 섞였다. "
-              "근거에 적힌 수치와 그 수치가 있는 근거 id 로 고치고, 기관별 추정치는 기관 이름을 밝혀라. 확인되지 않는 숫자는 빼라:\n- "
+              "근거에 적힌 수치와 그 수치가 있는 근거 id 로 고치고, 기관별 추정치는 기관 이름을 밝혀라. 서로 다른 기관의 추정(시작 값·끝 값·"
+              "연평균)을 한 문장에 이어 쓰지 말고 기관별로 나눠 써라. 확인되지 않는 숫자는 빼라:\n- "
               + "\n- ".join(flagged[:8]))
         cand = bounded(schema, kind="report").invoke(render("report", **ctx, feedback=fb, shorten=False))
         cand = schema.model_validate(_fix_cites(cand.model_dump()))
         rewrites += 1
         cand_probs = (_summary_problems([x for _, x in summary(cand)], cfg.report.summary_max_chars)
                       + _consistency_problems(cand, target, ranked, run_date))
-        cand_audit = _number_audit(cand, ctx, reg)
-        if not cand_probs and len(cand_audit["unsupported"]) + len(cand_audit["conflicts"]) < len(flagged):
+        cand_audit = {**_number_audit(cand, ctx, reg), "cagr": _draft_cagr(cand)}
+        if not cand_probs and (len(cand_audit["unsupported"]) + len(cand_audit["conflicts"]) + len(cand_audit["cagr"])
+                               < len(flagged)):
             draft, probs = cand, cand_probs
+
+    # 1-3) 그래도 성장률 불일치 문장이 남으면 코드로 뺀다 (LLM 호출 없음 — 재현 캐시와 무관)
+    draft, cagr_removed = _enforce_cagr(draft, target, reg) if _draft_cagr(draft) else (draft, [])
+    draft, unknown_fixed = _enforce_unknown_lists(draft, evals)   # 보류 사유의 미확인 목록 = 평가표 (코드)
+
+    # 1-4) 문장 충실성: 인용이 붙은 문장마다 '근거가 이 문장을 뒷받침하는가'를 판정(LLM)하고 통과율을 목표와 비교(코드).
+    #      mode=rewrite 면 목표 미달일 때 1회 다시 쓰고, 통과율이 오르고 다른 검사가 나빠지지 않을 때만 새 초안을 받는다
+    fcfg = cfg.report.get("faithfulness") or {}
+    fmode, ftarget = fcfg.get("mode", "off"), float(fcfg.get("target", 0.95))
+    faith = _faithfulness(draft, reg, ftarget, evals) if fmode in ("flag", "rewrite") else {"mode": "off"}
+    recited: list[str] = []
+    if fmode == "rewrite" and faith["rate"] is not None and faith["rate"] < ftarget:
+        # 먼저 인용 바로잡기(문장 그대로, 판정 호출만) → 그래도 미달이면 1회 다시 쓰기
+        draft2, recited = _recite(draft, faith, reg, ctx)
+        if recited:
+            draft, faith = draft2, {**_faithfulness(draft2, reg, ftarget, evals), "recited": recited}
+    if fmode == "rewrite" and faith["rate"] is not None and faith["rate"] < ftarget:
+        fb = ("직전 초안의 다음 문장은 붙인 인용 근거가 내용을 뒷받침하지 않는다. 근거에 적힌 사실로 고치거나, 근거가 없으면 그 내용을 빼라. "
+              "다른 문장은 그대로 둬라:\n- " + "\n- ".join(faith["unsupported"][:10]))
+        cand = bounded(schema, kind="report").invoke(render("report", **ctx, feedback=fb, shorten=False))
+        cand = schema.model_validate(_fix_cites(cand.model_dump()))
+        cand = _enforce_cagr(cand, target, reg)[0]
+        rewrites += 1
+        cand_probs = (_summary_problems([x for _, x in summary(cand)], cfg.report.summary_max_chars)
+                      + _consistency_problems(cand, target, ranked, run_date))
+        before, after = _number_audit(draft, ctx, reg), _number_audit(cand, ctx, reg)
+        worse = len(after["unsupported"]) + len(after["conflicts"]) > len(before["unsupported"]) + len(before["conflicts"])
+        cand_faith = _faithfulness(cand, reg, ftarget, evals)
+        if not cand_probs and not worse and (cand_faith["rate"] or 0) > faith["rate"]:
+            draft, probs, faith = cand, cand_probs, {**cand_faith, "recited": recited,
+                                                     "rewrite": f"채택 (통과율 {faith['rate']} → {cand_faith['rate']})"}
+        else:
+            faith["rewrite"] = f"미채택 (다시 쓴 초안 통과율 {cand_faith['rate']}, 다른 검사 문제 {len(cand_probs)}건)"
+    faith["mode"] = fmode
 
     out_dir, pdf_path, _ = _out_paths(cfg)
     meta = (f"{cfg.domain.name} · 평가 {len(evals)}곳 · 기준 배수 {sc['threshold']:.2f}(동종 평균 = 1.00) · 작성일 {run_date}"
@@ -1959,7 +2169,8 @@ def report_node(state: dict) -> dict:
                             else _chapters_hold(ranked, target, d, t, reg, cfg, pool, failed_by))
         _, refs0, _ = _renumber(view, reg)
         t["limitations"] = _limitations(cfg, pool, failed_by, d["data_limits"], mode,
-                                        [r["access_date"] for r in refs0 if r["access_date"]], _dart_notes(evals))
+                                        [r["access_date"] for r in refs0 if r["access_date"]], _dart_notes(evals),
+                                        sum(r["portal"] == "unresolved" for r in refs0))
         view["chapters"] = (_chapters_invest(target, d, t, reg, cfg, pool, evals) if mode == "invest"
                             else _chapters_hold(ranked, target, d, t, reg, cfg, pool, failed_by))
         numbered, refs, cited = _renumber(view, reg)
@@ -1988,10 +2199,13 @@ def report_node(state: dict) -> dict:
                "reference_groups": {g["name"]: len(g["items"]) for g in numbered["ref_groups"]},
                # 검사만 하는 항목 (형식 검사 통과·실패에는 넣지 않는다)
                "number_audit": {**_number_audit(draft, ctx, reg, md, target),
-                                "rewrite": "on" if number_rewrite else "off (report.number_check.rewrite)"},
+                                "rewrite": "on" if number_rewrite else "off (report.number_check.rewrite)",
+                                "cagr_removed": cagr_removed},
                "name_variants": [{"kind": v["kind"], "names": {n: f"{i['from']}~{i['to']} ({len(i['ids'])}건)"
                                                              for n, i in v["names"].items()}} for v in variants],
-               "team_table_conflicts": _team_conflicts(team_texts, target, reg)}
+               "team_table_conflicts": _team_conflicts(team_texts, target, reg),
+               "portal_refs": {k: sum(r.get("portal") == k for r in refs) for k in ("resolved", "unresolved")},
+               "faithfulness": faith, "citation_coverage": _citation_coverage(draft), "unknown_list_fixed": unknown_fixed}
     return _finish(numbered, md, result, cfg, checks, mode, cited, title, target["name"],
                    "투자 추천" if mode == "invest" else "투자 추천 대상 없음")
 

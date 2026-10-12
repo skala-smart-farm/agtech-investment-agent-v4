@@ -404,6 +404,66 @@ def _contributors() -> str:
 
 
 # ── 조립 ─────────────────────────────────────────────────────────────────────
+def _success() -> dict | None:
+    """성공 기준 측정(eval/success_criteria.py): 기준·목표·실행별 값·판정."""
+    d = _j("outputs/eval/success_criteria.json")
+    if not d:
+        return None
+    from eval.success_criteria import _fmt
+    names = list((d["rows"][0]["values"] if d["rows"] else {}).keys())
+    rows = [{"criterion": r["criterion"], "target": r["target"],
+             "cells": [r.get("note", "-") if r["pass"] is None and not i else _fmt(r["key"], r["values"].get(n))
+                        for i, n in enumerate(names)],
+             "verdict": {True: "✅", False: "❌", None: "미측정"}[r["pass"]]} for r in d["rows"]]
+    return {"names": names, "rows": rows, "passed": d["passed"], "failed": d["failed"], "unmeasured": d["unmeasured"]}
+
+
+def _runtime_queries() -> dict | None:
+    """실제 에이전트 질의 검색 평가(eval/eval_runtime_queries.py): 런타임과 대안의 Precision@4 · Hit@4."""
+    d = _j("outputs/eval/runtime_queries.json")
+    if not d:
+        return None
+    rows = {r["name"]: r["all"] for r in d.get("rows") or []}
+    rt = rows.get(d.get("runtime")) or {}
+    alt = sorted(((n, a) for n, a in rows.items() if n != d.get("runtime")), key=lambda x: -x[1].get("P@4", 0))
+    best_alt = alt[0] if alt else None
+    return {"n": d.get("queries_used"), "p4": f"{rt.get('P@4', 0):.3f}", "hit4": f"{rt.get('Hit@4', 0):.3f}",
+            "alt": f"{best_alt[0].split(' ', 1)[1]} {best_alt[1]['P@4']:.3f}" if best_alt else "",
+            "kept": d.get("pick") == d.get("runtime")}
+
+
+def _tie(evals: list[dict]) -> str:
+    """투자 기준 통과 후보 1·2위가 배수 동점(소수 넷째 자리)이면 동점 규칙으로 정했다는 한 줄."""
+    passed = [e for e in sorted(evals, key=eval_rank_key) if e.get("decision") == "투자"]
+    if len(passed) < 2 or round(passed[0]["multiplier"], 4) != round(passed[1]["multiplier"], 4):
+        return ""
+    def yes(e):
+        return sum(r.get("answer") == "YES" for r in e.get("rows") or [])
+    a, b = passed[0], passed[1]
+    return (f"{a['name']} · {b['name']} 배수 동점({_s100(a['multiplier'])})은 미리 정한 동점 규칙(창업자 점수 → 확인된 YES 수 → "
+            f"NO 수 → 이름)으로 정함 — 확인된 YES {yes(a)} 대 {yes(b)}")
+
+
+def _dissent(run: dict, name: str | None) -> list[str]:
+    """보고서 대상의 YES 검증자 이견 문항(판정은 유지)."""
+    from core.judge import load_rubric
+
+    short = {q["id"]: q.get("short", "") for d in load_rubric()["dimensions"] for q in d["questions"]}
+    e = next((x for x in run.get("evaluations") or [] if x["name"] == name), None)
+    return [f"{r['qid']} {short.get(r['qid'], '')}".strip() for r in (e or {}).get("rows") or []
+            if r.get("answer") == "YES" and r.get("verifier")]
+
+
+def _verifier() -> dict | None:
+    """YES 검증자 이견(flag 모드) 수: 본 실행 평가 행의 verifier."""
+    run = _j("outputs/run_log.json") or {}
+    rows = [r for e in run.get("evaluations") or [] for r in e.get("rows") or []]
+    if not any("verifier" in r for r in rows):
+        return None
+    yes = [r for r in rows if r.get("answer") == "YES"]
+    return {"yes": len(yes), "dissent": sum(1 for r in yes if r.get("verifier"))}
+
+
 def context(run_file: str = "outputs/run_log.json") -> dict:
     from docs.build_design import _rag_mermaid  # 설계서 D.4 와 같은 Agentic RAG 서브그래프 정의
 
@@ -428,7 +488,8 @@ def context(run_file: str = "outputs/run_log.json") -> dict:
         hold=_hold_focus(evals, sens, thr) if mode == "hold" else None,
         summary=_summary(md), chapters=_chapters(md), dd=_dd_items(md), summary_pct=f"{(r.get('summary_ratio') or 0) * 100:.0f}%",
         sens=sens, ref_mix=_reference_mix(), rt=_retrieval(cfg), judge=_judge(), elig=_eligibility(),
-        pc=_positive_control(), down=_downgrades(), cost=_cost(run), corpus=_corpus(),
+        pc=_positive_control(), down=_downgrades(), cost=_cost(run), corpus=_corpus(), rq=_runtime_queries(),
+        ver=_verifier(), tie=_tie(evals), dissent=_dissent(run, r.get("target")), success=_success(),
         search_providers=_search_providers(), rag_line=_rag_line(run.get("rag_traces", [])),
         report_pdf=_link(f"outputs/RAG-Output_{team.campus}-{team['class']}_{members}.pdf"),
         design_pdf=_link(design_pdf) if path(design_pdf).exists() else "",

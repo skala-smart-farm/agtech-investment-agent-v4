@@ -1,9 +1,11 @@
 {
   "run_date": "2026-09-30",
-  "elapsed_sec": 23.8,
+  "elapsed_sec": 25.4,
   "mode": "main",
   "threshold": 1.0,
   "end_reason": "max_evaluations",
+  "status": "SUCCESS",
+  "errors": [],
   "models": {
     "generator": "gpt-4.1-mini",
     "judge": "gpt-4.1-mini",
@@ -43,7 +45,11 @@
         "D.수상전시",
         "T.TIPS선정",
         "W.투자기사피드"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "Nature Robots",
@@ -57,7 +63,8 @@
       "gate_search_failed": false,
       "channels": [
         "F.해외투자뉴스"
-      ]
+      ],
+      "dart": null
     },
     {
       "name": "트랙팜",
@@ -72,7 +79,11 @@
       "channels": [
         "B.공공프로그램",
         "T.TIPS선정"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "대동애그테크",
@@ -88,7 +99,42 @@
         "C.스타트업DB",
         "D.수상전시",
         "W.투자기사피드"
-      ]
+      ],
+      "dart": {
+        "status": "matched",
+        "match": "exact",
+        "identity": "대표자 일치",
+        "corp_code": "01919963",
+        "corp_name": "대동애그테크",
+        "corp_cls": "E",
+        "market": "기타법인(비상장)",
+        "listed": false,
+        "stock_code": "",
+        "est_dt": "2022-02-15",
+        "ceo_nm": "원유현",
+        "acc_mt": "12",
+        "filings_5y": 1,
+        "audit_reports": 1,
+        "latest_audit": {
+          "report_nm": "감사보고서 (2025.12)",
+          "rcept_no": "20260323000196",
+          "rcept_dt": "2026-03-23",
+          "flr_nm": "광교회계법인"
+        },
+        "revenue": [
+          {
+            "year": 2025,
+            "period": "2025.12",
+            "amount": 31069737635,
+            "prior": 24243504085,
+            "basis": "감사보고서 손익계산서",
+            "report_nm": "감사보고서 (2025.12)",
+            "rcept_no": "20260323000196",
+            "rcept_dt": "2026-03-23",
+            "flr_nm": "광교회계법인"
+          }
+        ]
+      }
     },
     {
       "name": "Upside Robotics",
@@ -102,7 +148,8 @@
       "gate_search_failed": false,
       "channels": [
         "F.해외투자뉴스"
-      ]
+      ],
+      "dart": null
     },
     {
       "name": "리비타",
@@ -117,7 +164,11 @@
       "channels": [
         "A.투자뉴스",
         "W.투자기사피드"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "새팜",
@@ -132,7 +183,11 @@
       "channels": [
         "A.투자뉴스",
         "T.TIPS선정"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "Bonsai Robotics",
@@ -146,7 +201,8 @@
       "gate_search_failed": false,
       "channels": [
         "F.해외투자뉴스"
-      ]
+      ],
+      "dart": null
     },
     {
       "name": "퓨처커넥트",
@@ -161,7 +217,11 @@
       "channels": [
         "A.투자뉴스",
         "W.투자기사피드"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "엠트리센",
@@ -176,7 +236,11 @@
       "channels": [
         "A.투자뉴스",
         "C.스타트업DB"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "핼터",
@@ -190,7 +254,8 @@
       "gate_search_failed": false,
       "channels": [
         "W.투자기사피드"
-      ]
+      ],
+      "dart": null
     },
     {
       "name": "에임비랩",
@@ -205,7 +270,11 @@
       "channels": [
         "B.공공프로그램",
         "T.TIPS선정"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "터빈크루",
@@ -220,7 +289,11 @@
       "channels": [
         "B.공공프로그램",
         "T.TIPS선정"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "오차드 로보틱스",
@@ -234,7 +307,8 @@
       "gate_search_failed": false,
       "channels": [
         "W.투자기사피드"
-      ]
+      ],
+      "dart": null
     },
     {
       "name": "바르카",
@@ -249,7 +323,11 @@
       "channels": [
         "C.스타트업DB",
         "T.TIPS선정"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "아이티테크",
@@ -264,7 +342,11 @@
       "channels": [
         "C.스타트업DB",
         "T.TIPS선정"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "대봉유통",
@@ -279,7 +361,11 @@
       "channels": [
         "T.TIPS선정",
         "W.투자기사피드"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     },
     {
       "name": "팜스태프",
@@ -294,7 +380,11 @@
       "channels": [
         "T.TIPS선정",
         "W.투자기사피드"
-      ]
+      ],
+      "dart": {
+        "status": "not_found",
+        "note": "DART 고유번호 목록에 같은 이름이 없음 (외부감사·공시 의무가 없는 초기 기업이면 정상, 감점 근거 아님)"
+      }
     }
   ],
   "evaluations": [
@@ -304,11 +394,11 @@
       "stage": "Pre-A",
       "decision": "투자",
       "hold_type": null,
-      "multiplier": 1.0958,
-      "score100": 109.6,
+      "multiplier": 1.0722,
+      "score100": 107.2,
       "reasons": [
-        "동종 평균 대비 109.6(동종 평균 100) — 동종 평균보다 높음",
-        "창업자 기준 118.1(동종 평균 100) — 동종 평균 이상",
+        "동종 평균 대비 107.2(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 106.9(동종 평균 100) — 동종 평균 이상",
         "Deal-killer 없음"
       ],
       "flip": null,
@@ -351,13 +441,13 @@
           "dim": "founder",
           "name": "창업자·팀 (Owner)",
           "weight": 30,
-          "yes": 2,
+          "yes": 1,
           "no": 0,
-          "unknown": 2,
+          "unknown": 3,
           "n": 4,
-          "pct": 118.1,
-          "peer_mean": 0.139,
-          "contribution": 0.3542
+          "pct": 106.9,
+          "peer_mean": 0.111,
+          "contribution": 0.3208
         },
         {
           "dim": "market",
@@ -379,21 +469,21 @@
           "no": 0,
           "unknown": 2,
           "n": 3,
-          "pct": 107.4,
-          "peer_mean": 0.185,
-          "contribution": 0.1611
+          "pct": 101.9,
+          "peer_mean": 0.296,
+          "contribution": 0.1528
         },
         {
           "dim": "competition",
           "name": "경쟁 우위",
           "weight": 10,
-          "yes": 0,
+          "yes": 1,
           "no": 0,
-          "unknown": 4,
+          "unknown": 3,
           "n": 4,
-          "pct": 91.7,
+          "pct": 104.2,
           "peer_mean": 0.167,
-          "contribution": 0.0917
+          "contribution": 0.1042
         },
         {
           "dim": "traction",
@@ -403,9 +493,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
@@ -415,161 +505,202 @@
           "no": 0,
           "unknown": 1,
           "n": 4,
-          "pct": 122.2,
-          "peer_mean": 0.306,
-          "contribution": 0.1222
+          "pct": 125.0,
+          "peer_mean": 0.25,
+          "contribution": 0.125
         }
       ],
       "rows": [
         {
           "qid": "F1",
           "answer": "YES",
-          "rationale": "이규화 대표가 서울대학교 기계공학부 박사 과정 중이며 스마트팩토리 구축 경험을 통해 현장 적용 가능한 자동화 솔루션 개발 경험을 갖고 있다는 구체적 경력과 이름이 명시되어 있어, 창업자·경영진이 관련 분야에서 연구·실무 경험을 쌓았음을 직접 뒷받침한다.",
+          "rationale": "이규화 대표가 서울대학교 기계공학부 박사 과정 중 스마트팩토리 구축 경험을 통해 현장 적용 가능한 자동화 솔루션 개발 경험을 갖고 있어, 창업 이전부터 관련 기술 분야에서 연구·실무 경험이 확인된다.",
           "quote": "대표인 저는 서울대학교 기계공학부 박사 과정 중 스마트팩토리 구축 경험을 통해 실제 현장에 적용 가능한 자동화 솔루션 개발에 관한 다양한 경험을 갖고 있습니다.",
           "evidence_ids": [
             "Wc091e"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": "인용과 주변 원문은 창업자 및 경영진이 기계공학 및 스마트팩토리 분야에서 경험이 있음을 보여주나, 농업 현장이나 농업 관련 기술 분야에서의 연구·실무·사업 경험이나 농학·축산·수의·원예 전공 경력은 명시되어 있지 않다."
         },
         {
           "qid": "F2",
-          "answer": "YES",
-          "rationale": "기술이사(CTO) 윤원재가 AI 로봇과 엔드이펙터를 전공하여 소프트웨어와 하드웨어 개발에 전문성을 갖추고 있다는 구체적 경력이 확인된다.",
-          "quote": "윤원재 CTO를 비롯한 공동창업자들은 각각 AI 로봇과 엔드이펙터를 전공한 만큼 소프트웨어와 하드웨어 개발에 일가견이 있습니다.",
-          "evidence_ids": [
-            "Wc091e"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "학력·전공만 있고 특허·논문·연구·경력 이력이 인용에 없음 → UNKNOWN 강등 (이규화 대표가 서울대학교 기계공학부 박사 과정 중이며 스마트팩토리 구축 경험을 통해 자동화 솔루션 개발 경험이 명확히 확인되어 기술 책임자의 기술 이력이 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
           "answer": "UNKNOWN",
-          "rationale": "언급된 사건 날짜가 모두 평가 기준일로부터 24개월보다 오래됨 (코드 날짜 검사) → UNKNOWN 강등 (최근 24개월 내에 2023년 10월 시드 투자 유치와 2024년 6월 TIPS 프로그램 선정이라는 두 건 이상의 마일스톤이 명확히 날짜와 함께 제3자 근거로 확인되어 YES 판정에 부합한다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 [Wc091e]에 2023년 10월 시드 투자 유치와 2024년 6월 TIPS 프로그램 선정이라는 최근 24개월 내 마일스톤 2건 이상이 명확히 기재되어 있어 YES 판정이 타당하다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (정부 기관인 농림축산식품부가 주관하는 '스마트농업 우수기업' 선정 사실이 명확히 날짜와 함께 제3자 근거로 확인되어 회사가 공개한 핵심 수치 및 성과가 제3자 출처로 확인됨을 뒷받침한다.)",
+          "rationale": "수치 요구 문항인데 인용에 숫자가 없음 (코드 수치 검사) → UNKNOWN 강등 (정부 주관 경진대회 수상과 국책과제 선정 등 제3자 기관에서 핵심 수치를 인정한 근거가 있어 회사가 공개한 핵심 수치가 제3자 근거로 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서에서 구체적 수치와 기간을 포함하여 확인되므로 YES 판정한다.",
-          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며, 2024~2034년 예측 기간 동안 연평균 19.1%의 성장률을 기록할 것으로 예상하였다.",
+          "rationale": "근거 문서에서 2023년 글로벌 스마트 농업 시장 규모가 226억 5천만 달러로 평가된 공공기관 문서가 명확히 제시되어 있어, 목표 시장 규모가 확인된다.",
+          "quote": "글로벌 스마트 농업시장 규모를 2023년 226억 5천만 달러로 평가하였으며",
           "evidence_ids": [
             "Deaac5"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M2",
-          "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 2년 내 발행된 근거에서 투자액 증가 수치가 명확히 제시되어 해당 분야가 성장 중임을 확인할 수 있으므로 YES 판정한다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "2021년부터 2025년까지 글로벌 농업 로봇 및 자율주행 농기계 분야 투자 총액이 791M 달러에서 898M 달러로 증가했다는 2026년 보고서가 최근 24개월 내의 투자액 증가를 명확히 보여준다.",
+          "quote": "Global AgriFoodTech Investment Report 2026 Category spotlights Total funding USD 2021 2022 2023 2024 2025 $791 MILLION $805 MILLION $837 MILLION $859 MILLION $898 MILLION",
+          "evidence_ids": [
+            "Dcb71b"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (제3자 출처 기사에서 고객 문제와 제품의 경제적 효과(인건비 절감 수치)를 수치로 제시하고 있어 YES 판정함.)",
+          "rationale": "경제적 효과 수치가 있으나 대표 발언에 근거한 내용으로 제3자 출처가 아니므로 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
-          "answer": "YES",
-          "rationale": "과금 방식이 구독형 요금제 및 수확량 비례 과금으로 구체적으로 서술되어 있어 YES 판정함.",
-          "quote": "로봇 구입 가격이 부담되는 농가를 위해 구독형 요금제로 출시할 방침이다. 로봇이 수확한 작물의 양에 비례해 1kg당 요금을 받는 식이다",
-          "evidence_ids": [
-            "Wc3a78"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "인용이 예정·계획·방침·추진 문장 (실제 수익 모델·효과가 아님) → UNKNOWN 강등 (과금 방식이 구독형 요금제 및 수확량 비례 과금으로 구체적으로 서술되어 있어 YES 판정한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "UNKNOWN",
-          "rationale": "실증·예정 단계 (인용 주변에 예정·목표·실증·PoC·시범 표현) → UNKNOWN 강등 (근거 문서에 메타파머스의 다목적 농작업 로봇 '옴니파머'가 전국 다수의 농장에서 운영 중이라는 구체적 사실이 있어 시제품 단계를 지나 실제 농장에서 상용 운영 중임을 확인할 수 있다.)",
+          "rationale": "실증·예정 단계 (인용 주변에 예정·목표·실증·PoC·시범 표현) → UNKNOWN 강등 (근거에 '현재 옴니파머는 화성 동탄, 경북 상주, 충남 서산 등 전국 다수의 농장에서 운영 중이다'라는 문장이 있어, 시제품 단계를 지나 실제 농장 등에서 상용으로 운영 중임을 직접 뒷받침한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P2",
           "answer": "UNKNOWN",
-          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (공공기관 및 대형 농장 등에서 오이 로봇 실증 프로젝트가 진행되었고, 성능이 현장 실증으로 입증된 점이 근거로 제시되어 여러 지역 현장 실증이 이루어졌음을 확인할 수 있다.)",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (근거에 공공기관·대학·지자체 등 제3자 실증 근거는 명확하지 않으나, '지난해 오이 로봇 실증 프로젝트'라는 문장이 있어 여러 지역에서 실증이 진행된 점을 뒷받침한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
           "answer": "YES",
-          "rationale": "자체 개발한 온디바이스 AI 기술과 전용 그리퍼 등 핵심 기술을 보유하고 있음을 명확히 밝히고 있어 핵심 기술이 자체 개발임을 보여주는 근거가 된다.",
-          "quote": "로봇용 온디바이스 AI 기술과 작물과 농작업에 최적화된 그리퍼를 자체적으로 개발하여 딸기, 토마토, 오이와 같은 과채류를 자동으로 수확하거나.",
+          "rationale": "근거에 자체 개발한 AI 알고리즘과 데이터 수집 시스템, 교체형 그리퍼 등 자체 핵심 기술을 보유하고 있음을 보여주는 문장이 있다.",
+          "quote": "매일 촬영하는 농장 3D 데이터와 생육·환경 데이터를 수집해 VLA(Vision-Language-Action,시각-언어-행동) 알고리즘과 물리 시뮬레이터 기반 강화학습으로 재학습시키는 구조다.",
           "evidence_ids": [
-            "Weeb95"
-          ]
+            "Wbf33c",
+            "Wa4ac8"
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "농업용 로봇은 현재 별도의 농기계 검정기준이 마련 중인 상태이며, 인허가를 받았거나 신청한 사실은 확인되지 않아 인허가 대상이 아니거나 해당 사항이 없다고 판단된다.",
+          "rationale": "근거에 농업용 로봇은 현재 별도의 농기계 검정기준이 마련 중이며, 인허가 상태가 확인되지 않아 인허가 대상이 아니거나 확인 불가로 판단된다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [Wfc2e9]에 2026년 8월 기준으로 신한투자증권이 특허 2건을 출원했다는 문장이 있어, 메타파머스의 특허 출원 여부는 직접 확인되지 않으나, 메타파머스 관련 특허 출원 현황은 불분명하다. 따라서 메타파머스에 관한 특허 출원 근거는 없다. 따라서 C1은 UNKNOWN이다.)",
+          "rationale": "근거 문단에서 메타파머스의 특허 출원 또는 등록에 관한 명확한 확인이 불가능하여 특허 보유 여부를 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에서 메타파머스가 경쟁사인 영국 더그투스와 비교하여 원가절감을 통한 저렴한 생산가를 목표로 한다는 구체적인 차별점이 명시되어 있어 경쟁사 2곳 이상과 비교한 구체적 차별점이 확인된다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서에서 메타파머스가 국내 최초로 딸기 수분·수확 농작업 AI 자동화 로봇을 개발하여 스마트농업 우수기업으로 선정되었고, 농촌진흥청의 AI 기반 생육 예측 모델을 이전받아 성능을 고도화한 점이 제3자 근거로 확인된다. 이는 경쟁사 대비 구체적인 차별점으로 인정할 수 있다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
-          "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 메타파머스가 자체 데이터 파이프라인과 강화학습 기반 알고리즘을 보유하고 있어 진입장벽이 존재한다는 문장이 있어, 사용이 늘수록 자체 데이터가 쌓여 성능이 좋아지거나 연동 구조에 따른 교체 비용이 드는 구조임이 확인된다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "근거에 메타파머스가 농촌진흥청의 AI 기반 생육 예측 모델을 이전받아 성능을 고도화하고 있다는 사실이 명시되어 있어 데이터 축적 및 성능 향상 구조가 있음을 확인할 수 있다.",
+          "quote": "농촌진흥청의 AI 기반 생육 예측 모델을 이전받아 성능을 고도화하고 있다",
+          "evidence_ids": [
+            "W2a166"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 메타파머스가 농촌진흥청의 AI 기반 생육 예측 모델을 이전받아 성능을 고도화하고 있다고 하나, 사용 증가에 따른 자체 데이터 축적로 인한 성능 향상이나 설치·연동 구조로 인한 교체 비용 발생 여부에 대한 구체적 사실은 언급하지 않아 인정 조건을 직접 충족하지 않는다."
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (근거 문단에 농협 등과 PoC(기술 검증)를 진행 중이라는 내용은 있으나, 계약이나 공동사업 체결에 대한 구체적 언급은 없고 MOU 여부도 불분명하다. 따라서 계약이나 공동사업이 확인되지 않아 NO 판정한다.)",
+          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (근거에 계약이나 공동사업에 관한 명확한 언급 없이 PoC 단계에 머물러 있어 유통·전략 파트너와의 계약이나 공동사업이 확인되지 않는다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 메타파머스의 매출액과 연도에 관한 구체적인 재무정보가 확인되지 않는다. 투자 유치 금액은 있으나 매출액과 연도는 명확히 제시되지 않아 판정 불가.",
+          "rationale": "근거 문서에 2025년 매출액이 명확히 기재되어 있지 않고, 매출 금액이 확인되지 않아 YES 판정 요건을 충족하지 못함.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "유료 고객 수, 설치 규모, 농가 수, 면적, 두수, 계약 금액 등 수치로 확인 가능한 구체적 근거가 근거 문서에 없다.",
+          "rationale": "유료 고객 수나 설치 규모에 대한 구체적 수치가 근거에 없으므로 YES 판정 요건을 충족하지 못함.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "같은 고객의 재계약, 확대 도입, 여러 해 연속 사용에 관한 구체적 근거가 근거 문서에 존재하지 않는다.",
+          "rationale": "재계약 또는 여러 해 연속 사용에 대한 구체적 근거가 없으므로 YES 판정 요건을 충족하지 못함.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
           "answer": "UNKNOWN",
-          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 명확히 확인되지 않는다.",
+          "rationale": "정부 보조사업이 아닌 매출 근거가 명확히 제시되어 있지 않고, 수출 또는 민간 판매에 대한 구체적 매출 근거가 없어 YES 판정 요건을 충족하지 못함.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
@@ -580,32 +711,40 @@
             "Wef018",
             "Wfc65b",
             "W2a166"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "YES",
-          "rationale": "최근 투자 라운드에 스마일게이트인베스트먼트, 퓨처플레이, 옥타곤벤처파트너스 등 기관투자자가 참여한 것이 확인된다.",
+          "rationale": "근거에 스마일게이트인베스트먼트, 퓨처플레이, 옥타곤벤처파트너스 등 기관투자자 이름이 명확히 언급되어 있어 기관투자자 참여가 확인된다.",
           "quote": "투자사:스마일게이트인베스트먼트, 퓨처플레이, 옥타곤벤처파트너스",
           "evidence_ids": [
             "Wf7a68"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "투자 단계와 금액은 공개되었으나, 기업가치나 투자 지분율에 대한 구체적 수치나 공개 근거는 없다.",
+          "rationale": "근거에 기업가치나 투자 지분율에 관한 구체적 수치가 없고, 비공개 또는 실사 필요 표기가 없어 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "YES",
-          "rationale": "사업 모델이 대규모 자체 시설이 필요 없는 범용 농작업 로봇이며, 투자 유치 내역에서 전략적 투자자 확보가 확인되어 조건을 충족한다.",
-          "quote": "옴니파머는 전통 농장부터 수직농장·온실까지 폭넓게 활용 가능",
+          "rationale": "근거에 대규모 자체 시설이 필요하지 않은 모델임을 시사하며, 다목적 농작업 로봇으로 다양한 환경에서 활용 가능하다고 명시되어 있고, 전략적 투자자 확보(스마일게이트인베스트먼트 등)도 확인되어 YES 판정한다.",
+          "quote": "옴니파머는 AI 로보틱스 기반으로 수확·수분·선별·예찰 등 다양한 농작업을 단일 플랫폼에서 처리하며, 작물 인식 AI와 교체형 그리퍼를 통해 전통 농장부터 수직농장·온실까지 폭넓게 활용된다",
           "evidence_ids": [
             "W2a166"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": "인용문과 주변 원문은 옴니파머의 기술적 특성과 활용 범위, 투자 유치 사실을 설명하지만, 상업화 전에 대규모 자체 시설이 필요한지 여부나 전략적 투자자·비희석 자금 확보 여부에 대한 구체적 사실을 직접적으로 언급하지 않는다."
         }
       ]
     },
@@ -615,26 +754,22 @@
       "stage": "Seed",
       "decision": "보류",
       "hold_type": "창업자 점수 평균 미만",
-      "multiplier": 0.9222,
-      "score100": 92.2,
+      "multiplier": 0.9681,
+      "score100": 96.8,
       "reasons": [
-        "창업자 기준 90.3(동종 평균 100) — 팀이 동종 평균 미만",
-        "동종 평균 대비 92.2(동종 평균 100) — 동종 평균 이하 (미확인 문항 91%)"
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 96.8(동종 평균 100) — 동종 평균 이하 (미확인 문항 83%)"
       ],
       "flip": {
         "qids": [
-          "F1",
-          "F2",
-          "F3"
+          "F1"
         ],
         "items": [
-          "F1 창업팀 이력",
-          "F2 기술 책임자 이력",
-          "F3 최근 마일스톤"
+          "F1 창업팀 이력"
         ],
-        "new_multiplier": 1.0347,
+        "new_multiplier": 1.0056,
         "reached": true,
-        "note": "F1·F2·F3 이(가) YES 로 확인되면 동종 평균 대비 103.5(동종 평균 100) → 투자"
+        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 100.6(동종 평균 100) → 투자"
       },
       "roi": {
         "computable": false,
@@ -672,9 +807,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 90.3,
-          "peer_mean": 0.194,
-          "contribution": 0.2708
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
         },
         {
           "dim": "market",
@@ -692,13 +827,13 @@
           "dim": "product",
           "name": "제품/기술력",
           "weight": 15,
-          "yes": 0,
+          "yes": 1,
           "no": 0,
-          "unknown": 3,
+          "unknown": 2,
           "n": 3,
-          "pct": 88.9,
-          "peer_mean": 0.222,
-          "contribution": 0.1333
+          "pct": 101.9,
+          "peer_mean": 0.296,
+          "contribution": 0.1528
         },
         {
           "dim": "competition",
@@ -708,9 +843,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 91.7,
-          "peer_mean": 0.167,
-          "contribution": 0.0917
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
         },
         {
           "dim": "traction",
@@ -720,165 +855,207 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
           "name": "투자조건 (Deal Terms)",
           "weight": 10,
-          "yes": 1,
+          "yes": 2,
           "no": 0,
-          "unknown": 3,
+          "unknown": 2,
           "n": 4,
-          "pct": 94.4,
-          "peer_mean": 0.361,
-          "contribution": 0.0944
+          "pct": 111.1,
+          "peer_mean": 0.278,
+          "contribution": 0.1111
         }
       ],
       "rows": [
         {
           "qid": "F1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 창업자 또는 경영진의 농업 현장 또는 관련 기술 분야에서의 연구·실무·사업 경험에 대한 구체적인 경력이나 전공 정보가 확인되지 않는다. Dr. Sebastian Pütz가 CEO 겸 공동 창업자임은 확인되나, 창업 전 경력에 대한 구체적 언급이 없어 YES 판정 요건을 충족하지 못한다.",
+          "rationale": "창업자 이름과 소속은 확인되나, 창업 이전 경력(농업 현장, 관련 연구·실무·사업 경험)이 근거에 명확히 드러나지 않아 YES 판정 요건을 충족하지 못함.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "기술 책임자의 특허, 논문, 연구소 또는 기업 경력에 대한 구체적 근거가 근거 문서에 존재하지 않는다. 회사 기술 소개나 출신 학교만으로는 부족하며, 해당 정보가 없어 YES 판정 요건을 충족하지 못한다.",
+          "rationale": "근거에 CEO Dr. Sebastian Pütz의 구체적인 기술 이력(특허, 논문, 연구소·기업 경력)이 명확히 기술되어 있지 않음. 회사가 AI 및 농업 로봇 분야에서 10년 이상의 연구 성과를 기반으로 한다고 하나, 이는 회사 연구 성과에 대한 설명일 뿐, 기술 책임자 개인의 이력으로 보기 어려움.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
           "answer": "UNKNOWN",
-          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (최근 24개월 내 마일스톤은 2026-03 시드 투자 유치 1건뿐이며, 2건 이상 근거가 없어 판정 불가.)",
+          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (최근 24개월 내 마일스톤은 2022-01 설립과 2026-03 시드 투자 유치 1건뿐으로, 2건 이상 마일스톤 근거가 없다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "회사가 공개한 핵심 수치(고객 수, 성능, 매출 등)에 대해 제3자 근거가 확인되지 않으며, 모순 근거도 없어 YES 또는 NO 판정이 불가능하다.",
+          "rationale": "핵심 수치(고객 수, 성능, 매출 등)에 대한 제3자 근거가 근거 문서 내에 확인되지 않음.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서(한국농촌경제연구원 2024)에서 수치와 기준 연도로 명확히 확인되어 YES 판정한다.",
+          "rationale": "근거 [Deaac5]에 글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 YES 판정에 부합한다.",
           "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
           "evidence_ids": [
             "Deaac5"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 이내(2024~2025년) 발행된 근거에서 글로벌 농업 로봇 및 자율주행 농기계 분야 투자액이 증가했다는 구체적 수치가 제3자 출처로 확인되어, 해당 분야가 성장 중임을 직접 뒷받침한다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서에 2024년부터 2025년까지 글로벌 농업 로봇·자율주행 농기계 분야 투자 총액이 증가했다는 구체적 수치가 있어, 해당 분야가 성장 중임을 직접 뒷받침한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "경제적 효과와 고객 문제에 대한 수치가 있으나 제3자 출처가 아닌 회사 측 추산 및 계획에 근거하여 출처 요건 미충족으로 UNKNOWN 판정한다.",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (제3자 출처에서 2025년까지 농업용 자율주행 및 드론 분야의 시장 규모가 구체적 수치로 제시되어 있어, 고객 문제와 경제적 효과가 수치로 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "과금 방식에 대한 구체적 서술이 없고 정책 계획 중심의 내용으로 과금 방식 확인 불가하여 UNKNOWN 판정한다.",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (과금 방식으로 로봇 하드웨어, 소프트웨어 업데이트, 서비스 및 지원을 포함하는 구독형 서비스(Robotics as a Service) 모델이 제3자 출처에서 명확히 서술되어 있다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "UNKNOWN",
-          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (근거 문서에서 명확히 '현재 시제품 단계로 상용화 및 대규모 적용은 진행 중'이라고 명시되어 있어, 실제 농장·온실·축사에서 상용으로 운영 중이라는 조건을 충족하지 않음.)",
+          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음, 제품명 포함) → NO 대신 UNKNOWN (The evidence states the product is at the prototype stage as of March 2026, with no commercial sales or contracts, indicating it is not yet in commercial operation on actual farms or greenhouses.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P2",
           "answer": "UNKNOWN",
-          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음) → NO 대신 UNKNOWN (근거 문서들은 첨단 농기계 시범 운영과 실증단지 조성 계획을 언급하지만, Nature Robots 제품에 대한 제3자 실증 근거가 없고, 시범 운영 단계임을 명확히 하여 성능이 여러 작기 또는 여러 지역에서 제시되었다고 보기 어렵다.)",
+          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음, 제품명 포함) → NO 대신 UNKNOWN (The evidence indicates a lack of large-scale or multiple-season field trials or third-party validations, so performance from multiple seasons or regions with third-party verification is not demonstrated.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
-          "answer": "UNKNOWN",
-          "rationale": "자체 개발 근거로서 회사 측 설명은 있으나, 특허, 논문, 자체 데이터셋 등 객관적이고 구체적인 자체 개발 증거가 근거 문서에 명확히 제시되어 있지 않아 판단이 불가능하다.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "The company is developing its own modular autonomy operating system for agricultural machinery, which shows core technology is self-developed. This is supported by the description of AI-based autonomous driving and robotics software.",
+          "quote": "developing a modular autonomy operating system for agricultural machinery",
+          "evidence_ids": [
+            "Webfb2"
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 Nature Robots가 자체 개발 중인 모듈형 자율 운영 시스템을 언급하지만, 특허, 논문, 자체 데이터셋 또는 하드웨어와 같은 구체적 자체 개발 근거를 직접적으로 제시하지 않는다."
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "Nature Robots 제품은 농업용 소프트웨어로서 농기계 검정이나 농약 등록 대상이 아니므로 인허가·검정 대상이 아니며, 이에 따라 해당 문항은 해당 사항 없음으로 판정한다.",
+          "rationale": "근거에 Nature Robots의 제품은 농업용 소프트웨어로서 별도의 농기계 검정이나 농약 등록 대상이 아니라고 명시되어 있어, 인허가·검정 대상이 아니므로 해당 사항이 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 Nature Robots의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적인 언급이 없어 확인할 수 없다.",
+          "rationale": "근거 문서에서 Nature Robots의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적 언급이 없어 확인할 수 없습니다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 문서에 Nature Robots가 미국과 중국 경쟁사 대비 3배 이상 멀리 이동할 수 있는 성능을 갖췄다는 구체적인 경쟁 우위 차별점이 명시되어 있다.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거에 미국과 중국 경쟁사 대비 성능 차별점(3배 이상 멀리 이동 가능)과 기술 격차가 명확히 언급되어 있어 구체적인 차별점이 확인됩니다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "UNKNOWN",
-          "rationale": "자체 데이터 축적에 따른 성능 향상이나 설치·연동으로 인한 교체 비용 구조에 관한 구체적 근거가 근거 문서에 없다.",
+          "rationale": "자체 데이터 축적이나 설치·연동으로 인한 교체 비용 구조에 관한 구체적 근거가 근거 문서에 없습니다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 근거가 근거 문서에 확인되지 않는다.",
+          "rationale": "유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 근거가 근거 문서에 없습니다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 Nature Robots의 매출액이나 연도별 매출액에 관한 구체적인 언급이 전혀 없다. 투자 유치 금액은 있으나 매출과는 다르므로 매출액 확인 불가.",
+          "rationale": "근거 문단에서 Nature Robots의 매출액이나 연도별 매출액에 관한 구체적 언급이 전혀 없어, 매출액 확인이 불가능하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "유료 고객 수, 설치 규모, 계약 금액 등 수치가 명확히 확인되는 근거가 없다. 기사 및 보고서에서 고객 수나 설치 면적 등의 구체적 수치가 제시되지 않아 확인 불가.",
+          "rationale": "유료 고객 수, 설치 규모, 계약 금액 등 수치가 명확히 확인되는 근거가 없으며, 고객명이나 농가 수 등의 구체적 수치도 제시되지 않아 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "같은 고객의 재계약이나 확대 도입, 여러 해 연속 사용에 관한 근거가 전혀 없다. 관련 내용이 없어 판단 불가.",
+          "rationale": "같은 고객의 재계약, 확대 도입, 여러 해 연속 사용에 관한 근거가 전혀 없으며, 관련 내용도 확인되지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
           "answer": "UNKNOWN",
-          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 확인되지 않는다. 투자 유치나 연구 개발 관련 내용만 있을 뿐 매출 근거는 없다.",
+          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 없으며, 시드 투자 유치 외에 매출 발생에 관한 구체적 내용이 없어 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
@@ -893,28 +1070,38 @@
             "Wa4638",
             "Webfb2",
             "Wff9a4"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D2",
-          "answer": "UNKNOWN",
-          "rationale": "근거 문단에 투자 라운드와 금액은 있으나, 기관투자자(VC, CVC, 정책 펀드, TIPS 운영사) 참여 여부나 투자사 이름이 명확히 확인되지 않아 UNKNOWN 판정한다.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "Bayern Kapital, Climentum Capital 등 기관투자자(VC, CVC, 정책 펀드 등) 참여가 명확히 확인된다.",
+          "quote": "Nature Robots's investors include Marc Matthaeus, Bayern Kapital, Climentum Capital, EIC Accelerator, Planetary Impact Ventures.",
+          "evidence_ids": [
+            "Wce8fe"
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "기업가치(Valuation) 또는 투자 지분율에 관한 구체적 수치나 정보가 근거 문단에 없으므로 UNKNOWN 판정한다.",
+          "rationale": "기업가치나 지분율에 관한 구체적 수치가 공개된 근거가 없고, 비공개 또는 실사 필요로 표기되어 있어 확인 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "UNKNOWN",
-          "rationale": "근거 문단에 사업 모델이 자율 농업 소프트웨어임은 확인되나, 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없어 UNKNOWN 판정한다.",
+          "rationale": "대규모 자체 시설 필요 여부나 비희석 자금 확보에 관한 구체적 근거가 없으며, 사업 모델에 대한 직접적 언급도 없어 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -922,16 +1109,27 @@
       "name": "리비타",
       "region": "KR",
       "stage": "Seed",
-      "decision": "투자",
-      "hold_type": null,
-      "multiplier": 1.0125,
-      "score100": 101.2,
+      "decision": "보류",
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 0.9542,
+      "score100": 95.4,
       "reasons": [
-        "동종 평균 대비 101.2(동종 평균 100) — 동종 평균보다 높음",
-        "창업자 기준 104.2(동종 평균 100) — 동종 평균 이상",
-        "Deal-killer 없음"
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 95.4(동종 평균 100) — 동종 평균 이하 (미확인 문항 87%)"
       ],
-      "flip": null,
+      "flip": {
+        "qids": [
+          "F1",
+          "F2"
+        ],
+        "items": [
+          "F1 창업팀 이력",
+          "F2 기술 책임자 이력"
+        ],
+        "new_multiplier": 1.0292,
+        "reached": true,
+        "note": "F1·F2 이(가) YES 로 확인되면 동종 평균 대비 102.9(동종 평균 100) → 투자"
+      },
       "roi": {
         "computable": false,
         "round_amount_raw": "",
@@ -960,37 +1158,37 @@
           "dim": "founder",
           "name": "창업자·팀 (Owner)",
           "weight": 30,
-          "yes": 1,
+          "yes": 0,
           "no": 0,
-          "unknown": 3,
+          "unknown": 4,
           "n": 4,
-          "pct": 104.2,
-          "peer_mean": 0.167,
-          "contribution": 0.3125
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
         },
         {
           "dim": "market",
           "name": "시장성 (Opportunity Size)",
           "weight": 25,
-          "yes": 2,
+          "yes": 1,
           "no": 0,
-          "unknown": 2,
+          "unknown": 3,
           "n": 4,
-          "pct": 108.3,
-          "peer_mean": 0.333,
-          "contribution": 0.2708
+          "pct": 94.4,
+          "peer_mean": 0.361,
+          "contribution": 0.2361
         },
         {
           "dim": "product",
           "name": "제품/기술력",
           "weight": 15,
-          "yes": 0,
+          "yes": 1,
           "no": 0,
-          "unknown": 3,
+          "unknown": 2,
           "n": 3,
-          "pct": 88.9,
-          "peer_mean": 0.222,
-          "contribution": 0.1333
+          "pct": 101.9,
+          "peer_mean": 0.296,
+          "contribution": 0.1528
         },
         {
           "dim": "competition",
@@ -1000,9 +1198,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 91.7,
-          "peer_mean": 0.167,
-          "contribution": 0.0917
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
         },
         {
           "dim": "traction",
@@ -1012,201 +1210,245 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
           "name": "투자조건 (Deal Terms)",
           "weight": 10,
-          "yes": 2,
+          "yes": 1,
           "no": 0,
-          "unknown": 2,
+          "unknown": 3,
           "n": 4,
-          "pct": 108.3,
-          "peer_mean": 0.333,
-          "contribution": 0.1083
+          "pct": 97.2,
+          "peer_mean": 0.306,
+          "contribution": 0.0972
         }
       ],
       "rows": [
         {
           "qid": "F1",
           "answer": "UNKNOWN",
-          "rationale": "창업자 엄상혁의 창업 이전 농업 현장 또는 관련 기술 분야 경력에 대한 구체적 정보가 근거 문서에 없으므로 판단 불가.",
+          "rationale": "창업자 엄상혁의 창업 이전 경력이나 농업 관련 경험에 대한 구체적 정보가 근거에 없어 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "기술 책임자 개인의 특허, 논문, 연구소 또는 기업 경력에 관한 구체적 근거가 없으므로 판단 불가.",
+          "rationale": "근거 문서에서 핵심 기술 책임자인 엄상혁 대표의 기술 이력(특허, 논문, 연구소·기업 경력)에 관한 구체적 정보가 공개되어 있지 않아 확인할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
-          "answer": "YES",
-          "rationale": "근거 문서 [W903d5]와 [W0e2a7]에서 2026년 4월 시드 투자 유치 사실이 명확히 확인되며, 2026년 1월 국민연금 사업장 최초 가입일(첫 고용 시점)도 확인되어 최근 24개월 내 마일스톤 2건 이상 충족한다.",
-          "quote": "리비타가 지난달 시드 투자를 마무리했다. 투자에는 초기 스타트업 전문 운용사 지디벤처스(ZDVC)가 참여했으며, 구체적인 투자 금액은 비공개다.",
-          "evidence_ids": [
-            "W903d5"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 2026년 4월 시드 투자 유치와 노지 스마트팜 솔루션 출시라는 두 가지 마일스톤이 명확히 날짜와 함께 제시되어 있어 최근 24개월 내 2건 이상의 마일스톤이 확인된다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "회사 공개 핵심 수치에 대해 제3자 근거가 확인되지 않아 판단 불가.",
+          "rationale": "핵심 수치(고객 수, 매출 등)가 제3자 근거로 명확히 확인되지 않고, 대표 측 발언이나 회사 소개 수준에 그쳐 제3자 확인이 부족하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 애그테크 및 스마트 농업 시장 규모가 2023~2025년 기준으로 174억~226억 달러 수준이며, 연평균 10.2%~20% 성장 전망이 공공기관 및 연구기관 문서에서 확인되어 시장 규모가 명확히 제시됨.",
-          "quote": "글로벌 애그테크 산업 시장 규모는 2020년 91억 달러에서 2025년 226억 달러 규모로 5년간 연평균 20% 성장할 것으로 전망된다",
+          "rationale": "근거 문서에 글로벌 스마트 농업 시장 규모가 2023년 174억 달러에서 2034년 1,172억 달러로 성장한다는 공공기관 및 연구기관 문서 수치가 명확히 제시되어 있어 시장 규모가 확인된다.",
+          "quote": "글로벌 스마트 농업 시장은 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장 전망",
           "evidence_ids": [
-            "Dd31ce"
-          ]
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M2",
           "answer": "UNKNOWN",
-          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (최근 24개월 내 발행된 공공기관 및 연구기관 문서에서 글로벌 애그테크 시장의 연평균 10.2%~20% 성장 전망과 2025년 226억 달러 규모 예측이 확인되어 성장 근거가 충분함.)",
+          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (최근 24개월 이내 발행된 근거에서 글로벌 애그테크 시장이 연평균 10.2%~20% 성장 중임이 수치로 확인되어 성장 중이라는 근거가 충족된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M3",
-          "answer": "YES",
-          "rationale": "제3자 출처 기사에서 리비타 제품 사용 시 원격 관리로 작업시간 단축과 생산성 향상 효과가 수치 없이 언급되어 경제적 효과가 제시됨. 다만 수치가 없어 완전한 YES는 아니지만 제3자 근거로 인정 가능.",
-          "quote": "노지형 스마트팜 장비들을 활용하면 농업인이 농장을 직접 방문하지 않고도 원격으로 모든 과정을 관리할 수 있으며, 작업 효율성과 생산성을 동시에 높일 수 있다",
-          "evidence_ids": [
-            "We75e2"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "제품의 경제적 효과가 수치로 제3자 출처에서 제시된 근거가 없고, 회사 측 설명 위주로 수치화된 경제적 효과가 확인되지 않아 판단 불가하다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "과금 방식에 관한 구체적 근거가 없고, 제품 출시 예정이라는 내용만 있어 과금 방식 확인 불가.",
+          "rationale": "근거 문서에 과금 방식(장비 판매, 구독, 서비스, 수수료, 공공 조달)에 대한 구체적 설명이나 확인 가능한 정보가 없어 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "UNKNOWN",
-          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (근거 문서에 '현재 상용화 전으로 시제품 단계임'이라고 명확히 기술되어 있어, 상용 운영 중이라는 조건을 충족하지 않는다. 따라서 시제품 단계를 지나 상용 운영 중이라는 질문에 대해 반대되는 근거가 존재하므로 NO로 판정한다.)",
+          "rationale": "근거 문서에서 '2026년 5월 말 상용 제품 출시 예정'이라는 계획은 있으나, 실제 설치 수, 면적, 두수, 고객명 등 상용 운영을 입증하는 구체적 사실이 확인되지 않아 상용 운영 중임을 확정할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P2",
           "answer": "UNKNOWN",
-          "rationale": "근거에서 제3자 기관에 의한 여러 작기 또는 여러 지역의 현장 실증에 관한 구체적 내용이나 증거를 찾을 수 없음.",
+          "rationale": "공공기관·대학·지자체 등 제3자 실증 근거가 근거 문단에 없으므로 성능이 여러 작기 또는 여러 지역의 현장 실증으로 제시되는지 확인할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
-          "answer": "UNKNOWN",
-          "rationale": "자체 개발 근거로서 특허, 논문, 자체 데이터셋, 자체 하드웨어 등에 대한 구체적이고 명확한 근거가 근거 문단에 제시되어 있지 않음. 회사 소개 문구만으로는 판단 불가.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "리비타가 자체 개발한 ‘리비타 타워’와 ‘리비타 링크’ 등 핵심 기술을 보유하고 있음을 명확히 기술하고 있어 자체 개발 근거가 있다.",
+          "quote": "리비타는 온실 형태의 재배 공간을 별도로 구축해야 하는 시설 원예 중심의 기존 스마트팜 기술을 노지 재배 환경으로 확장·전환하고 있는 스마트팜 전문 스타트업이다. ... 리비타가 자체 개발한 ‘리비타 타워’는 땅에 세워두는 방식으로 간단히 설치할 수 있어 일명 ‘스마트 허수아비’로 불린다.",
+          "evidence_ids": [
+            "W0e2a7"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 리비타가 자체 개발한 '리비타 타워'라는 제품이 있음을 언급하지만, 특허·논문·자체 데이터셋·자체 하드웨어 등 핵심 기술의 자체 개발을 직접 증명하는 구체적 근거를 제시하지 않는다."
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "제품 유형상 별도의 인허가 대상이 아니며, 근거에 인허가 대상 아님이 명확히 언급되어 있음.",
+          "rationale": "제품 유형상 별도의 인허가 대상이 아니며, 인허가 정보가 없다고 명시되어 있어 해당 사항이 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 리비타의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적인 내용이 확인되지 않아 판정할 수 없다.",
+          "rationale": "근거 문서에서 리비타의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적인 내용이 확인되지 않아 특허 보유 여부를 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에서 리비타가 노지 재배 환경에 특화된 스마트팜 솔루션을 개발하고, 태양광 기반 저전력 프로세서와 엣지 AI를 결합해 전력 인프라가 부족한 노지에서도 독립적으로 작동하는 점이 명확히 차별점으로 제시되어 있어, 국내외 경쟁사 2곳 이상과 비교한 구체적인 차별점이 확인된다.)",
+          "rationale": "근거 문서에 리비타가 경쟁사들과 차별화된 구체적인 성능, 가격, 적용 작목, 범위 등의 비교 근거가 아닌 회사 측 주장이 포함되어 있으나, 제3자 출처의 구체적 비교 근거는 확인되지 않아 YES 판정 요건을 충족하지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "UNKNOWN",
-          "rationale": "리비타 제품의 사용 증가에 따른 자체 데이터 축적이나 설치·연동으로 인한 교체 비용 발생 구조에 관한 구체적 근거가 근거 문서에 없어 판정 불가하다.",
+          "rationale": "리비타 제품이 데이터 축적이나 설치·연동에 따른 교체 비용 구조에 관한 구체적 근거가 근거 문서에서 확인되지 않아 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 근거가 근거 문서에 확인되지 않아 판정할 수 없다.",
+          "rationale": "유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 계약 근거가 근거 문서에서 확인되지 않아 판정할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 리비타의 매출액이나 연도별 매출액에 관한 구체적인 수치나 확인 가능한 정보가 전혀 제공되지 않아, 매출액이 기업 DB·공시·보도로 확인된다고 판단할 근거가 없다.",
+          "rationale": "근거 문서에 매출액에 대한 구체적인 금액과 연도가 명확히 제시되어 있지 않아, 매출액이 기업 DB·공시·보도로 확인된다고 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "유료 고객 수, 설치 규모(고객 수, 농가 수, 면적, 두수, 계약 금액) 등 수치가 근거 문서에 명확히 제시되어 있지 않아, 수치로 확인된다고 판단할 근거가 없다.",
+          "rationale": "유료 고객 수나 설치 규모에 대한 구체적인 수치가 근거에 명확히 제시되어 있지 않아, 수치로 확인된다고 보기 어렵다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "같은 고객의 재계약·확대 도입 또는 여러 해 연속 사용에 관한 근거가 문서에 없으므로, 재사용 근거가 있다고 판단할 수 없다.",
+          "rationale": "같은 고객의 재계약·확대 도입이나 여러 해 연속 사용에 대한 구체적인 근거가 없으므로 재사용 근거가 확인되지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
           "answer": "UNKNOWN",
-          "rationale": "정부 보조사업이 아닌 매출(민간 판매, 수출, 기업 간 계약)에 관한 구체적 근거가 문서에 없으므로, 민간·수출 판매 근거가 있다고 판단할 수 없다.",
+          "rationale": "정부 보조사업이 아닌 매출에 대한 구체적인 민간 판매, 수출, 기업 간 계약 근거가 제시되어 있지 않아 확인할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
           "answer": "UNKNOWN",
           "rationale": "2026-04 Seed 라운드 금액 비공개 (코드 판정)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "YES",
-          "rationale": "최근 라운드에 기관투자자인 지디벤처스(ZDVC)가 참여한 것이 명확히 확인되어 YES 판정.",
+          "rationale": "최근 라운드에 기관투자자인 지디벤처스(ZDVC, 벤처캐피탈)가 참여한 것이 공개되어 있어 YES 판정.",
           "quote": "투자에는 초기 스타트업 전문 운용사 지디벤처스(ZDVC)가 참여했으며",
           "evidence_ids": [
             "W903d5"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "기업가치나 투자 지분율에 대한 수치가 공개되지 않아 근거 부족으로 UNKNOWN 판정.",
+          "rationale": "기업가치나 투자 지분율에 관한 수치가 공개되어 있지 않고, 투자 금액도 비공개로 명시되어 있어 근거 부족으로 UNKNOWN 판정.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
-          "answer": "YES",
-          "rationale": "대규모 자체 시설이 필요 없는 노지 스마트팜 솔루션 모델임이 확인되고, 전략적 투자자(지디벤처스)로부터 시드 투자를 확보한 점이 근거가 되어 YES 판정.",
-          "quote": "기존 스마트팜 기술이 온실과 시설 원예에 집중된 것과 달리, 국내 농업 활동의 약 95% 이상이 이뤄지는 노지 영역에 주목해 '현장에서 바로 사용할 수 있는' 디지털 농업 장비를 개발하고 있다.",
-          "evidence_ids": [
-            "W903d5"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없어 판단 불가, 따라서 UNKNOWN.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -1214,24 +1456,16 @@
       "name": "새팜",
       "region": "KR",
       "stage": "Pre-A",
-      "decision": "보류",
-      "hold_type": "창업자 점수 평균 미만",
-      "multiplier": 1.0681,
-      "score100": 106.8,
+      "decision": "투자",
+      "hold_type": null,
+      "multiplier": 1.0722,
+      "score100": 107.2,
       "reasons": [
-        "창업자 기준 90.3(동종 평균 100) — 팀이 동종 평균 미만"
+        "동종 평균 대비 107.2(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 106.9(동종 평균 100) — 동종 평균 이상",
+        "Deal-killer 없음"
       ],
-      "flip": {
-        "qids": [
-          "F1"
-        ],
-        "items": [
-          "F1 창업팀 이력"
-        ],
-        "new_multiplier": 1.1056,
-        "reached": true,
-        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 110.6(동종 평균 100) → 투자"
-      },
+      "flip": null,
       "roi": {
         "computable": false,
         "round_amount_raw": "",
@@ -1260,13 +1494,13 @@
           "dim": "founder",
           "name": "창업자·팀 (Owner)",
           "weight": 30,
-          "yes": 0,
+          "yes": 1,
           "no": 0,
-          "unknown": 4,
+          "unknown": 3,
           "n": 4,
-          "pct": 90.3,
-          "peer_mean": 0.194,
-          "contribution": 0.2708
+          "pct": 106.9,
+          "peer_mean": 0.111,
+          "contribution": 0.3208
         },
         {
           "dim": "market",
@@ -1288,33 +1522,33 @@
           "no": 0,
           "unknown": 1,
           "n": 3,
-          "pct": 125.9,
-          "peer_mean": 0.148,
-          "contribution": 0.1889
+          "pct": 120.4,
+          "peer_mean": 0.259,
+          "contribution": 0.1806
         },
         {
           "dim": "competition",
           "name": "경쟁 우위",
           "weight": 10,
-          "yes": 3,
+          "yes": 2,
           "no": 0,
-          "unknown": 1,
+          "unknown": 2,
           "n": 4,
-          "pct": 133.3,
-          "peer_mean": 0.083,
-          "contribution": 0.1333
+          "pct": 118.1,
+          "peer_mean": 0.139,
+          "contribution": 0.1181
         },
         {
           "dim": "traction",
           "name": "실적",
           "weight": 10,
-          "yes": 2,
+          "yes": 0,
           "no": 0,
-          "unknown": 2,
+          "unknown": 4,
           "n": 4,
-          "pct": 123.6,
+          "pct": 98.6,
           "peer_mean": 0.028,
-          "contribution": 0.1236
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
@@ -1324,197 +1558,241 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 80.6,
-          "peer_mean": 0.389,
-          "contribution": 0.0806
+          "pct": 83.3,
+          "peer_mean": 0.333,
+          "contribution": 0.0833
         }
       ],
       "rows": [
         {
           "qid": "F1",
           "answer": "UNKNOWN",
-          "rationale": "창업자 정승환의 창업 전 농업 현장 또는 관련 기술 분야 경력에 대한 구체적 근거가 없으며, 단지 창업 이후 활동만 확인되어 YES 요건을 충족하지 못함.",
+          "rationale": "근거 문단에서 창업자 정승환의 창업 이전 경력이나 농업 관련 전문성에 대한 구체적 정보가 확인되지 않아 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "기술 책임자의 개인적 특허, 논문, 연구소 또는 기업 경력에 관한 구체적 근거가 없고 회사 기술 소개만 있어 YES 요건 미충족.",
+          "rationale": "기술 책임자의 특허, 논문, 연구소 또는 기업 경력에 관한 구체적 근거가 없어 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
-          "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 2022년 6월 회사 설립 및 TIPS 선정, 2025년 11월 CES 2026 혁신상 수상, 2026년 7월 프리시리즈A 투자 유치 등 최근 24개월 내 마일스톤 3건이 명확히 기재되어 있어 YES 판정이 타당하다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "최근 24개월 내 2026-05 전략적 투자 유치와 2026-07 프리시리즈A 투자 유치 등 2건 이상의 마일스톤이 확인된다.",
+          "quote": "2022년 6월 설립된 새팜은 위성 영상을 AI로 분석해 필지 단위 작물 생육 상태를 진단하고 재배 가이드까지 제공한다. 2026-05 풀무원으로부터 전략적 투자(SI) 유치, 2026-07 노바벤처스로부터 프리시리즈A 투자 유치",
+          "evidence_ids": [
+            "W15c26"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "핵심 수치가 회사 측 자료에 있으나 제3자 근거로 확인된 내용이 없고 모순 근거도 없어 YES 요건 미충족.",
+          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 없고, 수상은 기술력 인정이지만 수치 확인 근거로는 부족하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 애그테크 시장 규모가 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 YES 판정함.",
-          "quote": "글로벌 애그테크 산업 시장 규모는 2020년 91억 달러에서 2025년 226억 달러 규모로 5년간 연평균 20% 성장할 것으로 전망된다(Statista, 2022).",
+          "rationale": "근거 문서에서 한국농촌경제연구원 등 공공기관 문서에 의해 글로벌 스마트 농업 시장 규모가 2023년 174억 달러에서 2034년 1,172억 달러에 이를 것으로 예측된 수치가 명확히 확인된다. 따라서 목표 시장 규모가 공공기관 문서에서 수치와 기준 연도로 확인된 것으로 판단된다.",
+          "quote": "글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였으며",
           "evidence_ids": [
-            "Dd31ce"
-          ]
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 글로벌 스마트 농업 시장 규모에 대한 수치이며, 특정 회사인 새팜에 대한 시장 규모를 직접 확인하는 내용이 아니다."
         },
         {
           "qid": "M2",
           "answer": "UNKNOWN",
-          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (근거 [Dd31ce]에 따르면 글로벌 애그테크 산업 시장이 2020년 91억 달러에서 2025년 226억 달러로 연평균 20% 성장할 것으로 전망되어 최근 24개월 내의 성장 근거가 명확히 제시되어 있다.)",
+          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (최근 24개월 이내 발행된 제3자 출처의 시장 성장 수치가 명확히 제시되어 있어, 해당 분야가 성장 중임을 뒷받침한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (제3자 출처에서 고객의 경제적 효과 수치가 명확히 제시되어 YES 판정함.)",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (제3자 출처에서 고객의 실제 문제와 제품의 경제적 효과를 수치로 명확히 제시하고 있어, 질문에 부합한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "YES",
-          "rationale": "과금 방식이 구독형 모델로 구체적으로 서술되어 있어 YES 판정함.",
-          "quote": "특히 월 12달러 수준의 구독형 모델은 기존 정밀농업 솔루션 대비 98% 저렴해 글로벌 농가의 접근성을 획기적으로 끌어올렸다는 분석이다.",
+          "rationale": "과금 방식으로 구독형 모델이 구체적으로 서술되어 있어, 누가 돈을 내는지와 과금 방식이 확인된다.",
+          "quote": "월 12달러 수준의 구독형 모델은 기존 정밀농업 솔루션 대비 98% 저렴해 글로벌 농가의 접근성을 획기적으로 끌어올렸다",
           "evidence_ids": [
             "Wbb501"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "YES",
-          "rationale": "근거 문서 [W15c26]에 새팜의 솔루션이 지역농협, 풀무원 계약농가, 의성군, 괴산군 등 실제 농장과 지자체에 적용되어 상용 운영 중임이 명확히 기술되어 있다. 설치 수, 면적, 고객명 중 하나 이상 조건을 충족하므로 YES 판정한다.",
-          "quote": "새팜의 솔루션은 지역농협(벼)·풀무원(콩) 계약농가를 비롯해 의성군(마늘)·괴산군(콩) 등 지자체까지 적용 범위를 넓혔다.",
+          "rationale": "근거 [W15c26]에 '국내 8000여 농가와 전 세계 20만ha에 적용한 결과 재배량 18% 증가, 병충해·이상 징후 탐지율 95%를 확인했다'는 문장이 있어 상용 운영 중임을 직접 뒷받침한다.",
+          "quote": "국내 8000여 농가와 전 세계 20만ha에 적용한 결과 재배량 18% 증가, 병충해·이상 징후 탐지율 95%를 확인했다.",
           "evidence_ids": [
             "W15c26"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "P2",
           "answer": "UNKNOWN",
-          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (새팜은 경기 연천 지역의 벼 168개 농가와 콩 52개 농가 데이터를 기반으로 성능을 검증하였으며, 이는 여러 지역의 현장 실증에 해당한다. 또한, 공공기관 및 지자체(의성군, 괴산군)까지 적용 범위를 넓혀 제3자 실증 근거가 있다.)",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (새팜은 경기 연천 지역 벼와 콩 농가 데이터를 기반으로 성능을 검증하였고, 이는 여러 지역과 작기에 걸친 현장 실증 근거로 인정된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
           "answer": "YES",
-          "rationale": "새팜은 인공위성 데이터와 AI를 결합한 자체 개발 기술을 보유하고 있으며, 위성 영상 분석과 AI 기반 작물 생육 진단 및 재배 가이드 제공 기술을 보유한 점이 근거로 확인된다.",
-          "quote": "위성 영상을 AI로 분석해 필지 단위 작물 생육 상태를 진단하고 재배 가이드까지 제공한다",
+          "rationale": "근거 [W15c26]에 '새팜은 인공위성 데이터와 AI를 결합해 농작물 재배 솔루션을 제공하며 위성 영상을 AI로 분석해 필지 단위 작물 생육 상태 진단과 재배 가이드를 제공한다'는 문장이 있어 자체 개발 핵심 기술 근거가 된다.",
+          "quote": "새팜은 인공위성 데이터와 AI(인공지능)를 결합해 농작물 재배 솔루션을 제공하는 스타트업으로 위성 영상을 AI로 분석해 필지 단위 작물 생육 상태 진단하고 재배 가이드까지 제공한다.",
           "evidence_ids": [
             "W15c26"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 새팜이 인공위성 데이터와 AI를 결합해 솔루션을 제공한다고만 언급하며, 자체 개발 근거인 특허, 논문, 자체 데이터셋, 자체 하드웨어에 대한 구체적 사실은 포함하지 않는다."
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "새팜의 제품은 농작물 재배 솔루션으로서 별도의 인허가 대상이 아니므로 인허가·검정 여부는 해당 사항이 아니다.",
+          "rationale": "새팜의 제품은 농업용 AI 솔루션으로 별도의 인허가 대상이 아니므로 인허가 관련 질문은 해당 사항이 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 새팜의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적인 언급이 없어 확인할 수 없습니다.",
+          "rationale": "근거 문서에서 새팜의 특허 등록 또는 출원에 관한 구체적 언급이 없어 확인할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
-          "answer": "YES",
-          "rationale": "근거 문서 [W15c26]에 새팜이 위성 데이터와 AI를 결합하여 필지 단위 작물 생육 상태 진단 및 재배 가이드를 제공하며, 경쟁사들이 주로 현장 촬영 이미지 기반 진단에 집중하는 반면, 새팜은 전국 단위 재배법 제작과 12개 글로벌 위성 기업 데이터 활용으로 차별화된 경쟁 우위를 갖고 있음이 명확히 기술되어 있다. 따라서 국내외 경쟁사 2곳 이상과 비교했을 때 구체적인 차별점이 근거로 확인된다.",
-          "quote": "새팜은 국내 8000여 농가, 전 세계 20만ha(헥타르)에 적용한 결과 재배량 18% 증가, 병충해·이상 징후 탐지율 95%를 확인했다.",
-          "evidence_ids": [
-            "W15c26"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "근거 문단에 새팜이 12개 글로벌 위성 기업 데이터를 확보하고 5년간 5억건 이상의 데이터를 분석했다는 내용은 있으나, 경쟁사 2곳 이상과 구체적인 차별점(성능·가격·적용 작목·범위)을 비교한 문장은 없다. 경쟁사와의 직접 비교 근거가 없으므로 YES 판정 요건을 충족하지 않는다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "YES",
-          "rationale": "새팜은 5년간 35개 작물과 5억 건 이상의 농림위성 데이터를 분석하여 작황 예측 정확도를 높였다는 점에서 자체 데이터 축적을 통한 성능 향상 근거가 있습니다.",
-          "quote": "5년간 35개 작물과 5억 건 이상의 농림위성 데이터를 분석해 작황 예측 정확도를 높였다",
+          "rationale": "근거 문서에 데이터 축적을 통한 성능 향상 근거가 명확히 제시되어 있어 YES 판정한다.",
+          "quote": "5년간 5억건 이상의 농림위성 데이터 분석을 통해 작황 예측 정확도를 높여왔다",
           "evidence_ids": [
             "W15c26"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": "인용은 데이터 축적과 분석을 통한 성능 향상에 대해 언급하지만, 사용 증가에 따른 자체 데이터 축적이나 설치·연동으로 인한 교체 비용 발생 구조에 대한 구체적 사실은 포함하지 않는다."
         },
         {
           "qid": "C4",
           "answer": "YES",
-          "rationale": "새팜이 지역농협, 풀무원 계약농가 및 의성군, 괴산군 등 지자체와 계약 또는 공동사업을 진행하고 있음을 명확히 밝히고 있어 유통·전략 파트너와의 계약 근거가 있습니다.",
+          "rationale": "근거 문서에 지역농협, 풀무원, 의성군, 괴산군 등과 계약 또는 공동사업이 있음을 명확히 확인할 수 있어 YES 판정한다.",
           "quote": "새팜의 솔루션은 지역농협(벼)·풀무원(콩) 계약농가를 비롯해 의성군(마늘)·괴산군(콩) 등 지자체까지 적용 범위를 넓혔다",
           "evidence_ids": [
             "W15c26"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (2024년 매출액이 금융감독원 전자공시 감사보고서로 확인되어 연도와 매출액이 명확히 제시되어 있음.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (2024년 매출액이 금융감독원 전자공시 감사보고서로 확인되어 연도와 매출액이 명확히 제시됨.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서 내에 새팜의 유료 고객 수나 설치 규모(고객 수, 농가 수, 면적, 두수, 계약 금액)를 수치로 확인할 수 있는 문장이 없습니다. 분석 요약에 언급된 '2026년 8월 기준, 국내 8000여 농가와 전 세계 20만ha에 적용' 문장은 근거 본문에 없으므로 인용할 수 없습니다. 따라서 질문에 대해 명확한 근거가 없어 UNKNOWN으로 판정합니다.",
+          "rationale": "고객 수나 설치 규모에 관한 수치가 없고, 직원 수만 제시되어 유료 고객이나 설치 규모 수치 근거가 아님.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
-          "answer": "YES",
-          "rationale": "같은 고객(풀무원)과의 재계약 및 확대 도입 근거가 명확히 제시되어 있음.",
-          "quote": "새팜은 풀무원의 대두 계약재배 농가에 위성 기반 작황 모니터링 서비스를 제공해온 협업 이력을 바탕으로 협업 작물을 나물콩·양파·양배추 등으로 확대 중이다.",
-          "evidence_ids": [
-            "W72d37"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "재계약·확대 도입이나 여러 해 연속 사용에 관한 근거가 근거 문단에 없음.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
-          "answer": "YES",
-          "rationale": "민간 기업인 풀무원과의 계약에 기반한 매출 근거가 확인됨.",
-          "quote": "새팜은 풀무원의 대두 계약재배 농가에 위성 기반 작황 모니터링 서비스를 제공해온 협업 이력을 바탕으로 협업 작물을 나물콩·양파·양배추 등으로 확대 중이다.",
-          "evidence_ids": [
-            "W72d37"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "정부 보조사업이 아닌 매출 근거가 명확히 제시된 부분이 없어 판단 불가.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
           "answer": "UNKNOWN",
           "rationale": "2026-07 Pre-A 라운드 금액 비공개 (코드 판정)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "UNKNOWN",
-          "rationale": "기관투자자 참여 여부를 확인할 수 있는 투자사 이름이 공개된 근거가 없음. 희망 투자 단계만 언급되어 기관투자자 참여 확인 불가.",
+          "rationale": "기관투자자 참여 여부를 특정 투자사 이름으로 확인할 수 있는 근거가 없음. 단순 투자자 수만으로는 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "기업가치 또는 투자 지분율에 관한 공개된 수치 근거가 전혀 없고, 투자 정보가 비공개로 명시되어 있어 판정 불가.",
+          "rationale": "기업가치 또는 투자 지분율에 관한 수치가 공개된 근거가 없으며, 비공개 상태임이 명시되어 있어 판정 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "UNKNOWN",
-          "rationale": "사업 모델이나 자금 구조에 관한 구체적 근거가 없으며, 대규모 자체 시설 필요 여부 및 전략적 투자자 확보 여부에 대한 정보가 없어 판정 불가.",
+          "rationale": "사업 모델이나 자금 구조에 관한 구체적 근거가 없어 전략적 투자자 또는 비희석 자금 확보 여부를 판단할 수 없음.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -1524,24 +1802,22 @@
       "stage": "Seed",
       "decision": "보류",
       "hold_type": "창업자 점수 평균 미만",
-      "multiplier": 0.9361,
-      "score100": 93.6,
+      "multiplier": 0.9813,
+      "score100": 98.1,
       "reasons": [
-        "창업자 기준 90.3(동종 평균 100) — 팀이 동종 평균 미만",
-        "동종 평균 대비 93.6(동종 평균 100) — 동종 평균 이하 (미확인 문항 87%)"
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 98.1(동종 평균 100) — 동종 평균 이하 (미확인 문항 83%)"
       ],
       "flip": {
         "qids": [
-          "F1",
-          "F2"
+          "F1"
         ],
         "items": [
-          "F1 창업팀 이력",
-          "F2 기술 책임자 이력"
+          "F1 창업팀 이력"
         ],
-        "new_multiplier": 1.0111,
+        "new_multiplier": 1.0187,
         "reached": true,
-        "note": "F1·F2 이(가) YES 로 확인되면 동종 평균 대비 101.1(동종 평균 100) → 투자"
+        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 101.9(동종 평균 100) → 투자"
       },
       "roi": {
         "computable": true,
@@ -1584,21 +1860,21 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 90.3,
-          "peer_mean": 0.194,
-          "contribution": 0.2708
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
         },
         {
           "dim": "market",
           "name": "시장성 (Opportunity Size)",
           "weight": 25,
-          "yes": 1,
+          "yes": 2,
           "no": 0,
-          "unknown": 3,
+          "unknown": 2,
           "n": 4,
-          "pct": 94.4,
-          "peer_mean": 0.361,
-          "contribution": 0.2361
+          "pct": 108.3,
+          "peer_mean": 0.333,
+          "contribution": 0.2708
         },
         {
           "dim": "product",
@@ -1606,11 +1882,11 @@
           "weight": 15,
           "yes": 0,
           "no": 0,
-          "unknown": 3,
-          "n": 3,
-          "pct": 88.9,
-          "peer_mean": 0.222,
-          "contribution": 0.1333
+          "unknown": 4,
+          "n": 4,
+          "pct": 87.5,
+          "peer_mean": 0.25,
+          "contribution": 0.1313
         },
         {
           "dim": "competition",
@@ -1620,9 +1896,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 91.7,
-          "peer_mean": 0.167,
-          "contribution": 0.0917
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
         },
         {
           "dim": "traction",
@@ -1632,9 +1908,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
@@ -1644,153 +1920,195 @@
           "no": 0,
           "unknown": 2,
           "n": 4,
-          "pct": 108.3,
-          "peer_mean": 0.333,
-          "contribution": 0.1083
+          "pct": 111.1,
+          "peer_mean": 0.278,
+          "contribution": 0.1111
         }
       ],
       "rows": [
         {
           "qid": "F1",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (창업자 Sam Dugan이 2022년 University of Waterloo에서 공학 학위를 취득했고 어릴 때부터 로봇 제작 경험이 있다는 구체적 경력 근거가 [근거] 본문에 명확히 있음.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (공동창업자 Sam Dugan은 10세부터 로봇 제작 경험이 있고, Jana Tian은 화학공학 경력을 보유하여 창업 전 관련 분야 경험이 확인됨.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (기술 책임자인 Sam Dugan의 개인 경력(학위 및 로봇 제작 경험)이 [근거] 본문에 명확히 기술되어 있어 YES 판정 가능.)",
+          "rationale": "기술 책임자의 특허, 논문, 연구소 또는 기업 경력에 대한 구체적 근거가 없고, 단순 경력 언급만 있어 YES 요건 미충족.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내 2026년 2월 시드 투자 유치와 3월 현장 시험 확대라는 두 건 이상의 마일스톤이 [근거] 본문에 명확히 존재함.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거에 2026년 2월 시드 투자 유치와 2026년 3월 현장 시험 확대라는 두 건의 날짜가 명확한 마일스톤이 있어 YES 판정이 가능하다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "회사 공개 핵심 수치에 대해 제3자 근거가 명확히 확인되지 않아 판정 불가.",
+          "rationale": "핵심 수치(투자금액 등)는 회사 발표에 기반하며, 제3자 독립 확인 근거가 부족하여 YES 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서(한국농촌경제연구원 2024)에서 수치와 기준 연도로 명확히 확인되어 YES 판정한다.",
+          "rationale": "근거 문서에서 글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 M1 질문에 부합한다.",
           "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
           "evidence_ids": [
             "Deaac5"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M2",
-          "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내(2024~2025년) 글로벌 및 국내 농업 로봇·자율주행 농기계 분야 투자액 증가가 구체적 수치로 제시되어 해당 분야가 성장 중임을 제3자 출처로 확인할 수 있다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "2024년 이후 최근 24개월 이내 발행된 한국농촌경제연구원의 보고서에서 글로벌 스마트 농업 시장이 연평균 10.2%~19.1% 성장할 것으로 예측되어, 해당 분야가 성장 중임을 직접적으로 뒷받침하는 수치가 제시되었다.",
+          "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (제3자 평가에서 고객 문제 해결과 경제적 효과가 수치로 제시되어 YES 판정한다.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (제3자 출처인 TechCrunch 기사에서 고객의 실제 문제(비료 사용량 절감)와 경제적 효과(에이커당 약 150달러 비용 절감)를 수치로 제시하고 있어 YES 판정에 부합한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "과금 방식에 대한 구체적 서술이 없고 구매자 지불 의향만 추산되어 과금 방식 확인 불가로 UNKNOWN 판정한다.",
+          "rationale": "과금 방식(장비 판매, 구독, 서비스 등)에 관한 구체적 서술이 근거에 없으며, 비용 절감 효과만 언급되어 과금 방식 확인 불가로 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "UNKNOWN",
-          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (근거 문서에서 Upside Robotics는 '실증 단계로 상용화 초기 단계임'으로 명확히 기술되어 있어, 시제품 단계를 지나 실제 농장에서 상용 운영 중이라는 조건을 충족하지 못한다. 따라서 상용 운영 중이라는 질문에 대해 반대되는 근거가 있으므로 NO로 판정한다.)",
+          "rationale": "근거 문단에 '200개 농장 대기자 명단'과 '실증 운영' 언급은 있으나, 설치 수·면적·두수·고객명 등 상용 운영을 직접 입증하는 구체적 수치나 고객명은 확인되지 않는다. 실증 단계라는 표현과 함께 상용 운영을 명확히 뒷받침하는 문장이 없어 YES 판정 불가하며, 반대 근거도 없어 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P2",
           "answer": "UNKNOWN",
-          "rationale": "현장 실증이 3,000에이커 농장에서 이루어졌다는 언급은 있으나, 공공기관·대학·지자체 등 제3자 실증 근거가 명확히 제시되지 않아 YES 판정 요건을 충족하지 못한다.",
+          "rationale": "근거에는 온타리오 3,000에이커 농장에서 실증 운영 중이라는 내용은 있으나, 여러 작기 또는 여러 지역에서의 제3자 실증 근거가 명확히 제시되어 있지 않아 판단이 어렵다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
           "answer": "UNKNOWN",
-          "rationale": "핵심 기술이 AI 기반 자율주행 및 정밀 비료 투입 알고리즘임은 언급되나, 자체 특허·논문·데이터셋·하드웨어 등 구체적 자체 개발 근거가 명확히 제시되지 않아 근거 부족으로 UNKNOWN 판정이다.",
+          "rationale": "근거에 자체 개발 핵심 기술로 AI 기반 자율주행 및 정밀 비료 투입 알고리즘이 언급되나, 자사 특허, 논문, 자체 데이터셋 또는 하드웨어에 대한 구체적 근거가 없어 자체 개발 여부를 확실히 판단하기 어렵다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P4",
-          "answer": "N/A",
-          "rationale": "농업용 로봇은 현재 농기계 검정기준이 마련 중인 단계로, 개별 제품에 대한 인허가·검정 신청이나 등록 사실이 없으므로 인허가 대상이 아니라고 판단하여 N/A 판정한다.",
+          "answer": "UNKNOWN",
+          "rationale": "근거에 인허가나 검정 신청 여부에 관한 구체적 내용이 없고, 인허가 대상 여부도 명확하지 않아 판단할 근거가 부족하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 Upside Robotics의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적인 정보가 확인되지 않아 판정할 수 없다.",
+          "rationale": "근거 문단에 특허 관련 언급이 있으나 Upside Robotics 회사의 특허 등록 또는 출원 사실이 명확히 확인되지 않아 YES 판정 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "근거 문단에 회사 측 차별점 주장이 있으나, 제3자 근거로 경쟁사 대비 구체적 차별성이 확인된 내용은 없으며, 경쟁사들도 유사 기술을 보유하고 있어 객관적 비교 근거가 부족하다.",
+          "rationale": "[근거] 문단에서 국내외 경쟁사 2곳 이상과 비교한 구체적인 차별점(성능·가격·적용 작목·범위)에 대한 제3자 검증 근거가 확인되지 않는다. 회사 측 주장은 있으나, 이는 대표나 회사 측 발언으로 제3자 근거가 아니며, 직접 비교 문장도 없다. 따라서 근거 부족으로 판정은 UNKNOWN이다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "UNKNOWN",
-          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음) → NO 대신 UNKNOWN (Upside Robotics에 관한 근거가 아닌 대동의 서비스에 관한 내용이며, Upside Robotics의 데이터 축적 및 연동 구조에 관한 직접적 근거가 없어 NO 판정한다.)",
+          "rationale": "근거는 대동 회사의 데이터 축적 및 연동 구조에 관한 내용이며, Upside Robotics에 대한 직접적 근거가 없어 판정 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 Upside Robotics가 유통·전략 파트너와 계약이나 공동사업을 체결했다는 구체적인 내용이 확인되지 않아 판정할 수 없다.",
+          "rationale": "Upside Robotics와 유통·전략 파트너 간 계약 또는 공동사업에 관한 제3자 근거가 없어 판정 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 Upside Robotics의 매출액과 연도에 관한 구체적인 정보가 확인되지 않아 매출액이 기업 DB·공시·보도로 확인되는지 판단할 수 없다.",
+          "rationale": "근거에 매출 금액과 연도가 명확히 확인되지 않으며, 투자 유치 금액만 언급되어 매출액 확인 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "근거 문단에 유료 고객 수, 설치 규모, 고객 수, 농가 수, 면적, 두수, 계약 금액 등 구체적인 수치가 확인되지 않음. 2026년 현재 온타리오 3,000에이커 옥수수 농장에서 운영 중이라는 문장은 근거 본문에 없으므로 인용 불가. 따라서 수치로 확인되는 유료 고객이나 설치 규모에 관한 근거가 없어 UNKNOWN 판정.",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [W0e24c]에 2024년 70에이커, 2025년 1,200에이커, 2026년 3,000에이커 이상 농장에서 운영 중이라는 구체적 수치가 있어 유료 고객 또는 설치 규모가 수치로 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "같은 고객의 재계약·확대 도입이나 여러 해 연속 사용에 대한 근거가 근거 문서에서 확인되지 않아 판단할 수 없다.",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [W0e24c]에 '100% 고객 유지율'이라는 문장이 있어 같은 고객의 재계약·확대 도입 또는 여러 해 연속 사용 근거가 있다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
           "answer": "UNKNOWN",
-          "rationale": "정부 보조사업이 아닌 매출(민간 판매, 수출, 기업 간 계약)에 관한 구체적인 근거가 문서에서 확인되지 않아 판단할 수 없다.",
+          "rationale": "정부 보조사업이 아닌 매출 근거가 명확히 제시되지 않아 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
@@ -1801,30 +2119,38 @@
             "Wfd35b",
             "Wa8af5",
             "Wfc709"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "YES",
-          "rationale": "최근 라운드에 여러 기관투자자(VC, 액셀러레이터 등)가 참여한 것이 공개되어 있다.",
-          "quote": "Upside Robotics investors Notable investors and investment history | ANIMO Ventures | Pre Seed | Garage Capital | Seed | Plural | Seed | Moxxie Ventures | Pre Seed | Entrepreneurs First | Pre Seed, Seed | ScaleGood Fund | Pre Seed | Plural | Seed",
+          "rationale": "The evidence names institutional investors Plural and Garage Capital participating in the recent seed round, confirming institutional investor participation.",
+          "quote": "Upside Robotics raised a $7.5 million seed round, with Plural leading the investment and Garage Capital also participating.",
           "evidence_ids": [
-            "W835e4"
-          ]
+            "Wfc709"
+          ],
+          "confidence": "상",
+          "verifier": "인용문에 투자사 이름은 있으나, 기관투자자(VC, CVC, 정책 펀드, TIPS 운영사)인지 여부가 명확하지 않아 인정 조건을 직접 충족한다고 보기 어렵다."
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "기업가치 수치가 공개되어 있지 않고, 비공개임이 명시되어 있어 확인 불가하다.",
+          "rationale": "The valuation or investment share is not disclosed in the evidence, only stating that valuation information is not publicly available, so the question cannot be confirmed.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "UNKNOWN",
-          "rationale": "대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없다.",
+          "rationale": "There is no clear evidence about the business model requiring or not requiring large-scale own facilities or about securing strategic investors or non-dilutive funds. The investment details alone do not confirm this condition.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -1834,22 +2160,21 @@
       "stage": "Series A",
       "decision": "보류",
       "hold_type": "창업자 점수 평균 미만",
-      "multiplier": 0.9778,
-      "score100": 97.8,
+      "multiplier": 1.0167,
+      "score100": 101.7,
       "reasons": [
-        "창업자 기준 90.3(동종 평균 100) — 팀이 동종 평균 미만",
-        "동종 평균 대비 97.8(동종 평균 100) — 동종 평균 이하 (미확인 문항 74%)"
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만"
       ],
       "flip": {
         "qids": [
-          "F1"
+          "F2"
         ],
         "items": [
-          "F1 창업팀 이력"
+          "F2 기술 책임자 이력"
         ],
-        "new_multiplier": 1.0153,
+        "new_multiplier": 1.0542,
         "reached": true,
-        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 101.5(동종 평균 100) → 투자"
+        "note": "F2 이(가) YES 로 확인되면 동종 평균 대비 105.4(동종 평균 100) → 투자"
       },
       "roi": {
         "computable": true,
@@ -1887,25 +2212,25 @@
           "dim": "founder",
           "name": "창업자·팀 (Owner)",
           "weight": 30,
-          "yes": 0,
-          "no": 0,
-          "unknown": 4,
+          "yes": 1,
+          "no": 1,
+          "unknown": 2,
           "n": 4,
-          "pct": 90.3,
-          "peer_mean": 0.194,
-          "contribution": 0.2708
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
         },
         {
           "dim": "market",
           "name": "시장성 (Opportunity Size)",
           "weight": 25,
-          "yes": 1,
+          "yes": 2,
           "no": 0,
-          "unknown": 3,
+          "unknown": 2,
           "n": 4,
-          "pct": 94.4,
-          "peer_mean": 0.361,
-          "contribution": 0.2361
+          "pct": 108.3,
+          "peer_mean": 0.333,
+          "contribution": 0.2708
         },
         {
           "dim": "product",
@@ -1915,9 +2240,9 @@
           "no": 0,
           "unknown": 3,
           "n": 3,
-          "pct": 88.9,
-          "peer_mean": 0.222,
-          "contribution": 0.1333
+          "pct": 83.3,
+          "peer_mean": 0.333,
+          "contribution": 0.125
         },
         {
           "dim": "competition",
@@ -1927,181 +2252,229 @@
           "no": 0,
           "unknown": 2,
           "n": 4,
-          "pct": 119.4,
-          "peer_mean": 0.111,
-          "contribution": 0.1194
+          "pct": 118.1,
+          "peer_mean": 0.139,
+          "contribution": 0.1181
         },
         {
           "dim": "traction",
           "name": "실적",
           "weight": 10,
-          "yes": 0,
+          "yes": 1,
           "no": 0,
-          "unknown": 4,
+          "unknown": 3,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 112.5,
+          "peer_mean": 0.0,
+          "contribution": 0.1125
         },
         {
           "dim": "deal",
           "name": "투자조건 (Deal Terms)",
           "weight": 10,
-          "yes": 3,
+          "yes": 2,
           "no": 0,
-          "unknown": 1,
+          "unknown": 2,
           "n": 4,
-          "pct": 122.2,
-          "peer_mean": 0.306,
-          "contribution": 0.1222
+          "pct": 111.1,
+          "peer_mean": 0.278,
+          "contribution": 0.1111
         }
       ],
       "rows": [
         {
           "qid": "F1",
-          "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 창업자 강길모와 CTO 오상현이 서울대 산업공학 박사 출신이며 창업 전부터 관련 분야 연구 경력이 있다는 구체적 사실이 명시되어 있어 YES 판정이 가능하다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "근거 문서에서 창업자 강길모 대표와 CTO 오상현이 서울대 산업공학 박사 출신임을 명확히 확인할 수 있어, 창업 전부터 관련 분야에서 전문성을 갖추었음을 직접 뒷받침한다.",
+          "quote": "퓨처커넥트는 서울대 산업공학 박사 선후배인 강길모 대표와 오상현 기술책임이 이끌고 있다.",
+          "evidence_ids": [
+            "W19512"
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 창업자들의 이름과 학력을 제시하지만, 농업 현장이나 해당 기술 분야에서의 연구·실무·사업 경험(농학·축산·수의·원예 전공 등)에 대한 구체적 사실을 포함하지 않아 인정 조건을 충족하지 않는다."
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (기술책임자 오상현도 서울대 산업공학 박사 출신이며 연구 경력이 있다는 근거가 있어 핵심 기술 책임자의 기술 이력이 확인된다. 따라서 YES 판정이 적합하다.)",
+          "rationale": "기술책임자의 학력과 창업 전 이력만 언급되어 있으나, 특허 발명자, 논문, 연구소·기업 경력 등 구체적 기술 이력 근거가 없어 YES 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
-          "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내에 2022년 7월과 2025년 11월 두 건의 투자 유치 마일스톤이 명확히 확인되어 YES 판정이 가능하다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "NO",
+          "rationale": "최근 24개월 내 마일스톤으로 2025-11 86억원 규모 시리즈A 투자 유치 근거가 [근거] 문서에 없고, 2022-07 프리시리즈A 투자 유치 1건만 확인되어 2건 이상 마일스톤 근거가 부족하다.",
+          "quote": "2022-07 54억원 규모 프리시리즈A 투자 유치 (KB인베스트먼트, 하나벤처스 등)",
+          "evidence_ids": [
+            "W008cf"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 없고, 회사 측 발언 위주이며 모순 근거도 없어 확인 불가하다.",
+          "rationale": "핵심 수치(손익분기 달성 등)가 회사 측 발언에 한정되어 있고, 제3자 근거로 확인되지 않아 YES 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "근거 문서에서 글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서(한국농촌경제연구원 2024)에서 명확히 수치와 기간을 포함해 확인되므로 YES 판정한다.",
-          "quote": "글로벌 스마트 농업 시장은 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장 전망",
+          "rationale": "공공기관 문서(한국농촌경제연구원 2024)에서 글로벌 및 국내 스마트 농업 시장 규모와 성장률을 구체적 수치와 기준 연도로 명확히 제시하고 있어 시장 규모가 확인된다.",
+          "quote": "글로벌 스마트 농업 시장은 2023년 174억 달러에서 2034년 1,172억 달러로 2024~2034년 동안 연평균 19.1% 성장 전망",
           "evidence_ids": [
             "Deaac5"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M2",
-          "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내 발행된 근거에서 한국을 포함한 글로벌 애그테크 투자액 증가와 성장 동향이 수치와 함께 확인되어 YES 판정한다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "근거 문서에 2023년부터 2034년까지 글로벌 스마트 농업 시장이 연평균 19.1% 성장할 것으로 전망된다는 구체적이고 최근(2024년 발표)인 수치가 있어, 해당 분야가 성장 중임을 명확히 뒷받침한다.",
+          "quote": "글로벌 스마트 농업 시장은 2023년 174억 달러에서 2034년 1,172억 달러로 2024~2034년 동안 연평균 19.1% 성장 전망",
+          "evidence_ids": [
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 2023년부터 2034년까지의 글로벌 스마트 농업 시장 성장 전망을 제시하지만, 이는 미래 예측치로서 최근 2년 내의 실제 투자액, 도입률, 정책 예산 증가 등 구체적이고 직접적인 성장 근거가 아니다."
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (제3자 출처에서 고객 문제 해결과 경제적 효과(유통 비용 절감, 안정적 유통망 확보)를 수치와 함께 제시함.)",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (퓨처커넥트가 도심 생산-수요 네트워크를 통해 유통 비용 절감과 안정적 유통망 확보로 지속적 성장을 증명했다는 제3자 평가가 있어, 고객 문제 해결과 경제적 효과가 수치 없이도 제3자 근거로 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서에서 과금 방식으로 구독 서비스(FaaS)를 명확히 서술하고 있어 과금 방식 확인 가능하므로 YES 판정한다.)",
+          "rationale": "해당 문장은 과금 방식(구독 서비스)을 언급하나, 이는 회사 측 설명으로 보이며 제3자 출처가 아니고, 구체적인 과금 방식이나 누가 비용을 부담하는지 명확하지 않아 YES 판정 요건을 충족하지 않는다. 따라서 근거 부족으로 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문단에 '국내외 도심 스마트팜 농장 구축과 리브팜 서비스 운영으로 손익분기점 달성'이라는 문장은 있으나, 설치 수, 면적, 두수, 고객명 등 구체적인 상용 운영 지표가 없어 상용 운영 여부를 확정할 수 없다.",
+          "rationale": "근거에 '운영중'이라는 표현은 있으나, 시제품 단계를 지나 실제 농장·온실·축사에서 상용으로 운영 중임을 구체적으로 입증하는 설치 수, 면적, 두수, 고객명 등의 정보가 없으며, 상용화 예정, 실증, PoC, 시범 운영과 구분되는 명확한 상용 운영 근거가 부족하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P2",
           "answer": "UNKNOWN",
-          "rationale": "제3자 기관이나 대학, 지자체 등의 현장 실증 근거가 근거 문단에 명확히 제시되어 있지 않다. 회사 측 주장과 투자 유치 내용만 있어 제3자 실증 근거가 부족하므로 UNKNOWN 판정한다.",
+          "rationale": "근거 문단에 공공기관·대학·지자체 등 제3자 실증 근거가 명확히 제시되어 있지 않아, 여러 작기 또는 여러 지역의 현장 실증 성능 제시 여부를 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
           "answer": "UNKNOWN",
-          "rationale": "근거 문단에 'AI 기반 운영 최적화 기술과 모듈형 스마트팜 설계, 도심생산 네트워크 구축 및 운영 기술'이라는 문장은 없으며, 자체 개발을 입증하는 특허, 논문, 자체 데이터셋, 자체 하드웨어 등의 구체적 근거가 확인되지 않아 판정 불가이다.",
+          "rationale": "근거에 핵심 기술이 모듈형 스마트팜 하드웨어 '나노팜'과 AI 운영 시스템 '리브OS'임이 요약에 언급되나, [근거] 원문에서 자체 개발을 입증하는 특허, 논문, 자체 데이터셋, 자체 하드웨어 등의 구체적 근거가 확인되지 않아 자체 개발 여부를 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "근거 문단에 '스마트팜 솔루션은 농업기계 검정 등 별도 인허가 대상 아님'이라고 명시되어 있어 인허가 대상이 아니므로 N/A 판정한다.",
+          "rationale": "근거 문단에 스마트팜 솔루션은 농업기계 검정 등 별도 인허가 대상이 아니라고 명시되어 있어, 인허가 대상이 아니므로 N/A 판정이 적절하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 퓨처커넥트의 핵심 기술 관련 특허 등록 또는 출원에 관한 직접적인 언급이 없으며, 특허·인증 항목에서 '확인 불가'로 명시되어 있어 특허 보유 여부를 확인할 수 없다.",
+          "rationale": "근거 문서에서 퓨처커넥트의 핵심 기술 관련 특허 등록 또는 출원에 관한 직접적인 언급이 없으며, 특허 보유 여부를 확인할 수 있는 자료가 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "근거 문단에서 경쟁사와의 구체적인 비교를 통한 차별점이 명확히 확인되지 않고, 회사 측 주장은 있으나 제3자 근거로 확인되지 않아 판단이 어렵다.",
+          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (근거 문서에서 퓨처커넥트의 경쟁사에 대해 '경쟁사: 없음'이라고 명시되어 있어, 국내외 경쟁사 2곳 이상과 비교한 구체적인 차별점 근거가 없다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "YES",
-          "rationale": "근거 문서에 조인트벤처 구조 도입으로 초기 투자 리스크를 해소하는 구조가 명확히 언급되어 있으며, 이는 설치·연동으로 인한 교체 비용 발생 구조와 데이터 축적에 따른 성능 향상 가능성을 내포하므로 YES 판정이 가능하다.",
-          "quote": "특히 현지 파트너사가 설비 투자를 맡고 퓨처커넥트가 솔루션 운영과 수익 배분을 담당하는 조인트벤처(JV) 구조를 도입해, 글로벌 수직농장 기업들의 주요 실패 요인이었던 과도한 초기 투자 리스크를 해소했다.",
+          "rationale": "근거에 퓨처커넥트가 데이터 기반 운영 효율화를 고도화하고 있으며, 도심 생산-수요 네트워크를 통해 유통 비용 절감과 안정적 유통망을 확보하는 등 자체 데이터 축적과 연동 구조가 있음을 확인할 수 있다.",
+          "quote": "강길모 퓨처커넥트 대표는 “이번 투자 유치를 계기로 데이터 기반 운영 효율화를 고도화하고 국내외 네트워크를",
           "evidence_ids": [
             "Wa7bc8"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": "인용문과 주변 원문은 데이터 기반 운영 효율화와 네트워크 확장에 대해 언급하지만, 사용 증가에 따른 자체 데이터 축적이 성능 향상으로 이어지거나 설치·연동 구조로 인해 교체 비용이 발생한다는 구체적 사실은 포함하지 않는다."
         },
         {
           "qid": "C4",
           "answer": "YES",
-          "rationale": "근거 문서에 퓨처커넥트가 미국 동부 대형 슈퍼마켓 체인과 파트너십을 체결한 사실이 명확히 기재되어 있어, 유통·전략 파트너와의 계약 또는 공동사업이 있음을 확인할 수 있다.",
+          "rationale": "근거에 퓨처커넥트가 미국 동부 대형 슈퍼마켓 체인과 파트너십을 체결하고 조인트벤처(JV) 구조로 현지 파트너사와 협력하는 계약 및 공동사업이 있음을 확인할 수 있다.",
           "quote": "미국 동부 대형 슈퍼마켓 체인과 파트너십을 체결하며 북미 시장 진출을 본격화했다.",
           "evidence_ids": [
             "Wa7bc8"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": "인용문은 미국 동부 대형 슈퍼마켓 체인과 파트너십을 체결했다고 하나, 계약 상대방이 구체적으로 명시되어 있지 않고, 파트너십의 성격이 계약인지 공동사업인지 명확하지 않아 인정 조건을 직접 충족한다고 보기 어렵다."
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에 매출액과 연도가 명확히 기재된 문장이 없고, 투자 유치 금액만 확인되어 매출액 확인은 불가하다.",
+          "rationale": "근거에 매출액과 연도가 명확히 확인되지 않고, 투자 유치 금액만 언급되어 매출액 확인은 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 '국내외 도심 스마트팜 농장 구축과 리브팜 서비스 운영으로 손익분기점 달성'이라는 문장이 있어, 유료 고객이나 설치 규모가 수치로 확인되지는 않으나, 손익분기점 달성은 실적이 있음을 직접 뒷받침하는 문장이다. 따라서 YES 판정한다.)",
+          "rationale": "설치 규모나 고객 수 등의 구체적 수치가 근거에 없고, 상용 운영 중이라는 명확한 수치 근거도 없어 판단 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "재계약·확대 도입이나 여러 해 연속 사용에 대한 구체적 수치나 명확한 근거가 없어 재사용 근거 확인 불가.",
+          "rationale": "재계약이나 여러 해 연속 사용에 대한 구체적 근거가 없고, 고객의 재사용 여부가 명확하지 않아 판단 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
-          "answer": "UNKNOWN",
-          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 대한 구체적 근거가 없고, 손익분기점 달성만 언급되어 매출 출처 구분 불가.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "민간 판매 및 기업 간 계약 형태의 B2B 서비스 연계가 수치와 함께 구체적으로 확인되어 정부 보조사업이 아닌 매출 근거로 인정된다.",
+          "quote": "도심에 구축한 농장 네트워크를 기반으로 대규모 주거단지, 대형사옥, 대형유통사 등 다양한 대상과의 B2B 서비스와 연계를 하고 있다",
+          "evidence_ids": [
+            "Wec8c2"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "D1",
@@ -2110,32 +2483,38 @@
           "quote": "퓨처커넥트, 86억 원 규모 시리즈A 투자 유치… 북미 시장 공략 본격화",
           "evidence_ids": [
             "Wa7bc8"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "YES",
-          "rationale": "프리 시리즈A 라운드에 KB인베스트먼트, 하나벤처스, 스마일게이트인베스트먼트, 카카오벤처스 등 기관투자자가 참여한 사실이 근거에 명확히 기재되어 있다.",
-          "quote": "이번 라운드에는 KB인베스트먼트를 비롯해 하나벤처스, 현대자동차 제로원, 아이피에스벤처스, 스마일게이트 인베스트먼트, 삼양화학그룹, 끌림벤처스 등 총 8개 기관투자자가 참여했다",
+          "rationale": "근거에 KB인베스트먼트, 하나벤처스, 스마일게이트인베스트먼트, 카카오벤처스 등 기관투자자 명단이 명확히 공개되어 있어 기관투자자 참여가 확인된다.",
+          "quote": "리딩 투자사 KB인베스트먼트를 비롯해 하나벤처스와 스마일게이트인베스트먼트, 카카오벤처스가 이번 라운드에 참여했다",
           "evidence_ids": [
-            "W19512"
-          ]
+            "Wd92d1"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에 기업가치나 투자 지분율에 관한 구체적인 수치가 공개되어 있지 않아 확인 불가하다.",
+          "rationale": "근거에 기업가치 또는 투자 지분율에 관한 구체적 수치가 공개되어 있지 않아 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
-          "answer": "YES",
-          "rationale": "사업 모델이 대규모 자체 시설이 필요 없는 모듈형 스마트팜 설계임이 명확히 언급되어 있고, 전략적 투자자(삼양화학그룹 등) 참여로 비희석 자금 확보도 확인된다.",
-          "quote": "도심 어느 곳이든 독립적인 재배가 가능한 모듈형 스마트팜 설계 기술, AI기반 자동재배 기술, 도심생산 네트워크 구축 및 운영 기술이 솔루션의 핵심이다",
-          "evidence_ids": [
-            "W19512"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 [W19512]에 '도심 유휴 공간에 모듈형 스마트팜을 구축하고 AI 기반 운영 최적화 기술로 초기 투자비와 운영비 부담을 해결하며'라는 문장이 있어, 대규모 자체 시설이 필요하지 않거나 초기 투자비 부담을 줄인 사업 모델임을 직접 뒷받침한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -2145,22 +2524,24 @@
       "stage": "Seed",
       "decision": "보류",
       "hold_type": "창업자 점수 평균 미만",
-      "multiplier": 0.9639,
-      "score100": 96.4,
+      "multiplier": 0.9542,
+      "score100": 95.4,
       "reasons": [
-        "창업자 기준 90.3(동종 평균 100) — 팀이 동종 평균 미만",
-        "동종 평균 대비 96.4(동종 평균 100) — 동종 평균 이하 (미확인 문항 78%)"
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 95.4(동종 평균 100) — 동종 평균 이하 (미확인 문항 83%)"
       ],
       "flip": {
         "qids": [
-          "F1"
+          "F1",
+          "F2"
         ],
         "items": [
-          "F1 창업팀 이력"
+          "F1 창업팀 이력",
+          "F2 기술 책임자 이력"
         ],
-        "new_multiplier": 1.0014,
+        "new_multiplier": 1.0292,
         "reached": true,
-        "note": "F1 이(가) YES 로 확인되면 동종 평균 대비 100.1(동종 평균 100) → 투자"
+        "note": "F1·F2 이(가) YES 로 확인되면 동종 평균 대비 102.9(동종 평균 100) → 투자"
       },
       "roi": {
         "computable": true,
@@ -2205,9 +2586,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 90.3,
-          "peer_mean": 0.194,
-          "contribution": 0.2708
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
         },
         {
           "dim": "market",
@@ -2229,9 +2610,9 @@
           "no": 0,
           "unknown": 1,
           "n": 3,
-          "pct": 125.9,
-          "peer_mean": 0.148,
-          "contribution": 0.1889
+          "pct": 120.4,
+          "peer_mean": 0.259,
+          "contribution": 0.1806
         },
         {
           "dim": "competition",
@@ -2241,9 +2622,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 91.7,
-          "peer_mean": 0.167,
-          "contribution": 0.0917
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
         },
         {
           "dim": "traction",
@@ -2253,170 +2634,211 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
           "name": "투자조건 (Deal Terms)",
           "weight": 10,
-          "yes": 1,
+          "yes": 0,
           "no": 1,
-          "unknown": 2,
+          "unknown": 3,
           "n": 4,
-          "pct": 80.6,
-          "peer_mean": 0.389,
-          "contribution": 0.0806
+          "pct": 69.4,
+          "peer_mean": 0.361,
+          "contribution": 0.0694
         }
       ],
       "rows": [
         {
           "qid": "F1",
           "answer": "UNKNOWN",
-          "rationale": "창업자 윤찬녕의 창업 이전 경력이나 농업 관련 연구·실무 경험에 대한 구체적 정보가 근거에 없어 판단 불가.",
+          "rationale": "근거 문서에서 창업자 윤찬녕 대표의 창업 이전 농업 현장이나 기술 분야 경력에 대한 구체적 정보가 없어 확인할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "기술 책임자 개인의 특허, 논문, 연구소·기업 경력에 관한 구체적 근거가 없고, 회사 기술 소개나 대표 발언만 있어 YES 요건 미충족.",
+          "rationale": "기술 책임자의 특허, 논문, 연구소 또는 기업 경력에 관한 구체적 근거가 없으므로 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
           "answer": "UNKNOWN",
-          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (최근 24개월 내 마일스톤은 팁스 선정 1건뿐이며, 2건 이상 근거가 없어 NO.)",
+          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (최근 24개월 내 마일스톤으로 팁스 선정 1건만 확인되며, 추가 2건 이상의 마일스톤 근거가 없다. 투자 유치, 출시, 인증 등 2건 이상 마일스톤 근거가 부족하여 YES 판정 요건을 충족하지 못한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "핵심 수치(현장 시공 15건 이상)가 회사 측 근거에 있으나, 제3자 근거로 확인되거나 모순 여부 판단 가능한 근거가 없어 UNKNOWN.",
+          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 없고, 모순 근거도 발견되지 않아 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 애그테크 시장 규모가 2020년 91억 달러에서 2025년 226억 달러로 연평균 20% 성장할 것으로 공공기관 문서에서 수치와 기준 연도로 확인되어 YES 판정함.",
-          "quote": "글로벌 애그테크 산업 시장 규모는 2020년 91억 달러에서 2025년 226억 달러 규모로 5년간 연평균 20% 성장할 것으로 전망된다(Statista, 2022).",
+          "rationale": "근거 문서에서 BIS Research 등 공공기관 및 연구기관 문서에 의해 글로벌 스마트 농업 시장 규모가 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장하는 것으로 명확히 확인되므로 YES 판정한다.",
+          "quote": "BIS Research 2023~2034 174억 달러~1,172억 달러 19.1%",
           "evidence_ids": [
-            "Dd31ce"
-          ]
+            "D5b883",
+            "D66bcb"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 BIS Research의 스마트농업 시장 규모 예측을 제시하지만, 출처가 공공기관이나 연구기관 문서가 아니라 민간 시장조사기관 자료이며, 질문에서 요구하는 공공기관·국제기구·연구기관 문서에서 확인되는 수치가 아니다."
         },
         {
           "qid": "M2",
           "answer": "UNKNOWN",
-          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (근거 문서 [Dd31ce]에 2020년부터 2025년까지 글로벌 애그테크 시장이 연평균 20% 성장할 것으로 전망된다는 구체적 수치가 명시되어 있어, 최근 24개월 내의 성장 근거로 인정됨.)",
+          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (최근 2년 내 발행된 제3자 출처 근거에서 애그테크 시장의 성장 수치와 전망이 명확히 제시되어 M2 요건을 충족한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "경제적 효과 수치가 일부 있으나 제3자 출처의 효과 수치가 명확하지 않고 지불 의향 수치도 구체적이지 않아 근거 부족으로 UNKNOWN 판정함.",
+          "rationale": "경제적 효과 및 고객 문제에 대한 수치가 일부 있으나, 제3자 출처가 아니거나 구체적 비용 절감·수확량 증가 수치가 부족하여 M3 요건을 충족하지 못한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "과금 방식(판매, 구독 등)에 대한 구체적 서술이 없고 단순 제품 공급 사실만 있어 과금 방식 확인 불가하여 UNKNOWN 판정함.",
+          "rationale": "근거 문서에 과금 방식(장비 판매, 구독 등)에 관한 구체적 내용이 없어 M4 판정 근거 부족으로 UNKNOWN이다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "YES",
-          "rationale": "트랙팜은 2023년부터 연간 15건 이상의 국내외 현장 시공 및 솔루션 보급을 진행 중이라는 근거가 있어, 시제품 단계를 지나 실제 농장·온실·축사에서 상용으로 운영 중임을 확인할 수 있다.",
+          "rationale": "근거에 트랙팜이 2023년 기준 연간 15건 이상의 국내외 현장 시공 및 솔루션 보급을 진행하고 있다고 명시되어 있어, 시제품 단계를 지나 실제 농장·온실·축사에서 상용으로 운영 중임을 확인할 수 있다.",
           "quote": "트랙팜은 연간 15건 이상의 국내외 현장 시공 및 솔루션 보급을 진행하고 있다",
           "evidence_ids": [
             "Wdd602",
             "W428f5"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 트랙팜이 연간 15건 이상의 현장 시공 및 솔루션 보급을 한다고 하나, 설치 수·면적·두수·고객명 등 구체적 상용 운영 사실을 명시하지 않아 상용 운영 여부를 직접 확인할 수 없다."
         },
         {
           "qid": "P2",
           "answer": "UNKNOWN",
-          "rationale": "공공기관·대학·지자체 등 제3자 실증 근거가 명확히 제시되어 있지 않고, 구체적 AI 모델 성능 및 적용 작목·시설에 대한 정보가 부족하여 판단이 어렵다.",
+          "rationale": "회사 측 발언·계획(제3자 근거 아님) → UNKNOWN 강등 (근거 문서에서 트랙팜이 2023년 기준 연간 15건 이상의 국내외 현장 시공 및 솔루션 보급을 진행하고 있다고 명시되어 있어, 여러 지역에서 현장 실증이 이루어지고 있음을 직접적으로 뒷받침한다. 다만, 공공기관·대학·지자체 등 제3자 실증 근거가 명확히 언급되지는 않으나, 국내외 현장 시공 및 보급이라는 표현이 현장 실증의 의미로 해석 가능하므로 YES로 판정한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
           "answer": "YES",
-          "rationale": "트랙팜이 자체 개발한 농업 축산 HW·SW 시스템과 인공지능 자동화 관제 기술을 보유하고 있음을 명확히 밝히고 있어, 핵심 기술이 자체 개발임을 보여주는 근거가 된다.",
+          "rationale": "근거에 트랙팜이 농업 축산 HW·SW 시스템과 인공지능 자동화 관제 기술을 개발했다고 명시되어 있어, 핵심 기술이 자체 개발임을 보여주는 근거가 있다.",
           "quote": "트랙팜은 농업 축산 하드웨어·소프트웨어(HW·SW) 시스템과 인공지능 자동화 관제 기술을 개발해 농업 현장에 공급하고 있다",
           "evidence_ids": [
             "Wdd602"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 트랙팜이 핵심 기술을 개발했다고 언급하지만, 특허·논문·자체 데이터셋·자체 하드웨어 등 구체적 자체 개발 근거를 명시하지 않아 인정 조건을 직접 충족하지 않는다."
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "트랙팜의 제품은 농업용 하드웨어·소프트웨어 및 AI 솔루션으로 별도의 인허가 대상이 아니므로 해당 사항이 없다.",
+          "rationale": "트랙팜의 제품은 농업용 하드웨어·소프트웨어 및 AI 솔루션으로, 별도의 인허가 대상이 아니며 인허가 정보가 없으므로 해당 사항이 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 트랙팜의 핵심 기술 관련 특허 출원 또는 등록에 관한 구체적인 정보가 확인되지 않아 판정할 수 없다.",
+          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음, 제품명 포함) → NO 대신 UNKNOWN (트랙팜에 관한 특허 등록 또는 출원에 대한 근거가 없고, 가출원 단계만 언급되어 있어 특허 확보가 확인되지 않는다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "트랙팜과 경쟁사 간 구체적인 성능, 가격, 적용 작목, 범위 등 차별점에 대한 제3자 근거가 없고, 회사 측 주장만 있어 객관적 확인이 불가능하다.",
+          "rationale": "경쟁사와의 구체적 성능·가격·적용 작목·범위 비교 근거가 부족하며, 차별성 주장은 회사 주장에 그쳐 객관적 비교 근거가 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "UNKNOWN",
-          "rationale": "트랙팜 제품의 사용 증가에 따른 데이터 축적이나 설치·연동 구조로 인한 교체 비용 발생에 관한 근거가 제시되지 않았다.",
+          "rationale": "자체 데이터 축적이나 설치·연동에 따른 교체 비용 구조에 관한 근거가 전혀 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "트랙팜이 농협, 농기계·농자재 기업, 지자체, 대형 유통, 해외 파트너 등과 계약이나 공동사업을 체결했다는 구체적이고 제3자 확인 가능한 근거가 없다.",
+          "rationale": "유통·전략 파트너와의 계약이나 공동사업에 관한 근거가 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 매출액과 연도가 명확히 확인되는 구체적인 매출액 정보가 제공되지 않아 판정할 수 없다.",
+          "rationale": "근거 문서들에서 매출액과 연도가 명확히 기재된 매출액 수치가 확인되지 않아, 매출액이 기업 DB·공시·보도로 확인되는지 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (연간 15건 이상의 국내외 현장 시공 및 솔루션 보급이 진행 중이라는 구체적인 수치가 있어 설치 규모가 수치로 확인된다.)",
+          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (연간 15건 이상의 국내외 현장 시공 및 솔루션 보급이 진행되고 있다는 문장이 있어, 설치 규모가 수치로 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "재계약, 확대 도입 또는 여러 해 연속 사용에 관한 구체적인 근거가 근거 문서에 없어 판정할 수 없다.",
+          "rationale": "재계약·확대 도입이나 여러 해 연속 사용에 관한 구체적인 근거가 근거 문서에 명확히 나타나지 않아 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
           "answer": "UNKNOWN",
-          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 명확히 확인되지 않아 판정할 수 없다.",
+          "rationale": "정부 보조사업인 팁스 지원금 외에 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 명확히 확인되지 않아 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
@@ -2428,30 +2850,36 @@
             "W428f5",
             "W0b21a",
             "Wf2cb9"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D2",
-          "answer": "YES",
-          "rationale": "근거 문서 [W428f5]와 [We9be9]에 따르면 트랙팜은 2023년 9월 한양대학교기술지주회사의 시드 투자와 추천으로 팁스에 선정되었으며, 팁스는 정책 펀드에 해당하는 기관투자자이므로 최근 라운드에 기관투자자가 참여한 것이 확인된다.",
-          "quote": "트랙팜은 지난 9월 한양대학교기술지주회사의 시드 투자와 추천으로 이번 팁스에 선정됐다",
-          "evidence_ids": [
-            "W428f5"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "근거 문서에 'seed까지 투자 받았다'는 내용은 있으나, 기관투자자(VC, CVC, 정책 펀드, TIPS 운영사) 이름이 명시되어 있지 않아 기관투자자 참여 여부를 확인할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "기업가치 또는 투자 지분율에 대한 구체적 수치가 공개되지 않고, 비공개 또는 추정에 불과한 근거만 있어 확인 불가.",
+          "rationale": "근거 [W19e4d]에 기업가치 관련 데이터가 추정치임을 명시하고 있으며, 구체적인 기업가치 수치나 투자 지분율 공개 근거가 없어 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "UNKNOWN",
-          "rationale": "대규모 자체 시설 필요 여부 및 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없어 판단 불가.",
+          "rationale": "근거에 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 내용이 없어 판단 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -2459,24 +2887,16 @@
       "name": "Bonsai Robotics",
       "region": "GLOBAL",
       "stage": "Series A",
-      "decision": "보류",
-      "hold_type": "동종 평균 이하",
-      "multiplier": 0.9819,
-      "score100": 98.2,
+      "decision": "투자",
+      "hold_type": null,
+      "multiplier": 1.0653,
+      "score100": 106.5,
       "reasons": [
-        "동종 평균 대비 98.2(동종 평균 100) — 동종 평균 이하 (미확인 문항 83%)"
+        "동종 평균 대비 106.5(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 106.9(동종 평균 100) — 동종 평균 이상",
+        "Deal-killer 없음"
       ],
-      "flip": {
-        "qids": [
-          "F2"
-        ],
-        "items": [
-          "F2 기술 책임자 이력"
-        ],
-        "new_multiplier": 1.0194,
-        "reached": true,
-        "note": "F2 이(가) YES 로 확인되면 동종 평균 대비 101.9(동종 평균 100) → 투자"
-      },
+      "flip": null,
       "roi": {
         "computable": true,
         "round_amount_raw": "$15 million",
@@ -2518,9 +2938,9 @@
           "no": 0,
           "unknown": 3,
           "n": 4,
-          "pct": 104.2,
-          "peer_mean": 0.167,
-          "contribution": 0.3125
+          "pct": 106.9,
+          "peer_mean": 0.111,
+          "contribution": 0.3208
         },
         {
           "dim": "market",
@@ -2538,13 +2958,13 @@
           "dim": "product",
           "name": "제품/기술력",
           "weight": 15,
-          "yes": 0,
+          "yes": 3,
           "no": 0,
-          "unknown": 4,
-          "n": 4,
-          "pct": 91.7,
-          "peer_mean": 0.167,
-          "contribution": 0.1375
+          "unknown": 0,
+          "n": 3,
+          "pct": 138.9,
+          "peer_mean": 0.222,
+          "contribution": 0.2083
         },
         {
           "dim": "competition",
@@ -2554,9 +2974,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 91.7,
-          "peer_mean": 0.167,
-          "contribution": 0.0917
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
         },
         {
           "dim": "traction",
@@ -2566,9 +2986,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
@@ -2578,156 +2998,201 @@
           "no": 0,
           "unknown": 2,
           "n": 4,
-          "pct": 108.3,
-          "peer_mean": 0.333,
-          "contribution": 0.1083
+          "pct": 111.1,
+          "peer_mean": 0.278,
+          "contribution": 0.1111
         }
       ],
       "rows": [
         {
           "qid": "F1",
-          "answer": "YES",
-          "rationale": "The founders and key executives have prior experience in agricultural robotics and related fields, including work at John Deere, Blue River Technology, and Airbus, demonstrating relevant research and practical experience before founding Bonsai Robotics.",
-          "quote": "Bonsai Robotics was founded in 2022 by Tyler Niday and [...] Tyler Niday (CEO) and Ugur Oezdemir (CTO), both with expertise in robotics and AI, alongside a leadership team including COO John Teeple, CFO Matt Pigeon, Chief Science Officer Gary Bradski, Chief Business Officer Brendan Dowdle",
-          "evidence_ids": [
-            "W6b0bd",
-            "Wf06e0"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문단에 창업자 Tyler Niday가 창업 전 Blue River Technology와 John Deere에서 7년간 농업용 자율주행과 AI 분야에서 경험을 쌓았다는 구체적 경력 정보가 명시되어 있어 YES 판정한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (창업자이자 CEO인 Tyler Niday가 Blue River Technology와 John Deere에서 7년간 근무하며 핵심 기술 개발에 참여한 경력이 명확히 확인되어, 기술 책임자의 기술 이력이 확인된다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (기술 책임자인 CTO Ugur Oezdemir가 Airbus, Blue River, John Deere에서 비전 기반 자율주행 기술 리더로서 경력을 갖고 있다는 구체적 사실이 근거 문단에 있어 YES 판정한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내에 2023년 10월 시드 펀딩, 2025년 1월 시리즈 A 펀딩, 2025년 10월 신제품 출시 및 행사 참가, 2026년 5월 후원 등 2건 이상의 마일스톤이 명확히 확인된다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내 2023-10 시드 펀딩, 2025-07 farm-ng 인수, 2025-10 신제품 출시 등 3건 이상의 마일스톤이 근거 문단에 명확히 있어 YES 판정한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
-          "answer": "UNKNOWN",
-          "rationale": "While funding amounts and employee counts are reported, there is no clear third-party verification of core company metrics like customer numbers or sales figures, nor is there confirmation that these numbers are consistent across independent sources.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "투자 유치 금액과 투자자 명단이 제3자 출처(tracxn.com)에서 확인되며, 모순되는 근거 없이 일치하는 수치가 제시되어 있음.",
+          "quote": "Bonsai Robotics has raised $28.5M in funding from Acre Venture Partners and Bison Ventures",
+          "evidence_ids": [
+            "Wdd8a5"
+          ],
+          "confidence": "상",
+          "verifier": "인용은 Bonsai Robotics의 투자금액에 관한 내용으로, 질문에서 요구하는 고객 수·성능·매출 등 핵심 수치에 대한 제3자 확인 근거가 아니다."
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 YES 판정함.",
+          "rationale": "글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 목표 시장 규모가 입증되었다.",
           "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
           "evidence_ids": [
             "Deaac5"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "M2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내(2024~2025년) 글로벌 및 한국 농업 로봇·자율주행 농기계 분야 투자액 증가가 구체적 수치로 제시되어 시장 성장 근거가 명확하다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서에 2024년부터 2034년까지 글로벌 스마트 농업 시장이 연평균 19.1% 성장할 전망이라는 구체적이고 최근(2024년 발행) 수치가 명시되어 있어, 해당 분야가 성장 중임을 직접 뒷받침한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (제품의 경제적 효과가 수치로 제3자 출처에서 확인되어 고객 문제 해결과 경제적 효과가 입증됨.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (제3자 출처인 농촌경제연구원 뉴스룸에서 2023년 1월 발표된 자료로, 농업용 자율주행 및 드론 분야가 2025년까지 각각 26억 달러 및 17억 달러 규모로 성장할 전망이라는 구체적 수치가 제시되어 있어, 고객 문제와 경제적 효과가 수치로 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "과금 방식에 대한 구체적이고 제3자 출처의 근거가 없어 판정 불가.",
+          "rationale": "과금 방식에 대한 구체적 서술이 없고, 검정기준 마련 등 정책 내용만 있어 과금 방식 확인 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
-          "answer": "UNKNOWN",
-          "rationale": "반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음) → NO 대신 UNKNOWN (근거에 제시된 내용은 '시범 운영'으로, 상용 운영을 의미하지 않으므로 YES 요건을 충족하지 않는다. 설치 수, 면적, 고객명 등 구체적 상용 운영 증거가 없고, 시범 운영은 상용 운영이 아니므로 NO 판정한다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "근거에 400대 이상 배치 및 1백만 에이커 이상 데이터 수집과 실사용 중이라는 문장이 있어, 실제 농장 등에서 상용 운영 중임을 명확히 뒷받침한다.",
+          "quote": "400+ machines deployed 50M+ real-world data samples 1M+ acres covered",
+          "evidence_ids": [
+            "Wa50c7"
+          ],
+          "confidence": "하",
+          "verifier": null
         },
         {
           "qid": "P2",
-          "answer": "UNKNOWN",
-          "rationale": "근거는 시범 운영과 실증단지 조성에 관한 내용이나, Bonsai Robotics 제품의 제3자 실증 근거가 명확히 제시되어 있지 않아 판단 불가.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "500에이커 규모의 상업용 사과 농장과 협력하여 현장 실증을 진행한 제3자 근거가 있어, 여러 지역 또는 작기 현장 실증이 이루어졌음을 보여준다.",
+          "quote": "The team partnered with Crist Bros Orchards, a 500-acre commercial apple operation in Ora",
+          "evidence_ids": [
+            "W3eb63"
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 Bonsai Robotics가 Crist Bros Orchards와 협력하여 현장 실증을 진행 중임을 언급하지만, 여러 작기 또는 여러 지역에서의 실증 여부나 공공기관·대학·지자체 등 제3자 실증 근거를 명확히 제시하지 않아 질문의 인정 조건을 충족하지 않는다."
         },
         {
           "qid": "P3",
-          "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 Bonsai Robotics의 핵심 기술이 자체 개발임을 직접적으로 보여주는 특허, 논문, 자체 데이터셋, 자체 하드웨어 등의 구체적 근거가 확인되지 않는다. 회사 소개 문구나 계획, 대표 발언 등은 근거로 인정하지 않으므로 UNKNOWN 판정한다.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "The quote from [W3eb63] directly shows that Bonsai Robotics developed an autonomous robotic weeder as an attachment on their Amiga platform, integrating computer vision, machine learning, and depth sensing with mechanical hardware. This demonstrates proprietary development of both AI software and hardware components, fulfilling the requirement for evidence of core technology being self-developed.",
+          "quote": "Built as an arm-mounted attachment on the Amiga platform from Bonsai Robotics, the system pairs computer vision, machine learning and depth sensing with a two-degree-of-freedom mechanical arm and a comb-based electrode array",
+          "evidence_ids": [
+            "W3eb63"
+          ],
+          "confidence": "상",
+          "verifier": "인용문은 Bonsai Robotics의 Amiga 플랫폼을 사용한 장치에 대해 설명하지만, 자체 개발 근거인 특허, 논문, 자체 데이터셋, 자체 하드웨어에 대한 구체적 사실을 직접적으로 제시하지 않는다."
         },
         {
           "qid": "P4",
-          "answer": "UNKNOWN",
-          "rationale": "농기계 검정기준 마련에 관한 정부 계획은 있으나, Bonsai Robotics 제품의 인허가·검정 신청 또는 획득 사실은 근거 문단에 명확히 나타나 있지 않다.",
+          "answer": "N/A",
+          "rationale": "농업용 로봇 및 자율주행 농기계에 대한 인허가 현황이 미기재되어 있어, 인허가 대상이 아니거나 관련 정보가 없으므로 N/A로 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 Bonsai Robotics의 특허 등록 또는 출원에 관한 구체적 정보가 없으며, '특허·인증: 확인 불가'라고 명시되어 있어 특허 보유 여부를 확인할 수 없다.",
+          "rationale": "근거 문단에서 Bonsai Robotics의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적 언급이 없어 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 ([근거] 문단에 Bonsai Robotics가 경쟁사 대비 구체적인 차별점으로 모듈형 전기 농업용 자율주행 로봇 플랫폼 개발과 기존 농기계에 AI 자율주행 시스템을 레트로핏할 수 있다는 점이 명확히 기술되어 있어 경쟁사 2곳 이상과 비교한 구체적 차별점 근거로 인정됨.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (The [근거] includes a direct comparison with competitors farm-ng and others, highlighting Bonsai Robotics' unique integration of autonomous AI technology with a modular robotic platform, which constitutes a concrete differentiation in technology and product offering.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "UNKNOWN",
-          "rationale": "[근거] 문단에서 Bonsai Robotics 제품의 사용 증가에 따른 자체 데이터 축적이나 설치·연동으로 인한 교체 비용 발생 구조에 관한 구체적 근거를 찾을 수 없어 판정 불가.",
+          "rationale": "No direct evidence in the [근거] confirms that usage leads to data accumulation improving performance or that installation/interconnection causes replacement costs. The claims about deployment and data collection are from [분석 요약], not from [근거].",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에 유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 내용이 없으며, MOU 여부도 확인되지 않아 계약이나 공동사업 존재 여부를 판단할 수 없다.",
+          "rationale": "근거 문단에서 Bonsai Robotics가 농협, 농기계·농자재 기업, 지자체, 대형 유통, 해외 파트너 등과 계약이나 공동사업을 체결했다는 구체적 근거가 확인되지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에 매출액과 연도가 명확히 기재된 내용이 없고, 투자 유치 금액만 확인되어 매출액 확인은 불가하다.",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [Wefba5]에 2021년 매출액 $6.6M이 명확히 기재되어 있어, 연도와 매출액이 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "[근거] 문서 내에 Bonsai Robotics의 유료 고객 수, 설치 규모(고객 수, 농가 수, 면적, 두수, 계약 금액)와 관련된 구체적인 수치가 확인되지 않는다. 2026년까지 400대 이상 배치, 50만 에이커 이상 데이터 수집 및 실사용이라는 문장은 [근거] 본문에 없으며, 대표나 회사 측 발언도 아니므로 근거 부족으로 판정한다.",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [Wefba5]에 Bonsai Robotics가 1,600명의 고객을 보유하고 있다는 수치가 명확히 제시되어 있다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "[근거] 문서 내에 Bonsai Robotics의 같은 고객의 재계약·확대 도입이나 여러 해 연속 사용에 관한 구체적인 근거가 없다. 재사용 근거를 직접 뒷받침하는 문장이 없으므로 UNKNOWN으로 판정한다.",
+          "rationale": "재계약 또는 여러 해 연속 사용에 대한 구체적 근거가 근거 문서 내에 확인되지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
           "answer": "UNKNOWN",
-          "rationale": "민간 판매, 수출, 기업 간 계약 등 정부 보조사업이 아닌 매출 근거가 명확히 제시되지 않아 근거 부족으로 판정한다.",
+          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 대한 구체적 매출 근거가 확인되지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
@@ -2738,30 +3203,39 @@
             "W6b0bd",
             "W4331e",
             "W57d1d"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "YES",
-          "rationale": "근거에 2025년 1월 28일 시리즈 A 라운드에 8명의 투자자가 참여했고, 10개의 기관투자자가 있다고 명시되어 기관투자자 참여가 확인되어 YES 판정한다.",
-          "quote": "Bonsai Robotics has 10 institutional investors and 3 angel investors",
+          "rationale": "근거에 Bison Ventures, Acre Venture Partners, Astanor Ventures 등 기관투자자(VC, CVC, 정책 펀드 등) 참여가 명확히 확인된다.",
+          "quote": "Bonsai Robotics has 10 institutional investors and 3 angel investors. Bonsai Robotics's investors include Bison Ventures, Acre Venture Partners, Astanor Ventures, Momofuku, Pioneer Fund.",
           "evidence_ids": [
-            "Wdd8a5"
-          ]
+            "Wdd8a5",
+            "W6b0bd"
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "근거에 기업가치(Post-Money Valuation) 수치가 일부 가려져 있어 구체적 수치 확인이 불가능하므로 UNKNOWN 판정한다.",
+          "rationale": "근거에 Valuation 수치가 불분명하거나 비공개 처리되어 있어 구체적인 기업가치 또는 지분율 수치가 확인되지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "UNKNOWN",
-          "rationale": "근거에 사업 모델이 AI 기반 농업용 로봇임은 확인되나, 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없어 UNKNOWN 판정한다.",
+          "rationale": "근거에 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 정보가 없어 판단 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -2771,11 +3245,11 @@
       "stage": "Pre-A",
       "decision": "투자",
       "hold_type": null,
-      "multiplier": 1.0819,
-      "score100": 108.2,
+      "multiplier": 1.0236,
+      "score100": 102.4,
       "reasons": [
-        "동종 평균 대비 108.2(동종 평균 100) — 동종 평균보다 높음",
-        "창업자 기준 118.1(동종 평균 100) — 동종 평균 이상",
+        "동종 평균 대비 102.4(동종 평균 100) — 동종 평균보다 높음",
+        "창업자 기준 120.8(동종 평균 100) — 동종 평균 이상",
         "Deal-killer 없음"
       ],
       "flip": null,
@@ -2814,57 +3288,57 @@
           "no": 0,
           "unknown": 2,
           "n": 4,
-          "pct": 118.1,
-          "peer_mean": 0.139,
-          "contribution": 0.3542
+          "pct": 120.8,
+          "peer_mean": 0.083,
+          "contribution": 0.3625
         },
         {
           "dim": "market",
           "name": "시장성 (Opportunity Size)",
           "weight": 25,
-          "yes": 2,
+          "yes": 1,
           "no": 0,
-          "unknown": 2,
+          "unknown": 3,
           "n": 4,
-          "pct": 108.3,
-          "peer_mean": 0.333,
-          "contribution": 0.2708
+          "pct": 94.4,
+          "peer_mean": 0.361,
+          "contribution": 0.2361
         },
         {
           "dim": "product",
           "name": "제품/기술력",
           "weight": 15,
-          "yes": 1,
+          "yes": 0,
           "no": 0,
-          "unknown": 2,
+          "unknown": 3,
           "n": 3,
-          "pct": 107.4,
-          "peer_mean": 0.185,
-          "contribution": 0.1611
+          "pct": 83.3,
+          "peer_mean": 0.333,
+          "contribution": 0.125
         },
         {
           "dim": "competition",
           "name": "경쟁 우위",
           "weight": 10,
-          "yes": 1,
+          "yes": 2,
           "no": 0,
-          "unknown": 3,
+          "unknown": 2,
           "n": 4,
-          "pct": 105.6,
+          "pct": 118.1,
           "peer_mean": 0.139,
-          "contribution": 0.1056
+          "contribution": 0.1181
         },
         {
           "dim": "traction",
           "name": "실적",
           "weight": 10,
-          "yes": 1,
+          "yes": 0,
           "no": 0,
-          "unknown": 3,
+          "unknown": 4,
           "n": 4,
-          "pct": 109.7,
-          "peer_mean": 0.056,
-          "contribution": 0.1097
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
@@ -2874,165 +3348,201 @@
           "no": 1,
           "unknown": 2,
           "n": 4,
-          "pct": 80.6,
-          "peer_mean": 0.389,
-          "contribution": 0.0806
+          "pct": 83.3,
+          "peer_mean": 0.333,
+          "contribution": 0.0833
         }
       ],
       "rows": [
         {
           "qid": "F1",
           "answer": "YES",
-          "rationale": "이상진 CPO의 삼성전자에서 30년 경력과 다수 특허 보유 경력이 명확히 기술 분야 경험을 뒷받침한다. 고병수 대표의 축산 현장 경험도 언급되나 구체적 경력은 불명확하므로 이상진 CPO 경력으로 판단함.",
-          "quote": "이상진 CPO는 삼성전자에서 30여년간 재직하며 크롬북 개발과 미고 넷북(MeeGo Netbook) 개발 등 주요 프로젝트를 총괄하고, 26건의 국내 특허와 15건의 해외 특허 등록 등 신기술 개발과 상용화를 선도했다.",
+          "rationale": "이상진 CPO가 삼성전자에서 30년 이상 연구개발 경력을 갖고 있으며, 에임비랩의 연구개발부서를 총괄하는 핵심 인력으로 확인되어 창업자·팀의 관련 경험이 인정된다. 다만 고병수 대표의 농업 현장 경험은 근거에 명확히 나타나지 않아 포함하지 않았다.",
+          "quote": "에임비랩이 삼성전자 수석연구원 출신 이상진 교수를 제품총괄이사(CPO)로 선임했다고 6일 밝혔다. 이상진 CPO는 삼성전자에서 30여년간 재직하며 크롬북 개발과 미고 넷북(MeeGo Netbook) 개발 등 주요 프로젝트를 총괄하고, 26건의 국내 특허와 15건의 해외 특허 등록 등 신기술 개발과 상용화를 선도했다.",
           "evidence_ids": [
             "W4901f"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": "인용 내용은 이상진 CPO의 삼성전자에서의 경력과 스타트업 육성 경험을 설명하지만, 농업 현장이나 관련 기술 분야에서의 연구·실무·사업 경험(농학·축산·수의·원예 전공 등)에 대한 구체적 사실을 제시하지 않는다."
         },
         {
           "qid": "F2",
           "answer": "YES",
-          "rationale": "이상진 CPO 개인의 특허 등록 및 연구개발 경력이 구체적으로 명시되어 있어 핵심 기술 책임자의 기술 이력이 확인된다.",
-          "quote": "이상진 CPO는 삼성전자에서 30여년간 재직하며 크롬북 개발과 미고 넷북(MeeGo Netbook) 개발 등 주요 프로젝트를 총괄하고, 26건의 국내 특허와 15건의 해외 특허 등록 등 신기술 개발과 상용화를 선도했다.",
+          "rationale": "기술 책임자인 이상진 CPO의 삼성전자 경력과 다수의 국내외 특허 보유 경력이 구체적으로 확인됨.",
+          "quote": "이상진 CPO는 삼성전자에서 30여년간 재직하며 크롬북 개발과 미고 넷북(MeeGo Netbook) 개발 등 주요 프로젝트를 총괄하고, 26건의 국내 특허와 15건의 해외 특허 등록 등 신기술 개발과 상용화를 선도했다",
           "evidence_ids": [
             "W4901f"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "F3",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (에임비랩은 2023년 9월 프리시리즈A 투자 유치와 2024년 7월 중소벤처기업부 팁스 선정이라는 두 가지 마일스톤을 최근 24개월 내에 달성하였다. 이 두 사건은 투자 유치와 정부 선정으로서 질문의 YES 요건을 충족한다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (최근 24개월 내에 2023년 9월 프리시리즈A 투자 유치, 2023년 9월 글로벌 어워드 수상 및 현지 PoC, 2024년 7월 팁스 선정 및 정부 지원 확보 등 3건 이상의 마일스톤이 확인되어 기준을 충족한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "핵심 수치(고객 수, 매출 등)에 대한 제3자 근거가 명확히 제시되지 않고, 모순 여부도 확인 불가하여 판단 불가.",
+          "rationale": "핵심 수치(고객 수·성능·매출 등)에 대해 제3자 근거가 있으나, 모순 여부나 동일 수치 확인 근거가 명확하지 않아 판단 불가.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 스마트 농업 시장 규모와 성장률이 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 M1 질문에 부합한다.",
-          "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
+          "rationale": "글로벌 스마트농업 시장 규모가 공공기관 문서에서 2024년 기준으로 수치와 함께 확인되어 YES 판정함.",
+          "quote": "Marketsand Markets는 2024년 글로벌 스마트농업 시장 규모를 144억 4천만 달러로 평가",
           "evidence_ids": [
-            "Deaac5"
-          ]
+            "D4f90b"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 Marketsand Markets의 글로벌 스마트농업 시장 규모 수치를 제시하지만, 평가 기준일인 2026-09-30 이전의 공공기관·연구기관 문서(한국농촌경제연구원 2024)에서 확인된 수치가 아니며, 인용 출처가 공공기관 문서가 아니므로 인정 조건을 충족하지 않는다."
         },
         {
           "qid": "M2",
-          "answer": "YES",
-          "rationale": "[근거] 문단에 2024년 이후 글로벌 스마트 농업 시장이 연평균 10.2%~19.1% 성장할 것으로 예측된다는 구체적 수치가 있어, 해당 분야가 성장 중임을 직접 뒷받침한다.",
-          "quote": "글로벌 스마트 농업 시장은 연평균 성장률 10.2%~19.1% 사이의 상당한 성장을 이룰 것으로 예측되었다.",
-          "evidence_ids": [
-            "Deaac5"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서에 2024년부터 2025년까지 글로벌 애그테크 투자액이 3.1B 달러에서 3.8B 달러로 22% 증가했다는 구체적이고 최근(2024~2025년) 수치가 명시되어 있어, 해당 분야가 성장 중임을 직접 뒷받침한다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 ([근거] 문단에 MyFeed가 전국 농가에 1,700대 이상 도입되어 운영 중이라는 구체적 수량과 도입 현황이 명시되어 있어, 고객의 실제 문제 해결과 제품 도입이 확인된다.)",
+          "rationale": "회사 자체 발표만 있음 (제3자 근거 필요) → UNKNOWN 강등 (제3자 평가가 포함된 근거에서 고객의 실제 문제와 제품의 경제적 효과가 수치로 제시되어 YES 판정함.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (과금 방식이 구독 및 사용량 기반 요금제로 명확히 서술되어 M4 질문에 부합한다.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (과금 방식이 구독 모델과 사용량 기반 요금제로 구체적으로 서술되어 있어 YES 판정함.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 문서에 'MyFeed는 전국 농가에 누적 약 1,700대 이상이 도입·운영 중'이라는 문장이 있어, 시제품 단계를 지나 실제 농장 등에서 상용으로 운영 중임을 명확히 보여준다.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거에 전국 농가에 약 1,700대 이상 설치되어 운영 중이라는 구체적 수량과 고객명(농가)이 명시되어 있어 시제품 단계를 넘어 실제 농장 등에서 상용 운영 중임이 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P2",
-          "answer": "YES",
-          "rationale": "공공기관인 축산물품질평가원(축평원)에서 에임비랩을 스마트축산 장비·솔루션 실증기업으로 선정한 근거가 있어, 제3자 실증 근거가 존재한다.",
-          "quote": "에임비랩, 축평원 '스마트축산 장비·솔루션' 실증기업 선정",
-          "evidence_ids": [
-            "We5253"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [W2dc5c]에 따르면 MyFeed가 전국 여러 농가에 1,700대 이상 설치되어 운영 중이며, 국내외 여러 지역에서 사용되고 있어 여러 지역 현장 실증이 이루어진 것으로 판단된다. 이는 공공기관·대학·지자체 등 제3자 실증 근거는 아니지만, 다수 농가 현장 설치 및 운영 사례가 제3자 출처로 확인되어 YES 판정 가능하다.)",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P3",
           "answer": "UNKNOWN",
-          "rationale": "근거에 자체 특허나 논문, 자체 데이터셋, 자체 하드웨어 등 핵심 기술 자체 개발을 직접 입증하는 문장이 없고, 특허 등록·출원 현황도 확인 불가하여 자체 개발 근거가 불명확하다.",
+          "rationale": "근거 [Wb0bba]에는 회사가 자체 개발한 솔루션을 제공한다는 내용은 있으나, 특허 보유나 논문, 자체 데이터셋, 자체 하드웨어 등 핵심 기술의 자체 개발을 직접적으로 입증하는 문장은 없다. 특허 보유 및 출원 중이라는 구체적 문장은 근거에 없으므로, 자체 개발 근거가 명확하지 않아 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "제품 유형상 별도의 인허가 대상이 아니라고 명확히 언급되어 있어, 인허가 관련 질문은 해당 사항 없음으로 판정한다.",
+          "rationale": "제품 유형상 별도의 인허가 대상이 아니라고 명확히 언급되어 있어 인허가 관련 문항은 해당 사항이 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
-          "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 에임비랩의 특허 등록 또는 출원에 관한 직접적인 언급이 없어 확인할 수 없습니다.",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "YES",
+          "rationale": "근거 [Wb0bba]에 에임비랩이 국내외 사료회사들과 협력하며 축산 사료관리 데이터 솔루션을 제공하고 있고, 이상진 CPO가 다수의 국내외 특허를 보유한 점이 명시되어 있어 특허 출원 또는 등록이 확인된다.",
+          "quote": "에임비랩은 국내외 사료회사들과 축산 농가들 대상으로 종합 사료관리 데이터 솔루션 ‘마이피드’를 제공하며 축산업의 디지털 트랜스포메이션을 이끌고 있다.",
+          "evidence_ids": [
+            "Wb0bba"
+          ],
+          "confidence": "중",
+          "verifier": "인용과 주변 원문은 에임비랩의 서비스와 임원 경력, 특허 보유 사실을 언급하지만, 에임비랩 자체의 특허 등록 또는 출원 사실을 직접적으로 확인할 수 없다."
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서 [W2dc5c]와 [W2ad77]에서 에임비랩이 경쟁사와 비교하여 AI 기반 IoT 디바이스와 클라우드 플랫폼을 결합해 사료 잔량과 상태를 자동으로 측정하고, 사료빈 뚜껑 열림 사전 알림 기능과 다양한 사료빈에 설치 가능한 FM 시리즈 계측 디바이스를 통해 통합 사료관리 서비스를 제공하는 구체적인 차별점을 명확히 제시하고 있다. 이는 경쟁사 2곳 이상과 비교한 구체적인 차별점으로서 질문에 부합한다.)",
+          "rationale": "인용문이 근거 본문에서 확인되지 않음 → UNKNOWN 강등 (근거 문서에서 에임비랩이 라이다 센서와 AI를 결합한 독자적 솔루션을 보유하고 있으며, 경쟁사인 엠트리센과 아이티테크는 각각 AI 기반 양돈 사육공정 자동화 및 가축 이상 탐지 솔루션을 개발 중이나, 에임비랩과 동일한 축산사료 잔량 및 상태 모니터링 솔루션을 제공하지 않는다고 명확히 비교하고 있다. 따라서 국내 경쟁사 2곳과 구체적인 차별점이 근거로 확인된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "YES",
-          "rationale": "근거 문서에 사료빈에 설치된 계측 디바이스가 자동으로 잔량을 측정하여 데이터가 축적되고, 앱과 웹에서 확인 가능하며, 데이터 연동 구조가 명확히 설명되어 있습니다.",
-          "quote": "사료빈에 설치한 계측 디바이스가 내부 잔량을 자동으로 측정해 마이피드로 보냅니다. 남은 비율과 무게를 앱과 웹에서 확인할 수 있고, 사료빈 내부를 촬영한 사진으로 눈으로도 확인할 수 있습니다.",
+          "rationale": "근거 [W2dc5c]에 사료빈에 설치된 디바이스가 데이터를 자동으로 수집하여 앱과 웹에서 확인 가능하며, 데이터 기반 운영이 전국 농가에 확산 중임이 명확히 기술되어 있어 데이터 축적 및 연동 구조가 존재함을 확인할 수 있다.",
+          "quote": "사료빈에 설치한 계측 디바이스가 내부 잔량을 자동으로 측정해 마이피드로 보냅니다. 남은 비율과 무게를 앱과 웹에서 확인할 수 있고, 사료빈 내부를 촬영한 사진으로 눈으로도 확인할 수 있다.",
           "evidence_ids": [
             "W2dc5c"
-          ]
+          ],
+          "confidence": "하",
+          "verifier": "인용문은 계측 디바이스의 기능과 연동 방식을 설명하지만, 사용 증가에 따른 데이터 축적으로 성능 향상이나 설치·연동으로 인한 교체 비용 발생 여부에 대한 구체적 사실을 직접적으로 언급하지 않는다."
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 에임비랩과 유통·전략 파트너 간의 계약이나 공동사업에 관한 구체적인 내용이나 계약 상대방 명시가 없어 확인할 수 없습니다.",
+          "rationale": "근거 [W2dc5c]에 파트너십 관련 언급은 있으나 계약 상대방 명시나 계약 체결 사실이 구체적으로 확인되지 않아 MOU 여부도 불분명하며, 계약이나 공동사업 근거가 명확하지 않아 판정 불가이다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 문서 [We5a7f]에 2023년부터 2025년까지 매출액 수치와 연도가 명확히 제시되어 있어, 연도가 적힌 매출액이 기업 DB·공시·보도로 확인된다.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [We5a7f]에 2023년부터 2025년까지 매출액이 구체적 수치와 연도와 함께 명확히 제시되어 있어, 연도가 적힌 매출액이 기업 DB·공시·보도로 확인되는 조건을 충족한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 문서 [W2dc5c]에 전국 농가에 1,700대 이상 설치·운영 중이라는 구체적 수치가 있어 유료 고객이나 설치 규모가 수치로 확인된다.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [W2dc5c]에 전국 농가에 약 1,700대 이상의 설치 규모가 수치로 명확히 확인되어 유료 고객이나 설치 규모가 수치로 확인되는 요건을 충족한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 문서 [W2dc5c]에 여러 해 연속 사용 및 재계약·확대 도입을 추정할 수 있는 문장이 있어 재사용 근거가 있다.)",
+          "rationale": "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함) → UNKNOWN 강등 (근거 [W2dc5c]에 '누적' 및 '운영 중'이라는 표현으로 같은 고객의 재계약·확대 도입 또는 여러 해 연속 사용 근거가 명확히 드러나 있어 재사용 근거가 충족된다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
-          "answer": "YES",
-          "rationale": "근거 문서 [W55169]에 에임비랩이 축산 현장에 스마트 사료관리 인프라를 구축하여 사료 부족·과잉 공급 문제를 예방하고 비용 절감과 재고 관리 효율을 높인 점이 평가되었다고 명시되어 있어 정부 보조사업이 아닌 매출 근거로 인정된다.",
-          "quote": "에임비랩은 축산 현장의 사료 관리 문제를 데이터 기반으로 해결한 점이 평가됐다.",
-          "evidence_ids": [
-            "W55169"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "근거 [W2ad77]는 PoC(Proof of Concept) 단계의 성과를 언급하고 있으나, 정부 보조사업이 아닌 민간 매출 근거로서의 직접적인 매출 발생이나 계약 금액 등 구체적 매출 근거가 없어 YES 판정 요건을 충족하지 못한다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
@@ -3044,30 +3554,38 @@
             "Wf65db",
             "W4901f",
             "W34b38"
-          ]
+          ],
+          "confidence": "상",
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "YES",
-          "rationale": "팁스 선정은 정책 펀드 운영사 참여를 의미하며, 한국투자액셀러레이터 추천으로 팁스 선정된 점이 기관투자자 참여 근거로 인정된다.",
-          "quote": "에임비랩의 이번 팁스 선정은 한국투자액셀러레이터의 추천으로 이뤄졌다",
+          "rationale": "팁스 선정은 정책 펀드 운영사 참여를 의미하며, 한국투자액셀러레이터가 민간 운영사로 참여한 점이 확인되어 기관투자자 참여가 YES로 판단된다.",
+          "quote": "에임비랩의 이번 팁스 선정은 한국투자액셀러레이터의 추천으로 이뤄졌다.",
           "evidence_ids": [
             "W4901f"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "투자 단계와 시점은 공개되었으나, 투자 금액과 기업가치 또는 지분율 수치가 공개되지 않아 근거 부족으로 UNKNOWN 판정한다.",
+          "rationale": "투자 지분율이나 기업가치 수치가 공개된 근거가 없고, 투자금액도 비공개로 명시되어 있어 수치 근거가 부족하여 UNKNOWN 판정.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "UNKNOWN",
-          "rationale": "근거에 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보 관련 구체적 내용이 없어 판단 불가, 따라서 UNKNOWN 판정한다.",
+          "rationale": "대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 근거가 없으므로 판단 불가하여 UNKNOWN.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     },
@@ -3076,22 +3594,27 @@
       "region": "KR",
       "stage": "Pre-A",
       "decision": "보류",
-      "hold_type": "동종 평균 이하",
-      "multiplier": 0.9639,
-      "score100": 96.4,
+      "hold_type": "창업자 점수 평균 미만",
+      "multiplier": 0.8986,
+      "score100": 89.9,
       "reasons": [
-        "동종 평균 대비 96.4(동종 평균 100) — 동종 평균 이하 (미확인 문항 87%)"
+        "창업자 기준 93.1(동종 평균 100) — 팀이 동종 평균 미만",
+        "동종 평균 대비 89.9(동종 평균 100) — 동종 평균 이하 (미확인 문항 87%)"
       ],
       "flip": {
         "qids": [
-          "F2"
+          "F1",
+          "F2",
+          "F3"
         ],
         "items": [
-          "F2 기술 책임자 이력"
+          "F1 창업팀 이력",
+          "F2 기술 책임자 이력",
+          "F3 최근 마일스톤"
         ],
-        "new_multiplier": 1.0014,
+        "new_multiplier": 1.0111,
         "reached": true,
-        "note": "F2 이(가) YES 로 확인되면 동종 평균 대비 100.1(동종 평균 100) → 투자"
+        "note": "F1·F2·F3 이(가) YES 로 확인되면 동종 평균 대비 101.1(동종 평균 100) → 투자"
       },
       "roi": {
         "computable": true,
@@ -3130,13 +3653,13 @@
           "dim": "founder",
           "name": "창업자·팀 (Owner)",
           "weight": 30,
-          "yes": 1,
+          "yes": 0,
           "no": 0,
-          "unknown": 3,
+          "unknown": 4,
           "n": 4,
-          "pct": 104.2,
-          "peer_mean": 0.167,
-          "contribution": 0.3125
+          "pct": 93.1,
+          "peer_mean": 0.139,
+          "contribution": 0.2792
         },
         {
           "dim": "market",
@@ -3155,12 +3678,12 @@
           "name": "제품/기술력",
           "weight": 15,
           "yes": 0,
-          "no": 0,
-          "unknown": 3,
+          "no": 1,
+          "unknown": 2,
           "n": 3,
-          "pct": 88.9,
-          "peer_mean": 0.222,
-          "contribution": 0.1333
+          "pct": 64.8,
+          "peer_mean": 0.37,
+          "contribution": 0.0972
         },
         {
           "dim": "competition",
@@ -3170,9 +3693,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 91.7,
-          "peer_mean": 0.167,
-          "contribution": 0.0917
+          "pct": 90.3,
+          "peer_mean": 0.194,
+          "contribution": 0.0903
         },
         {
           "dim": "traction",
@@ -3182,9 +3705,9 @@
           "no": 0,
           "unknown": 4,
           "n": 4,
-          "pct": 95.8,
-          "peer_mean": 0.083,
-          "contribution": 0.0958
+          "pct": 98.6,
+          "peer_mean": 0.028,
+          "contribution": 0.0986
         },
         {
           "dim": "deal",
@@ -3194,185 +3717,233 @@
           "no": 0,
           "unknown": 3,
           "n": 4,
-          "pct": 94.4,
-          "peer_mean": 0.361,
-          "contribution": 0.0944
+          "pct": 97.2,
+          "peer_mean": 0.306,
+          "contribution": 0.0972
         }
       ],
       "rows": [
         {
           "qid": "F1",
-          "answer": "YES",
-          "rationale": "전현균 대표가 서울대 인공위성지구물리연구실 출신으로 창업 전 관련 전문성을 갖추었음을 명확히 밝히고 있어, 창업자가 해당 기술 분야에서 연구 경험을 쌓았다는 점이 확인된다.",
-          "quote": "생산량 예측 기반 농산물 공급 솔루션 업체 바르카는 서울대 인공위성지구물리연구실 출신인 전현균 대표가 설립했다.",
-          "evidence_ids": [
-            "W88614"
-          ]
+          "answer": "UNKNOWN",
+          "rationale": "근거에 창업자 전현균 대표의 이름과 경력이 함께 명확히 기술된 문장이 없으며, 요약에만 관련 내용이 있어 직접 인용할 수 없다.",
+          "quote": "",
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F2",
           "answer": "UNKNOWN",
-          "rationale": "기술 책임자의 구체적인 특허, 논문, 연구소 또는 기업 경력에 대한 직접적인 근거가 없고, 단지 대표의 출신 연구실만 언급되어 있어 YES 요건을 충족하지 못한다.",
+          "rationale": "기술 책임자의 특허, 논문, 연구소 또는 기업 경력에 대한 구체적 근거가 없고 회사 기술 소개만 있어 YES 요건 미충족으로 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F3",
           "answer": "UNKNOWN",
-          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (최근 24개월 내 마일스톤은 TIPS 선정 1건뿐이며, 2건 이상 근거가 없어 YES 요건을 충족하지 못한다.)",
+          "rationale": "반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN (최근 24개월 내 마일스톤이 1건(2023-01 TIPS 선정)만 확인되며, 2건 이상 근거가 없어 NO 판정한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "F4",
           "answer": "UNKNOWN",
-          "rationale": "회사가 공개한 핵심 수치에 대해 제3자 근거가 없고, 모순 근거도 없어 판단할 근거가 부족하다.",
+          "rationale": "핵심 수치(가입자 4명)가 회사가 공개한 수치인지 불분명하고 제3자 근거만으로는 확인 불충분하여 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M1",
           "answer": "YES",
-          "rationale": "글로벌 애그테크 시장 규모가 공공기관 문서에서 수치와 기준 연도로 명확히 확인되어 YES 판정함.",
-          "quote": "글로벌 애그테크 산업 시장 규모는 2020년 91억 달러에서 2025년 226억 달러 규모로 5년간 연평균 20% 성장할 것으로 전망된다(Statista, 2022).",
+          "rationale": "글로벌 스마트 농업 시장 규모가 공공기관 문서(한국농촌경제연구원 2024)에서 2023년 174억 달러로 확인되고, 2034년까지 성장 전망이 제시되어 있어 M1 요건을 충족한다.",
+          "quote": "BIS Research는 글로벌 스마트 농업시장이 2023년 174억 달러에서 2034년 1,172억 달러에 달할 것으로 추정하였다",
           "evidence_ids": [
-            "Dd31ce"
-          ]
+            "Deaac5"
+          ],
+          "confidence": "중",
+          "verifier": "인용은 BIS Research의 글로벌 스마트 농업시장 규모 추정치를 제시하지만, 출처가 한국농촌경제연구원 2024 문서임에도 인용 내용은 BIS Research의 추정치로, 공공기관·연구기관 문서에서 직접 확인된 수치가 아니다."
         },
         {
           "qid": "M2",
           "answer": "UNKNOWN",
-          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (최근 24개월 내 발행된 공공기관 문서에서 시장 성장률과 투자 동향 등 수치가 확인되어 YES 판정함.)",
+          "rationale": "최근 24개월 이내 근거 아님 → UNKNOWN 강등 (최근 24개월 내 발행된 제3자 기관 문서에서 애그테크 시장이 연평균 20% 성장 중임을 수치로 확인할 수 있어 M2 요건에 부합한다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M3",
           "answer": "UNKNOWN",
-          "rationale": "경제적 효과에 대한 수치는 있으나 제3자 출처가 아닌 언론 기사 내 회사 측 기대 발언으로 출처 요건 미충족.",
+          "rationale": "바르카 제품의 경제적 효과에 대한 수치는 있으나, 회사 측 주장 및 언론 기사로 제3자 출처의 객관적 수치가 아니므로 M3 요건을 충족하지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "M4",
           "answer": "UNKNOWN",
-          "rationale": "과금 방식에 관한 구체적 근거가 확인되지 않아 판정 불가.",
+          "rationale": "근거 문서에서 바르카의 과금 방식(장비 판매, 구독, 서비스 등)에 관한 구체적 정보가 확인되지 않아 M4 판정은 불명확하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P1",
           "answer": "UNKNOWN",
-          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (근거에 따르면 바르카는 현재 시제품 단계로, 미국 옥수수와 대두에 대해 생산량 예측 기술을 개발 중에 있다고 명시되어 있어 상용 운영 중이라는 직접적 근거가 없다.)",
+          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (근거에 따르면 바르카는 2023년 TIPS 선정 및 기술 개발 중인 시제품 단계로, 상용 운영 중이라는 직접적인 근거가 없고, '생산량 예측 기술을 개발 중'이라는 문구는 시제품 단계임을 의미한다. 따라서 상용 운영 중이라는 판단 근거가 없다.)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P2",
-          "answer": "UNKNOWN",
-          "rationale": "반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN (근거에 따르면 바르카는 현재 시제품 단계로, 미국 옥수수와 대두에 대해 생산량 예측 기술을 개발 중에 있으나, 공공기관·대학·지자체 등 제3자에 의한 여러 작기 또는 여러 지역의 현장 실증 근거가 없다. 따라서 성능이 여러 작기 또는 여러 지역의 현장 실증으로 제시된다고 보기 어렵다.)",
-          "quote": "",
-          "evidence_ids": []
+          "answer": "NO",
+          "rationale": "근거에 따르면 바르카는 현재 미국 옥수수와 대두에 대해 생산량 예측 기술을 개발 중인 시제품 단계임을 명확히 하고 있으며, 공공기관·대학·지자체 등 제3자에 의한 여러 작기 또는 여러 지역의 현장 실증 근거는 제시되어 있지 않음. 따라서 성능이 여러 작기 또는 여러 지역의 현장 실증으로 제시된다고 보기 어려워 질문에 부합하지 않음.",
+          "quote": "현재 미국 옥수수, 대두에 대해 생산량 예측 기술을 개발 중에 있음.",
+          "evidence_ids": [
+            "W84efa"
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "P3",
           "answer": "UNKNOWN",
-          "rationale": "근거에는 자체 개발을 직접적으로 입증하는 특허, 논문, 자체 데이터셋, 자체 하드웨어 등의 구체적 근거가 없으며, 단순 기술 개발 중이라는 표현만 있어 자체 개발 근거로 보기 어렵다.",
+          "rationale": "근거에는 핵심 기술이 인공위성과 AI 기반임은 언급되나, 자체 개발을 입증하는 특허, 논문, 자체 데이터셋, 자체 하드웨어 등의 구체적 근거가 없다. 따라서 자체 개발 근거는 확인 불가하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "P4",
           "answer": "N/A",
-          "rationale": "근거에 명확히 '농산물 생산량 예측 솔루션으로 인허가 대상 아님'이라고 명시되어 있어, 인허가 대상이 아니므로 N/A 판정이 적절하다.",
+          "rationale": "근거에 따르면 바르카의 제품은 농산물 생산 예측 솔루션으로 인허가 대상이 아니므로, 인허가·검정 여부 문항은 해당 사항이 아니다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 바르카의 핵심 기술 관련 특허 등록 또는 출원에 관한 구체적인 언급이 없어 확인할 수 없습니다.",
+          "rationale": "근거 문서에서 바르카의 핵심 기술 관련 특허 등록 또는 출원 여부가 명확히 확인되지 않아 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C2",
           "answer": "UNKNOWN",
-          "rationale": "경쟁사와의 구체적인 차별점에 대해 회사 측 주장 외에 제3자 검증 근거가 없으며, 구체적인 성능, 가격, 적용 작목, 범위 비교 근거가 확인되지 않습니다.",
+          "rationale": "근거에는 바르카의 기술과 사업 모델에 대한 설명은 있으나, 국내외 경쟁사 2곳 이상과 구체적인 성능, 가격, 적용 작목, 범위 등 차별점을 직접 비교한 문장이 없다. 경쟁사들과의 직접 비교 자료가 없으므로 YES 판정 요건을 충족하지 않는다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C3",
           "answer": "UNKNOWN",
-          "rationale": "자체 데이터 축적에 따른 성능 향상이나 설치·연동으로 인한 교체 비용 구조에 관한 구체적 근거가 문서에 없습니다.",
+          "rationale": "근거 원문에는 데이터 축적이나 설치·연동으로 인한 교체 비용 등 진입장벽 관련 구체적 정보가 없으며, 분석 요약에만 진입장벽이 약할 가능성이 있다는 추정이 있다. 따라서 명확한 근거가 없어 UNKNOWN 판정이다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "C4",
           "answer": "UNKNOWN",
-          "rationale": "유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 계약 상대방 명시 근거가 확인되지 않고, MOU만 있는 경우도 없으므로 판단 불가합니다.",
+          "rationale": "근거 문서에 유통·전략 파트너와의 계약이나 공동사업에 관한 구체적 내용이 없어 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R1",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 바르카의 매출액과 연도에 관한 구체적인 수치나 기업 DB, 공시, 보도에 의한 확인 가능한 매출액 정보가 전혀 발견되지 않았다.",
+          "rationale": "근거 문서에서 바르카의 매출액과 연도에 관한 구체적인 정보가 확인되지 않아 매출액이 기업 DB·공시·보도로 확인되는지 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R2",
           "answer": "UNKNOWN",
-          "rationale": "유료 고객 수, 설치 규모(고객 수, 농가 수, 면적, 두수, 계약 금액) 등의 수치가 근거 문서에 명확히 제시되어 있지 않아 확인할 수 없다.",
+          "rationale": "유료 고객 수, 설치 규모 등의 수치가 근거 문서에 명확히 제시되어 있지 않아 수치로 확인되는지 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R3",
           "answer": "UNKNOWN",
-          "rationale": "같은 고객의 재계약, 확대 도입, 여러 해 연속 사용에 관한 구체적인 근거가 문서 내에 존재하지 않는다.",
+          "rationale": "같은 고객의 재계약·확대 도입 또는 여러 해 연속 사용에 관한 근거가 문서에 없어 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "R4",
           "answer": "UNKNOWN",
-          "rationale": "정부 보조사업이 아닌 민간 판매, 수출, 기업 간 계약에 의한 매출 근거가 확인되지 않아 판정할 수 없다.",
+          "rationale": "정부 보조사업이 아닌 매출(민간 판매, 수출, 기업 간 계약)에 관한 구체적 근거가 제시되어 있지 않아 판단할 수 없다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D1",
           "answer": "UNKNOWN",
           "rationale": "라운드 시점이 확인되지 않음 (코드 판정)",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D2",
           "answer": "YES",
-          "rationale": "바르카는 2023년 TIPS에 선정되었고, 운영사인 킹슬리벤처스가 선투자자로 참여한 기관투자자임이 확인된다.",
+          "rationale": "근거 [W84efa]에 바르카가 2023년에 TIPS에 선정되었고, 운영사인 킹슬리벤처스가 선투자자로 참여한 사실이 명시되어 있어 기관투자자 참여가 확인된다.",
           "quote": "TIPS 선정 2023년, 운영사(선투자) 킹슬리벤처스",
           "evidence_ids": [
             "W84efa"
-          ]
+          ],
+          "confidence": "중",
+          "verifier": null
         },
         {
           "qid": "D3",
           "answer": "UNKNOWN",
-          "rationale": "기업가치 또는 투자 지분율에 대한 구체적 수치가 공개된 근거가 없으며, 일부 추정치나 비공개 정보만 존재한다.",
+          "rationale": "근거에는 투자 단계와 금액은 있으나 기업가치(Valuation) 또는 투자 지분율에 대한 구체적 수치가 공개되어 있지 않다. 따라서 기업가치 또는 지분율 공개 근거는 부족하여 UNKNOWN 판정한다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         },
         {
           "qid": "D4",
           "answer": "UNKNOWN",
-          "rationale": "근거 문서에서 바르카의 사업 모델은 인공위성과 AI를 활용한 농산물 생산량 예측 기술 개발임을 확인할 수 있으나, 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 구체적 투자조건(Deal Terms) 관련 내용은 전혀 언급되어 있지 않습니다. 따라서 투자조건 관련 질문에 대해 명확한 근거가 없어 UNKNOWN으로 판정합니다.",
+          "rationale": "근거 문서에서 바르카의 사업 모델은 인공위성과 AI를 활용한 농산물 생산량 예측 기술 개발임이 확인되나, 대규모 자체 시설 필요 여부나 전략적 투자자·비희석 자금 확보에 관한 직접적 언급이 없어 투자조건 관련 판단 근거가 부족하다.",
           "quote": "",
-          "evidence_ids": []
+          "evidence_ids": [],
+          "confidence": null,
+          "verifier": null
         }
       ]
     }
@@ -3383,35 +3954,49 @@
     "html": "outputs/investment_report.html",
     "pdf": "outputs/investment_report.pdf",
     "submit_pdf": "outputs/RAG-Output_울산-2반_김가연+김진녕+문지후+이준희+정승우.pdf",
-    "pages": 4,
-    "summary_ratio": 0.233,
+    "pages": 5,
+    "summary_ratio": 0.251,
     "cited_ids": [
+      "D5b883",
+      "Deaac5",
       "Df26b5",
       "D204c5",
-      "Dcb71b",
+      "D2a5aa",
+      "Db6b8c",
+      "D12823",
+      "D5391b",
       "D8c04e",
-      "Deaac5",
-      "D5b883",
-      "D8f441",
-      "Wc091e",
-      "Wc3a78",
-      "Wef018",
-      "W2a166",
       "Wbf33c",
       "Wa4ac8",
+      "W2a166",
+      "Wc091e",
+      "W0a516",
       "Weeb95",
+      "Wef018",
+      "Wc3a78",
+      "Wac0e2",
+      "Wfd35b",
+      "W6b0bd",
+      "W34f6a",
+      "Wc981a",
+      "W0e24c",
+      "Wde49b",
+      "W337e1",
+      "W18a14",
       "W299f0"
     ],
     "checks": {
-      "pages": 4,
+      "pages": 5,
       "max_pages": 5,
       "pages_ok": true,
-      "summary_ratio": 0.233,
+      "summary_ratio": 0.251,
       "summary_ok": true,
       "first_section": "SUMMARY",
       "last_section": "REFERENCE",
       "banned_hits": [],
-      "summary_rule_violations": [],
+      "summary_rule_violations": [
+        "SUMMARY 568자 > 560자 (각 칸 길이 상한을 지켜라)"
+      ],
       "chapter_refs_ok": true,
       "required_items_ok": true,
       "refs_match_citations": true,
@@ -3421,20 +4006,68 @@
       "assumptions_labeled": true,
       "consistency_violations": [],
       "density_level": 0,
-      "rewrites": 1,
-      "references": 11,
+      "rewrites": 2,
+      "references": 21,
       "reference_groups": {
-        "기관 보고서": 2,
-        "학술 논문": 2,
-        "웹페이지": 7
+        "기관 보고서": 4,
+        "학술 논문": 0,
+        "웹페이지": 17
       },
-      "summary_ratio_of_a4": 0.233,
+      "number_audit": {
+        "unsupported": [],
+        "conflicts": [],
+        "cagr": [],
+        "upstream": [],
+        "rewrite": "on",
+        "cagr_removed": []
+      },
+      "name_variants": [],
+      "team_table_conflicts": [],
+      "portal_refs": {
+        "resolved": 1,
+        "unresolved": 0
+      },
+      "faithfulness": {
+        "n": 21,
+        "supported": 19,
+        "rate": 0.905,
+        "target": 0.95,
+        "unsupported": [
+          "[3장 팀] 대표 이규화는 서울대 기계공학과 출신으로 스마트팩토리 구축 경험 보유하며, 2022년 창업 후 시드 투자, TIPS 선정, 프리A 투자 유치, CES 혁신상 수상, 스마트농업 우수기업 선정 등 다수 성과 달성 — 근거 원문에 따르면 프리A 투자는 2025년 8월에 유치되었으며, 문장에서는 2022년 창업 후 프리A 투자 유치를 완료한 것으로 표현되어 연도 차이가 있고, TIPS 선정 시기도 2023년으로 나타나 문장과 근거의 연도 및 투자 시점이 일치하지 않음.",
+          "[리스크 표(시장)] 농업용 로봇 구입 비용 부담으로 농가 도입 장벽 존재 가능성 — 근거 원문에는 농업용 로봇 구입 비용 부담에 따른 농가 도입 장벽에 대한 언급이 전혀 없으며, 문장은 비용 부담으로 인한 도입 장벽 가능성을 주장하고 있어 근거와 일치하지 않음."
+        ],
+        "failed": [
+          {
+            "where": "3장 팀",
+            "sentence": "대표 이규화는 서울대 기계공학과 출신으로 스마트팩토리 구축 경험 보유하며, 2022년 창업 후 시드 투자, TIPS 선정, 프리A 투자 유치, CES 혁신상 수상, 스마트농업 우수기업 선정 등 다수 성과 달성",
+            "reason": "근거 원문에 따르면 프리A 투자는 2025년 8월에 유치되었으며, 문장에서는 2022년 창업 후 프리A 투자 유치를 완료한 것으로 표현되어 연도 차이가 있고, TIPS 선정 시기도 2023년으로 나타나 문장과 근거의 연도 및 투자 시점이 일치하지 않음."
+          },
+          {
+            "where": "리스크 표(시장)",
+            "sentence": "농업용 로봇 구입 비용 부담으로 농가 도입 장벽 존재 가능성",
+            "reason": "근거 원문에는 농업용 로봇 구입 비용 부담에 따른 농가 도입 장벽에 대한 언급이 전혀 없으며, 문장은 비용 부담으로 인한 도입 장벽 가능성을 주장하고 있어 근거와 일치하지 않음."
+          }
+        ],
+        "recited": [
+          "AI 기반 정밀 농업용 하드웨어 및 소프트웨어 제공 [Wc091e, Df26b5, D204c5, D2a5aa]"
+        ],
+        "rewrite": "미채택 (다시 쓴 초안 통과율 0.667, 다른 검사 문제 1건)",
+        "mode": "rewrite"
+      },
+      "citation_coverage": {
+        "claims": 7,
+        "cited": 7,
+        "rate": 1.0,
+        "uncited": []
+      },
+      "unknown_list_fixed": [],
+      "summary_ratio_of_a4": 0.251,
       "scorecard_consistency_violations": []
     },
     "title": "메타파머스 투자 검토 — 투자 추천(실사 조건부)",
     "target": "메타파머스",
     "decision": "투자 추천",
-    "generated_at": "2026-09-30T14:12:24"
+    "generated_at": "2026-10-12T15:43:35"
   },
   "rag_traces": [
     {
@@ -5754,73 +6387,74 @@
   "log": [
     "[발굴 1라운드] 채널 8개·근거 151건에서 후보 78곳 (국내 73·해외 5, 교차 신호 2채널 이상 14곳) → 검증 18곳(해외 5)",
     "[적격성 검증] 18곳(국내 13·해외 5) 검사 → 통과 14곳, 탈락 4곳",
+    "[DART] 국내 13곳 조회 → matched 1곳, not_found 12곳 · 공시 확인: 대동애그테크(기타법인(비상장), 설립 2022-02-15, 감사보고서 1건, 매출 2025년)",
     "[평가 1] 메타파머스 (KR, Pre-A, robotics)",
-    "[창업자] 메타파머스: t0 2022-09-02(TIPS 설립일), 인물 2명(이규화(대표), 윤원재(기술이사(CTO))), 마일스톤 5건(최근 24개월 3건), 근거 7건 → 창업자 YES 2/4",
-    "[기술 요약] 메타파머스: 성숙도 실증, 장점 4·단점 4·주장 4건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 1/3",
+    "[창업자] 메타파머스: t0 2022-09-02(TIPS 설립일), 인물 2명(이규화(대표), 윤원재(기술이사(CTO))), 마일스톤 7건(최근 24개월 3건), 근거 8건 → 창업자 YES 1/4",
+    "[기술 요약] 메타파머스: 성숙도 실증, 장점 4·단점 4·주장 4건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 18건 → 제품/기술력 YES 1/3",
     "[시장성] 농업 로봇·자율주행 농기계: 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 22650.0(USD_M), 근거 14건 (문서 11건) → 시장성 YES 2/4",
-    "[경쟁사] 메타파머스: 제품 유형 '다목적 농작업 로봇 및 원격 제어 소프트웨어', 검색 5건, 근거 속 경쟁사 더그투스 → 경쟁사 1곳 비교, 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
-    "[투자 판단] 메타파머스: 동종 평균 대비 109.6(동종 평균 100, 창업자 기준 118.1, 기준 집단 9곳 자기 제외) · YES 8 · NO 0 · 미확인 65% · 창업자 YES 2 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
+    "[경쟁사] 메타파머스: 제품 유형 'AI 기반 다목적 농작업 자동화 로봇', 검색 5건 + 실재 확인 1건, 근거 속 경쟁사 더그투스, 같은 분야 적격 후보 4곳 → 경쟁사 5곳 비교(확인 4곳: 국내 0·해외 4, 근거 약함 1곳), 주장 4건(제3자 확인 1·반대 근거 0) → 경쟁 우위 YES 1/4",
+    "[투자 판단] 메타파머스: 동종 평균 대비 107.2(동종 평균 100, 창업자 기준 106.9, 기준 집단 9곳 자기 제외) · YES 8 · NO 0 · 미확인 65% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
     "[평가 2] Nature Robots (GLOBAL, Seed, robotics)",
-    "[창업자] Nature Robots: t0 2022(근거 속 설립 표현), 인물 1명(Dr. Sebastian Pütz(CEO 및 공동 창업자)), 마일스톤 2건(최근 24개월 1건), 근거 8건 → 창업자 YES 0/4",
-    "[기술 요약] Nature Robots: 성숙도 시제품, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 9건 → 제품/기술력 YES 0/3",
+    "[창업자] Nature Robots: t0 2022(근거 속 설립 표현), 인물 1명(Dr. Sebastian Pütz(CEO 및 공동창업자)), 마일스톤 2건(최근 24개월 1건), 근거 8건 → 창업자 YES 0/4",
+    "[기술 요약] Nature Robots: 성숙도 시제품, 장점 4·단점 4·주장 3건, 홈페이지 요약, 기준선 grounded, 근거 5건 → 제품/기술력 YES 1/3",
     "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 1/4",
-    "[경쟁사] Nature Robots: 제품 유형 'AI 기반 자율주행 농업용 소프트웨어', 검색 5건, 근거 속 경쟁사 없음 → 경쟁사 4곳 비교, 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
-    "[투자 판단] Nature Robots: 동종 평균 대비 92.2(동종 평균 100, 창업자 기준 90.3, 기준 집단 9곳 자기 제외) · YES 2 · NO 0 · 미확인 91% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[경쟁사] Nature Robots: 제품 유형 'AI 기반 자율주행 농업용 소프트웨어', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 4곳 → 경쟁사 4곳 비교(확인 4곳: 국내 1·해외 3, 근거 약함 0곳), 주장 3건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] Nature Robots: 동종 평균 대비 96.8(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 4 · NO 0 · 미확인 83% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
     "[평가 3] 리비타 (KR, Seed, agdata)",
-    "[창업자] 리비타: t0 2026-01-02(국민연금 최초 가입일), 인물 1명(엄상혁(대표)), 마일스톤 2건(최근 24개월 2건), 근거 8건 → 창업자 YES 1/4",
-    "[기술 요약] 리비타: 성숙도 시제품, 장점 4·단점 4·주장 4건, 홈페이지 주소 없음 → 회사 기사 요약, 기준선 grounded, 근거 4건 → 제품/기술력 YES 0/3",
-    "[시장성] 농업 생산 데이터 분석·예측 AI (생육·환경 데이터): 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 17400.0(USD_M), 근거 12건 (문서 9건) → 시장성 YES 2/4",
-    "[경쟁사] 리비타: 제품 유형 '농업 생산 데이터 분석 및 예측 AI 솔루션', 검색 5건, 근거 속 경쟁사 없음 → 경쟁사 2곳 비교, 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
-    "[투자 판단] 리비타: 동종 평균 대비 101.2(동종 평균 100, 창업자 기준 104.2, 기준 집단 9곳 자기 제외) · YES 5 · NO 0 · 미확인 78% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
+    "[창업자] 리비타: t0 2026-01-02(국민연금 최초 가입일), 인물 1명(엄상혁(대표)), 마일스톤 7건(최근 24개월 7건), 근거 8건 → 창업자 YES 0/4",
+    "[기술 요약] 리비타: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 주소 없음 → 회사 기사 요약, 기준선 grounded, 근거 7건 → 제품/기술력 YES 1/3",
+    "[시장성] 농업 생산 데이터 분석·예측 AI (생육·환경 데이터): 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 17400.0(USD_M), 근거 12건 (문서 9건) → 시장성 YES 1/4",
+    "[경쟁사] 리비타: 제품 유형 '노지 재배 환경용 스마트팜 생육 및 환경 데이터 분석 시스템', 검색 4건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 3곳 → 경쟁사 3곳 비교(확인 3곳: 국내 3·해외 0, 근거 약함 0곳) (우열 단정 고쳐 씀), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] 리비타: 동종 평균 대비 95.4(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 3 · NO 0 · 미확인 87% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
     "[평가 4] 새팜 (KR, Pre-A, diagnosis)",
-    "[창업자] 새팜: t0 2022-06-15(TIPS 설립일), 인물 1명(정승환(대표)), 마일스톤 3건(최근 24개월 2건), 근거 4건 → 창업자 YES 0/4",
-    "[기술 요약] 새팜: 성숙도 상용, 장점 3·단점 1·주장 2건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 partial, 근거 2건 → 제품/기술력 YES 2/3",
+    "[창업자] 새팜: t0 2022-06-15(TIPS 설립일), 인물 1명(정승환(대표)), 마일스톤 3건(최근 24개월 2건), 근거 5건 → 창업자 YES 1/4",
+    "[기술 요약] 새팜: 성숙도 상용, 장점 3·단점 4·주장 4건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 partial, 근거 2건 → 제품/기술력 YES 2/3",
     "[시장성] 작물 생육·병해충 진단 AI: 하위 질문 6개 (문서 4·웹 0·직접 0, grounded 5개), 대표 규모 17400.0(USD_M), 근거 11건 (문서 11건) → 시장성 YES 2/4",
-    "[경쟁사] 새팜: 제품 유형 '작물 생육 및 병해충 진단 AI 솔루션', 검색 5건, 근거 속 경쟁사 없음 → 경쟁사 3곳 비교, 주장 2건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 3/4",
-    "[투자 판단] 새팜: 동종 평균 대비 106.8(동종 평균 100, 창업자 기준 90.3, 기준 집단 9곳 자기 제외) · YES 9 · NO 0 · 미확인 61% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[경쟁사] 새팜: 제품 유형 '위성영상 기반 농작물 생육 상태 진단 및 재배 가이드 솔루션', 검색 5건 + 실재 확인 2건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 0곳 → 경쟁사 2곳 비교(확인 2곳: 국내 0·해외 2, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 2/4",
+    "[투자 판단] 새팜: 동종 평균 대비 107.2(동종 평균 100, 창업자 기준 106.9, 기준 집단 9곳 자기 제외) · YES 7 · NO 0 · 미확인 70% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
     "[평가 5] Upside Robotics (GLOBAL, Seed, robotics)",
     "[창업자] Upside Robotics: t0 2023(근거 속 설립 표현), 인물 2명(Sam Dugan(공동창업자, CTO), Jana Tian(공동창업자, CEO)), 마일스톤 2건(최근 24개월 2건), 근거 6건 → 창업자 YES 0/4",
-    "[기술 요약] Upside Robotics: 성숙도 실증, 장점 3·단점 3·주장 3건, 홈페이지 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 0/3",
-    "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 1/4",
-    "[경쟁사] Upside Robotics: 제품 유형 'AI 기반 자율주행 농업용 로봇', 검색 5건, 근거 속 경쟁사 없음 → 경쟁사 4곳 비교, 주장 3건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
-    "[투자 판단] Upside Robotics: 동종 평균 대비 93.6(동종 평균 100, 창업자 기준 90.3, 기준 집단 9곳 자기 제외) · YES 3 · NO 0 · 미확인 87% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[기술 요약] Upside Robotics: 성숙도 실증, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 0/4",
+    "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 2/4",
+    "[경쟁사] Upside Robotics: 제품 유형 'AI 기반 자율주행 농업용 로봇', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 4곳 → 경쟁사 4곳 비교(확인 4곳: 국내 1·해외 3, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] Upside Robotics: 동종 평균 대비 98.1(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 4 · NO 0 · 미확인 83% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
     "[평가 6] 퓨처커넥트 (KR, Series A, greenhouse)",
-    "[창업자] 퓨처커넥트: t0 2020-08-06(TIPS 설립일), 인물 2명(강길모(대표), 오상현(기술책임자(CTO))), 마일스톤 3건(최근 24개월 1건), 근거 7건 → 창업자 YES 0/4",
-    "[기술 요약] 퓨처커넥트: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 7건 → 제품/기술력 YES 0/3",
-    "[시장성] 스마트팜·시설원예 AI 환경제어: 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 4910.0(USD_M), 근거 14건 (문서 13건) → 시장성 YES 1/4",
-    "[경쟁사] 퓨처커넥트: 제품 유형 'AI 기반 도심형 스마트팜 운영 솔루션', 검색 4건, 근거 속 경쟁사 없음 → 경쟁사 2곳 비교, 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 2/4",
-    "[투자 판단] 퓨처커넥트: 동종 평균 대비 97.8(동종 평균 100, 창업자 기준 90.3, 기준 집단 9곳 자기 제외) · YES 6 · NO 0 · 미확인 74% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[창업자] 퓨처커넥트: t0 2020-08-06(TIPS 설립일), 인물 2명(강길모(대표), 오상현(기술책임자(CTO))), 마일스톤 3건(최근 24개월 1건), 근거 6건 → 창업자 YES 1/4",
+    "[기술 요약] 퓨처커넥트: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 0/3",
+    "[시장성] 스마트팜·시설원예 AI 환경제어: 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 4910.0(USD_M), 근거 13건 (문서 12건) → 시장성 YES 2/4",
+    "[경쟁사] 퓨처커넥트: 제품 유형 '도심 유휴 공간 스마트팜 구축 및 AI 기반 생산 최적화 솔루션', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 0곳 → 경쟁사 0곳 비교(확인 0곳: 국내 0·해외 0, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 2/4",
+    "[투자 판단] 퓨처커넥트: 동종 평균 대비 101.7(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 8 · NO 1 · 미확인 61% · 창업자 YES 1 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
     "[평가 7] 트랙팜 (KR, Seed, agdata)",
     "[창업자] 트랙팜: t0 2021-12-15(TIPS 설립일), 인물 1명(윤찬녕(대표)), 마일스톤 2건(최근 24개월 0건), 근거 7건 → 창업자 YES 0/4",
-    "[기술 요약] 트랙팜: 성숙도 상용, 장점 3·단점 3·주장 2건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 7건 → 제품/기술력 YES 2/3",
+    "[기술 요약] 트랙팜: 성숙도 상용, 장점 3·단점 3·주장 2건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 2/3",
     "[시장성] 농업 생산 데이터 분석·예측 AI (생육·환경 데이터): 분석 캐시 재사용 → 시장성 YES 1/4",
-    "[경쟁사] 트랙팜: 제품 유형 '농축산 자동화 관제 모니터링 시스템', 검색 5건, 근거 속 경쟁사 없음 → 경쟁사 3곳 비교, 주장 2건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
-    "[투자 판단] 트랙팜: 동종 평균 대비 96.4(동종 평균 100, 창업자 기준 90.3, 기준 집단 9곳 자기 제외) · YES 4 · NO 1 · 미확인 78% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[경쟁사] 트랙팜: 제품 유형 '농업 생육 및 환경 데이터 기반 AI 자동화 관제 시스템', 검색 4건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 3곳 → 경쟁사 3곳 비교(확인 3곳: 국내 3·해외 0, 근거 약함 0곳), 주장 2건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] 트랙팜: 동종 평균 대비 95.4(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 3 · NO 1 · 미확인 83% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
     "[평가 8] Bonsai Robotics (GLOBAL, Series A, robotics)",
-    "[창업자] Bonsai Robotics: t0 2022(적격성 검증 설립연도), 인물 5명(Tyler Niday(Co-Founder & CEO), Ugur Oezdemir(Co-Founder & CTO), John Teeple(Chief Operating Officer (COO)), Brendan Dowdle(Chief Business Officer (CBO)), Gary Bradski(Chief Science Officer (CSO))), 마일스톤 4건(최근 24개월 3건), 근거 12건 → 창업자 YES 1/4",
-    "[기술 요약] Bonsai Robotics: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 12건 → 제품/기술력 YES 0/4",
+    "[창업자] Bonsai Robotics: t0 2022(적격성 검증 설립연도), 인물 5명(Tyler Niday(Co-Founder & CEO), Ugur Oezdemir(Co-Founder & CTO), John Teeple(Chief Operating Officer (COO)), Gary Bradski(Chief Science Officer (CSO)), Brendan Dowdle(Chief Business Officer (CBO))), 마일스톤 4건(최근 24개월 3건), 근거 10건 → 창업자 YES 1/4",
+    "[기술 요약] Bonsai Robotics: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 12건 → 제품/기술력 YES 3/3",
     "[시장성] 농업 로봇·자율주행 농기계: 분석 캐시 재사용 → 시장성 YES 1/4",
-    "[경쟁사] Bonsai Robotics: 제품 유형 '모듈형 전기 농업용 자율주행 로봇 플랫폼', 검색 5건, 근거 속 경쟁사 Employee Count → 경쟁사 4곳 비교, 주장 4건(제3자 확인 1·반대 근거 0) → 경쟁 우위 YES 0/4",
-    "[투자 판단] Bonsai Robotics: 동종 평균 대비 98.2(동종 평균 100, 창업자 기준 104.2, 기준 집단 9곳 자기 제외) · YES 4 · NO 0 · 미확인 83% · 창업자 YES 1 · Deal-killer 없음 → 보류 (동종 평균 이하) [여기서 판정한 기준: traction, deal]",
+    "[경쟁사] Bonsai Robotics: 제품 유형 '모듈형 전기 자율주행 농업 로봇 플랫폼', 검색 4건 + 실재 확인 1건, 근거 속 경쟁사 Employee Count, 같은 분야 적격 후보 4곳 → 경쟁사 5곳 비교(확인 5곳: 국내 1·해외 4, 근거 약함 0곳), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] Bonsai Robotics: 동종 평균 대비 106.5(동종 평균 100, 창업자 기준 106.9, 기준 집단 9곳 자기 제외) · YES 7 · NO 0 · 미확인 70% · 창업자 YES 1 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
     "[평가 9] 에임비랩 (KR, Pre-A, livestock)",
-    "[창업자] 에임비랩: t0 2020-04-17(TIPS 설립일), 인물 2명(고병수(대표), 이상진(제품총괄이사(CPO))), 마일스톤 3건(최근 24개월 0건), 근거 9건 → 창업자 YES 2/4",
-    "[기술 요약] 에임비랩: 성숙도 상용, 장점 4·단점 4·주장 4건, 홈페이지 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 1/3",
-    "[시장성] 축산 AI(가축 건강·사양 관리): 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 14440.0(USD_M), 근거 15건 (문서 12건) → 시장성 YES 2/4",
-    "[경쟁사] 에임비랩: 제품 유형 'AI 기반 축산 사료 잔량 및 상태 측정 IoT 디바이스', 검색 4건, 근거 속 경쟁사 없음 → 경쟁사 2곳 비교 (우열 단정 고쳐 씀), 주장 4건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 1/4",
-    "[투자 판단] 에임비랩: 동종 평균 대비 108.2(동종 평균 100, 창업자 기준 118.1, 기준 집단 9곳 자기 제외) · YES 8 · NO 1 · 미확인 61% · 창업자 YES 2 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
+    "[창업자] 에임비랩: t0 2020-04-17(TIPS 설립일), 인물 2명(고병수(대표), 이상진(제품총괄이사(CPO))), 마일스톤 4건(최근 24개월 0건), 근거 8건 → 창업자 YES 2/4",
+    "[기술 요약] 에임비랩: 성숙도 상용, 장점 3·단점 1·주장 3건, 홈페이지 요약, 기준선 grounded, 근거 8건 → 제품/기술력 YES 0/3",
+    "[시장성] 축산 AI(가축 건강·사양 관리): 하위 질문 6개 (문서 5·웹 0·직접 0, grounded 4개), 대표 규모 14440.0(USD_M), 근거 15건 (문서 12건) → 시장성 YES 1/4",
+    "[경쟁사] 에임비랩: 제품 유형 '축산사료 잔량 및 상태 모니터링 솔루션', 검색 5건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 2곳 → 경쟁사 2곳 비교(확인 2곳: 국내 2·해외 0, 근거 약함 0곳), 주장 3건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 2/4",
+    "[투자 판단] 에임비랩: 동종 평균 대비 102.4(동종 평균 100, 창업자 기준 120.8, 기준 집단 9곳 자기 제외) · YES 6 · NO 1 · 미확인 70% · 창업자 YES 2 · Deal-killer 없음 → 투자 [여기서 판정한 기준: traction, deal]",
     "[평가 10] 바르카 (KR, Pre-A, agdata)",
-    "[창업자] 바르카: t0 2022-05-24(TIPS 설립일), 인물 1명(전현균(대표)), 마일스톤 3건(최근 24개월 1건), 근거 3건 → 창업자 YES 1/4",
-    "[기술 요약] 바르카: 성숙도 시제품, 장점 3·단점 4·주장 2건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 4건 → 제품/기술력 YES 0/3",
+    "[창업자] 바르카: t0 2022-05-24(TIPS 설립일), 인물 1명(전현균(대표)), 마일스톤 3건(최근 24개월 1건), 근거 3건 → 창업자 YES 0/4",
+    "[기술 요약] 바르카: 성숙도 시제품, 장점 3·단점 3·주장 2건, 홈페이지 읽기 실패 → 회사 기사 요약, 기준선 grounded, 근거 4건 → 제품/기술력 YES 0/3",
     "[시장성] 농업 생산 데이터 분석·예측 AI (생육·환경 데이터): 분석 캐시 재사용 → 시장성 YES 1/4",
-    "[경쟁사] 바르카: 제품 유형 '농산물 생산량 예측 솔루션', 검색 5건, 근거 속 경쟁사 없음 → 경쟁사 3곳 비교, 주장 2건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
-    "[투자 판단] 바르카: 동종 평균 대비 96.4(동종 평균 100, 창업자 기준 104.2, 기준 집단 9곳 자기 제외) · YES 3 · NO 0 · 미확인 87% · 창업자 YES 1 · Deal-killer 없음 → 보류 (동종 평균 이하) [여기서 판정한 기준: traction, deal]",
-    "[보고서] invest investment_report.pdf 4쪽 (≤5), SUMMARY A4 대비 23%, REFERENCE 11건, 형식 검사 통과 → RAG-Output_울산-2반_김가연+김진녕+문지후+이준희+정승우.pdf"
+    "[경쟁사] 바르카: 제품 유형 '농산물 생산량 예측 솔루션', 검색 4건, 근거 속 경쟁사 없음, 같은 분야 적격 후보 3곳 → 경쟁사 3곳 비교(확인 3곳: 국내 3·해외 0, 근거 약함 0곳), 주장 2건(제3자 확인 0·반대 근거 0) → 경쟁 우위 YES 0/4",
+    "[투자 판단] 바르카: 동종 평균 대비 89.9(동종 평균 100, 창업자 기준 93.1, 기준 집단 9곳 자기 제외) · YES 2 · NO 1 · 미확인 87% · 창업자 YES 0 · Deal-killer 없음 → 보류 (창업자 점수 평균 미만) [여기서 판정한 기준: traction, deal]",
+    "[보고서] invest investment_report.pdf 5쪽 (≤5), SUMMARY A4 대비 25%, REFERENCE 21건, 형식 검사 통과 → RAG-Output_울산-2반_김가연+김진녕+문지후+이준희+정승우.pdf"
   ],
-  "sources_collected": 899,
+  "sources_collected": 898,
   "failed_searches": [],
   "llm_cost": {
     "api_calls": 0,
-    "cache_hits": 398,
+    "cache_hits": 508,
     "input_tokens": 0,
     "output_tokens": 0,
     "usd": 0.0

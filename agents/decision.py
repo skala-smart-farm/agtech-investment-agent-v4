@@ -562,6 +562,11 @@ def decision_node(state: dict) -> dict:
         # 3) 결정과 보고서 재료
         founder_c = _founder_c(criteria)
         decision, hold_type, reasons = decide_rule(M, founder_c, killers, unknown_ratio, cfg)
+        if (failed := [k for k in ("founder", "tech", "market", "competition") if (state.get(k) or {}).get("error")]) \
+                and decision == "투자":   # 분석 노드 실패(graph/builder.guard) → 투자 추천하지 않는다 (fail-closed)
+            decision, hold_type = "보류", "분석 실패"
+            reasons = [f"분석 에이전트 실패({', '.join(failed)}) — 그 기준은 투자 판단 노드가 근거로 대신 판정했지만, "
+                       "실패가 있는 후보는 투자 추천하지 않는다"] + reasons
         flip = (flip_conditions(rows, ref["mean"], rubric, cfg, founder_c >= dc.founder_min_c, killers)
                 if decision == "보류" else None)
         ranking, target_rank, peer_n = _ranking(

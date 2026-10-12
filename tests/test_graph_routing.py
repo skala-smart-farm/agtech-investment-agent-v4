@@ -339,3 +339,27 @@ def test_v1_members_gate(monkeypatch):
     assert len(names) == 10 and "메타파머스" in names
     assert app.check_v1_members(list(reversed(names))) is True
     assert app.check_v1_members(names[:9] + ["다른 회사"]) is False
+
+
+def test_failed_analysis_node_is_recorded_and_run_continues(monkeypatch):
+    """분석 노드 예외는 State.errors 에 남기고 다음 노드로 간다(그 칸에는 {"error"}), 보고서 노드가 status 를 PARTIAL 로 적는다.
+    재현 실행(--offline)은 제출본과 같아야 하므로 실패를 그대로 올린다."""
+    monkeypatch.delenv("REPLAY_OFFLINE", raising=False)   # 테스트 전체를 재현 모드로 돌릴 때도 실시간 동작을 본다
+    f = Fakes([["A", "B"]])
+    good = f.analysis("tech")
+
+    def flaky(s):
+        if s["current"]["official_name"] == "B":
+            raise RuntimeError("검색 공급자 오류")
+        return good(s)
+    nodes = {**f.nodes(), "tech": flaky}
+    state = {"registry": {}, "discovery_rounds": 0, "iterations": 0, "queue": [], "seen": [], "evaluations": [],
+             "screened": [], "log": [], "rag_traces": [], "errors": []}
+    out = build_graph(nodes).invoke(state, {"recursion_limit": get_config().workflow.recursion_limit})
+    assert [e["name"] for e in out["evaluations"]] == ["A", "B"] and out["status"] == "PARTIAL"
+    assert out["errors"] == [{"node": "tech", "candidate": "B", "type": "RuntimeError", "message": "검색 공급자 오류"}]
+    ok = build_graph(Fakes([["A"]]).nodes()).invoke(dict(state), {"recursion_limit": get_config().workflow.recursion_limit})
+    assert ok["status"] == "SUCCESS" and ok["errors"] == []
+    monkeypatch.setenv("REPLAY_OFFLINE", "1")
+    with pytest.raises(RuntimeError):
+        build_graph(nodes).invoke(dict(state), {"recursion_limit": get_config().workflow.recursion_limit})

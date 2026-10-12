@@ -413,3 +413,12 @@ def test_rank_key_tie_break_is_order_independent():
     assert sorted([c, d], key=eval_rank_key)[0]["name"] == "나"
     e, f = ev("가", 1.05, 0.95, 9, 0), ev("나", 1.05, 1.05, 1, 0)              # 창업자 점수가 YES 수보다 먼저
     assert sorted([e, f], key=eval_rank_key)[0]["name"] == "나"
+
+
+def test_node_failed_analysis_is_judged_here_but_never_invest(judged):
+    """분석 노드가 실패해 자기 칸에 {"error"} 만 남기면(graph/builder.guard) 그 기준은 여기서 대신 판정하고,
+    배수가 투자 기준을 넘어도 투자 추천하지 않는다 (fail-closed, 보류 유형 '분석 실패')."""
+    out = dec.decision_node(_state("메타파머스", tech={"error": "RuntimeError: 공급자 오류"}))
+    sc = out["scorecard"]
+    assert judged == ["product", "traction", "deal"] and out["decision"] == "보류" and sc["hold_type"] == "분석 실패"
+    assert sc["multiplier"] > 1.0 and sc["reasons"][0].startswith("분석 에이전트 실패(tech)")

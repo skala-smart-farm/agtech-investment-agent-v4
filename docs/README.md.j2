@@ -30,7 +30,7 @@ SKALA {{ cfg.submission.campus }}캠퍼스 {{ cfg.submission['class'] }} {{ cfg.
 | LLM / Generator · Judge | {{ cfg.models.generator }} (temperature {{ cfg.models.temperature }}) |
 | Retrieval | FAISS + Kiwi BM25 하이브리드 (BM25 0.4 : Dense 0.6, RRF) · Hit@4 {{ rt.hit4 }} · MRR@4 {{ rt.mrr4 }} |
 | Embedding | {{ cfg.embedding.model }} (오픈소스, 후보 6종을 자체 질문 {{ rt.n }}개로 비교해 선정) |
-| 외부 데이터 | Serper · Tavily 웹 검색, 한국거래소 KIND, 국민연금 사업장, TIPS |
+| 외부 데이터 | Serper · Tavily 웹 검색, 한국거래소 KIND, 국민연금 사업장, TIPS, OpenDART 공시(`DART_API_KEY`, 없으면 건너뜀) |
 | 보고서 | Jinja2 + Playwright (PDF) |
 
 ## Agents
@@ -57,11 +57,13 @@ SKALA {{ cfg.submission.campus }}캠퍼스 {{ cfg.submission['class'] }} {{ cfg.
 ├── config.yaml     # 모델 · 상한 · 판단 기준
 ├── rubric.yaml     # 평가표 {{ rb.n_q }}문항 · Deal-killer · 결정 규칙
 ├── agents/         # 에이전트 7개
-├── graph/          # State · 메인 그래프 · 분기
+├── graph/          # State(5칸 · 실패 기록) · 메인 그래프 · 분기 · 노드 실패 처리
 ├── rag/            # 청킹 · 임베딩 · 하이브리드 검색 · Agentic RAG
-├── tools/          # 웹 검색 · 상장 목록 · 국민연금 · 근거 저장소
+├── core/           # 평가표 판정 · 문장 충실성 검사 · LLM 호출 상한
+├── tools/          # 웹 검색 · 상장 목록 · 국민연금 · DART · 근거 저장소 · 포털 원문 찾기
 ├── data/           # RAG 문서 {{ corpus.n }}종 {{ corpus.pages }}쪽 · 동종 기준 집단 · 평가 정답
-├── eval/           # 검색 · 적격성 · Judge · 양성 대조 평가
+├── docs/           # Goal 명세(성공 기준) · README 템플릿
+├── eval/           # 검색 · 적격성 · Judge · 양성 대조 · 성공 기준 측정
 ├── outputs/        # 보고서 PDF · 실행 로그 · 평가 결과
 ├── replay/         # 재현용 캐시
 └── tests/
@@ -86,7 +88,7 @@ python app.py              # API 키 없이 제출 보고서 재현 → outputs/
 {% endfor %}
 
 - **{{ target.name }} 기준별** : {% for c in target.crit %}{{ c.name }} {{ c.pct }}{{ ' · ' if not loop.last else '' }}{% endfor %}{{ '' }}
-- **실사 확인 항목** : {{ dd | join(' · ') }}
+- **실사 확인 항목** : {{ dd | join(' · ') }}{{ ('\n- **검증자 이견 (YES 판정 유지, 실사로 확인)** : ' ~ (dissent | join(' · '))) if dissent else '' }}{{ ('\n- ' ~ tie) if tie else '' }}
 - 적격 {{ pipe.unevaluated }}곳은 평가 상한으로 미평가 · 결론은 {{ run.run_date or '-' }} 수집 자료 기준
 {% elif mode == 'hold' %}
 **{{ conclusion }}**
@@ -104,11 +106,17 @@ python app.py              # API 키 없이 제출 보고서 재현 → outputs/
 | 항목 | 결과 |
 |---|---|
 | 검색기 ({{ rt.n }}문항) | Hit@4 {{ rt.hit4 }} · MRR@4 {{ rt.mrr4 }} |
+{% if rq %}
+| 검색기 (실제 에이전트 질의 {{ rq.n }}개, LLM 관련성 판정) | Precision@4 {{ rq.p4 }} · Hit@4 {{ rq.hit4 }}{{ (' — 대안 최고 ' ~ rq.alt ~ ', 런타임 유지') if rq.kept else '' }} |
+{% endif %}
 {% if judge %}
 | RAG 답변 (LLM Judge, {{ judge.n }}문항) | {{ judge.line }} |
 {% endif %}
 {% if elig.gold and elig.holdout %}
 | 적격성 판정 | {{ elig.gold.acc }} (홀드아웃 {{ elig.holdout.acc }}) |
+{% endif %}
+{% if ver %}
+| YES 검증자 이견 (판정 유지, 실사 표시) | YES {{ ver.yes }}개 중 {{ ver.dissent }}개 |
 {% endif %}
 {% if pc %}
 | 양성 대조 (실제 투자받은 기업) | {{ pc.n }}곳 중 추천 {{ pc.invest }}곳 |
@@ -117,6 +125,17 @@ python app.py              # API 키 없이 제출 보고서 재현 → outputs/
 | 기준 민감도 | {{ sens.counts }} |
 {% endif %}
 | 보고서 형식 | {{ r.pages }}쪽 · REFERENCE {{ checks.references or '-' }}건 · 평가표 불일치 {{ (checks.consistency_violations or []) | length }}건 |
+
+{% if success %}
+### 성공 기준 ([Goal 명세](docs/goal.md))
+통과 {{ success.passed }} · 미달 {{ success.failed }} · 미측정 {{ success.unmeasured }}
+
+| 기준 | 목표 | {{ success.names | join(' | ') }} | 판정 |
+|---|---|{% for n in success.names %}---|{% endfor %}---|
+{% for s in success.rows %}
+| {{ s.criterion }} | {{ s.target }} | {{ s.cells | join(' | ') }} | {{ s.verdict }} |
+{% endfor %}
+{% endif %}
 
 ## Lessons Learned
 | 문제 | 바꾼 것 |
@@ -127,6 +146,14 @@ python app.py              # API 키 없이 제출 보고서 재현 → outputs/
 | Hit@8 로 고른 검색기가 실제 설정(앞 {{ rt.top_k }}개)에선 1위가 아니었다 | 실제 동작 기준 Hit@4 · MRR@4 로 재선정 |
 | 예정 투자 · 검색 실패가 조용히 통과했다 | 날짜 규칙과 fail-closed |
 | 평가 대상 분야에 기준 문서가 없었다 | 문서 2종 추가, 200쪽 한도 안({{ corpus.pages }}쪽) |
+| 문서를 보고 만든 70문항에선 Dense 가 1위, 실제 에이전트 질의에선 하이브리드가 1위 | 평가 세트는 실제 질의 분포를 닮아야 한다 — 런타임 하이브리드 유지 |
+| LLM 검증자를 판정에 넣자 결과가 흔들렸다(표본 24건 중 약 10건 오판) | 검증자도 정확도를 재고 쓴다 — 판정은 코드 규칙, 검증자는 이견 표시만 |
+| 해외 후보의 영문 근거가 한국어 검색어에 밀려 판정에서 빠졌다 | 평가표 문항마다 영어 검색어를 두고 모든 후보에 같게 적용 |
+| 배수 동점을 평가 순서가 갈랐다 | 동점 규칙을 미리 고정: 창업자 점수 → 확인된 YES 수 → NO 수 → 이름 |
+| 보고서 LLM이 두 기관의 시장 추정을 한 문장에 섞었고, 나눠 쓰라고 다시 시켜도 같은 문장을 썼다 | 숫자 규칙은 코드가 강제: 연평균이 맞지 않는 문장은 빼고 근거 원문의 같은 추정 값으로 바꾼다 |
+| 시장 분석 프롬프트 한 줄을 바꾸자 판정이 다시 계산돼 1위가 바뀌었다(상위 3곳이 106.3~110.5 사이) | 상위권 차이가 작으면 LLM 편차가 순위를 바꾼다 — 결론은 실사 대상 선별로 쓰고, 반복 실행 안정성 측정은 다음 과제 |
+| 인용 번호만 검사해서, 같은 출처를 단 두 문장이 서로 다른 기관 수치였는데도 통과했다 | 문장마다 '근거가 이 문장을 뒷받침하는가'를 판정하고 통과율을 성공 기준(95%)과 비교 |
+| State 를 키 22개짜리 한 덩어리로 두고, 실패 기록은 모듈 전역 변수에 있었다 | State 를 다섯 칸(실행·탐색·후보 작업·제어/실패·산출물)으로 나누고 errors·status 를 State 에 |
 
 ## 한계와 설계서 이후 변경
 - 공개 정보 한계 : 추천 대상도 미확인 {{ target.unknown_pct if target else '-' }}{{ (', 양성 대조 ' ~ pc.invest ~ '/' ~ pc.n) if pc else '' }} → 결론은 투자 결정이 아닌 **실사 대상 선별**
@@ -134,6 +161,8 @@ python app.py              # API 키 없이 제출 보고서 재현 → outputs/
 - **평가 흐름** : 설계서는 첫 투자 추천에서 멈춤 → 발굴 순서가 결론을 정하지 않도록 {{ wf.max_evaluations }}곳 모두 평가 후 1위 선정
 - **판단 기준 110 → 100** : 110 은 근거 없는 가정이라 원 방법 기준점으로. 결과가 나온 뒤의 변경이며, 110 결과(추천 0곳)도 민감도로 공개
 - RAG 문서 {{ (corpus.old ~ ' → ') if corpus.old else '' }}{{ corpus.n }}종 {{ corpus.pages }}쪽
+- **수업 피드백 반영(2026-10-12)** : 성공 기준을 숫자로([Goal 명세](docs/goal.md)) · 문장 충실성 검사 · State 계층화와 실패 기록(분석 노드가 실패하면 그 기준은 투자 판단이 대신 판정하고 투자 추천에서 제외) · 포털 전재본은 원 매체 기사 주소로
+- **제출 후 개선(v3)** : 평가표 규칙을 코드로 강제(기술 책임자 학력만 · 계획 문장 · 수치 없는 인용 · 추정 이유는 YES 불인정, 제품명 인정), 경쟁사는 출처 2곳에서 확인된 2곳 이상, OpenDART 공시 교차 확인, 보고서 숫자 대조 검사, 동점 규칙. 같은 9월 30일 수집 자료로 다시 판정한 결과 대상은 {{ target.name if target else '-' }} 유지{{ (', 투자 기준 통과 ' ~ (passed | length) ~ '곳') if passed else '' }}
 
 ## Contributors
 {{ contributors }}

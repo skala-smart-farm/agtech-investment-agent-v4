@@ -11,6 +11,7 @@ import copy
 import json
 import re
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -231,7 +232,8 @@ def test_superiority_without_c2_is_detected(run):
     assert "(회사 측 주장, 제3자 비교 근거 없음) 메타파머스는 범용 로봇으로 다양한 작업에 앞선다" in md2
 
 
-def test_reference_format_and_citations(run):
+def test_reference_format_and_citations(run, monkeypatch):
+    monkeypatch.setattr(R, "resolve_origin", lambda s: None)   # 원 매체 기사를 못 찾은 경우 (찾은 경우는 아래 테스트)
     rep, md, _ = run(_load("invest"), [INVEST])
     refs = _refs(md)
     assert refs
@@ -255,6 +257,16 @@ def test_reference_format_and_citations(run):
     assert sum(ACCESS_DATE_NOTE in ln for ln in lim.splitlines()) == 1
     assert ACCESS_DATE_NOTE not in groups
     assert rep["cited_ids"] and all(re.fullmatch(r"[WD][0-9a-f]{5}", i) for i in rep["cited_ids"])
+    assert rep["checks"]["portal_refs"]["unresolved"] >= 1 and "포털 전재본" in lim and "원 매체 기사 주소를 찾지 못해" in lim
+
+
+def test_portal_reference_uses_original_outlet_url_when_found(run, monkeypatch):
+    """포털 전재본은 원 매체 기사를 찾으면 그 주소로 인용한다 (2·3차 자료 대신 원 소스 — 2026-10-12 수업 피드백)."""
+    monkeypatch.setattr(R, "resolve_origin", lambda s: {"url": "https://biz.chosun.com/x/2023/11/12/ABC/", "site": "조선비즈"})
+    rep, md, _ = run(_load("invest"), [INVEST])
+    refs = _refs(md)
+    assert not any("v.daum.net" in ln for ln in refs) and any("biz.chosun.com/x/2023/11/12/ABC/" in ln for ln in refs)
+    assert rep["checks"]["portal_refs"]["unresolved"] == 0 and "원 매체 기사 주소를 찾지 못해" not in md
 
 
 # ── B안: 모두 보류
@@ -434,10 +446,21 @@ def test_number_audit_flags_numbers_not_in_input_or_citation():
     assert "174억 달러(BIS Research 추정)" in note and "226억 5천만 달러(Grand View Research 추정)" in note
 
 
-def test_number_rewrite_off_by_default_and_once_when_on(run, set_cfg):
-    """숫자 대조는 기본이 '검사만'(LLM 호출 그대로 = 재현 캐시 유지). 켜면 1회만 다시 쓰고, 경고가 줄면 받아들인다."""
+def test_number_audit_ignores_rule_window_but_checks_other_months():
+    """'최근 24개월'·'24개월 이상 경과'는 평가 규칙이라 근거와 대조하지 않는다. 회사 사실로 쓴 개월 수는 그대로 대조한다
+    (이전에는 '24개월'을 개수 '24개'로 읽어 보류 사유마다 '인용 근거에 없음' 경고가 났다 — 2026-10-12 보류 시나리오)."""
+    reg, d, w = _audit_reg()
+    draft = R.Draft(**dict(INVEST, team=f"최근 라운드가 24개월 이상 경과했고 최근 24개월 마일스톤 증빙 부족 [{w}]. "
+                                       f"설립 18개월 만에 투자를 유치했다 [{w}]."))
+    joined = "\n".join(R._number_audit(draft, {"evidence": reg.brief([d, w])}, reg)["unsupported"])
+    assert "24개" not in joined and "'18개월' 입력에 없음" in joined
+
+
+def test_number_rewrite_off_and_once_when_on(run, set_cfg):
+    """숫자 대조는 끄면 '검사만'(LLM 호출 그대로). 켜면 1회만 다시 쓰고, 경고가 줄면 받아들인다."""
     state = _load("invest")
     bad = dict(INVEST, lead_market="국내 스마트농업 시장은 연평균 47.3% 성장한다.")
+    set_cfg("report.number_check", {"rewrite": False})
     rep, md, llm = run(state, [bad])
     assert len(llm.prompts) == 1 and "47.3%" in md
     audit = rep["checks"]["number_audit"]
@@ -446,6 +469,37 @@ def test_number_rewrite_off_by_default_and_once_when_on(run, set_cfg):
     rep2, md2, llm2 = run(state, [bad, INVEST])
     assert len(llm2.prompts) == 2 and "47.3%" in llm2.prompts[1] and "47.3%" not in md2
     assert rep2["checks"]["rewrites"] == 1
+
+
+def test_number_rewrite_triggers_on_mixed_estimates(run, set_cfg):
+    """서로 다른 기관 추정을 한 문장에 이은 경우(226.5억→1,172억 달러는 11년 연평균 약 16.1% 인데 19.1%)도 다시 쓰기 대상이다."""
+    mixed = "글로벌 스마트 농업 시장은 2023년 226억 5천만 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장 전망이다."
+    assert R._draft_cagr(SimpleNamespace(lead_market="", market=mixed))
+    assert R._draft_cagr(SimpleNamespace(market=mixed.replace("19.1%", "16.1%"))) == []
+    set_cfg("report.number_check", {"rewrite": True})
+    rep, md, llm = run(_load("invest"), [dict(INVEST, market=mixed + " [D72ffc]"), INVEST])
+    fb = llm.prompts[1][llm.prompts[1].find("직전 초안의 다음 숫자"):][:2000]
+    assert len(llm.prompts) == 2 and "연평균은 약 16.1%" in fb and "기관별로 나눠" in fb, fb
+    assert "1,172억 달러로 연평균 19.1%" not in md and rep["checks"]["rewrites"] == 1
+
+
+def test_enforce_cagr_replaces_mixed_market_sentences_in_code():
+    """다시 쓰기 뒤에도 남은 혼합 문장(Grand View 2023 값 + BIS 2034 값·연평균)은 코드가 빼고,
+    근거 원문에서 같은 추정의 끝 값·연평균으로 만든 대표 수치 문장으로 바꾼다 (LLM 호출 없음)."""
+    reg = SourceRegistry()
+    table = "BIS Research 2023~2034 174억 달러~1,172억 달러 19.1% Grand View Research 2023~2030 226억 5천만 달러~556억 4천만 달러 13.7%"
+    sid = reg.add_doc({"doc_id": "krei", "page": 4, "type": "paper", "publisher": "농촌경제연구원", "year": 2024, "title": "t"},
+                      table, "market", "q")
+    target = {"market": {"size": {"raw": "2023년 226억 5천만 달러", "scope": "글로벌 스마트 농업 시장", "source_id": sid}}}
+    mixed = "글로벌 스마트 농업 시장은 2023년 226억 5천만 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장 전망이다."
+    draft = R.Draft.model_validate(dict(INVEST, ev_market=mixed, lead_market=mixed,
+                                        market=mixed + " 국내는 자율주행 농기계 보급을 확대하고 있다 [D72ffc]."))
+    fixed, removed = R._enforce_cagr(draft, target, reg)
+    rep = "글로벌 스마트 농업 시장 규모 2023년 226억 5천만 달러 → 2030년 556억 4천만 달러, 연평균 13.7%"
+    assert R._draft_cagr(draft) and R._draft_cagr(fixed) == [] and len(removed) == 3
+    assert fixed.ev_market == f"{rep} [{sid}]" and fixed.lead_market == rep
+    assert fixed.market == "국내는 자율주행 농기계 보급을 확대하고 있다 [D72ffc]."   # 맞는 문장은 남긴다
+    assert R._enforce_cagr(fixed, target, reg) == (fixed, [])                    # 고칠 것이 없으면 그대로
 
 
 def test_name_variants_with_source_dates():

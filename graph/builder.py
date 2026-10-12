@@ -22,6 +22,7 @@
 from __future__ import annotations
 
 import importlib
+import os
 
 from langgraph.graph import END, START, StateGraph
 
@@ -39,6 +40,38 @@ _AGENT_NODES = {
     "decide": ("agents.decision", "decision_node"),             # 🧮 투자 판단 (실적·투자조건 20% + 동종 대비 배수)
     "report": ("agents.report", "report_node"),                 # 📝 보고서 생성
 }
+
+
+# 실패해도 실행을 멈추지 않는 분석 노드: 실패하면 자기 칸에 {"error": …} 만 남기고, 투자 판단 노드가 그 기준을
+# 근거 묶음으로 대신 판정한다(agents/decision.py — criterion 이 없으면 여기서 판정). 실패가 있는 후보는 투자 추천하지 않는다.
+GUARDED = ("founder", "tech", "market", "competition")
+
+
+def guard(name: str, fn):
+    """분석 노드 실패를 State 의 errors 칸에 기록하고 계속 간다 (액터별 오류 처리 — 검색·LLM 공급자 오류가 한 후보 때문에
+    10곳 평가 전체를 멈추지 않게). 재현 실행(--offline)은 결과가 제출본과 같아야 하므로 실패를 그대로 올린다."""
+    def run(state: dict) -> dict:
+        try:
+            return fn(state)
+        except Exception as e:
+            if os.getenv("REPLAY_OFFLINE"):
+                raise
+            cur = state.get("current") or {}
+            cand = cur.get("official_name") or cur.get("name")
+            err = {"node": name, "candidate": cand, "type": type(e).__name__, "message": str(e)[:300]}
+            msg = f"[{name}] {cand}: 실패({type(e).__name__}) → 투자 판단 노드가 이 기준을 대신 판정, 이 후보는 투자 추천 제외"
+            print(msg)
+            return {name: {"error": f"{err['type']}: {err['message']}"}, "errors": [err], "log": [msg]}
+    run.__name__ = getattr(fn, "__name__", name)
+    return run
+
+
+def _with_status(fn):
+    """보고서 노드가 끝날 때 실행 상태를 적는다: 실패 기록이 없으면 SUCCESS, 있으면 PARTIAL."""
+    def run(state: dict) -> dict:
+        return {**fn(state), "status": "PARTIAL" if state.get("errors") else "SUCCESS"}
+    run.__name__ = getattr(fn, "__name__", "report")
+    return run
 
 
 def _default_node(name: str):
@@ -59,7 +92,8 @@ def build_graph(nodes: dict | None = None):
 
     g = StateGraph(InvestmentState)
     for name in NODE_NAMES:
-        g.add_node(name, nodes[name] if name in nodes else _default_node(name))
+        fn = nodes[name] if name in nodes else _default_node(name)
+        g.add_node(name, guard(name, fn) if name in GUARDED else _with_status(fn) if name == "report" else fn)
 
     g.add_edge(START, "discover")
     g.add_conditional_edges("discover", route_after_discover, {"founder": "founder", "report": "report"})

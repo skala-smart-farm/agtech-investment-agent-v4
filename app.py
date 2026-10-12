@@ -112,7 +112,7 @@ def search_notice(args: argparse.Namespace, cfg) -> str:
 
 def initial_state(cfg, run_date: str) -> dict:
     return {"domain": cfg.domain.name, "run_date": run_date, "registry": {}, "discovery_rounds": 0, "iterations": 0,
-            "queue": [], "seen": [], "evaluations": [], "screened": [], "log": [], "rag_traces": []}
+            "queue": [], "seen": [], "evaluations": [], "screened": [], "log": [], "rag_traces": [], "errors": []}
 
 
 def _evaluation_log(e: dict) -> dict:
@@ -125,7 +125,7 @@ def _evaluation_log(e: dict) -> dict:
 def build_run_log(state: dict, cfg, *, mode: str, run_date: str, elapsed: float) -> dict:
     return {
         "run_date": run_date, "elapsed_sec": elapsed, "mode": mode, "threshold": cfg.decision.threshold,
-        "end_reason": state.get("end_reason"),
+        "end_reason": state.get("end_reason"), "status": state.get("status"), "errors": state.get("errors", []),
         "models": dict(cfg.models), "embedding": cfg.embedding.model,
         "discovery_rounds": state.get("discovery_rounds"), "evaluated": state.get("iterations"),
         "screened": [{k: r.get(k) for k in SCREENED_KEYS} for r in state.get("screened", [])],
