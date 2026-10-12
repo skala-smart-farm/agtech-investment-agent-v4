@@ -21,11 +21,13 @@ LLM 은 평가표 질문에 판정(YES/NO/UNKNOWN/N/A)·근거 id·근거 원문
 - 상용 운영 문항은 인용 주변에 예정·목표·실증·PoC·시범 표현이 있거나 인용에 수량·고객이 없으면 인정하지 않는다
 - D1(최근 라운드)은 LLM 답을 쓰지 않고 적격성 관문에서 인용 검증을 마친 값으로 코드가 판정한다
   (라운드 시점이 기준일 이후이거나 단계 인용이 예정·추진 중인 라운드면 완료된 투자가 아니므로 UNKNOWN)
-v3 재검사 (LLM 호출·프롬프트는 그대로. 문항 플래그 3종은 YES 를 UNKNOWN 으로 내리는 쪽, 제품명 키는 근접 검사를 넓히는 쪽)
+v3 재검사 (LLM 호출·프롬프트는 그대로. 문항 플래그 4종은 YES 를 UNKNOWN 으로 내리는 쪽, 제품명 키는 근접 검사를 넓히는 쪽)
 - track_record(F2): 인용에 학력·전공·학위 표현만 있고 특허·논문·연구·경력·직책 이력 표현이 없으면 UNKNOWN
   (이력 표현은 검증된 인용에서만 찾는다. LLM 이유문의 '경력이 확인된다'는 근거가 아님)
 - no_plan(M3·M4·R4): 인용이 완료 표지 없는 예정·계획·방침·도입할·추진 문장이면 UNKNOWN (수익 모델·고객 경제성은 실제여야 함)
 - numeric(M1·M2·M3·R1·R2·D3): need 가 수치를 요구하는 문항. 인용에 숫자(아라비아 숫자·'세 곳' 같은 수량 표현)가 없으면 UNKNOWN
+- min_competitors(C2: 2): 실재가 확인된 경쟁사(company['confirmed_competitors'], 경쟁사 에이전트가 셈 — 같은 분야 적격 후보이거나
+  회사명이 서로 다른 도메인 2곳 이상에서 확인된 회사)가 이 수보다 적으면 UNKNOWN (값이 없으면 0곳으로 본다)
 - 회사명 근접 검사(±300자)에 회사 제품·서비스 이름도 회사 키로 인정 (기술 요약 에이전트의 tech.product 에서 이름만 뽑음)
 - confidence(상·중·하): 같은 인용이 실린 제3자 출처 수로 정하는 표시용 값. 판정·배수에 쓰지 않는다
 """
@@ -215,9 +217,15 @@ def product_keys(c: dict) -> list[str]:
 
 def judge_company(state: dict) -> dict:
     """판정에 넘길 회사 dict: state['current'] + 기술 요약의 제품 문장(state['tech']['product']). 제품명이 회사명 근접 검사의
-    키가 된다. 기술 요약 노드는 자기 결과를 {**state, 'tech': out} 으로 넘긴다. 창업자 노드는 기술 요약 전이라 제품명이 없다."""
+    키가 된다. 기술 요약 노드는 자기 결과를 {**state, 'tech': out} 으로 넘긴다. 창업자 노드는 기술 요약 전이라 제품명이 없다.
+    v3: 경쟁사 비교를 마쳤으면 실재가 확인된 경쟁사 수(state['competition']['confirmed_competitors'])도 붙인다
+    (C2 min_competitors 검사용. 경쟁사 노드는 {**state, 'competition': out} 으로 넘긴다)."""
     product = (state.get("tech") or {}).get("product")
-    return {**state["current"], "product": product} if product else dict(state["current"])
+    c = {**state["current"], "product": product} if product else dict(state["current"])
+    comp = state.get("competition") or {}
+    if "confirmed_competitors" in comp:
+        c["confirmed_competitors"] = comp["confirmed_competitors"]
+    return c
 
 
 def evidence_pool(state: dict, extra: list[str] = ()) -> list[str]:
@@ -419,7 +427,7 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
       근거는 pool_ids 의 본문을 문단으로 잘라 문항마다 BM25 로 고른다.
     - 판정을 빠뜨린 문항은 한 번 더 묻고, 인용이 원문에 없는 YES·NO 도 한 번만 다시 묻는다.
     - 코드 강등: 인용이 본문에 없거나 회사명·제품명이 인용 ±300자 밖이면 UNKNOWN, 제3자·최근 24개월·문서 근거·상용 운영 요건 검사,
-      v3 문항 플래그 검사(numeric 수치 · no_plan 계획 문장 · track_record 학력뿐).
+      v3 문항 플래그 검사(numeric 수치 · no_plan 계획 문장 · track_record 학력뿐 · min_competitors 확인된 경쟁사 수).
       NO 는 반대 문장 인용이 본문에 있고 회사 이야기이며, 이유가 근거 부족(추정·확인되지 않음 등)이 아닐 때만 남긴다.
     - company['product'](기술 요약의 제품 문장, judge_company 가 넣음)가 있으면 그 제품·서비스 이름도 근접 검사 키로 쓴다.
     - 행마다 confidence(상·중·하, 표시용)를 붙인다.
@@ -512,6 +520,9 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
                 fail = "인용이 예정·계획·방침·추진 문장 (실제 수익 모델·효과가 아님)"
             elif q.get("track_record") and _education_only(a.quote, a.rationale):
                 fail = "학력·전공만 있고 특허·논문·연구·경력 이력이 인용에 없음"
+            elif q.get("min_competitors") and (n_rivals := int(c.get("confirmed_competitors") or 0)) < q["min_competitors"]:
+                fail = (f"확인된 경쟁사 {n_rivals}곳 — {q['min_competitors']}곳 이상과 비교해야 함 "
+                        "(같은 분야 적격 후보이거나 서로 다른 도메인 2곳 이상에서 확인된 경쟁사만 셈)")
             if fail:
                 verdict, note = "UNKNOWN", f"{fail} → UNKNOWN 강등 ({note})"
                 rejected.append({"qid": q["id"], "reason": fail, "quote": a.quote})

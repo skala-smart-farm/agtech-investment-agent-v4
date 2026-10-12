@@ -32,7 +32,7 @@ from report.render import html_to_pdf, render_html
 from tools import web_search as search_tool
 from tools.grounding import norm
 from tools.sources import (ACCESS_DATE_NOTE, GROUPS, REFERENCE_FORMATS, SourceRegistry, citable, format_reference,
-                           merge_duplicates, reference_group, reference_key, title_key, uses_access_date)
+                           merge_duplicates, naming_domains, reference_group, reference_key, title_key, uses_access_date)
 
 AGENT = "report"
 CITE = re.compile(r"\[\s*([WD][0-9a-f]{5,8}(?:\s*[,，]\s*[WD][0-9a-f]{5,8})*)\s*\]")
@@ -695,9 +695,21 @@ def _pros_cons(target: dict, reg: SourceRegistry, c2_yes: bool) -> list[list[str
     return [[pros[i] if i < len(pros) else "", cons[i] if i < len(cons) else ""] for i in range(max(len(pros), len(cons)))]
 
 
+def _rival_mark(c: dict, ids: list[str], reg: SourceRegistry) -> tuple[str, int, bool]:
+    """경쟁사 행의 실재 확인 표시 (상태 '확인'·'근거 약함', 출처 도메인 수, 같은 분야 적격 후보 여부).
+    경쟁사 에이전트(v3)가 붙인 값을 쓰고, 없으면(v3 이전 State) 표의 근거에서 회사명이 나온 출처 도메인 수만 다시 센다."""
+    if c.get("verified"):
+        return c["verified"], int(c.get("n_sources") or 0), bool(c.get("peer"))
+    key = norm(c["name"].split("(")[0])
+    n = len(naming_domains(reg, ids, [key])) if len(key) >= 2 else 0
+    return ("확인" if n >= 2 else "근거 약함"), n, False
+
+
 def _competitor_rows(target: dict, reg: SourceRegistry, notes: list[CompetitorNote], c2_yes: bool) -> list[list[str]]:
     """근거 본문에 이름이 실제로 나오는 경쟁사만 표에 남기고(지어낸 경쟁사 차단), 그 근거를 인용으로 붙인다.
-    비교 문장은 보고서 문안(평가표 일치 검사를 거친 것)을 쓰고, C2 가 YES 가 아닌데 남은 우열 표현은 회사 측 주장으로 표시한다."""
+    비교 문장은 보고서 문안(평가표 일치 검사를 거친 것)을 쓰고, C2 가 YES 가 아닌데 남은 우열 표현은 회사 측 주장으로 표시한다.
+    v3: '출처 수' 칸 = 회사명이 나온 서로 다른 도메인 수와 실재 확인 표시('확인'·'근거 약함'). 인용은 경쟁사 에이전트가 고른
+    도메인별 첫 근거(source_ids)를 먼저 쓰고, 확인된 경쟁사를 표 위쪽에 둔다(근거 약함은 C2 판정에 세지 않음)."""
     comp = target.get("competition") or {}
     ids = _usable(reg, (comp.get("evidence_ids") or []) + (comp.get("pool_ids") or []))
     texts = {i: norm(reg.text(i)) for i in ids}
@@ -705,19 +717,22 @@ def _competitor_rows(target: dict, reg: SourceRegistry, notes: list[CompetitorNo
     rows, found = [], []
     for c in (comp.get("competitors") or [])[:5]:
         key = norm(c["name"].split("(")[0])
-        hit = [i for i in ids if len(key) >= 2 and key in texts[i]][:2]
-        vs = next((n.vs_target for n in notes if _same(n.name, c["name"])), c.get("vs_target") or "")
+        hit = (_usable(reg, c.get("source_ids")) or [i for i in ids if len(key) >= 2 and key in texts[i]])[:2]
+        status, n, peer = _rival_mark(c, ids, reg)
+        vs = next((n_.vs_target for n_ in notes if _same(n_.name, c["name"])), c.get("vs_target") or "")
         if not c2_yes and _superiority(vs):
             vs = f"(회사 측 주장, 제3자 비교 근거 없음) {vs}"
         offering = c.get("offering") or "-"
-        if hit and all(any(k in texts[i] for k in tkeys) for i in hit):
+        if hit and all(any(k in norm(reg.text(i)) for k in tkeys) for i in hit):
             # 경쟁사 이름이 대상 회사 기사에만 지나가듯 나오면, 그 경쟁사의 제품 설명은 이 표의 근거로 확인할 수 없다
             offering += " (대상 회사 기사에서 이름만 언급)"
-        row = [c["name"], c.get("country") or "-", offering, vs, f"[{', '.join(hit)}]" if hit else ""]
+        mark = f"{n}곳 ({status}{'·적격 후보' if peer else ''})"
+        row = [c["name"], c.get("country") or "-", offering, vs, mark, f"[{', '.join(hit)}]" if hit else ""]
         rows.append(row)
         if hit:
             found.append(row)
-    return (found or rows)[:4]
+    ranked = sorted(found or rows, key=lambda r: "근거 약함" in r[4])  # 안정 정렬: 확인된 경쟁사를 앞에
+    return ranked[:4]
 
 
 def _risk_rows(risks: list[Risk], reg: SourceRegistry) -> list[list[str]]:
@@ -1098,8 +1113,10 @@ def _competition_blocks(target: dict, d: dict, reg: SourceRegistry, c2_yes: bool
     blocks = [_p(f"경쟁 구도: {d['competition']}")]
     rows = _competitor_rows(target, reg, notes, c2_yes)
     if rows:
-        blocks.append(_table(["경쟁사", "국가", "제품·접근", "대상 대비" if c2_yes else "대상 대비 (회사 측 주장 포함)", "근거"],
-                             rows, ["14%", "7%", "27%", "45%", "7%"], small=True, caption="경쟁사 비교"))
+        blocks.append(_table(["경쟁사", "국가", "제품·접근", "대상 대비" if c2_yes else "대상 대비 (회사 측 주장 포함)",
+                              "출처 수", "근거"], rows, ["13%", "7%", "24%", "40%", "10%", "6%"], small=True,
+                             caption="경쟁사 비교 (출처 수 = 회사명이 나온 서로 다른 도메인 수. 2곳 미만이거나 대상 회사 기사에만 "
+                                     "나오면 '근거 약함' — 경쟁사 대비 차별점 판정에서 제외)"))
     claims = [f"{c.get('claim')} — {c.get('status')}{_cite(reg, c.get('evidence_ids'), 2)}"
               for c in (comp.get("verified_claims") or [])[:3] if c.get("claim")]
     if claims:
@@ -1667,7 +1684,8 @@ def _checks(md: str, view: dict, refs: list[dict], mode: str, expect: dict, draf
 # ── 보고서 노드
 
 def _brief_json(x: dict, reg: SourceRegistry) -> str:
-    """분석 결과를 LLM 에 넘길 JSON (판정 사본·풀 목록 제외, 뉴스레터 근거 id 제거)."""
+    """분석 결과를 LLM 에 넘길 JSON (판정 사본·풀 목록·경쟁사 실재 확인 기록 제외, 뉴스레터 근거 id 제거).
+    경쟁사 행마다의 확인 표시(verified·n_sources·basis)는 남긴다."""
     def scrub(v):
         if isinstance(v, str):
             return CITE.sub(lambda m: f"[{', '.join(k)}]" if (k := _usable(reg, re.split(r"\s*[,，]\s*", m.group(1)))) else "", v)
@@ -1675,7 +1693,8 @@ def _brief_json(x: dict, reg: SourceRegistry) -> str:
             return (_usable(reg, v) if v and all(isinstance(i, str) and re.fullmatch(r"[WD][0-9a-f]{5,8}", i) for i in v)
                     else [scrub(i) for i in v])
         if isinstance(v, dict):
-            return {k: scrub(i) for k, i in v.items() if k not in ("criterion", "pool_ids", "search_plan", "answers")}
+            return {k: scrub(i) for k, i in v.items()
+                    if k not in ("criterion", "pool_ids", "search_plan", "answers", "rival_check")}
         return v
     return json.dumps(scrub(x or {}), ensure_ascii=False)
 
