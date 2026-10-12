@@ -35,7 +35,7 @@ class InvestmentState(TypedDict, total=False):
     discovery_rounds: int                              # 발굴 라운드 수 (max_discovery_rounds 로 제한)  [discover.collect → discover 라우터]
     raw_candidates: list[dict]                         # 이번 라운드 발굴 후보 (이름, 분야, 발굴 채널, 근거 id)  [discover.collect → discover.screen]
     seen: Annotated[list[str], add_unique]             # 이미 다룬 후보의 정규화 이름 (중복 발굴 방지)  [discover.collect → discover.collect]
-    screened: Annotated[list[dict], operator.add]      # 적격성 관문 판정 기록 전체 (통과·탈락 사유)  [discover.screen → report]
+    screened: Annotated[list[dict], operator.add]      # 적격성 관문 판정 기록 전체 (통과·탈락 사유)  [discover.screen → competition(같은 분야 적격 후보)·report]
     queue: list[dict]                                  # 적격 후보 평가 대기열 (우선순위 순, 국내·해외 몫)  [discover.screen·pick → discover]
     current: dict | None                               # 평가 대상 프로필 (단계·라운드·금액·대표·설립일·국민연금), None = 후보 소진  [discover.pick·exhausted → 분석 에이전트·decide]
     iterations: int                                    # 심층 평가한 후보 수 (max_evaluations 로 제한)  [discover.pick → 라우터]
@@ -44,7 +44,7 @@ class InvestmentState(TypedDict, total=False):
     founder: dict                                      # 창업 시점 t0·인물(창업 전 경력)·마일스톤·고용 추이·창업자 기준 판정  [founder → decide·report]
     tech: dict                                         # 제품·핵심 기술·장단점·차별점 주장(claims)·기술 기준선·제품/기술력 판정  [tech → market·competition·decide·report]
     market: dict                                       # 시장 규모(수치·연도·출처)·성장·수요·정책·시장성 판정  [market → decide·report]
-    competition: dict                                  # 경쟁사 비교표·차별점 검증·경쟁 우위 판정  [competition → decide·report]
+    competition: dict                                  # 경쟁사 비교표(출처 도메인 수·확인/근거 약함)·확인된 경쟁사 수·차별점 검증·경쟁 우위 판정  [competition → decide·report]
     market_cache: Annotated[dict, merge_dict]          # 세부 분야별 시장 분석 캐시 (같은 분야 재분석 방지)  [market → market]
 
     # ── 🧮 투자 판단과 반복 제어

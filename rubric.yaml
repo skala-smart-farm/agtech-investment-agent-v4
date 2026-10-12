@@ -35,6 +35,9 @@
 # no_plan    : 수익 모델·고객 경제성 문항(Bessemer Q2·Q3·Q7 의 M3·M4·R4). 인용이 완료 표지 없는 예정·계획·방침·도입할·
 #              추진 문장이면 UNKNOWN (core/recency.py planned_only + 추진·검토 중)
 # numeric    : need·text 가 수치를 요구하는 문항(M1·M2·M3·R1·R2·D3). 인용에 숫자나 수량 표현('세 곳'·'절반')이 없으면 UNKNOWN
+# min_competitors: 경쟁사 비교 문항(C2)의 '국내외 경쟁사 2곳 이상'. 실재가 확인된 경쟁사가 이 수보다 적으면 UNKNOWN.
+#              '확인' = 같은 세부 분야의 적격 후보(적격성 관문 통과) 또는 회사명이 서로 다른 도메인 2곳 이상(그중 1곳은 대상 회사
+#              기사 밖)에서 나온 회사. 1곳뿐인 경쟁사는 '근거 약함'으로 비교표에만 남는다 (agents/competition.py 가 셈)
 # 회사명 근접 검사(market_level 이 아닌 문항)는 회사 제품·서비스 이름(기술 요약 tech.product 에서 뽑음)도 회사명으로 인정한다
 
 dimensions:
@@ -71,7 +74,7 @@ dimensions:
     owner: competition    # 이 기준을 판정하는 에이전트
     questions:
       - {id: C1, short: 특허, point: "특허", bessemer_q: [4], dd_item: "특허 등록·출원 번호", bessemer: "(진입장벽)", text: "핵심 기술 관련 특허(등록 또는 출원)가 1건 이상 확인되는가? (초기 기업이라 출원도 인정, 보고서에 등록·출원 구분 표기)", need: "특허 근거", text_en: "patent filed granted application intellectual property"}
-      - {id: C2, short: 경쟁사 대비 차별점, point: "진입장벽(경쟁사 대비 차별점)", bessemer_q: [4], dd_item: "경쟁 제품 대비 성능·가격 비교", bessemer: "경쟁사 보다 뚜렷한 차별성이 있는가", text: "국내외 경쟁사 2곳 이상과 비교했을 때 구체적인 차별점(성능·가격·적용 작목·범위)이 근거로 확인되는가?", need: "경쟁사 비교 근거", text_en: "competitors compared versus differentiation advantage price performance"}
+      - {id: C2, short: 경쟁사 대비 차별점, point: "진입장벽(경쟁사 대비 차별점)", bessemer_q: [4], dd_item: "경쟁 제품 대비 성능·가격 비교", bessemer: "경쟁사 보다 뚜렷한 차별성이 있는가", text: "국내외 경쟁사 2곳 이상과 비교했을 때 구체적인 차별점(성능·가격·적용 작목·범위)이 근거로 확인되는가?", need: "경쟁사 비교 근거", min_competitors: 2, text_en: "competitors compared versus differentiation advantage price performance"}
       - {id: C3, short: 데이터 축적 구조, point: "네트워크 효과", bessemer_q: [], dd_item: "데이터 축적·연동 구조", bessemer: "(네트워크 효과)", text: "사용이 늘수록 자체 데이터가 쌓여 성능이 좋아지거나, 설치·연동 때문에 교체 비용이 드는 구조인가?", need: "데이터 축적·연동 구조 근거", text_en: "data network effect switching cost integration lock-in"}
       - {id: C4, short: 전략 파트너 계약, point: "진입장벽(전략 파트너)", bessemer_q: [], dd_item: "전략 파트너 계약서(MOU 제외)", bessemer: "(파트너)", text: "유통·전략 파트너(농협, 농기계·농자재 기업, 지자체, 대형 유통, 해외 파트너)와 계약이나 공동사업이 있는가? (MOU 만 있으면 NO)", need: "계약 상대방이 적힌 근거", text_en: "partnership agreement contract distribution partner cooperative OEM"}
   - id: traction

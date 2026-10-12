@@ -370,6 +370,42 @@ def merge_duplicates(srcs: list[dict]) -> dict:
     return best
 
 
+# ── 출처 도메인 (경쟁사 실재 확인: 회사명이 서로 다른 도메인 2곳 이상에서 나와야 '확인', agents/competition.py·report)
+# 국가 도메인의 2단계 이름 (www.mk.co.kr → mk.co.kr, bbc.co.uk → bbc.co.uk, abc.net.au → abc.net.au)
+_SECOND_LEVEL = {"co", "or", "go", "ac", "ne", "re", "pe", "com", "org", "net", "gov", "edu"}
+
+
+def source_domain(s: dict) -> str:
+    """근거의 출처 도메인. 웹은 등록 도메인으로 묶는다 (news.naver.com·n.news.naver.com → naver.com,
+    www.mk.co.kr → mk.co.kr). 문서는 'doc:발행처'. URL 이 없으면 빈 문자열."""
+    if s.get("kind") == "doc":
+        return f"doc:{s.get('publisher') or s.get('doc_id') or ''}"
+    parts = [p for p in _host(s.get("url", "")).split(":")[0].split(".") if p]
+    n = 3 if len(parts) >= 3 and len(parts[-1]) == 2 and parts[-2] in _SECOND_LEVEL else 2
+    return ".".join(parts[-n:])
+
+
+def naming_domains(reg: SourceRegistry, ids, keys) -> dict[str, list[str]]:
+    """이름(keys: 정규화한 표기들 — 공백·기호를 뺀 소문자)이 제목·스니펫·본문에 나오는 근거를 출처 도메인별로 묶는다.
+    반환 {도메인: [근거 id …]} (첫 등장 순). 제목이 같은 기사(포털 전재본·다른 매체 재게재)는 먼저 나온 도메인 하나로만
+    센다 — 같은 기사를 옮겨 실은 것은 독립 출처가 아니다."""
+    keys = [k for k in keys if k]
+    out: dict[str, list[str]] = {}
+    by_title: dict[str, str] = {}
+    for sid in dict.fromkeys(ids or []):
+        s = reg.get(sid)
+        if not s or not keys:
+            continue
+        text = re.sub(r"[\W_]+", "", reg.text(sid)).lower()
+        if not any(k in text for k in keys) or not (dom := source_domain(s)):
+            continue
+        title = re.sub(r"[\W_]+", "", TRUNCATED.sub("", s.get("title") or "")).lower()
+        if s.get("kind") == "web" and len(title) >= 12:
+            dom = by_title.setdefault(title, dom)
+        out.setdefault(dom, []).append(sid)
+    return out
+
+
 def today() -> str:
     """조회일 = 평가 기준일 (재현 모드에서는 고정)."""
     from core.config import run_date

@@ -86,6 +86,11 @@ workflow:
   calibrate: false                     # 보정 실행(app.py --calibrate): 상한까지 평가해 동종 기준 집단을 만들고, 보고서 노드는 렌더링하지 않음
   recursion_limit: 100                 # 메인 그래프 recursion_limit (무한 루프 방지)
 
+competition:                           # 🥊 경쟁사 실재 확인 (agents/competition.py, 평가표 C2 '국내외 경쟁사 2곳 이상'은 rubric min_competitors)
+  max_peers: 5                         # 같은 세부 분야의 다른 적격 후보(이번 실행 적격성 관문 통과)를 경쟁사 후보로 먼저 보여 주는 최대 수 (검색 없음)
+  min_domains: 2                       # 웹에서 찾은 경쟁사는 회사명이 서로 다른 도메인 이 수 이상(그중 1곳은 대상 회사 기사 밖)에서 나와야 '확인'
+  verify_max_searches: 4               # 모자란 경쟁사의 회사명 확인 검색 상한 (평가 후보 1곳당, 경쟁사 1곳당 1회). 공용 검색 키 비용 제한
+
 decision:
   # Payne Scorecard 의 비교 원리(동종 투자 유치 기업 평균 = 1.00). v1 의 100점 만점 규칙(70점)은 쓰지 않는다
   method: payne_relative               # 6개 기준마다 동종 기준 집단 평균 대비 배수를 구해 가중합(M)

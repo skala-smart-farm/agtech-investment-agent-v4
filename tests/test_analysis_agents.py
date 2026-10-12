@@ -466,7 +466,7 @@ def test_competition_node_claims_and_downgrade(monkeypatch, judge_calls):
     n_id, o_id = wid(news), wid(own)
     VC = comp.VerifiedClaim
     ans = comp.CompetitionAnalysis(
-        competitors=[comp.Competitor(name="그린랩스", country="한국", offering="온실 플랫폼", scale="확인 불가",
+        competitors=[comp.Competitor(name="그린랩스", name_en="", country="한국", offering="온실 플랫폼", scale="확인 불가",
                                      vs_target="경쟁사: 온실 플랫폼 / 대상: 회사 측 주장: 절감", evidence_ids=[n_id])],
         differentiation="회사 측 주장: 절감", entry_barriers="약함", threats=["대기업 진입"],
         verified_claims=[VC(claim="A", status="제3자 확인", evidence_ids=[]),
