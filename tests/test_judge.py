@@ -9,7 +9,8 @@ from core.judge import Answer, Answers, judge_dimension
 from tools.sources import SourceRegistry
 
 RUN_DATE = "2026-09-30"
-ROW_KEYS = {"dim", "qid", "short", "point", "question", "bessemer_q", "answer", "x", "evidence_ids", "quote", "rationale"}
+ROW_KEYS = {"dim", "qid", "short", "point", "question", "bessemer_q", "answer", "x", "evidence_ids", "quote", "rationale",
+            "confidence"}
 DIM_KEYS = {"dim", "name", "weight", "owner", "rows", "yes", "no", "unknown", "na", "n", "rejected_yes", "quote_retried"}
 
 COMPANY = {"name": "팜랩", "official_name": "(주)팜랩", "name_en": "Farm Lab", "stage": "Seed", "round_date": "2026-03",
@@ -28,11 +29,20 @@ SOURCES = {
     "W2": {"kind": "web", "url": "https://news.example.com/a/2", "site": "예시신문", "date": "2026-06-01",
            "title": "스마트팜 업계 동향",
            "body": f"팜랩 등 여러 기업이 참가했다. {FAR} 업계 전반적으로 농업용 로봇은 아직 시범 운영 단계에 머물러 있다. "
-                   "데이터가 쌓일수록 제어 정확도가 높아지는 구조가 일반적이다."},
+                   "데이터가 쌓일수록 제어 정확도가 높아지는 구조가 일반적이다. "
+                   "국내 스마트팜 도입 면적은 3년 새 40% 늘었다."},
     # 예정·실증 표현
     "W3": {"kind": "web", "url": "https://news.example.com/a/3", "site": "예시신문", "date": "2026-07-01",
            "title": "팜랩, 로봇 실증",
            "body": "팜랩은 내년 상용화를 목표로 10개 농가에서 수확 로봇 시범 운영을 하고 있다."},
+    # v3 규칙용 제3자 기사: 학력뿐인 기술 책임자, 계획 문장, 수치 없는 효과
+    "W6": {"kind": "web", "url": "https://news.example.com/a/6", "site": "예시신문", "date": "2026-06-10",
+           "title": "팜랩 인터뷰",
+           "body": "팜랩 CTO 이영희는 서울대 기계공학과에서 로봇을 전공했다. 팜랩은 구독형 요금제로 출시할 방침이다. "
+                   "팜랩 제어기는 농가의 노동을 줄이는 효과가 있다."},
+    # 제품명만 인용 근처에 있는 기사 (회사명은 300자 밖)
+    "W7": {"kind": "web", "url": "https://news.example.com/a/7", "site": "예시신문", "date": "2026-06-20",
+           "title": "수확 로봇 현장", "body": f"팜랩 소개. {FAR} 그로우봇은 전국 40개 농가에서 상용 운영 중이다."},
     # 회사 자체 홈페이지
     "W4": {"kind": "web", "url": "https://www.farmlab.co.kr/about", "site": "팜랩", "date": "2026-04-01",
            "title": "회사 소개", "body": "팜랩의 제어기는 전국 농가에서 수확량을 15% 늘렸다."},
@@ -127,7 +137,7 @@ def test_market_level_skips_company_window(fake):
     """시장 문항(M2)은 회사 이야기가 아니어도 된다. M1 은 문서 근거([D…])가 없으면 UNKNOWN."""
     fake([[
         _a("M1", "YES", "업계 전반적으로 농업용 로봇은 아직 시범 운영 단계에 머물러 있다", ("W2",)),
-        _a("M2", "YES", "데이터가 쌓일수록 제어 정확도가 높아지는 구조가 일반적이다", ("W2",)),
+        _a("M2", "YES", "국내 스마트팜 도입 면적은 3년 새 40% 늘었다", ("W2",)),   # 수치 요구 문항이라 숫자가 있는 문장
         _a("M3", "UNKNOWN", ids=()), _a("M4", "UNKNOWN", ids=()),
     ]])
     _, rows = _run("market")
@@ -200,3 +210,57 @@ def test_empty_pool_skips_llm(fake):
 def test_unknown_dimension():
     with pytest.raises(ValueError):
         judge_dimension("team", COMPANY, [], _reg(), "", RUN_DATE)
+
+
+def test_v3_rules_education_plan_numeric(fake):
+    """v3 규칙: F2 학력·전공뿐 → UNKNOWN, M4 '방침' → UNKNOWN, M3 수치 없음 → UNKNOWN (모든 후보에 같은 코드 규칙)."""
+    fake([[_a("F1", "UNKNOWN", ids=()), _a("F2", "YES", "CTO 이영희는 서울대 기계공학과에서 로봇을 전공했다", ("W6",)),
+           _a("F3", "UNKNOWN", ids=()), _a("F4", "UNKNOWN", ids=())]])
+    _, rows = _run("founder", pool=("W6",))
+    assert rows["F2"]["answer"] == "UNKNOWN" and "학력·전공만" in rows["F2"]["rationale"]
+
+    fake([[_a("M1", "UNKNOWN", ids=()), _a("M2", "UNKNOWN", ids=()),
+           _a("M3", "YES", "팜랩 제어기는 농가의 노동을 줄이는 효과가 있다", ("W6",)),
+           _a("M4", "YES", "팜랩은 구독형 요금제로 출시할 방침이다", ("W6",))]])
+    _, rows = _run("market", pool=("W6",))
+    assert rows["M3"]["answer"] == "UNKNOWN" and "숫자가 없음" in rows["M3"]["rationale"]
+    assert rows["M4"]["answer"] == "UNKNOWN" and "계획" in rows["M4"]["rationale"]
+
+
+def test_v3_yes_with_hedged_reason_is_unknown(fake):
+    """YES 이유가 '추정할 수 있다' 류면 확인된 사실이 아니라 UNKNOWN (예: 홍보 문구로 재계약을 추정한 R3)."""
+    fake([[_a("R1", "UNKNOWN", ids=()), _a("R2", "UNKNOWN", ids=()),
+           _a("R3", "YES", "팜랩은 전국 12개 농가에 스마트팜 제어기를 설치해 운영 중이다", ("W1",),
+              why="여러 농가 운영으로 재계약을 추정할 수 있다"),
+           _a("R4", "UNKNOWN", ids=())]])
+    _, rows = _run("traction", pool=("W1",))
+    assert rows["R3"]["answer"] == "UNKNOWN" and "추정" in rows["R3"]["rationale"]
+
+
+def test_v3_product_name_counts_as_company(fake):
+    """제품명(기술 요약 product 의 '그로우봇')이 인용 근처에 있으면 회사 이야기로 본다."""
+    company = {**COMPANY, "product": "자율주행 수확 로봇 '그로우봇'"}
+    fake([[_a("P1", "YES", "그로우봇은 전국 40개 농가에서 상용 운영 중이다", ("W7",)),
+           _a("P2", "UNKNOWN", ids=()), _a("P3", "UNKNOWN", ids=()), _a("P4", "N/A", ids=())]])
+    _, rows = _run("product", company=company, pool=("W7",))
+    assert rows["P1"]["answer"] == "YES", rows["P1"]["rationale"]
+    fake([[_a("P1", "YES", "그로우봇은 전국 40개 농가에서 상용 운영 중이다", ("W7",)),
+           _a("P2", "UNKNOWN", ids=()), _a("P3", "UNKNOWN", ids=()), _a("P4", "N/A", ids=())]])
+    _, rows = _run("product", pool=("W7",))                      # 제품명을 모르면 회사명이 300자 밖이라 UNKNOWN
+    assert rows["P1"]["answer"] == "UNKNOWN"
+
+
+def test_evidence_query_uses_english_terms():
+    """근거 고르기 검색어에 문항의 영어 검색어(text_en)가 들어가 영문 근거도 뽑힌다 (해외 후보 언어 편향 수정)."""
+    from rank_bm25 import BM25Okapi
+    from rag.index import kiwi_tokenize
+
+    rubric = judge.load_rubric()
+    d = next(x for x in rubric["dimensions"] if x["id"] == "market")
+    assert all(q.get("text_en") for x in rubric["dimensions"] for q in x["questions"])
+    passages = [("W1", "스마트팜 시장 규모 정책 예산 증가 도입률"), ("W1", "팜랩은 시드 투자를 유치했다"),
+                ("W1", "농업용 로봇 업계 동향"), ("W1", "온실 환경 제어 기술 소개"),   # 문단이 2개뿐이면 BM25 IDF 가 0 이 된다
+                ("W2", "Growers pay a monthly subscription per acre for the service, cutting labor costs by 30 percent")]
+    reg = _reg()
+    out = judge._evidence_for(d, "(주)팜랩", passages, BM25Okapi([kiwi_tokenize(p[1]) for p in passages]), reg, per_q=1)
+    assert "[W2]" in out

@@ -13,7 +13,7 @@ LLM 은 평가표 질문에 판정(YES/NO/UNKNOWN/N/A)·근거 id·근거 원문
 - YES 는 인용문이 실제 근거 본문에 있어야 인정한다 (코드가 문자열로 검사). 실패하면 UNKNOWN 으로 강등
 - NO 도 반대 사실을 적은 문장의 인용이 본문에 있어야 인정한다. "근거가 없다"는 NO 가 아니라 UNKNOWN
   (판정 이유가 "추정·확인되지 않음·근거가 없음" 같은 근거 부족이고 인용 자체에 부정 표현이 없으면 코드가 UNKNOWN 으로 바꾼다)
-- 인용 앞뒤 300자 안에 회사명이 있어야 한다 (시장 문항 M1·M2 제외, 업계 일반론 차단)
+- 인용 앞뒤 300자 안에 회사명(또는 v3: 회사 제품·서비스 이름)이 있어야 한다 (시장 문항 M1·M2 제외, 업계 일반론 차단)
 - 제3자 근거·최근 24개월(문서는 발행 연도)·문서 근거 요구 조건을 코드가 검사한다. 최근 24개월 = [기준일 − 24개월, 기준일]이라
   기준일 이후 날짜(예정·계획)는 최근으로 인정하지 않는다 (규칙은 core/recency.py 한 곳). 최근 문항(F3·R1·R2)은 인용 속 날짜가
   기준일 이후뿐이거나 인용이 완료 표지 없는 예정·계획·목표 문장이면 인정하지 않는다 (시장 전망 M1·M2 는 제외)
@@ -21,6 +21,13 @@ LLM 은 평가표 질문에 판정(YES/NO/UNKNOWN/N/A)·근거 id·근거 원문
 - 상용 운영 문항은 인용 주변에 예정·목표·실증·PoC·시범 표현이 있거나 인용에 수량·고객이 없으면 인정하지 않는다
 - D1(최근 라운드)은 LLM 답을 쓰지 않고 적격성 관문에서 인용 검증을 마친 값으로 코드가 판정한다
   (라운드 시점이 기준일 이후이거나 단계 인용이 예정·추진 중인 라운드면 완료된 투자가 아니므로 UNKNOWN)
+v3 재검사 (LLM 호출·프롬프트는 그대로. 문항 플래그 3종은 YES 를 UNKNOWN 으로 내리는 쪽, 제품명 키는 근접 검사를 넓히는 쪽)
+- track_record(F2): 인용에 학력·전공·학위 표현만 있고 특허·논문·연구·경력·직책 이력 표현이 없으면 UNKNOWN
+  (이력 표현은 검증된 인용에서만 찾는다. LLM 이유문의 '경력이 확인된다'는 근거가 아님)
+- no_plan(M3·M4·R4): 인용이 완료 표지 없는 예정·계획·방침·도입할·추진 문장이면 UNKNOWN (수익 모델·고객 경제성은 실제여야 함)
+- numeric(M1·M2·M3·R1·R2·D3): need 가 수치를 요구하는 문항. 인용에 숫자(아라비아 숫자·'세 곳' 같은 수량 표현)가 없으면 UNKNOWN
+- 회사명 근접 검사(±300자)에 회사 제품·서비스 이름도 회사 키로 인정 (기술 요약 에이전트의 tech.product 에서 이름만 뽑음)
+- confidence(상·중·하): 같은 인용이 실린 제3자 출처 수로 정하는 표시용 값. 판정·배수에 쓰지 않는다
 """
 from __future__ import annotations
 
@@ -36,7 +43,7 @@ from rank_bm25 import BM25Okapi
 from core.config import ROOT
 from core.llm_bounded import bounded
 from core.prompts import render
-from core.recency import future_round, only_future_events, planned_only
+from core.recency import DONE, future_round, only_future_events, planned_only
 from rag.index import kiwi_tokenize
 from rag.loader import load_manifest
 from tools.grounding import fuzzy_in, norm
@@ -59,9 +66,54 @@ SCALE = re.compile(r"\d|농협|영농조합|농업회사법인")
 SCALE_WORD = re.compile(r"(?<![가-힣])(한|두|세|네|다섯|여섯|일곱|여덟|아홉|수십|수백|수천)\s*(곳|개소|농가|농장|마리)")
 # NO 판정 이유에 이런 말이 있으면 반대 사실이 아니라 근거 부족이다
 NO_HEDGE = re.compile(r"추정|불분명|명확하지않|확인되지않|없어|없으므로|근거가없")
+# YES 이유가 확인이 아니라 추정이면(예: "재계약을 추정할 수 있는") 근거가 YES 를 뒷받침하지 못한다 (공백 제거 후 검사)
+YES_HEDGE = re.compile(r"추정|가능성|것으로보|짐작|추론|으로보인다|인듯|일수있")
 # 인용문 자체가 부정을 말하면("특허 없음", "인증을 받지 않았다") 이유에 '없어'가 있어도 반대 사실로 본다
 NEGATED = re.compile(r"없|않|아니|불가|미보유|미등록|\bno\b|\bnot\b|\bnever\b", re.I)
 UNDISCLOSED = ("비공개", "미공개", "undisclosed", "비밀", "n/a")
+
+# ── v3 재검사 표현 목록 (원문 인용에서 찾는다)
+# track_record: 학력 표현과 이력 표현. '출신'은 학교·회사 모두에 쓰여 어느 쪽에도 넣지 않는다.
+# '개발'·'CTO' 같은 현재 직함·일반 서술과 막연한 '경험'('어릴 때부터 로봇 제작 경험')은 이력으로 보지 않는다
+# ('AI 로봇을 전공해 개발에 일가견' 은 학력뿐). 기간('30여년간'·'7년 동안')·前·이전 창업은 이력이다
+EDUCATION = re.compile(r"전공|학위|학사|석사|박사|졸업|대학|학과|학부"
+                       r"|\b(?:ph\.?\s?d|bachelor'?s?|master'?s?|basc|bsc|msc|degrees?|graduat\w*|major(?:ed)?|universit\w*)\b",
+                       re.I)
+TRACK_RECORD = re.compile(r"특허|발명|논문|저자|학회|연구|경력|근무|재직|역임|총괄|팀장|본부장|수석|선임|엔지니어|개발자|前"
+                          r"|\d+\s*여?\s*년\s*(?:간|동안|이상)|(?:이전|첫)\s*창업|창업\s*(?:경험|이력)"
+                          r"|\b(?:patents?|inventor|papers?|publications?|published|research\w*|lab(?:oratory)?|worked|"
+                          r"working|former(?:ly)?|previously|engineers?|scientists?|led|veteran|years?\s+(?:at|of|in))\b",
+                          re.I)
+# no_plan: core.recency.planned_only 의 예정·계획·방침 표현에 '추진·도입할·검토 중' 같은 계획 서술을 더한다
+PLAN_EXTRA = re.compile(r"추진\s*(?:중|하고|할|한다|하며|해|키로|하기로|을|를)|도입할|검토\s*중|준비\s*중|계획\s*중"
+                        r"|(?:준비|검토|모색|계획|협의|논의)\s*하고\s*있|\bplann(?:ed|ing)\s+to\b", re.I)
+# 계획 문장이라도 지금 하고 있는 일이 함께 적혀 있으면 완료 사실 ('요금을 받고 있으며 내년 해외로 넓힐 계획',
+# '판매로 매출을 올리고 있으며 내년 구독형으로 전환할 계획'). 추진·준비·검토·앞두고 있다는 진행 중인 계획이라 뺀다
+PLAN_DONE_EXTRA = re.compile(r"(?<!추진하)(?<!계획하)(?<!준비하)(?<!검토하)(?<!모색하)(?<!협의하)(?<!논의하)(?<!앞두)"
+                             r"(?<!추진)(?<!준비)고\s*있(?:다|으며|고|습니다|는|어)")
+# numeric: 숫자 또는 수량 표현 ('세 곳', '수백 농가', '절반', 'two farms')
+NUMBER = re.compile(r"\d|절반|반값|(?<![가-힣])(?:한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|수십|수백|수천|수만)\s*"
+                    r"(?:곳|개|개소|농가|농장|마리|명|배|건|대|톤|가지|해|차례|만)"
+                    r"|\b(?:two|three|four|five|six|seven|eight|nine|ten|dozens?|hundreds?|thousands?|half|halved|double[ds]?"
+                    r"|triple[ds]?|twice)\b", re.I)
+# 제품명 후보에서 뺄 업계 일반어 (일반어가 회사 키가 되면 업계 기사 문장도 '이 회사 이야기'로 통과한다)
+GENERIC_PRODUCT_WORDS = {
+    "ai", "iot", "ict", "gps", "rtk", "lidar", "saas", "app", "api", "robot", "robots", "robotics", "software",
+    "platform", "solution", "solutions", "system", "systems", "service", "services", "device", "devices", "sensor",
+    "sensors", "drone", "drones", "farm", "farms", "farming", "smart", "smartfarm", "data", "cloud", "autonomous",
+    "agricultural", "agriculture", "agtech", "electric", "modular", "vision", "series", "technology", "technologies",
+    "tech", "inc", "ltd", "corp", "the", "and", "for", "with",
+    "솔루션", "서비스", "시스템", "플랫폼", "로봇", "디바이스", "기기", "장비", "센서", "드론", "소프트웨어", "하드웨어", "앱",
+    "어플리케이션", "애플리케이션", "모듈", "키트", "스마트팜", "스마트", "농업", "농작업", "농산물", "농작물", "작물", "자율",
+    "자율주행", "원격", "원격제어", "정밀", "정밀농업", "축산", "사료", "사료관리", "병해충", "생육", "온실", "도심", "도심농장",
+    "수직농장", "실내", "노지", "위성", "인공위성", "데이터", "클라우드", "모바일", "무인", "전기", "통합", "지능형", "기반",
+    "맞춤형", "다목적", "환경제어", "관제", "자동화", "예측", "진단", "모니터링", "수확", "방제", "재배", "농기계", "트랙터",
+    "인공지능", "계측", "시리즈",
+}
+_QUOTED_NAME = re.compile(r"[‘'\"“「『]([^‘’'\"“”「」『』]{2,30})[’'\"”」』]")
+_LATIN_NAME = re.compile(r"\b[A-Za-z][A-Za-z0-9\-]{2,}\b")
+_CITE_ID = re.compile(r"\[[WD][0-9a-f]{4,}\]")
+_PAREN = re.compile(r"\(([^()]*)\)")
 
 
 class Row(TypedDict):
@@ -77,6 +129,7 @@ class Row(TypedDict):
     evidence_ids: list[str]
     quote: str
     rationale: str
+    confidence: Literal["상", "중", "하"] | None   # 표시용 (판정·배수에 쓰지 않음). YES·NO 만, 그 밖은 None
 
 
 class DimResult(TypedDict):
@@ -122,6 +175,49 @@ def company_keys(c: dict) -> list[str]:
     """회사 이름 표기들(영문명·공식명·통칭)을 정규화한 목록. 인용 주변 회사명 확인과 회사 도메인 판별에 쓴다.
     v1 decision_node 의 company_keys 계산과 같다(정규화 후 2글자 이상만)."""
     return [norm(x) for x in (c.get("name_en"), c.get("official_name"), c.get("name")) if x and len(norm(x)) >= 2]
+
+
+def _name_ok(word: str, ckeys: list[str]) -> str | None:
+    """제품명 후보 → 정규화한 키. 3글자 미만·일반어·꾸밈말(…형·…용·…적·…식)·회사명(일부 포함)이면 None."""
+    w = norm(re.sub(r"(의|와|과)$", "", word.strip()))
+    if len(w) < 3 or w in GENERIC_PRODUCT_WORDS or re.search(r"[형용적식]$", w):
+        return None
+    if any(k in w or w in k for k in ckeys):
+        return None
+    return w
+
+
+def product_keys(c: dict) -> list[str]:
+    """회사 제품·서비스 이름을 정규화한 목록. c['product'](기술 요약 에이전트 tech.product 문장)에서 이름 꼴만 뽑는다.
+    - 따옴표 속 이름: "로봇 '옴니파머'" → 옴니파머
+    - 대문자가 든 영문 단어: 'Amiga 모듈형 …' → amiga (회사 영문명 일부는 제외)
+    - 회사명을 괄호로 단 이름: '데이팜 (트랙팜의 …)' → 데이팜
+    - '이름 + 설명' 꼴 항목의 첫 단어: '마이피드 사료관리 서비스 및 …' → 마이피드 (첫 단어가 '회사의'면 이름 없음)
+    3글자 미만·업계 일반어(GENERIC_PRODUCT_WORDS)·꾸밈말·회사명은 뺀다. product 가 없으면 []."""
+    text = _CITE_ID.sub(" ", str(c.get("product") or ""))
+    if not text.strip():
+        return []
+    ckeys = company_keys(c)
+    found = [m.group(1) for m in _QUOTED_NAME.finditer(text)]
+    found += [w for w in _LATIN_NAME.findall(text) if any(ch.isupper() for ch in w)]
+    for m in _PAREN.finditer(text):   # '데이팜 (트랙팜의 …)': 괄호 안에 회사명이 있으면 괄호 바로 앞 단어가 제품명
+        before = text[:m.start()].split()
+        if before and any(k in norm(m.group(1)) for k in ckeys):
+            found.append(before[-1])
+    plain = _PAREN.sub(" ", _QUOTED_NAME.sub(" ", text))
+    for item in re.split(r",|/|\s및\s|\band\b", plain):
+        words = item.split()
+        if len(words) >= 2 and not any(norm(re.sub(r"의$", "", words[0])) == k for k in ckeys):
+            found.append(words[0])
+    keys = [k for k in (_name_ok(w, ckeys) for w in found) if k]
+    return list(dict.fromkeys(keys))
+
+
+def judge_company(state: dict) -> dict:
+    """판정에 넘길 회사 dict: state['current'] + 기술 요약의 제품 문장(state['tech']['product']). 제품명이 회사명 근접 검사의
+    키가 된다. 기술 요약 노드는 자기 결과를 {**state, 'tech': out} 으로 넘긴다. 창업자 노드는 기술 요약 전이라 제품명이 없다."""
+    product = (state.get("tech") or {}).get("product")
+    return {**state["current"], "product": product} if product else dict(state["current"])
 
 
 def evidence_pool(state: dict, extra: list[str] = ()) -> list[str]:
@@ -186,6 +282,36 @@ def _has_scale(quote: str, keys: list[str]) -> bool:
     return bool(SCALE.search(q) or SCALE_WORD.search(quote))
 
 
+def _education_only(quote: str, rationale: str) -> bool:
+    """track_record 문항: 인용·이유에 학력·전공·학위 표현이 있고, 인용에 특허·논문·연구·경력·직책 이력 표현이 없으면 True."""
+    return bool(EDUCATION.search(f"{quote} {rationale}")) and not TRACK_RECORD.search(quote or "")
+
+
+def _plan_only(quote: str, run_date: str) -> bool:
+    """no_plan 문항: 인용이 완료 표지 없는 예정·계획·방침·추진 문장이면 True (core.recency.planned_only + 추진·도입할·검토 중)."""
+    q = quote or ""
+    if PLAN_DONE_EXTRA.search(q):
+        return False
+    return planned_only(q, run_date) or (bool(PLAN_EXTRA.search(q)) and not DONE.search(q))
+
+
+def _site(s: dict) -> str:
+    return str(s.get("site") or s.get("publisher") or s.get("url") or s.get("id") or "")
+
+
+def _confidence(quote: str, ev: list[str], pool: list[str], reg: SourceRegistry, keys: list[str],
+                search_pool: bool = True) -> str:
+    """표시용 신뢰도: 같은 인용이 실린 근거 중 제3자 출처(회사 도메인이 아닌 웹·공공 문서)의 서로 다른 사이트·발행처 수 —
+    2곳 이상 '상', 1곳 '중', 0곳(회사 홈페이지 등 회사 자체 자료뿐) '하'.
+    기사 속 대표 발언 여부는 보지 않는다 (그 검사는 third_party 문항 판정이 따로 한다. 120자 안의 '회사는'만으로
+    기자가 확인한 투자 사실까지 '하'가 되는 것을 막는다). search_pool False(D1)면 판정 근거 ev 만 본다."""
+    srcs = list(ev)
+    if search_pool and quote.strip():
+        srcs = list(dict.fromkeys(srcs + [i for i in pool if i not in srcs and fuzzy_in(quote, reg.text(i))]))
+    third = {_site(s) for i in srcs if (s := reg.get(i)) and _is_third_party(s, keys)}
+    return "상" if len(third) >= 2 else "중" if third else "하"
+
+
 def _passages(pool: list[str], reg: SourceRegistry, size: int = 520, step: int = 420) -> list[tuple[str, str]]:
     out = []
     for sid in pool:
@@ -203,7 +329,8 @@ def _evidence_for(dim: dict, company: str, passages: list[tuple[str, str]], bm25
     for q in dim["questions"]:
         # 괄호 안 설명("예정·실증은 상용 운영 아님" 등)은 판정 규칙이지 검색어가 아니라서 뺀다 (넣으면 제외할 문장을 더 끌어옴)
         need = re.sub(r"\(.*?\)", "", q["need"])
-        scores = bm25.get_scores(kiwi_tokenize(f"{company} {q['text']} {need}"))
+        # 영문 근거(해외 후보·영문 기사)도 고르도록 문항의 영어 검색어(rubric text_en)를 함께 넣는다 — 모든 후보에 똑같이
+        scores = bm25.get_scores(kiwi_tokenize(f"{company} {q['text']} {need} {q.get('text_en', '')}"))
         for i in sorted(range(len(passages)), key=lambda i: -scores[i])[:per_q]:
             if i not in picked:
                 picked.append(i)
@@ -291,8 +418,11 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
     - LLM(judge)은 문항별 판정(YES/NO/UNKNOWN/N/A)·근거 id·원문 인용·한 문장 이유만 답한다 (prompts/decision.md, v1 그대로).
       근거는 pool_ids 의 본문을 문단으로 잘라 문항마다 BM25 로 고른다.
     - 판정을 빠뜨린 문항은 한 번 더 묻고, 인용이 원문에 없는 YES·NO 도 한 번만 다시 묻는다.
-    - 코드 강등: 인용이 본문에 없거나 회사명이 인용 ±300자 밖이면 UNKNOWN, 제3자·최근 24개월·문서 근거·상용 운영 요건 검사.
+    - 코드 강등: 인용이 본문에 없거나 회사명·제품명이 인용 ±300자 밖이면 UNKNOWN, 제3자·최근 24개월·문서 근거·상용 운영 요건 검사,
+      v3 문항 플래그 검사(numeric 수치 · no_plan 계획 문장 · track_record 학력뿐).
       NO 는 반대 문장 인용이 본문에 있고 회사 이야기이며, 이유가 근거 부족(추정·확인되지 않음 등)이 아닐 때만 남긴다.
+    - company['product'](기술 요약의 제품 문장, judge_company 가 넣음)가 있으면 그 제품·서비스 이름도 근접 검사 키로 쓴다.
+    - 행마다 confidence(상·중·하, 표시용)를 붙인다.
     - D1(최근 라운드)은 LLM 답을 쓰지 않고 적격성 관문에서 인용 검증을 마친 값으로 코드가 판정한다.
     - 근거 풀이 비어 있으면 LLM 을 부르지 않고 모든 문항을 UNKNOWN 으로 둔다(D1 은 코드 판정).
     반환: DimResult (rows 는 Row 목록, x 는 YES 1 / NO -1 / UNKNOWN 0 / N/A None).
@@ -304,6 +434,7 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
     c = company
     pool = [i for i in dict.fromkeys(pool_ids) if reg.get(i)]
     keys = company_keys(c)
+    near_keys = keys + product_keys(c)   # 회사명 근접 검사에만 제품·서비스 이름을 더한다 (제3자·발언 검사는 회사명 그대로)
     passages = _passages(pool, reg)
 
     got: dict[str, Answer] = {}
@@ -326,8 +457,11 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
                and a.quote.strip()
                and not _quote_sources(a.quote, [i for i in a.evidence_ids if i in pool], pool, reg)]
         if bad:
-            again = ask(_qlines(bad, {q["id"]: f" — 직전 인용 \"{got[q['id']].quote[:60]}\" 은 [근거] 원문에 없다. "
-                                               f"[근거]에서 글자 그대로 다시 복사하거나, 없으면 UNKNOWN" for q in bad}))
+            in_summary = {q["id"] for q in bad if norm(got[q["id"]].quote) and norm(got[q["id"]].quote) in norm(analysis)}
+            again = ask(_qlines(bad, {q["id"]: f" — 직전 인용 \"{got[q['id']].quote[:60]}\" 은 [근거] 원문에 없다"
+                                               + (" ([분석 요약]의 문장이다 — 요약은 다른 에이전트가 한국어로 옮긴 것이라 인용할 수 없다. "
+                                                  "같은 사실을 [근거] 원문(영문일 수 있음)에서 찾아라)" if q["id"] in in_summary else "")
+                                               + ". [근거]에서 글자 그대로 다시 복사하거나, 없으면 UNKNOWN" for q in bad}))
             got.update({a.qid: a for a in again.answers if a.qid in {q["id"] for q in bad}})
             retried += len(bad)
 
@@ -348,8 +482,10 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
             ev = _quote_sources(a.quote, ev, pool, reg)
             if not ev:
                 fail = "인용문이 근거 본문에서 확인되지 않음"
-            elif not q.get("market_level") and not any(_near_company(a.quote, reg.text(i), keys) for i in ev):
-                fail = "인용 주변(±300자)에 회사명이 없음 (업계 일반론이 아니라 이 회사 이야기여야 함)"
+            elif YES_HEDGE.search(re.sub(r"\s+", "", a.rationale)):
+                fail = "판정 이유가 추정·가능성 표현 (확인된 사실이 아님)"
+            elif not q.get("market_level") and not any(_near_company(a.quote, reg.text(i), near_keys) for i in ev):
+                fail = "인용 주변(±300자)에 회사명이 없음 (제품·서비스 이름 포함. 업계 일반론이 아니라 이 회사 이야기여야 함)"
             elif q.get("doc_required") and not any(i.startswith("D") for i in ev):
                 fail = "공공·연구기관 문서 근거 없음"
             elif q.get("third_party") and not any(_is_third_party(reg.get(i), keys) for i in ev):
@@ -370,6 +506,12 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
                 fail = "인용 속 사건 날짜가 평가 기준일 이후(예정)뿐 (코드 날짜 검사)"
             elif q.get("recent") and not q.get("market_level") and planned_only(a.quote, run_date):
                 fail = "인용이 예정·계획·목표 문장 (완료된 사건 아님)"
+            elif q.get("numeric") and not NUMBER.search(a.quote):
+                fail = "수치 요구 문항인데 인용에 숫자가 없음 (코드 수치 검사)"
+            elif q.get("no_plan") and _plan_only(a.quote, run_date):
+                fail = "인용이 예정·계획·방침·추진 문장 (실제 수익 모델·효과가 아님)"
+            elif q.get("track_record") and _education_only(a.quote, a.rationale):
+                fail = "학력·전공만 있고 특허·논문·연구·경력 이력이 인용에 없음"
             if fail:
                 verdict, note = "UNKNOWN", f"{fail} → UNKNOWN 강등 ({note})"
                 rejected.append({"qid": q["id"], "reason": fail, "quote": a.quote})
@@ -377,16 +519,18 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
             ev = _quote_sources(a.quote, ev, pool, reg) if a.quote.strip() else []
             if not ev:
                 verdict, note = "UNKNOWN", f"반대 근거 인용이 원문에서 확인되지 않음 → NO 대신 UNKNOWN ({note})"
-            elif not q.get("market_level") and not any(_near_company(a.quote, reg.text(i), keys) for i in ev):
+            elif not q.get("market_level") and not any(_near_company(a.quote, reg.text(i), near_keys) for i in ev):
                 # 업계 일반론(예: '농업용 로봇은 시범 운영 단계')은 이 회사에 대한 반대 사실이 아니다
-                verdict, note = "UNKNOWN", f"반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음) → NO 대신 UNKNOWN ({note})"
+                verdict, note = "UNKNOWN", f"반대 근거가 이 회사 이야기가 아님(인용 주변에 회사명 없음, 제품명 포함) → NO 대신 UNKNOWN ({note})"
             elif NO_HEDGE.search(re.sub(r"\s+", "", a.rationale)) and not NEGATED.search(a.quote):
                 # 이유가 "추정·확인되지 않음·근거가 없어" 류이고 인용문 자체에 부정 표현도 없으면 근거 부족
                 verdict, note = "UNKNOWN", f"반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN ({note})"
+        confidence = (_confidence(quote, ev, pool, reg, keys, search_pool=q["id"] != "D1")
+                      if verdict in ("YES", "NO") else None)
         rows.append({"dim": d["id"], "qid": q["id"], "short": q.get("short", ""), "point": q.get("point", ""),
                      "question": q["text"], "bessemer_q": list(q.get("bessemer_q") or []), "answer": verdict,
                      "x": SIGNAL[verdict], "evidence_ids": ev if verdict in ("YES", "NO") else [],
-                     "quote": quote if verdict in ("YES", "NO") else "", "rationale": note})
+                     "quote": quote if verdict in ("YES", "NO") else "", "rationale": note, "confidence": confidence})
 
     count = {v: sum(r["answer"] == v for r in rows) for v in SIGNAL}
     return {"dim": d["id"], "name": d["name"], "weight": d["weight"], "owner": d["owner"], "rows": rows,

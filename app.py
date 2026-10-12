@@ -30,7 +30,7 @@ SENSITIVITY_FILE = "outputs/eval/threshold_sensitivity.json"     # 기준 배수
 SCREENED_KEYS = ("name", "region", "stage", "round_date", "founded_date", "ceo", "eligible", "reason",
                  "gate_search_failed", "channels")
 EVALUATION_KEYS = ("name", "region", "stage", "decision", "hold_type", "multiplier", "score100", "reasons", "flip")
-ROW_KEYS = ("qid", "answer", "rationale", "quote", "evidence_ids")
+ROW_KEYS = ("qid", "answer", "rationale", "quote", "evidence_ids", "confidence")
 
 
 def save_graph_image(app) -> str:

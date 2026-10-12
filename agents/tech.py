@@ -127,9 +127,11 @@ def candidate_line(c: dict) -> str:
 def judge_own(dim: str, state: dict, reg: SourceRegistry, pool_ids: list[str], analysis: str) -> dict:
     """에이전트가 맡은 Scorecard 기준(dim)을 core.judge 로 판정한다 (계약 C3).
     근거 풀 = 지금까지 모인 근거(current·앞 에이전트의 pool_ids) + 이 에이전트가 모은 근거.
-    이 노드에서 새로 등록한 근거도 풀에 들어가도록 state 의 registry 대신 지금의 reg 로 거른다."""
+    이 노드에서 새로 등록한 근거도 풀에 들어가도록 state 의 registry 대신 지금의 reg 로 거른다.
+    회사 dict 에는 기술 요약의 제품 문장(state['tech']['product'])을 붙여 제품명도 회사명 근접 검사 키가 되게 한다."""
     pool = judge.evidence_pool({**state, "registry": reg.data}, pool_ids)
-    return judge.judge_dimension(dim, state["current"], pool, reg, analysis, state.get("run_date") or run_date())
+    return judge.judge_dimension(dim, judge.judge_company(state), pool, reg, analysis,
+                                 state.get("run_date") or run_date())
 
 
 def homepage_url(c: dict, reg: SourceRegistry, ids: list[str]) -> str | None:
@@ -253,7 +255,7 @@ def tech_node(state: dict) -> dict:
     out["homepage_summary"] = summary
     out["homepage_source"] = summary_src
     out["pool_ids"] = ids
-    out["criterion"] = judge_own("product", state, reg, ids, _analysis_text(c, out))
+    out["criterion"] = judge_own("product", {**state, "tech": out}, reg, ids, _analysis_text(c, out))
     crit = out["criterion"]
     msg = (f"[기술 요약] {name}: 성숙도 {res.maturity}, 장점 {len(res.pros)}·단점 {len(res.cons)}·주장 {len(out['claims'])}건, "
            f"{summary_note}, 기준선 {base.get('status')}, 근거 {len(out['evidence_ids'])}건 → 제품/기술력 "

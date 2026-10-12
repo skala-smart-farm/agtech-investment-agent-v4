@@ -622,7 +622,8 @@ def _bessemer_line(sc: dict) -> str:
     mark = {"YES": "✔", "NO": "✖"}
     items = " ".join(f"Q{b['q']}{mark.get(b['answer'], '?')}" for b in sc.get("bessemer") or [])
     proxy = [f"Q{b['q']}" for b in sc.get("bessemer") or [] if b.get("proxy")]
-    return f"Bessemer 10문: {items} (✔ YES · ✖ NO · ? 미확인{', 대리지표: ' + '·'.join(proxy) if proxy else ''})"
+    return (f"Bessemer 10문: {items} (✔ 연결 문항 과반 YES · ✖ NO 하나 이상 · ? 그 밖"
+            f"{', 대리지표: ' + '·'.join(proxy) if proxy else ''})")
 
 
 def _ranking_line(sc: dict) -> str:

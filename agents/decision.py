@@ -25,7 +25,7 @@ from datetime import datetime
 from pathlib import Path
 
 from core.config import ROOT, get_config
-from core.judge import SIGNAL, evidence_pool, judge_dimension
+from core.judge import SIGNAL, evidence_pool, judge_company, judge_dimension
 from core.judge import load_rubric  # 판정 공용 모듈로 옮김. agents.report 가 이 이름으로 import 하므로 재수출
 from tools.grounding import norm
 from tools.sources import SourceRegistry
@@ -330,15 +330,20 @@ def _dd_items(rows: list[dict], mean: dict, rubric: dict, cfg, killers: list[str
 
 
 def bessemer_panel(rows: list[dict], rubric: dict) -> list[dict]:
-    """rubric.yaml bessemer 10문마다 via 문항의 판정으로 답을 정한다(NO 가 하나라도 있으면 NO, 그다음 YES, 그 밖은 미확인).
+    """rubric.yaml bessemer 10문마다 via 문항의 판정으로 답을 정한다.
+    NO 가 하나라도 있으면 NO, 그다음 via 문항(N/A 제외)의 과반이 YES 면 YES, 그 밖은 미확인
+    (via 2문항이면 둘 다 YES, 3문항이면 2개 이상. 연결 문항 하나만 YES 인 질문을 ✔ 로 보이지 않게).
     결론은 Scorecard 규칙으로만 내고, 이 표는 점검용이다.
-    반환: [{'q': int, 'text': str, 'answer': 'YES'|'NO'|'미확인', 'via': [qid], 'proxy': bool}] (10행)"""
+    반환: [{'q': int, 'text': str, 'answer': 'YES'|'NO'|'미확인', 'via': [qid], 'proxy': bool, 'yes': int, 'n': int}] (10행)
+    yes·n = via 문항 중 YES 수·N/A 를 뺀 문항 수"""
     v = {r["qid"]: r["answer"] for r in rows}
     out = []
     for b in rubric["bessemer"]:
-        ans = [v.get(q) for q in b["via"]]
-        out.append({"q": b["q"], "text": b["text"], "answer": "NO" if "NO" in ans else "YES" if "YES" in ans else "미확인",
-                    "via": list(b["via"]), "proxy": bool(b.get("proxy"))})
+        ans = [v.get(q) for q in b["via"] if v.get(q) != "N/A"]
+        yes = ans.count("YES")
+        answer = "NO" if "NO" in ans else "YES" if ans and yes * 2 > len(ans) else "미확인"
+        out.append({"q": b["q"], "text": b["text"], "answer": answer, "via": list(b["via"]), "proxy": bool(b.get("proxy")),
+                    "yes": yes, "n": len(ans)})
     return out
 
 
@@ -489,7 +494,7 @@ def decision_node(state: dict) -> dict:
     for d in rubric["dimensions"]:
         crit = None if d["owner"] == AGENT else (state.get(d["owner"]) or {}).get("criterion")
         if not _complete(crit, d):
-            crit = judge_dimension(d["id"], c, pool, reg, analysis, run_date)
+            crit = judge_dimension(d["id"], judge_company(state), pool, reg, analysis, run_date)
             here.append(d["id"])
         crits[d["id"]] = crit
     rows = [r for d in rubric["dimensions"] for r in crits[d["id"]]["rows"]]
