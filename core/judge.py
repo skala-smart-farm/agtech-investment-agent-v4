@@ -192,6 +192,13 @@ def _source_line(s: dict) -> str:
     return f"웹 — {s.get('site') or ''}, {s.get('date') or '게시일 미상'}"
 
 
+def verify_mode() -> str:
+    """decision.verify_yes: off(검증 안 함) · flag(검증자 이견을 표시만, 판정 유지 — 기본) · gate(이견이면 UNKNOWN).
+    mini 등급 검증자의 표본 정확도가 50~60% 라(2026-10-12, 24건 대조) 판정을 바꾸는 데 쓰지 않고 실사 표시로 쓴다."""
+    m = get_config().decision.get("verify_yes", "off")
+    return {True: "gate", False: "off"}.get(m, m) if isinstance(m, bool) else str(m)
+
+
 def _verify_yes(q: dict, company: str, quote: str, srcs: list[dict], texts: list[str], run_date: str) -> Verdict:
     return bounded(Verdict, "judge").invoke(render(
         "verify_yes", company=company, question=q["text"], need=q.get("need", ""), quote=quote, run_date=run_date,
@@ -524,6 +531,7 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
 
     rows: list[Row] = []
     for q in d["questions"]:
+        dissent = None
         a = got.get(q["id"])
         verdict = a.verdict if a else "UNKNOWN"
         ev = [i for i in (a.evidence_ids if a else []) if i in pool]
@@ -536,6 +544,7 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
             quote = c.get("stage_quote") or ""  # 적격성 검증에서 원문 확인을 마친 인용 (LLM 인용은 검증 전이라 쓰지 않음)
         elif verdict == "YES":
             fail = None
+            dissent = None
             ev = _quote_sources(a.quote, ev, pool, reg)
             if not ev:
                 fail = "인용문이 근거 본문에서 확인되지 않음"
@@ -569,12 +578,14 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
                 fail = "인용이 예정·계획·방침·추진 문장 (실제 수익 모델·효과가 아님)"
             elif q.get("track_record") and _education_only(a.quote, a.rationale):
                 fail = "학력·전공만 있고 특허·논문·연구·경력 이력이 인용에 없음"
-            if not fail and get_config().decision.get("verify_yes", False):
+            if not fail and verify_mode() in ("flag", "gate"):
                 # 코드 규칙을 통과한 YES 만 검증자 LLM 이 한 번 더 본다 (인용이 인정 조건을 직접 충족하는가, 애매하면 아님)
                 v = _verify_yes(q, c.get("official_name") or c.get("name", ""), a.quote, [reg.get(i) for i in ev],
                                 [reg.text(i) for i in ev], run_date)
-                if not v.supports:
+                if not v.supports and verify_mode() == "gate":
                     fail = f"검증 단계: 인용이 문항의 인정 조건을 직접 충족하지 않음 — {v.reason}"
+                elif not v.supports:
+                    dissent = v.reason   # flag: 판정은 YES 그대로, 이견만 기록 → 투자 판단이 실사 항목으로 올린다
             elif q.get("min_competitors") and (n_rivals := int(c.get("confirmed_competitors") or 0)) < q["min_competitors"]:
                 fail = (f"확인된 경쟁사 {n_rivals}곳 — {q['min_competitors']}곳 이상과 비교해야 함 "
                         "(같은 분야 적격 후보이거나 서로 다른 도메인 2곳 이상에서 확인된 경쟁사만 셈)")
@@ -599,7 +610,8 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
         rows.append({"dim": d["id"], "qid": q["id"], "short": q.get("short", ""), "point": q.get("point", ""),
                      "question": q["text"], "bessemer_q": list(q.get("bessemer_q") or []), "answer": verdict,
                      "x": SIGNAL[verdict], "evidence_ids": ev if verdict in ("YES", "NO") else [],
-                     "quote": quote if verdict in ("YES", "NO") else "", "rationale": note, "confidence": confidence})
+                     "quote": quote if verdict in ("YES", "NO") else "", "rationale": note, "confidence": confidence,
+                     "verifier": dissent if verdict == "YES" else None})
 
     count = {v: sum(r["answer"] == v for r in rows) for v in SIGNAL}
     return {"dim": d["id"], "name": d["name"], "weight": d["weight"], "owner": d["owner"], "rows": rows,

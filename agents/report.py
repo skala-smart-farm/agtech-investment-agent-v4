@@ -1534,7 +1534,10 @@ def _chapters_invest(target: dict, d: dict, t: dict, reg: SourceRegistry, cfg, p
              {"t": "box", "title": "ROI 참고치 (점수·결정에 넣지 않음)", "items": _roi_items(sc, reg, cfg)},
              {"t": "h3", "text": "사업 리스크(시장·기술·규제·경쟁)와 실사 조건"},
              _table(["유형", "내용", "실사 질문"], t["risks"], ["8%", "57%", "35%"], small=True, caption="사업 리스크와 실사 질문"),
-             _ul(_dd_items(sc), f"실사 확인 항목 {len(sc.get('dd_items') or [])}개 (미확인·반대 문항 중 배수 영향이 큰 순)")]
+             _ul(_dd_items(sc), f"실사 확인 항목 {len(sc.get('dd_items') or [])}개 (미확인·반대 문항 중 배수 영향이 큰 순)"),
+             *([_ul([f"{x['item']} — {x['why']}" for x in sc["verifier_dissent"]],
+                    f"검증자 이견 {len(sc['verifier_dissent'])}건 (YES 판정은 유지, 실사로 확인)")]
+               if sc.get("verifier_dissent") else [])]
     return [
         {"title": A_CHAPTERS[1], "lead": d["lead_idea"],
          "blocks": _idea_blocks(target, d, reg, c2_yes, t["notes"], with_competition=True)

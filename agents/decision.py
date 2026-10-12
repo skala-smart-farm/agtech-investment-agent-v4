@@ -356,6 +356,14 @@ def _dd_items(rows: list[dict], mean: dict, rubric: dict, cfg, killers: list[str
     return [c[3] for c in sorted(cand)[:d.dd_max_items]]
 
 
+def _verifier_dissent(rows: list[dict], rubric: dict) -> list[dict]:
+    """검증자 이견(flag 모드): YES 판정은 유지하되, 검증자가 '인정 조건을 직접 충족하지 않음'이라 본 문항을 실사 확인 대상으로.
+    반환 [{qid, item, why}] (rubric dd_item 문구)."""
+    info = _questions(rubric)
+    return [{"qid": r["qid"], "item": info[r["qid"]]["dd_item"], "why": f"YES 판정 유지 — 검증자 이견: {r['verifier']}"}
+            for r in rows if r.get("answer") == "YES" and r.get("verifier")]
+
+
 def bessemer_panel(rows: list[dict], rubric: dict) -> list[dict]:
     """rubric.yaml bessemer 10문마다 via 문항의 판정으로 답을 정한다.
     NO 가 하나라도 있으면 NO, 그다음 via 문항(N/A 제외)의 과반이 YES 면 YES, 그 밖은 미확인
@@ -564,6 +572,7 @@ def decision_node(state: dict) -> dict:
                      "reference": {k: ref[k] for k in ("n", "loo", "source", "members", "run_date", "note")},
                      "decision": decision, "hold_type": hold_type, "reasons": reasons, "flip": flip,
                      "dd_items": _dd_items(rows, ref["mean"], rubric, cfg, killers),
+                     "verifier_dissent": _verifier_dissent(rows, rubric),
                      "founder_c": founder_c,
                      "sensitivity": {f"{t:.2f}": _decide(M, founder_c, killers, t, dc.founder_min_c)
                                      for t in dc.sensitivity},

@@ -10,7 +10,7 @@ from tools.sources import SourceRegistry
 
 RUN_DATE = "2026-09-30"
 ROW_KEYS = {"dim", "qid", "short", "point", "question", "bessemer_q", "answer", "x", "evidence_ids", "quote", "rationale",
-            "confidence"}
+            "confidence", "verifier"}
 DIM_KEYS = {"dim", "name", "weight", "owner", "rows", "yes", "no", "unknown", "na", "n", "rejected_yes", "quote_retried"}
 
 COMPANY = {"name": "팜랩", "official_name": "(주)팜랩", "name_en": "Farm Lab", "stage": "Seed", "round_date": "2026-03",
@@ -73,7 +73,7 @@ def _a(qid: str, verdict: str, quote: str = "", ids: tuple = ("W1",), why: str =
 
 @pytest.fixture
 def fake(monkeypatch, set_cfg):
-    set_cfg("decision.verify_yes", False)   # 코드 규칙만 본다 (검증자 LLM 은 test_verify_yes_* 에서 따로)
+    set_cfg("decision.verify_yes", "off")   # 코드 규칙만 본다 (검증자 LLM 은 test_verify_yes_* 에서 따로)
 
     def install(replies):
         f = FakeJudge(replies)
@@ -269,9 +269,7 @@ def test_evidence_query_uses_english_terms():
 
 
 @pytest.mark.verify_yes
-def test_verify_yes_downgrades_unsupported_quote(monkeypatch, set_cfg):
-    """검증 단계(decision.verify_yes): 코드 규칙을 통과한 YES 라도 검증자가 '인정 조건을 직접 충족하지 않음'이면 UNKNOWN."""
-    set_cfg("decision.verify_yes", True)
+def _verifier_fake(monkeypatch):
     replies = [Answers(answers=[Answer(**_a("P1", "YES", "팜랩은 전국 12개 농가에 스마트팜 제어기를 설치해 운영 중이다")),
                                 Answer(**_a("P2", "UNKNOWN", ids=())), Answer(**_a("P3", "YES", "팜랩은 자체 개발한 생육 예측 모델로 특허 3건을 등록했다")),
                                 Answer(**_a("P4", "N/A", ids=()))])]
@@ -284,12 +282,32 @@ def test_verify_yes_downgrades_unsupported_quote(monkeypatch, set_cfg):
         def invoke(self, prompt):
             if self.schema is judge.Verdict:
                 seen.append(prompt)
-                ok = "[인용] 팜랩은 자체 개발한" in prompt          # P3 인용만 인정, P1 은 검증자가 거절 (주변 원문은 같은 기사라 [인용] 줄로 구분)
+                ok = "[인용] 팜랩은 자체 개발한" in prompt          # P3 인용만 인정, P1 은 검증자가 거절
                 return judge.Verdict(supports=ok, reason="조건 충족" if ok else "상용 운영의 구체 근거가 아님")
             return replies.pop(0)
 
     monkeypatch.setattr(judge, "bounded", lambda schema, role="generator", kind="default": Fake(schema))
+    return seen
+
+
+@pytest.mark.verify_yes
+def test_verify_yes_flag_keeps_verdict_and_records_dissent(monkeypatch, set_cfg):
+    """flag 모드(기본): 검증자가 반대해도 YES 는 유지하고 이견만 행에 남긴다 (투자 판단이 실사 항목으로 올린다)."""
+    set_cfg("decision.verify_yes", "flag")
+    seen = _verifier_fake(monkeypatch)
+    _, rows = _run("product", pool=("W1",))
+    assert rows["P1"]["answer"] == "YES" and rows["P1"]["verifier"] == "상용 운영의 구체 근거가 아님"
+    assert rows["P3"]["answer"] == "YES" and rows["P3"]["verifier"] is None
+    assert len(seen) == 2 and all("평가 기준일은 2026-09-30" in p for p in seen)
+
+
+@pytest.mark.verify_yes
+def test_verify_yes_gate_downgrades_unsupported_quote(monkeypatch, set_cfg):
+    """gate 모드: 코드 규칙을 통과한 YES 라도 검증자가 '인정 조건을 직접 충족하지 않음'이면 UNKNOWN."""
+    set_cfg("decision.verify_yes", "gate")
+    seen = _verifier_fake(monkeypatch)
     _, rows = _run("product", pool=("W1",))
     assert rows["P3"]["answer"] == "YES"
     assert rows["P1"]["answer"] == "UNKNOWN" and "검증 단계" in rows["P1"]["rationale"]
     assert len(seen) == 2 and all("인정 조건" in p for p in seen)   # 코드 규칙을 통과한 YES 2개만 검증
+

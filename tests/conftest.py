@@ -26,7 +26,7 @@ def _fresh_config(request):
     YES 검증자 LLM(decision.verify_yes)은 가짜 LLM 테스트와 맞지 않아 기본으로 끄고, @pytest.mark.verify_yes 테스트만 켠다."""
     get_config.cache_clear()
     if not request.node.get_closest_marker("verify_yes"):
-        dict.__getitem__(get_config(), "decision")["verify_yes"] = False
+        dict.__getitem__(get_config(), "decision")["verify_yes"] = "off"
     yield
     get_config.cache_clear()
 

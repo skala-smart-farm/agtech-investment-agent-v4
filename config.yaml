@@ -95,7 +95,7 @@ decision:
   # Payne Scorecard 의 비교 원리(동종 투자 유치 기업 평균 = 1.00). v1 의 100점 만점 규칙(70점)은 쓰지 않는다
   method: payne_relative               # 6개 기준마다 동종 기준 집단 평균 대비 배수를 구해 가중합(M)
   threshold: 1.00                      # 투자 ⇔ 배수 M 이 이 값을 '초과'. 1.00 = Payne 원 방법의 기준점 '투자를 받은 동종 평균 기업(100%)' — 새로 정한 숫자가 아님
-  verify_yes: true                    # 코드 규칙을 통과한 YES 마다 검증자 LLM 이 인정 조건 충족 여부를 이진 판정 (prompts/verify_yes.md)
+  verify_yes: flag                    # YES 검증자 LLM(prompts/verify_yes.md): off · flag(이견만 표시, 판정 유지) · gate(이견이면 UNKNOWN). 표본 정확도 50~60% 라 flag
   step: 0.5                            # 기준별 배수 c = clip(1 + step × 평균(문항 신호 − 동종 평균 신호))
   clip: [0.5, 1.5]                     # 기준별 배수 c 의 하한·상한
   founder_min_c: 1.00                  # 창업자 기준 비율 c_founder 가 이 값 이상이어야 투자 (팀이 동종 평균 이상). Payne: "A great team will fix early product flaws, but the reverse is not true"
