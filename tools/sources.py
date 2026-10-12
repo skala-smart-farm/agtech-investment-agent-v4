@@ -101,6 +101,19 @@ def _author(text: str) -> str | None:
     return None
 
 
+def _body_author(body: str) -> str | None:
+    """본문(원문 캐시)의 바이라인. 검색 스니펫에 바이라인이 없어 등록 때 놓친 기자 이름을 REFERENCE 를 쓸 때 다시 찾는다.
+    본문에는 '다른 기사' 목록의 기자 이름도 섞이므로, 같은 이름이 두 번 이상 나오거나(바이라인 + 서명)
+    '홍길동 기자 abc@…'처럼 이메일 서명이 붙은 이름만 인정한다. 예) 지디넷 '방은주 기자 … 방은주 기자ejbang@zdnet.co.kr'."""
+    for m in re.finditer(r"(?<![가-힣])([가-힣]{2,4})\s?기자(?![가-힣])", body or ""):
+        name = m.group(1)
+        if name in NOT_REPORTER:
+            continue
+        if len(re.findall(rf"(?<![가-힣]){name}\s?기자", body)) >= 2 or re.search(rf"{name}\s?기자\s*[\w.-]+@", body):
+            return f"{name} 기자"
+    return None
+
+
 class SourceRegistry:
     """dict 기반이라 LangGraph State 에 그대로 담을 수 있다."""
 
@@ -195,6 +208,10 @@ NEWSLETTERS = ("stibee.com", "maily.so")
 # 목록·DB 페이지: 게시일이 없어 조회일로 표기하고, 기관명은 운영 주체로 쓴다
 LIST_PAGES = {"jointips.or.kr": "중소벤처기업부 TIPS", "data.go.kr": "국민연금공단"}
 GROUPS = ("기관 보고서", "학술 논문", "웹페이지")  # REFERENCE 소제목과 번호 순서
+# 연구기관이 직접 펴내는 정기간행물(동료 심사 학술지가 아님). 저자가 있어도 '학술 논문'이 아니라 '기관 보고서'로 분류한다.
+# data/manifest.yaml 의 type 을 바꾸면 코퍼스 해시(rag/index.py _corpus_hash)가 바뀌어 조각·FAISS 재현 캐시가 깨지므로 여기서 보정한다
+INSTITUTIONAL_SERIALS = {"세계농업"}   # 한국농촌경제연구원(KREI)『세계농업』
+UNKNOWN_AUTHOR = "작성자 미표기"       # 바이라인이 없는 기사: 작성자 자리에 매체명을 쓰지 않는다 (매체명은 사이트 자리에)
 TRUNCATED = re.compile(r"\s*(?:\.{3,}|…)\s*$")
 _PORTAL_OWN = re.compile(r"nate|daum|kakao|naver", re.I)
 
@@ -220,10 +237,17 @@ def citable(s: dict) -> bool:
     return s["kind"] == "doc" or not _host(s.get("url", "")).endswith(NEWSLETTERS)
 
 
+def _institutional_serial(s: dict) -> bool:
+    return s["kind"] == "doc" and (s.get("journal") or "") in INSTITUTIONAL_SERIALS
+
+
 def reference_group(s: dict) -> str:
-    """기관 보고서 / 학술 논문 / 웹페이지. 저자가 있는 문서(학술지·정기간행물 기고)는 학술 논문 형식."""
+    """기관 보고서 / 학술 논문 / 웹페이지. 저자가 있는 학술지 논문은 학술 논문 형식.
+    연구기관 정기간행물 기고(INSTITUTIONAL_SERIALS, 예: KREI『세계농업』)는 저자가 있어도 기관 보고서."""
     if s["kind"] == "web":
         return "웹페이지"
+    if _institutional_serial(s):
+        return "기관 보고서"
     return "학술 논문" if s.get("type") == "paper" or s.get("authors") else "기관 보고서"
 
 
@@ -298,15 +322,21 @@ def format_reference(s: dict) -> str:
             vol = f"{s.get('volume') or ''}({s['issue']})" if s.get("issue") else str(s.get("volume") or "")
             tail = ", ".join(str(x) for x in (s.get("journal") or s.get("publisher"), vol, s.get("pages")) if x)
             return f"{s['authors']}({s['year']}). {s['title']}. {tail}."
+        if _institutional_serial(s):  # 기관(연도). 제목(저자, 『간행물』 호, 쪽). URL
+            issue = " ".join(str(x) for x in (s.get("volume"), s.get("issue")) if x)
+            where = ", ".join(x for x in (s.get("authors"), f"『{s['journal']}』 {issue}".strip(),
+                                          f"{s['pages']}쪽" if s.get("pages") else "") if x)
+            return f"{s['publisher']}({s['year']}). {s['title']}({where}). {s['url']}"
         return f"{s['publisher']}({s['year']}). {s['title']}. {s['url']}"
     url = unquote(s["url"]).split("#")[0]  # "#메타파머스" 같은 내부 표지는 URL 이 아니다
     host = _host(url)
     site, who = s["site"], s.get("author")
     if host.endswith(PORTALS):
+        # 포털 전재본: 원 매체·기자로 표기하고, URL 이 포털 주소임을 사이트 자리에 밝힌다 (원문 URL 은 재현 캐시에 없음)
         outlet, reporter = _origin(s)
-        site, who = outlet or site, reporter or who or outlet
+        site, who = (f"{outlet}(포털 전재본)" if outlet else site), reporter or who
     org = _list_page_org(host)
-    who = who or org or site
+    who = who or org or _body_author(s.get("body") or "") or UNKNOWN_AUTHOR
     # 목록·DB 페이지의 날짜(설립일·자료 기준월)는 게시일이 아니다
     when = s["access_date"] if uses_access_date(s) else s["date"]
     return f"{who}({when}). {_ref_title(s)}. {site}, {url}"

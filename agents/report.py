@@ -260,8 +260,10 @@ def _pool_rows(p: dict) -> list[list]:
         ["발굴", n(p["discovered"]), n(p["disc_split"][0]), n(p["disc_split"][1]),
          f"발굴 {p['rounds']}라운드" + (" (라운드 합계, 중복 포함)" if p["rounds"] > 1 else "")
          + f", 라운드당 최대 {p['per_round']}곳을 적격성 관문으로 넘김"],
-        ["적격성 관문 (G1~G6)", p["screened"], p["scr_split"][0], p["scr_split"][1],
-         f"탈락 {len(p['rejected'])}곳" + (f": {rej}" if rej else "")],
+        ["적격성 관문 검사 (G1~G6)", p["screened"], p["scr_split"][0], p["scr_split"][1],
+         f"탈락 {len(p['rejected'])}곳" + (f": {rej}" if rej else "")
+         + (f" (발굴 {p['discovered'] - p['screened']}곳은 검사 상한 밖이라 관문 검사 안 함)"
+            if p["rounds"] == 1 and p.get("discovered") and p["discovered"] > p["screened"] else "")],
         ["적격 (비상장·Seed~C·Exit 전)", p["eligible"], p["el_split"][0], p["el_split"][1],
          f"미평가 {len(p['unevaluated'])}곳 ({p['why']})" if p["unevaluated"] else "모두 평가"],
         ["평가 (창업자·기술·시장·경쟁·투자 판단)", p["evaluated"], p["ev_split"][0], p["ev_split"][1],
@@ -270,8 +272,12 @@ def _pool_rows(p: dict) -> list[list]:
 
 
 def _funnel(pool: dict) -> str:
+    """'발굴 → 관문 검사 → 적격' 퍼널. 관문은 발굴한 전부가 아니라 라운드당 검증 상한(workflow.max_candidates_per_round)만
+    검사하므로, '발굴 78곳 → 관문 통과 14곳'처럼 쓰면 78곳을 모두 검사한 것으로 읽힌다 → 검사한 수를 사이에 넣는다.
+    (SUMMARY 상황 줄은 초안 재작성 루프의 글자 수 검사에 들어가므로 길이를 크게 늘리지 않는다)"""
     disc = f"{pool['discovered']}곳 발굴 → " if pool.get("discovered") else ""
-    return f"국내외 AgTech AI 스타트업 {disc}적격성 관문 통과 {pool['eligible']}곳(모두 Seed~Series C 투자 유치 확인)"
+    return (f"국내외 AgTech AI 스타트업 {disc}관문 검사 {pool['screened']}곳 → 적격 {pool['eligible']}곳"
+            f"(모두 Seed~Series C 투자 유치 확인)")
 
 
 def _hold_counts(evals: list[dict]) -> str:
@@ -401,6 +407,219 @@ def _consistency_problems(draft: _Body, target: dict, evals: list[dict], run_dat
     if {r.type for r in draft.risks} < {"시장", "기술", "규제", "경쟁"}:
         probs.append("리스크 유형(시장·기술·규제·경쟁)을 하나씩은 다 써라")
     return probs
+
+
+# ── 숫자 읽기 (시장 규모 표기·숫자 대조 검사 공용)
+
+_N = r"\d[\d,]*(?:\.\d+)?"
+_KR_U = "천억|백억|십억|조|억|천만|백만|십만|만|천"
+_KR_UNIT = {"천억": 1e11, "백억": 1e10, "십억": 1e9, "조": 1e12, "억": 1e8, "천만": 1e7, "백만": 1e6, "십만": 1e5, "만": 1e4,
+            "천": 1e3}
+_EN_UNIT = {"billion": 1e9, "bn": 1e9, "b": 1e9, "million": 1e6, "mn": 1e6, "m": 1e6, "k": 1e3, "thousand": 1e3}
+Q_KR = re.compile(rf"(?<![\d.,])({_N})\s*({_KR_U})((?:\s*{_N}\s*(?:{_KR_U}))*)\s*(달러|원)?")
+Q_EN = re.compile(rf"(?:US\$|\$|USD\s?)\s?({_N})\s*(billion|million|thousand|bn|mn|[BMK])?(?![A-Za-z])"
+                  rf"|(?<![\w.])({_N})\s*(billion|million|bn|mn|[BM])\s*(?:달러|dollars?|USD)", re.I)
+Q_PCT = re.compile(rf"(?<![\d.])({_N})\s*(?:%|％|퍼센트|percent)", re.I)
+Q_DATE = re.compile(r"(?<!\d)((?:19|20)\d{2})\s?[-./]\s?(?:0?[1-9]|1[0-2])(?:\s?[-./]\s?\d{1,2})?(?!\d)")  # 2025-08, 2024.07.18
+Q_YEAR = re.compile(r"(?<!\d)(?<!\d[.,])((?:19|20)\d{2})(?!\d|[.,]\d|\s*(?:명|곳|건|개|배|대|호|회|억|만|천|원|달러|%))")
+Q_YEAR_ABBR = re.compile(r"[’']\s?(\d{2})(?!\d)")  # 영어 근거의 'BASc ’22' = 2022
+Q_CNT = re.compile(rf"(?<![\d.,A-Za-z])({_N})\s*(?:여|\+)?\s*(명|곳|건|개사|개|배|대(?!표|학|비|상)|호|회(?!사)|kg|ha|㎡|개월|주년|년)")
+# 영어 근거의 개수 표현 ('seven years', '80 of its … robots', '45 employees') — 한국어 문장의 '7년'·'80대'·'45명'과 대조용
+_EN_WORDS = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen "
+                                         "fifteen sixteen seventeen eighteen nineteen twenty".split())}
+Q_CNT_EN = re.compile(rf"(?<![\w.])({_N}|{'|'.join(_EN_WORDS)})(?:[\s-]+[A-Za-z-]+){{0,4}}?[\s-]+"
+                      r"(years?|months?|employees|people|staff|robots|units|machines|farms|growers|customers|companies|"
+                      r"acres|hectares|patents)\b", re.I)
+
+
+def _f(x: str) -> float:
+    return float(x.replace(",", ""))
+
+
+def _kr_value(m: re.Match) -> float:
+    v = _f(m.group(1)) * _KR_UNIT[m.group(2)]
+    for n, u in re.findall(rf"({_N})\s*({_KR_U})", m.group(3) or ""):
+        v += _f(n) * _KR_UNIT[u]
+    return v
+
+
+def _quantities(text: str) -> list[dict]:
+    """문장 속 숫자를 종류별 값으로: amt(금액·규모, 원 단위 숫자) / pct / year / cnt(명·곳·건·년 등).
+    먼저 찾은 표현은 가려서(같은 길이 공백) 뒤 규칙이 다시 읽지 않게 한다 ('2,000만 원'의 2000 을 연도로 읽지 않음)."""
+    t, out = CITE.sub(lambda m: " " * len(m.group(0)), text or ""), []
+
+    def take(pat: re.Pattern, kind: str, val):
+        nonlocal t
+        for m in list(pat.finditer(t)):
+            v = val(m)
+            if v is not None:
+                out.append({"kind": kind, "value": v, "raw": m.group(0).strip(), "start": m.start()})
+        t = pat.sub(lambda m: " " * len(m.group(0)), t)
+
+    take(Q_KR, "amt", _kr_value)
+    take(Q_EN, "amt", lambda m: (_f(m.group(1)) * _EN_UNIT.get((m.group(2) or "").lower(), 1)) if m.group(1)
+         else _f(m.group(3)) * _EN_UNIT[m.group(4).lower()])
+    take(Q_PCT, "pct", lambda m: _f(m.group(1)))
+    take(Q_DATE, "year", lambda m: int(m.group(1)))
+    take(Q_YEAR, "year", lambda m: int(m.group(1)))
+    take(Q_YEAR_ABBR, "year", lambda m: 2000 + int(m.group(1)))
+    take(Q_CNT, "cnt", lambda m: _f(m.group(1)))
+    take(Q_CNT_EN, "cnt", lambda m: float(_EN_WORDS[m.group(1).lower()]) if m.group(1).lower() in _EN_WORDS else _f(m.group(1)))
+    return sorted(out, key=lambda q: q["start"])
+
+
+def _same_q(a: dict, b: dict) -> bool:
+    if a["kind"] != b["kind"]:
+        return False
+    if a["kind"] == "amt":
+        return abs(a["value"] - b["value"]) <= 0.005 * max(abs(a["value"]), 1)
+    if a["kind"] == "pct":
+        return abs(a["value"] - b["value"]) < 0.051
+    return a["value"] == b["value"]
+
+
+# ── 숫자 대조 검사: LLM 이 쓴 문장 속 숫자 ↔ 입력 데이터(초안 프롬프트의 근거·점수표 + 근거 본문)
+# _consistency_problems 와 달리 기본은 '검사만' 한다(checks['number_audit']). 재작성 루프에 넣으면 재작성 지시문이 바뀌어
+# 재현 캐시(replay/llm_cache.sqlite)에 없는 LLM 호출이 생기므로, 1회 재작성은 report.number_check.rewrite 로만 켠다.
+
+def _draft_fields(draft: _Body) -> list[tuple[str, str]]:
+    """초안의 문장 칸 (어디에 쓰였는지, 문장). 실사 질문 칸은 확인할 일이라 제외."""
+    if isinstance(draft, Draft):
+        head = [("SUMMARY 근거(기술)", draft.ev_tech), ("SUMMARY 근거(시장)", draft.ev_market),
+                ("SUMMARY 근거(팀)", draft.ev_team), ("SUMMARY 리스크", draft.risk_line), ("1장 결론", draft.lead_idea),
+                ("2장 결론", draft.lead_market), ("3장 결론", draft.lead_team)]
+    else:
+        head = [("SUMMARY 원인", draft.common_cause), ("4장 공통 원인", draft.common_detail)] + [
+            (f"2장 보류 사유({c.name})", c.why_not) for c in draft.candidates]
+    body = [("1장 해결하는 문제", draft.problem), ("1장 제품", draft.product), ("1장 수익 방식", draft.revenue_model),
+            ("1장 업계 기술 수준", draft.industry_baseline), ("2장 시장", draft.market), ("3장 팀", draft.team),
+            ("1장 경쟁 구도", draft.competition)]
+    tables = ([(f"경쟁사 표({c.name})", c.vs_target) for c in draft.competitor_notes]
+              + [(f"리스크 표({r.type})", r.content) for r in draft.risks] + [("한계점", x) for x in draft.data_limits[:1]])
+    return [(w, t) for w, t in head + body + tables if t]
+
+
+def _sentences(text: str) -> list[str]:
+    """문장 단위로 자른다. '…했다 [W1a2b3].' 처럼 문장 끝 '다' 뒤에 오는 인용은 그 문장에 붙여 둔다."""
+    return [s for s in re.split(r"(?<=[.。;；])\s+|(?<=다)\s+(?![\[(])", text or "") if s.strip()]
+
+
+def _cite_ids(text: str) -> list[str]:
+    return list(dict.fromkeys(i for m in CITE.finditer(text or "") for i in re.split(r"\s*[,，]\s*", m.group(1))))
+
+
+AMT_RE = rf"{_N}\s*(?:{_KR_U})(?:\s*{_N}\s*(?:{_KR_U}))*\s*(?:달러|원)?"
+SPAN = re.compile(rf"((?:19|20)\d{{2}})년\s*(?:기준\s*)?(?:약\s*)?({AMT_RE})\s*(?:에서|→|~|부터)\s*"
+                  rf"(?:((?:19|20)\d{{2}})년(?:까지)?\s*)?(?:약\s*)?({AMT_RE})")
+
+
+def _cagr_problems(units: list[str]) -> list[str]:
+    """'YYYY년 A에서 YYYY년 B' 구간이 있으면 연평균 성장률을 계산해, 같은 단위(문장·표 칸)에서 A 와 함께 적힌 'n%' 와 비교한다.
+    1.5%p 넘게 다르면 경고 (예: 226.5억 → 556.4억 달러(2023→2030)는 연평균 약 13.7% 인데 19.1% 를 붙인 경우).
+    기준 연도가 1년 어긋난 발표(2023 값, 2024~2034 성장률)는 보통 1.5%p 안이라 걸리지 않는다."""
+    spans = []
+    for u in units:
+        for m in SPAN.finditer(NUM_CITE.sub("", CITE.sub("", u))):
+            a, b = _quantities(m.group(2)), _quantities(m.group(4))
+            if a and b and m.group(3) and int(m.group(3)) > int(m.group(1)):
+                spans.append((int(m.group(1)), a[0], int(m.group(3)), b[0]))
+    out = []
+    for u in units:
+        plain = NUM_CITE.sub("", CITE.sub("", u))
+        if not re.search(r"연평균|CAGR|성장률", plain):
+            continue
+        qs = _quantities(plain)
+        amts, pcts = [q for q in qs if q["kind"] == "amt"], [q for q in qs if q["kind"] == "pct"]
+        if not amts or not pcts:
+            continue
+        sp = next((s for s in spans if _same_q(s[1], amts[0])), None)
+        if not sp:
+            continue
+        implied = ((sp[3]["value"] / sp[1]["value"]) ** (1 / (sp[2] - sp[0])) - 1) * 100
+        for p in pcts:
+            if abs(implied - p["value"]) > 1.5:
+                out.append(f"{sp[1]['raw']}({sp[0]}) → {sp[3]['raw']}({sp[2]})의 연평균은 약 {implied:.1f}% 인데 "
+                           f"'{p['raw']}'가 붙어 있다: {plain.strip()[:70]}…")
+    return out
+
+
+def _market_units(md: str) -> list[str]:
+    """보고서 md 의 시장 규모 절(A안 2장, B안 3.2)을 검사 단위로: 문단은 문장마다, 대표 수치 목록은 한 단위
+    ('다른 추정'으로 표시한 줄은 따로 떼어 둔 것이라 뺀다)."""
+    m = re.search(r"^(##|###) [\d.]+ 시장 규모와 성장성\n(.*?)(?=^##)", md, re.M | re.S)
+    if not m:
+        return []
+    lines = [ln for ln in m.group(2).splitlines() if ln.strip() and not ln.startswith("**")]
+    kv = " / ".join(ln[2:] for ln in lines if ln.startswith("- ") and "다른 추정" not in ln)
+    return [s for ln in lines if not ln.startswith(("- ", ">")) for s in _sentences(ln)] + ([kv] if kv else [])
+
+
+def _number_audit(draft: _Body, ctx: dict, reg: SourceRegistry, md: str = "", target: dict | None = None) -> dict:
+    """LLM 이 쓴 보고서 문장 속 숫자(금액·%·연도·명/곳/건 등)를 입력 데이터와 대조한다.
+    - 입력에 없음: 초안 프롬프트(ctx: 근거 목록·점수표·분석 결과)와 프롬프트에 나온 근거 id 들의 본문 어디에도 없다 → 지어냈을 수 있음
+    - 인용 근거에 없음: 입력에는 있지만 문장에 붙인 인용 근거(문서면 같은 문서의 다른 조각 포함)에는 없다 → 인용이 어긋났을 수 있음
+    - 같은 연도 다른 값: 한 칸에서 같은 연도의 규모가 두 값 이상인데 추정 기관을 밝히지 않음
+    - 성장률 불일치: 시장 규모 절에서 'A→B' 구간의 연평균과 함께 적힌 % 가 다름 (md 를 주면 검사)
+    - target 을 주면 보고서에 그대로 실리는 분석 에이전트 문장(장단점·차별점 주장·인물 경력·마일스톤)도 같은 방법으로 보되,
+      입력은 분석 결과 JSON 이 아니라 근거 본문만 쓴다(분석 결과에는 그 문장 자체가 들어 있으므로) → 'upstream'
+    반환 {'unsupported': [...], 'conflicts': [...], 'cagr': [...], 'upstream': [...]} (각 항목은 표시용 문장)."""
+    ctx_text = "\n".join(str(v) for v in ctx.values())
+    ctx_ids = [i for i in dict.fromkeys(re.findall(r"[WD][0-9a-f]{5,8}", ctx_text)) if reg.get(i)]
+    memo: dict[str, list[dict]] = {}
+
+    def src_q(i: str) -> list[dict]:
+        """근거 하나의 숫자 (본문 + 게시일·발행 연도: '이번 주 발표'처럼 본문에 연도가 없는 기사의 사건 연도)."""
+        if i not in memo:
+            s = reg.get(i) or {}
+            memo[i] = _quantities(f"{_doc_text(reg, i)} {s.get('date') or ''} {s.get('year') or ''}") if s else []
+        return memo[i]
+
+    def cited(ids: list[str]) -> list[dict]:
+        return [q for i in ids for q in src_q(i)]
+
+    pool_q = _quantities(ctx_text) + cited(ctx_ids)
+
+    def scan(fields: list[tuple], pool: list[dict]) -> list[str]:
+        out = []
+        for where, text, *own in fields:
+            field_ids = _cite_ids(text) or [i for i in (own[0] if own else []) if reg.get(i)]
+            for sent in _sentences(text):
+                ids = _cite_ids(sent) or field_ids
+                for q in _quantities(sent):
+                    if not any(_same_q(q, x) for x in pool):
+                        status = "입력에 없음"
+                    elif ids and not any(_same_q(q, x) for x in cited(ids)):
+                        status = "인용 근거에 없음"
+                    else:
+                        continue
+                    out.append(f"[{where}] '{q['raw']}' {status}: {CITE.sub('', sent).strip()[:90]}")
+        return out
+
+    unsupported, conflicts, upstream = scan(_draft_fields(draft), pool_q), [], []
+    for where, text in _draft_fields(draft):
+        by_year: dict[int, list[dict]] = {}
+        for y, q in _year_amounts(text):
+            if not any(_same_q(q, x) for x in by_year.get(y, [])):
+                by_year.setdefault(y, []).append(q)
+        for y, qs in by_year.items():
+            if len(qs) > 1 and not re.search(r"Research|Insights|Statista|Markets|기관|추정치", CITE.sub("", text)):
+                note = _multi_estimate_note(text, reg)
+                conflicts.append(f"[{where}] 같은 {y}년 규모가 {' · '.join(q['raw'] for q in qs)} — 추정 기관을 밝히지 않음"
+                                 + (" (화면: 근거 원문에서 찾은 기관명을 '수치 주의' 주석으로 붙임)" if note and "추정)" in note else ""))
+    if target is not None:
+        t, comp, f = target.get("tech") or {}, target.get("competition") or {}, target.get("founder") or {}
+        # (어디, 문장, 그 항목의 근거 id) — 문장 안 인용이 없으면 항목의 근거 id 로 '인용 근거에 없음'을 본다
+        fields = ([("장점", x) for x in t.get("pros") or []] + [("단점", x) for x in t.get("cons") or []]
+                  + [("차별점 주장", c.get("claim") or "", c.get("evidence_ids") or []) for c in comp.get("verified_claims") or []]
+                  + [(f"인물 {x.get('name')}", x.get("background") or "", x.get("evidence_ids") or []) for x in f.get("people") or []]
+                  + [("마일스톤", f"{m.get('date')} {m.get('what')}", m.get("evidence_ids") or []) for m in f.get("milestones") or []])
+        prof = target.get("profile") or {}
+        ids = _usable(reg, list(prof.get("evidence_ids") or []) + list(prof.get("stage_evidence_ids") or [])
+                      + [i for k in ("founder", "tech", "competition") for i in (target.get(k) or {}).get("pool_ids") or []]
+                      + [i for k in ("founder", "tech", "competition") for i in (target.get(k) or {}).get("evidence_ids") or []])
+        upstream = scan([x for x in fields if x[1]], cited(ids) + _quantities(json.dumps(prof, ensure_ascii=False)))
+    cagr = _cagr_problems(_market_units(md)) if md else []
+    return {"unsupported": unsupported, "conflicts": conflicts, "cagr": cagr, "upstream": upstream}
 
 
 # ── 표 재료 (코드가 State 로 만든다)
@@ -846,8 +1065,12 @@ def _ul(items: list[str], title: str = "") -> dict:
     return {"t": "ul", "title": title, "items": [x for x in items if x]}
 
 
-def _table(head: list[str], rows: list[list], widths: list[str] | None = None, small: bool = False) -> dict:
-    return {"t": "table", "head": head, "rows": [[str(c) for c in r] for r in rows], "widths": widths or [], "small": small}
+def _table(head: list[str], rows: list[list], widths: list[str] | None = None, small: bool = False,
+           caption: str = "") -> dict:
+    """표 블록. caption 은 PDF 의 '표 n.' 뒤에 붙는 표 이름 — 비우면 템플릿이 장·소제목 이름을 번호 없이 쓴다
+    (장 번호를 그대로 쓰면 '표 1. 1. 사업 아이디어…'처럼 번호가 겹친다)."""
+    return {"t": "table", "head": head, "rows": [[str(c) for c in r] for r in rows], "widths": widths or [], "small": small,
+            "caption": caption}
 
 
 def _note(text: str) -> dict:
@@ -862,7 +1085,8 @@ def _idea_blocks(target: dict, d: dict, reg: SourceRegistry, c2_yes: bool, notes
                    ["투자 단계", _stage_line(prof, reg)]])]
     pc = _pros_cons(target, reg, c2_yes)
     if pc:
-        blocks.append(_table(["핵심 기술의 장점", "단점·한계"], pc, ["50%", "50%"], small=True))
+        blocks.append(_table(["핵심 기술의 장점", "단점·한계"], pc, ["50%", "50%"], small=True,
+                             caption="핵심 기술의 장점과 한계"))
     blocks.append(_p(f"업계 기술 수준 대비: {d['industry_baseline']}"))
     if with_competition:
         blocks += _competition_blocks(target, d, reg, c2_yes, notes)
@@ -875,7 +1099,7 @@ def _competition_blocks(target: dict, d: dict, reg: SourceRegistry, c2_yes: bool
     rows = _competitor_rows(target, reg, notes, c2_yes)
     if rows:
         blocks.append(_table(["경쟁사", "국가", "제품·접근", "대상 대비" if c2_yes else "대상 대비 (회사 측 주장 포함)", "근거"],
-                             rows, ["14%", "7%", "27%", "45%", "7%"], small=True))
+                             rows, ["14%", "7%", "27%", "45%", "7%"], small=True, caption="경쟁사 비교"))
     claims = [f"{c.get('claim')} — {c.get('status')}{_cite(reg, c.get('evidence_ids'), 2)}"
               for c in (comp.get("verified_claims") or [])[:3] if c.get("claim")]
     if claims:
@@ -884,15 +1108,246 @@ def _competition_blocks(target: dict, d: dict, reg: SourceRegistry, c2_yes: bool
 
 
 def _market_blocks(target: dict, d: dict, reg: SourceRegistry) -> list[dict]:
+    """시장 규모 장: LLM 문단 + 코드가 만든 대표 수치 줄.
+    - 라벨: 대표 수치의 범위(scope)가 세부 분야 시장이면 '세부 시장 규모', 아니면 '상위 시장 규모'(세부 분야 수치 아님을 밝힘)
+    - 성장률: 대표 규모와 같은 추정(근거 원문에서 규모 바로 뒤의 '~ 끝값 … n%')의 성장률을 붙이고, 시장 분석의 대표 성장률이
+      다른 추정에서 왔으면 '다른 추정'으로 따로 적는다 (226.5억 달러에 19.1% 를 붙이던 문제)
+    - 같은 연도의 규모가 문단에 두 값 이상이면(분석기관별 추정) 기관 이름을 근거 원문에서 찾아 주석으로 단다"""
     m = target.get("market") or {}
+    seg = get_segment(target.get("segment_id") or (target.get("profile") or {}).get("segment_id") or "")
     size, facts = m.get("size") or {}, []
-    if size.get("raw") and reg.get(size.get("source_id") or ""):
-        facts.append(["세부 시장 규모", f"{size['raw']}" + (f" ({size['scope']})" if size.get("scope") else "")
-                      + f" [{size['source_id']}]"])
-    if m.get("growth_rate_pct") and reg.get(m.get("growth_source_id") or ""):
-        facts.append(["성장률", f"연평균 {_num(m['growth_rate_pct'])}%" + (f" ({m['growth_year']})" if m.get("growth_year") else "")
-                      + f" [{m['growth_source_id']}]"])
-    return [_p(d["market"])] + ([_kv(facts)] if facts else [])
+    sid, gid = size.get("source_id") or "", m.get("growth_source_id") or ""
+    est = _estimate_near(reg.text(sid), size.get("raw") or "") if reg.get(sid) else None
+    growth = m.get("growth_rate_pct")
+    if size.get("raw") and reg.get(sid):
+        level = _market_level(size.get("scope") or "", seg)
+        label = "세부 시장 규모" if level == "segment" else "상위 시장 규모"
+        val = size["raw"]
+        if est and est.get("end"):
+            val += f" → {est['end_year'] or ''}{'년 ' if est.get('end_year') else ''}{est['end']}"
+        if est and est.get("cagr") is not None:
+            val += f", 연평균 {_num(est['cagr'])}%" + (f"({est['period']})" if est.get("period") else "")
+        scope = size.get("scope") or ""
+        if level == "parent":
+            scope = f"{scope} — 세부 분야 '{seg['name']}' 수치 아님" if scope else f"세부 분야 '{seg['name']}' 수치 아님"
+        facts.append([label, val + (f" ({scope})" if scope else "") + f" [{sid}]"])
+    if growth and reg.get(gid):
+        same = est and est.get("cagr") is not None and abs(est["cagr"] - float(growth)) < 0.05
+        if not same:  # 대표 규모와 같은 추정의 성장률이면 위 줄에 이미 있다
+            period = _pct_period(reg.text(gid), float(growth))
+            other = est and est.get("cagr") is not None
+            facts.append(["성장률(다른 추정)" if other else "성장률",
+                          f"연평균 {_num(growth)}%" + (f" ({period} 예측)" if period else
+                                                     f" ({m['growth_year']})" if m.get("growth_year") else "")
+                          + f" [{gid}]"])
+    blocks = [_p(d["market"])] + ([_kv(facts)] if facts else [])
+    if note := _multi_estimate_note(" ".join([d.get("market") or "", d.get("ev_market") or ""]), reg):
+        blocks.append(_note(note))
+    return blocks
+
+
+# ── 시장 규모 수치 도우미 (코드가 근거 원문으로 확인; 보고서 화면만 바꾸고 LLM 입력은 바꾸지 않는다)
+
+_MKT_STOP = {"AI", "농업", "스마트", "시장", "분야", "관리", "분석", "예측", "생산", "기술", "글로벌", "국내", "세계", "산업"}
+_MKT_STOP_EN = {"agricultural", "agriculture", "smart", "market", "global", "farming", "platform", "detection",
+                "monitoring", "controlled", "environment"}
+
+
+def _market_level(scope: str, seg: dict) -> str:
+    """시장 규모 수치의 범위(scope)가 세부 분야 시장(segment)인지 상위 시장(parent)인지.
+    세부 분야 이름·검색어의 핵심 낱말(예: 로봇·농기계·병해충·축산·스마트팜)이 범위에 있으면 segment.
+    예) 분야 '농업 로봇·자율주행 농기계' + 범위 '글로벌 스마트 농업 시장' → parent"""
+    sc = (scope or "").lower()
+    words = [w for w in re.findall(r"[가-힣]{2,}", f"{seg.get('name', '')} {seg.get('ko', '')}") if w not in _MKT_STOP]
+    words += [w.lower()[:5] for w in re.findall(r"[A-Za-z]{4,}", seg.get("en", "")) if w.lower() not in _MKT_STOP_EN]
+    return "segment" if any(w.lower() in sc for w in words) else "parent"
+
+
+def _estimate_near(text: str, raw: str) -> dict | None:
+    """근거 원문에서 시장 규모 수치(raw) 바로 뒤의 '~ 끝값'과 연평균 성장률, 바로 앞의 'YYYY~YYYY' 기간을 읽는다
+    (분석기관별 추정표처럼 규모·기간·성장률이 한 줄에 있는 경우 = 같은 추정). 못 찾으면 None."""
+    t = re.sub(r"\s+", " ", text or "")
+    key = re.sub(r"^\s*(?:19|20)\d{2}년\s*(?:기준\s*)?", "", raw or "").strip()
+    i = t.find(key) if key else -1
+    if i < 0:
+        return None
+    before, after = t[max(0, i - 40): i], t[i + len(key): i + len(key) + 80]
+    period = re.findall(r"((?:19|20)\d{2})\s*[~∼–-]\s*((?:19|20)\d{2})", before)
+    end = re.match(rf"\s*[~∼–-]\s*((?:(?:19|20)\d{{2}}년\s*)?{_N}\s*(?:{_KR_U})(?:\s*{_N}\s*(?:{_KR_U}))*\s*(?:달러|원)?)", after)
+    rest = after[end.end():] if end else after
+    pct = re.match(rf"\s*(?:\(|,|/|\|)?\s*(?:연평균\s*(?:성장률\s*)?)?({_N})\s*%", rest)
+    if not (end or pct):
+        return None
+    y0, y1 = (period[-1] if period else (None, None))
+    end_txt = end.group(1).strip() if end else None
+    end_year = None
+    if end_txt and (ym := re.match(r"((?:19|20)\d{2})년\s*", end_txt)):
+        end_year, end_txt = ym.group(1), end_txt[ym.end():]
+    return {"end": end_txt, "end_year": end_year or y1, "period": f"{y0}~{y1}" if y0 else None,
+            "cagr": _f(pct.group(1)) if pct else None}
+
+
+def _pct_period(text: str, pct: float) -> str | None:
+    """근거 원문에서 성장률 n% 앞 80자 안의 예측 기간 'YYYY~YYYY'."""
+    t = re.sub(r"\s+", " ", text or "")
+    for m in re.finditer(rf"({_N})\s*%", t):
+        if abs(_f(m.group(1)) - pct) < 0.051:
+            per = re.findall(r"((?:19|20)\d{2})\s*[~∼–-]\s*((?:19|20)\d{2})", t[max(0, m.start() - 80): m.start()])
+            if per:
+                return f"{per[-1][0]}~{per[-1][1]}"
+    return None
+
+
+def _year_amounts(text: str) -> list[tuple[int, dict]]:
+    """'2023년 174억 달러', '2023년 기준 226억 5천만 달러' 처럼 연도 바로 뒤에 오는 규모."""
+    out, plain = [], CITE.sub("", text or "")
+    for m in re.finditer(r"((?:19|20)\d{2})년\s*(?:기준\s*)?(?:약\s*)?", plain):
+        qs = [q for q in _quantities(plain[m.end(): m.end() + 25]) if q["kind"] == "amt" and q["start"] == 0]
+        if qs:
+            out.append((int(m.group(1)), qs[0]))
+    return out
+
+
+def _doc_text(reg: SourceRegistry, sid: str) -> str:
+    """근거 id 의 본문. 문서면 같은 문서(doc_id)의 다른 조각도 합친다 (REFERENCE 는 문서 단위로 한 번호)."""
+    s = reg.get(sid) or {}
+    if s.get("kind") != "doc":
+        return reg.text(sid)
+    return " ".join(reg.text(i) for i, x in reg.data.items() if x.get("kind") == "doc" and x.get("doc_id") == s.get("doc_id"))
+
+
+def _estimator(text: str, raw: str) -> str | None:
+    """근거 원문에서 규모 수치 앞 60자 안의 영문 기관명 (예: 'BIS Research는 … 2023년 174억 달러' → BIS Research)."""
+    t = re.sub(r"\s+", " ", text or "")
+    i = t.find(raw)
+    if i < 0:
+        return None
+    names = re.findall(r"([A-Z][A-Za-z&.]*(?:\s[A-Z][A-Za-z&.]*){0,3})", t[max(0, i - 60): i])
+    return names[-1].strip() if names else None
+
+
+def _multi_estimate_note(text: str, reg: SourceRegistry) -> str | None:
+    """같은 연도의 시장 규모가 두 값 이상이면 '분석기관별 추정'임을 밝히는 주석 (근거 원문에서 기관명을 찾으면 붙인다)."""
+    by_year: dict[int, list[dict]] = {}
+    for y, q in _year_amounts(text):
+        if not any(_same_q(q, x) for x in by_year.get(y, [])):
+            by_year.setdefault(y, []).append(q)
+    ids = [i for i in dict.fromkeys(i for m in CITE.finditer(text or "") for i in re.split(r"\s*[,，]\s*", m.group(1)))
+           if reg.get(i)]
+    for y, qs in sorted(by_year.items()):
+        if len(qs) < 2:
+            continue
+        # 두 값이 모두 실린 인용 근거(문서면 같은 문서 전체)를 찾는다
+        home = next((i for i in ids if all(any(_same_q(q, x) for x in _quantities(_doc_text(reg, i))) for q in qs)), None)
+        src = _doc_text(reg, home) if home else ""
+        parts = [q["raw"] + (f"({who} 추정)" if (who := _estimator(src, q["raw"])) else "") for q in qs]
+        tail = (f"근거 문서가 분석기관별 추정치를 함께 실은 것으로, 기관마다 시장 범위·예측 기간·성장률이 다르다 [{home}]" if home
+                else "추정 출처가 서로 다를 수 있어 같은 시장의 같은 연도 값으로 비교하면 안 된다")
+        return f"수치 주의: 같은 {y}년 시장 규모가 {' · '.join(parts)}로 다르게 인용됐다 — {tail}"
+    return None
+
+
+UNKNOWN_BG = re.compile(r"^\s*(?:경력\s*)?(?:확인 불가|미확인|정보 없음|-)?\s*(?:\[[^\]]*\]\s*)*$")
+
+
+def _person_quote(x: dict, target: dict, reg: SourceRegistry) -> tuple[str, list[str], str] | None:
+    """창업자 에이전트가 경력을 '확인 불가'로 둔 인물인데, 평가표(창업자 기준 YES 문항)의 인용문이나 그 인물의 근거 본문에
+    이름이 나오면 그 원문 문장을 돌려준다 → (문장, 근거 id, 출처 표시). 예) 윤원재 CTO — F2 인용문
+    '윤원재 CTO를 비롯한 공동창업자들은 각각 AI 로봇과 엔드이펙터를 전공…'. 판정 단계가 원문 대조를 마친 인용이 우선."""
+    name = (x.get("name") or "").strip()
+    if len(name) < 2:
+        return None
+    for r in (target.get("scorecard") or {}).get("rows") or []:
+        if r.get("dim") == "founder" and r.get("answer") == "YES" and name in (r.get("quote") or ""):
+            return r["quote"], list(r.get("evidence_ids") or []), f"평가표 {r['qid']}"
+    for sid in _usable(reg, x.get("evidence_ids")):
+        for sent in re.split(r"(?<=[.!?。])\s+|(?<=다)\s+", re.sub(r"\s+", " ", reg.text(sid))):
+            if name in sent and 15 <= len(sent) <= 160 and re.search(r"전공|출신|경력|재직|박사|석사|학사|연구|개발|창업", sent):
+                return sent.strip(), [sid], "근거 원문"
+    return None
+
+
+def _person_cell(x: dict, target: dict, reg: SourceRegistry, keys: list[str]) -> str:
+    """인물 표의 경력 칸. 경력이 '확인 불가'인데 원문 문장이 있으면 그 문장을 인용으로 보여 준다
+    (SUMMARY 가 'CTO 등 AI·로봇 전문 인력'이라 쓰는데 표는 '확인 불가'로 남던 모순)."""
+    bg = x.get("background") or ""
+    when = {True: "창업 전 · ", False: "창업 후 · "}.get(x.get("before_t0"), "")
+    if UNKNOWN_BG.match(bg) and (hit := _person_quote(x, target, reg)):
+        quote, ids, where = hit
+        return f"{when}{where} 원문: “{quote[:140]}{'…' if len(quote) > 140 else ''}”" + _cite_about(reg, ids, keys, 2)
+    return (when + (_about(bg, reg, keys) or "경력 확인 불가")
+            + (_cite_about(reg, x.get("evidence_ids"), keys, 2) if not CITE.search(bg) else ""))
+
+
+def _team_conflicts(texts: list[str], target: dict, reg: SourceRegistry) -> list[str]:
+    """인물 표에 '확인 불가'로 남는 인물(원문 문장도 못 찾음)을 SUMMARY·팀 문장이 이름이나 직함으로 들어 역량을 서술하면 경고."""
+    out = []
+    for x in ((target.get("founder") or {}).get("people") or [])[:4]:
+        if not UNKNOWN_BG.match(x.get("background") or "") or _person_quote(x, target, reg):
+            continue
+        role = re.findall(r"CTO|CEO|COO|CFO|CSO|기술이사|공동창업자|연구소장", x.get("role") or "")
+        for t in texts:
+            hit = next((k for k in [x.get("name")] + role if k and k in (t or "")), None)
+            if hit:
+                out.append(f"'{hit}' — 본문은 역량을 서술하지만 인물 표 경력은 '확인 불가': {CITE.sub('', t)[:60]}…")
+                break
+    return out
+
+
+PRODUCT_ROLE = {"로봇": "하드웨어", "드론": "하드웨어", "기기": "하드웨어", "장비": "하드웨어", "센서": "하드웨어",
+                "소프트웨어": "소프트웨어", "솔루션": "소프트웨어", "플랫폼": "소프트웨어", "서비스": "소프트웨어", "앱": "소프트웨어",
+                "시스템": "소프트웨어"}
+PRODUCT_NAME = re.compile(r"(" + "|".join(PRODUCT_ROLE) + r")\s*[‘'\"“]([^’'\"”]{2,30})[’'\"”]")
+
+
+def _name_variants(texts: list[str], target: dict, reg: SourceRegistry) -> list[dict]:
+    """같은 회사의 제품 이름 표기가 섞였는지: 보고서 문장에서 '로봇 ‘옴니파머’'처럼 제품 종류 + 따옴표 이름을 모아,
+    같은 종류(하드웨어/소프트웨어)에 이름이 둘 이상이면 이름마다 그 이름이 나오는 근거의 게시일 범위를 붙여 돌려준다.
+    예) 로봇: 메타파머(2023-11~2024-10 기사) / 옴니파머(2025-08~2026-05 기사) — 이름 변경인지 별개 제품인지 확인 필요."""
+    found: dict[str, list[str]] = {}
+    company = [norm(n) for n in _names(target) if len(norm(n)) >= 2]
+    for t in texts:
+        for role, name in PRODUCT_NAME.findall(CITE.sub("", t or "")):
+            name = re.sub(r"\s*\(.*?\)\s*", "", name).strip()
+            if len(name) >= 2 and norm(name) not in company and name not in found.setdefault(PRODUCT_ROLE[role], []):
+                found[PRODUCT_ROLE[role]].append(name)
+    comp, prof = target.get("competition") or {}, target.get("profile") or {}
+    pool = _usable(reg, list(prof.get("evidence_ids") or []) + [i for k in ("founder", "tech", "competition")
+                                                               for i in (target.get(k) or {}).get("evidence_ids") or []]
+                   + list(comp.get("pool_ids") or []))
+    out = []
+    for kind, names in found.items():
+        if len(names) < 2:
+            continue
+        info = {}
+        for n in names:
+            # '메타파머' 가 회사 이름 '메타파머스' 의 일부로만 나온 곳은 세지 않는다 ('메타파머를'·'메타파머는' 은 센다)
+            rest = [c[len(n):] for c in _names(target) if c.startswith(n) and len(c) > len(n)]
+            pat = re.compile(re.escape(n) + (f"(?!{'|'.join(map(re.escape, rest))})" if rest else ""))
+            ids = [i for i in pool if pat.search(reg.text(i))]
+            dates = sorted(d for i in ids if (d := (reg.get(i) or {}).get("date")))
+            info[n] = {"ids": ids, "from": dates[0] if dates else None, "to": dates[-1] if dates else None}
+        out.append({"kind": kind, "names": info})
+    return out
+
+
+def _product_texts(target: dict) -> list[str]:
+    """보고서에 그대로 실리는 분석 에이전트 문장 (장단점 표·차별점 주장 목록·인물 경력·마일스톤) — 제품명 표기 검사용."""
+    t, comp, f = target.get("tech") or {}, target.get("competition") or {}, target.get("founder") or {}
+    return ([*(t.get("pros") or []), *(t.get("cons") or [])] + [c.get("claim") or "" for c in comp.get("verified_claims") or []]
+            + [x.get("background") or "" for x in f.get("people") or []] + [m.get("what") or "" for m in f.get("milestones") or []])
+
+
+def _name_note(variants: list[dict]) -> str | None:
+    if not variants:
+        return None
+    parts = []
+    for v in variants:
+        items = sorted(v["names"].items(), key=lambda kv: kv[1]["from"] or "9999")
+        parts.append(" / ".join(f"‘{n}’" + (f"({i['from'][:7]}~{i['to'][:7]} 근거 {len(i['ids'])}건)" if i["from"] else "")
+                                for n, i in items))
+    return ("제품명 표기: " + "; ".join(parts) + " — 근거 시점에 따라 이름이 다르다. 같은 제품의 이름 변경인지 별개 제품인지 "
+            "공개 근거로 확인되지 않아 실사에서 확인한다")
 
 
 def _team_blocks(target: dict, d: dict, reg: SourceRegistry, detail: bool) -> list[dict]:
@@ -909,13 +1364,13 @@ def _team_blocks(target: dict, d: dict, reg: SourceRegistry, detail: bool) -> li
                      [[t0 or "확인 불가", (f.get("t0_source") or "-") + _cite(reg, t0_ids, 1),
                        f"{_num(years)}년" if years else "-",
                        (nps + (f", 창업 후 연평균 {_num(hires)}명(가입자 ÷ 경과 연수)" if hires else "")) if nps else "-",
-                       f"{f.get('milestones_24m', 0)}건"]], ["16%", "22%", "9%", "33%", "20%"], small=True)]
-    people = [[x.get("name") or "-", x.get("role") or "-",
-               {True: "창업 전 · ", False: "창업 후 · "}.get(x.get("before_t0"), "") + (_about(x.get("background"), reg, keys) or "경력 확인 불가")
-               + (_cite_about(reg, x.get("evidence_ids"), keys, 2) if not CITE.search(x.get("background") or "") else "")]
+                       f"{f.get('milestones_24m', 0)}건"]], ["16%", "22%", "9%", "33%", "20%"], small=True,
+                     caption="창업 시점(t0)·고용·마일스톤")]
+    people = [[x.get("name") or "-", x.get("role") or "-", _person_cell(x, target, reg, keys)]
               for x in (f.get("people") or [])[:4]]
     if people and detail:
-        blocks.append(_table(["인물", "역할", "경력 (t0 기준 창업 전/후)"], people, ["12%", "12%", "76%"], small=True))
+        blocks.append(_table(["인물", "역할", "경력 (t0 기준 창업 전/후)"], people, ["12%", "12%", "76%"], small=True,
+                             caption="핵심 인물과 경력"))
     ms = [f"{m.get('date')} {_about(m.get('what'), reg, keys)}{_cite_about(reg, m.get('evidence_ids'), keys, 2)}"
           for m in (f.get("milestones") or [])[:4]
           if m.get("date") and m.get("what")]
@@ -933,11 +1388,94 @@ def _evaluated_blocks(evals: list[dict], target: dict) -> list[dict]:
              _s1(e["scorecard"]["multiplier"]), _s1(e["scorecard"].get("founder_c")),
              "투자" if e["decision"] == "투자" else f"보류({e.get('hold_type') or '-'})"] for i, e in enumerate(ranked, 1)]
     passed = [e["name"] for e in ranked if e["decision"] == "투자"]
+    head2 = _head_to_head(target, ranked)
     return [{"t": "h3", "text": f"평가한 후보 {len(evals)}곳과 대상 선정"},
             _table(["순위", "후보", "단계 · 지역", "동종 평균 대비", "창업자 기준", "판정"], rows,
-                   ["7%", "27%", "17%", "15%", "13%", "21%"], small=True),
+                   ["7%", "27%", "17%", "15%", "13%", "21%"], small=True, caption=f"평가한 후보 {len(evals)}곳의 동종 평균 대비 점수"),
             _note(f"보고서 대상: 투자 기준 통과 {len(passed)}곳({'·'.join(passed)}) 중 동종 평균 대비 배수 1위 — {target['name']}. "
-                  f"첫 투자 추천에서 멈추지 않고 평가 상한까지 평가해, 평가한 후보 안에서는 평가 순서가 결론을 바꾸지 않는다")]
+                  f"첫 투자 추천에서 멈추지 않고 평가 상한까지 평가해, 평가한 후보 안에서는 평가 순서가 결론을 바꾸지 않는다"),
+            *([_ul(head2, "대상과 차점 후보 비교 (코드 계산)")] if head2 else [])]
+
+
+def _batchim(word: str) -> bool:
+    """마지막 글자에 받침이 있는지 (한글이 아니면 받침 없음으로 본다)."""
+    ch = (word or " ")[-1]
+    return "가" <= ch <= "힣" and (ord(ch) - 0xAC00) % 28 != 0
+
+
+def _ig(w: str) -> str:
+    return w + ("이" if _batchim(w) else "가")
+
+
+def _eun(w: str) -> str:
+    return w + ("은" if _batchim(w) else "는")
+
+
+def _eul(w: str) -> str:
+    return w + ("을" if _batchim(w) else "를")
+
+
+def _head_to_head(target: dict, ranked: list[dict]) -> list[str]:
+    """대상과 차점 후보(대상을 뺀 배수 1위)의 기준별 차이와 역전 조건 2~3줄. 모두 평가표·기준 집단으로 코드가 계산한다.
+    ① 차이: 기준별 기여(가중치 × 동종 대비 비율) 차이와 같은 기준
+    ② 차점 후보가 앞서려면: 차점 후보의 미확인 문항을 배수가 가장 많이 오르는 순으로 YES 로 바꿔(뒤집힘 조건과 같은 방법) 대상 배수를 넘는 최소 문항
+    ③ 대상이 밀리려면: 대상의 YES 문항 하나가 실사에서 확인되지 않아(미확인) 차점 후보 아래로 내려가는 문항
+    ②·③ 은 각 후보 자신을 뺀 동종 평균(LOO)으로 다시 계산한 배수가 평가표 배수와 같을 때만 쓴다."""
+    others = [e for e in ranked if e is not target]
+    if not others:
+        return []
+    from agents.decision import load_reference, load_rubric, payne_multiplier
+
+    a, b = target, others[0]
+    sa, sb = a["scorecard"], b["scorecard"]
+    ca, cb = {c["dim"]: c for c in sa["criteria"]}, {c["dim"]: c for c in sb["criteria"]}
+    diff = sorted(((ca[k]["contribution"] - cb[k]["contribution"], k) for k in ca if k in cb), key=lambda x: -abs(x[0]))
+    moved = [f"{_dim_short(ca[k]['name'])} {_p100(ca[k]['pct'])} 대 {_p100(cb[k]['pct'])}(기여 {x * 100:+.1f})"
+             for x, k in diff if abs(x) >= 0.0005]
+    same = [_dim_short(ca[k]["name"]) for x, k in diff if abs(x) < 0.0005]
+    fa, fb = sa.get("founder_c"), sb.get("founder_c")
+    team = (f"창업자 기준은 같다({_s1(fa)})" if fa is not None and fb is not None and abs(fa - fb) < 1e-9
+            else f"창업자 기준 {_s1(fa)} 대 {_s1(fb)}")
+    gap = (sa["multiplier"] - sb["multiplier"]) * 100
+    lines = [f"{a['name']} {_s1(sa['multiplier'])} 대 {b['name']} {_s1(sb['multiplier'])} (차이 {gap:+.1f}): {team}. "
+             f"차이는 {', '.join(moved) or '없음'}에서 난다" + (f"; {', '.join(same)}은 같다" if same else "")]
+    cfg = get_config().decision
+    rubric = load_rubric()
+    means: dict[str, dict] = {}
+
+    def score(e: dict, rows: list[dict]) -> float:
+        if e["name"] not in means:  # 자기 자신을 뺀 동종 평균 (투자 판단 에이전트와 같은 계산)
+            means[e["name"]] = load_reference(exclude=e["name"])["mean"]
+        return payne_multiplier(rows, means[e["name"]], rubric, cfg.step, cfg.clip)[0]
+
+    def setv(rows: list[dict], i: int, ans: str) -> list[dict]:
+        return [dict(r, answer=ans, x={"YES": 1, "UNKNOWN": 0}[ans]) if j == i else r for j, r in enumerate(rows)]
+
+    ra, rb = list(sa["rows"]), list(sb["rows"])
+    if abs(score(a, ra) - sa["multiplier"]) > 1e-3 or abs(score(b, rb) - sb["multiplier"]) > 1e-3:
+        return lines + ["역전 조건: 기준 집단이 이번 평가와 달라 다시 계산하지 않음"]
+    cur, mb, picked = rb, sb["multiplier"], []
+    while mb <= sa["multiplier"] and len(picked) < cfg.flip_max_items:
+        cand = [i for i, r in enumerate(cur) if r["answer"] == "UNKNOWN"]
+        if not cand:
+            break
+        gain = {i: score(b, setv(cur, i, "YES")) for i in cand}
+        best = max(cand, key=lambda i: (gain[i], -i))
+        cur, mb = setv(cur, best, "YES"), gain[best]
+        picked.append(f"{cur[best]['qid']} {_short(cur[best])}")
+    if mb > sa["multiplier"]:
+        lines.append(f"{_ig(b['name'])} 앞서는 조건: 미확인 {'·'.join(picked)} 이(가) YES 로 확인되면 {_s1(mb)} > {_s1(sa['multiplier'])}"
+                     f"{'' if len(picked) > 1 else ' — 한 문항 차이'}")
+    else:
+        lines.append(f"{_eun(b['name'])} 미확인 {len(picked)}문항이 YES 여도 {_s1(mb)} — {_eul(a['name'])} 넘지 못한다")
+    fragile = []
+    for i, r in enumerate(ra):
+        if r["answer"] == "YES" and (m := score(a, setv(ra, i, "UNKNOWN"))) < sb["multiplier"]:
+            fragile.append(f"{r['qid']} {_short(r)}({_s1(m)})")
+    lines.append(f"{_ig(a['name'])} 밀리는 조건: YES 문항 중 {'·'.join(fragile)} 하나만 실사에서 확인되지 않아도(미확인) "
+                 f"{b['name']} {_s1(sb['multiplier'])} 아래로 내려간다" if fragile else
+                 f"{_eun(a['name'])} YES 문항 하나가 실사에서 미확인으로 바뀌어도 {b['name']}보다 높다")
+    return lines
 
 
 def _chapters_invest(target: dict, d: dict, t: dict, reg: SourceRegistry, cfg, pool: dict,
@@ -947,17 +1485,18 @@ def _chapters_invest(target: dict, d: dict, t: dict, reg: SourceRegistry, cfg, p
     ch4_lead = (f"동종 평균 대비 {_s1(sc['multiplier'])}(동종 평균 100 초과), 창업자 기준 {_s1(sc.get('founder_c'))}"
                 f"(동종 평균 이상), Deal-killer 없음 — 투자 추천(실사 조건부)")
     judge = [_table(["기준 (비중)", "YES / NO / 미확인", "동종 평균 대비", "기여", "핵심 사실"], _criteria_rows(sc),
-                    ["18%", "13%", "11%", "8%", "50%"], small=True),
+                    ["18%", "13%", "11%", "8%", "50%"], small=True, caption="기준별 판정과 동종 평균 대비 점수"),
              _note(_rule_line(sc, cfg)), _note(_reference_line(sc, cfg)), _note(_sensitivity_line(sc)),
              _note(_bessemer_line(sc)),
              *(_evaluated_blocks(evals, target) if evals and len(evals) > 1 else [_note(_ranking_line(sc))]),
              {"t": "box", "title": "ROI 참고치 (점수·결정에 넣지 않음)", "items": _roi_items(sc, reg, cfg)},
              {"t": "h3", "text": "사업 리스크(시장·기술·규제·경쟁)와 실사 조건"},
-             _table(["유형", "내용", "실사 질문"], t["risks"], ["8%", "57%", "35%"], small=True),
+             _table(["유형", "내용", "실사 질문"], t["risks"], ["8%", "57%", "35%"], small=True, caption="사업 리스크와 실사 질문"),
              _ul(_dd_items(sc), f"실사 확인 항목 {len(sc.get('dd_items') or [])}개 (미확인·반대 문항 중 배수 영향이 큰 순)")]
     return [
         {"title": A_CHAPTERS[1], "lead": d["lead_idea"],
-         "blocks": _idea_blocks(target, d, reg, c2_yes, t["notes"], with_competition=True)},
+         "blocks": _idea_blocks(target, d, reg, c2_yes, t["notes"], with_competition=True)
+         + ([_note(t["name_note"])] if t.get("name_note") else [])},
         {"title": A_CHAPTERS[2], "lead": d["lead_market"], "blocks": _market_blocks(target, d, reg)},
         {"title": A_CHAPTERS[3], "lead": d["lead_team"], "blocks": _team_blocks(target, d, reg, detail=True)},
         {"title": A_CHAPTERS[4], "lead": ch4_lead, "blocks": judge},
@@ -1004,7 +1543,8 @@ def _chapters_hold(evals: list[dict], target: dict, d: dict, t: dict, reg: Sourc
     c2_yes = t["verdict"].get("C2") == "YES"
     thr = sc["threshold"]
     un = pool["unevaluated"]
-    pool_blocks = [_table(["단계", "후보 수", "국내", "해외", "비고"], _pool_rows(pool), ["22%", "8%", "7%", "7%", "56%"])]
+    pool_blocks = [_table(["단계", "후보 수", "국내", "해외", "비고"], _pool_rows(pool), ["22%", "8%", "7%", "7%", "56%"],
+                          caption="후보 풀 단계별 후보 수")]
     if un:
         pool_blocks.append(_note(f"미평가 적격 후보 {len(un)}곳 ({pool['why']}): " + ", ".join(
             f"{u['name']}({u['stage']}{', 관문 검색 실패' if u['search_failed'] else ''})" for u in un)))
@@ -1012,17 +1552,18 @@ def _chapters_hold(evals: list[dict], target: dict, d: dict, t: dict, reg: Sourc
     top_why = (f"기준 {_s100(thr)}을 넘지 못했다" if sc["multiplier"] <= thr   # 투자 ⇔ 배수 > 기준 (같으면 보류)
                else f"배수 기준은 넘었지만 보류 유형 '{ht}'에 해당한다")
     detail = [{"t": "h3", "text": B_DETAIL[0]}] + _idea_blocks(target, d, reg, c2_yes, t["notes"], with_competition=False)
+    detail += [_note(t["name_note"])] if t.get("name_note") else []
     detail += [{"t": "h3", "text": B_DETAIL[1]}] + _market_blocks(target, d, reg)
     detail += [{"t": "h3", "text": B_DETAIL[2]}] + _team_blocks(target, d, reg, detail=False)
     detail += [{"t": "h3", "text": B_DETAIL[3]}] + _competition_blocks(target, d, reg, c2_yes, t["notes"])
-    detail += [{"t": "h3", "text": B_DETAIL[4]}, _table(["유형", "내용", "실사 질문"], t["risks"], ["8%", "57%", "35%"], small=True)]
+    detail += [{"t": "h3", "text": B_DETAIL[4]}, _table(["유형", "내용", "실사 질문"], t["risks"], ["8%", "57%", "35%"], small=True, caption="사업 리스크와 실사 질문")]
     dims = [_dim_short(c["name"]) for c in sc["criteria"]]
     score_rows = [[e["name"]] + [_p100(c["pct"]) for c in e["scorecard"]["criteria"]]
                   + [_s1(e["scorecard"]["multiplier"]), e.get("hold_type") or e["scorecard"].get("hold_type") or "-"]
                   for e in evals]
     sens_keys = list((sc.get("sensitivity") or {}).keys())
     sens = " · ".join(f"{float(k) * 100:.0f} → {sum((e['scorecard'].get('sensitivity') or {}).get(k) == '투자' for e in evals)}곳" for k in sens_keys)
-    summary = [_table(["후보"] + dims + ["배수", "보류 유형"], score_rows, small=True),
+    summary = [_table(["후보"] + dims + ["배수", "보류 유형"], score_rows, small=True, caption="후보별 기준 점수(동종 평균 = 100)"),
                _note(_rule_line(sc, cfg)), _note(_reference_line(sc, cfg)),
                _note(f"민감도(평가 {len(evals)}곳 중 투자 추천 수): {sens}") if sens else None,
                _p(f"공통 원인과 시장 맥락: {d['common_detail']}")]
@@ -1221,6 +1762,8 @@ def _finish(view: dict, md: str, result: dict, cfg, checks: dict, mode: str, cit
            f"{result['summary_ratio']:.0%}, REFERENCE {sum(len(g['items']) for g in view['ref_groups'])}건, "
            f"형식 검사 {'통과' if not bad else '실패: ' + ', '.join(bad)}"
            + (f", 평가표 불일치 {len(checks['consistency_violations'])}건" if checks.get("consistency_violations") else "")
+           + (f", 숫자 대조 경고 {n_num}건" if (n_num := sum(len(v) for k, v in (checks.get("number_audit") or {}).items()
+                                                        if isinstance(v, list))) else "")
            + (f" → {submit.name}" if submit_pdf else " (시나리오 실행: 제출 파일 없음)"))
     print(msg)
     return {"report": {"mode": mode, "md": str(md_path), "html": result["html"], "pdf": str(pdf_path), "submit_pdf": submit_pdf,
@@ -1314,6 +1857,25 @@ def report_node(state: dict) -> dict:
             rewrites += 1
             feedback = "직전 초안의 문제를 모두 고쳐라:\n- " + "\n- ".join(probs)
 
+    # 1-2) 숫자 대조: 기본은 검사만 한다(checks['number_audit']). 위 재작성 루프의 probs 에 넣으면 재작성 지시문이 바뀌어
+    #      재현 캐시에 없는 LLM 호출이 생기므로 따로 둔다. report.number_check.rewrite: true 일 때만 1회 다시 쓰고,
+    #      새 초안이 기존 규칙을 모두 지키면서 숫자 경고가 줄어든 경우에만 받아들인다 (LLM 호출 1회 추가)
+    audit = _number_audit(draft, ctx, reg)
+    flagged = audit["unsupported"] + audit["conflicts"]
+    number_rewrite = bool((cfg.report.get("number_check") or {}).get("rewrite"))
+    if number_rewrite and flagged:
+        fb = ("직전 초안의 다음 숫자는 입력(근거 본문·점수표)에서 확인되지 않거나, 인용한 근거에 없거나, 같은 연도에 출처가 다른 값이 섞였다. "
+              "근거에 적힌 수치와 그 수치가 있는 근거 id 로 고치고, 기관별 추정치는 기관 이름을 밝혀라. 확인되지 않는 숫자는 빼라:\n- "
+              + "\n- ".join(flagged[:8]))
+        cand = bounded(schema, kind="report").invoke(render("report", **ctx, feedback=fb, shorten=False))
+        cand = schema.model_validate(_fix_cites(cand.model_dump()))
+        rewrites += 1
+        cand_probs = (_summary_problems([x for _, x in summary(cand)], cfg.report.summary_max_chars)
+                      + _consistency_problems(cand, target, ranked, run_date))
+        cand_audit = _number_audit(cand, ctx, reg)
+        if not cand_probs and len(cand_audit["unsupported"]) + len(cand_audit["conflicts"]) < len(flagged):
+            draft, probs = cand, cand_probs
+
     out_dir, pdf_path, _ = _out_paths(cfg)
     meta = (f"{cfg.domain.name} · 평가 {len(evals)}곳 · 기준 배수 {sc['threshold']:.2f}(동종 평균 = 1.00) · 작성일 {run_date}"
             if mode == "hold" else
@@ -1324,8 +1886,9 @@ def report_node(state: dict) -> dict:
     result, density, shorten_round = {}, 0, 0
     while True:
         d = draft.model_dump()
+        variants = _name_variants([x for _, x in _draft_fields(draft)] + _product_texts(target), target, reg)
         t = {"verdict": verdict, "notes": draft.competitor_notes, "risks": _risk_rows(draft.risks, reg),
-             "cands": getattr(draft, "candidates", []), "limitations": []}
+             "cands": getattr(draft, "candidates", []), "limitations": [], "name_note": _name_note(variants)}
         view = {"title": title, "badge": badge, "mode": mode, "meta": meta, "run_date": run_date,
                 "summary": summary(draft), "chapters": []}
         # 한계점의 조회일 건수는 REFERENCE 를 만든 뒤에 알 수 있어 두 번 번호를 매긴다 (인용은 한계점에 없다)
@@ -1357,8 +1920,15 @@ def report_node(state: dict) -> dict:
 
     md = _to_markdown(numbered)
     checks = _checks(md, numbered, refs, mode, {"conclusion_ok": expect}, probs, cfg.report.summary_max_chars)
+    team_texts = ([draft.ev_team, draft.lead_team, draft.team] if isinstance(draft, Draft) else [draft.team])
     checks |= {"density_level": density, "rewrites": rewrites, "references": len(refs),
-               "reference_groups": {g["name"]: len(g["items"]) for g in numbered["ref_groups"]}}
+               "reference_groups": {g["name"]: len(g["items"]) for g in numbered["ref_groups"]},
+               # 검사만 하는 항목 (형식 검사 통과·실패에는 넣지 않는다)
+               "number_audit": {**_number_audit(draft, ctx, reg, md, target),
+                                "rewrite": "on" if number_rewrite else "off (report.number_check.rewrite)"},
+               "name_variants": [{"kind": v["kind"], "names": {n: f"{i['from']}~{i['to']} ({len(i['ids'])}건)"
+                                                             for n, i in v["names"].items()}} for v in variants],
+               "team_table_conflicts": _team_conflicts(team_texts, target, reg)}
     return _finish(numbered, md, result, cfg, checks, mode, cited, title, target["name"],
                    "투자 추천" if mode == "invest" else "투자 추천 대상 없음")
 
@@ -1382,7 +1952,8 @@ def _no_candidate_report(state: dict, cfg, screened: list[dict], reg: SourceRegi
         "chapters": [
             {"title": C_CHAPTERS[1], "lead": f"검증한 {len(screened)}곳 모두 과제 기준(비상장·Seed~Series C·Exit 전)을 충족하지 못했다.",
              "blocks": [_table(["후보", "단계", "관문 판정"], [[r.get("official_name") or r["name"], r.get("stage") or "-",
-                                                               r.get("reason") or "-"] for r in screened], ["22%", "12%", "66%"])]},
+                                                               r.get("reason") or "-"] for r in screened], ["22%", "12%", "66%"],
+                               caption="후보별 적격성 관문 판정")]},
             {"title": C_CHAPTERS[2], "lead": "공개 정보로 투자 단계를 확인하지 못한 후보는 보수적으로 제외했다.",
              "blocks": [_ul(_limitations(cfg, pool, {}, [], "none", []))]},
         ],

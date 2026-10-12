@@ -112,6 +112,8 @@ report:
   output_dir: outputs
   scenario: false                      # 시나리오 실행(app.py --out DIR): 제출용 파일(RAG-Output_…)을 만들지 않음
   max_rewrites: 2                      # 조판 밀도 초과 시 보고서 축약 재작성 상한
+  number_check:                        # 숫자 대조 검사: 보고서 문장 속 숫자 ↔ 입력(근거 본문·점수표). 결과는 checks.number_audit
+    rewrite: false                     # true 면 경고가 있을 때 1회 다시 쓴다 (LLM 호출 1회 추가 → 재현 캐시에 없어 --offline 실행이 멈춘다)
   run_cost_usd: 0.6                    # 새로 평가할 때 1회 LLM 비용(gpt-4.1-mini, 심층 평가 10곳 실측 약 $0.58) — README 표기용
 
 cache:

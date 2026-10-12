@@ -16,7 +16,8 @@ import pytest
 
 import agents.report as R
 import tools.web_search as WS
-from tools.sources import ACCESS_DATE_NOTE, REFERENCE_FORMATS, SourceRegistry, format_reference, uses_access_date
+from tools.sources import (ACCESS_DATE_NOTE, REFERENCE_FORMATS, SourceRegistry, format_reference, reference_group,
+                           uses_access_date)
 
 FIX = Path(__file__).parent / "fixtures"
 
@@ -343,7 +344,8 @@ def test_format_reference_access_date_without_note():
     s = reg.get(sid)
     assert s["date"] is None and uses_access_date(s)
     line = format_reference(s)
-    assert line.startswith("예시일보(2026-09-30). 메타파머스 로봇 공개. 예시일보, https://example.com/news/1")
+    # 바이라인이 없는 기사: 작성자 자리에 매체명을 쓰지 않는다 (매체명은 사이트 자리에만)
+    assert line.startswith("작성자 미표기(2026-09-30). 메타파머스 로봇 공개. 예시일보, https://example.com/news/1")
     assert not line.endswith(")") and REFERENCE_FORMATS["웹페이지"].match(line)
     tips = reg.add_web({"url": "https://jointips.or.kr/network/startups", "title": "TIPS 창업기업: 메타파머스",
                         "content": "설립일 2022-09-02", "published_date": "2022-09-02"}, "discovery", "q", "2026-09-30",
@@ -375,3 +377,145 @@ def test_pct_not_double_scaled_and_assumption_scope():
     assert R._criteria_rows(sc)[0][2] == "129.2"   # 이미 ×100 된 값을 다시 곱하지 않고, 소수 한 자리로
     md = "## 2. 시장\n원화 환율 상승이 수입 자재 가격을 올렸다\n**ROI 참고치 (점수·결정에 넣지 않음)**\n\n- 환율: 1,400원\n\n## 5. 한계점\n- 지분율 20%\n"
     assert R._assumption_scope(md) == ["**ROI 참고치 (점수·결정에 넣지 않음)**", "", "- 환율: 1,400원", "", "## 5. 한계점", "- 지분율 20%"]
+
+
+# ── 보고서 사실 불일치 수정 (퍼널·시장 규모·대상과 차점 후보·캡션·제품명·인물 표·REFERENCE·숫자 대조)
+
+def test_funnel_shows_screened_count():
+    """관문은 발굴한 전부가 아니라 라운드당 검증 상한만 검사한다 → '발굴 → 관문 검사 → 적격'."""
+    assert R._funnel({"discovered": 78, "screened": 18, "eligible": 14}) == \
+        "국내외 AgTech AI 스타트업 78곳 발굴 → 관문 검사 18곳 → 적격 14곳(모두 Seed~Series C 투자 유치 확인)"
+
+
+def test_market_level_and_same_estimate_cagr():
+    from core.config import get_segment
+
+    assert R._market_level("글로벌 스마트 농업 시장", get_segment("robotics")) == "parent"
+    assert R._market_level("글로벌 농업 로봇 시장", get_segment("robotics")) == "segment"
+    assert R._market_level("국내 스마트팜 시장", get_segment("greenhouse")) == "segment"
+    table = "BIS Research\n2023~2034\n174억 달러~1,172억 달러\n19.1%\nGrand View Research\n2023~2030\n226억 5천만 달러~556억 4천만 달러\n13.7%"
+    assert R._estimate_near(table, "2023년 226억 5천만 달러") == {"end": "556억 4천만 달러", "end_year": "2030",
+                                                                "period": "2023~2030", "cagr": 13.7}
+
+
+def test_cagr_check_catches_size_paired_with_other_estimate_growth():
+    """226.5억 → 556.4억 달러(2023→2030)는 연평균 약 13.7% 인데 다른 추정의 19.1% 를 같은 목록에 붙인 경우."""
+    md = ("## 2. 시장 규모와 성장성\n\n**결론**\n\n2023년 기준 226억 5천만 달러에서 2030년 556억 4천만 달러로 성장 예상 [3]\n\n"
+          "- 세부 시장 규모: 2023년 226억 5천만 달러 (글로벌 스마트 농업 시장) [3]\n- 성장률: 연평균 19.1% (2024) [3]\n\n## 3. 팀\n")
+    probs = R._cagr_problems(R._market_units(md))
+    assert len(probs) == 1 and "약 13.7%" in probs[0] and "'19.1%'" in probs[0]
+    fixed = md.replace("- 성장률: 연평균 19.1% (2024) [3]", "- 성장률(다른 추정): 연평균 19.1% (2024~2034 예측) [3]")
+    assert R._cagr_problems(R._market_units(fixed)) == []
+
+
+def _audit_reg():
+    reg = SourceRegistry()
+    d = reg.add_doc({"doc_id": "x", "page": 3, "type": "report", "publisher": "기관", "year": 2024, "title": "t"},
+                    "BIS Research는 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장을 예상했다. "
+                    "Grand View Research는 2023년 226억 5천만 달러로 평가했다.", "market", "q")
+    w = reg.add_web({"url": "https://a.kr/1", "title": "메타파머스 투자 유치", "published_date": "2025-08-12",
+                     "content": "메타파머스가 30억원 규모 프리A 투자를 유치했다. 직원은 seven employees 다."}, "tech", "q", "2026-09-30")
+    return reg, d, w
+
+
+def test_number_audit_flags_numbers_not_in_input_or_citation():
+    reg, d, w = _audit_reg()
+    draft = R.Draft(**dict(INVEST, market=f"글로벌 시장은 2023년 174억 달러에서 2034년 1,172억 달러로 연평균 19.1% 성장 전망 [{d}]; "
+                                          f"2023년 기준 226억 5천만 달러로도 추정된다 [{d}]. 국내는 연평균 47.3% 성장한다 [{d}].",
+                           team=f"프리A 30억원을 유치했다 [{d}]. 직원 7명이다 [{w}]."))
+    a = R._number_audit(draft, {"evidence": reg.brief([d, w])}, reg)
+    joined = "\n".join(a["unsupported"])
+    assert "[2장 시장] '47.3%' 입력에 없음" in joined                       # 근거·점수표 어디에도 없는 숫자
+    assert "[3장 팀] '30억원' 인용 근거에 없음" in joined                    # 입력에는 있지만 붙인 인용 근거에는 없음
+    assert "174억 달러" not in joined and "'7명'" not in joined              # 근거에 있는 숫자 (영어 'seven employees' 포함)
+    assert any("같은 2023년 규모가 174억 달러 · 226억 5천만 달러" in c for c in a["conflicts"])
+    note = R._multi_estimate_note(draft.market, reg)
+    assert "174억 달러(BIS Research 추정)" in note and "226억 5천만 달러(Grand View Research 추정)" in note
+
+
+def test_number_rewrite_off_by_default_and_once_when_on(run, set_cfg):
+    """숫자 대조는 기본이 '검사만'(LLM 호출 그대로 = 재현 캐시 유지). 켜면 1회만 다시 쓰고, 경고가 줄면 받아들인다."""
+    state = _load("invest")
+    bad = dict(INVEST, lead_market="국내 스마트농업 시장은 연평균 47.3% 성장한다.")
+    rep, md, llm = run(state, [bad])
+    assert len(llm.prompts) == 1 and "47.3%" in md
+    audit = rep["checks"]["number_audit"]
+    assert audit["rewrite"].startswith("off") and any("'47.3%' 입력에 없음" in x for x in audit["unsupported"])
+    set_cfg("report.number_check", {"rewrite": True})
+    rep2, md2, llm2 = run(state, [bad, INVEST])
+    assert len(llm2.prompts) == 2 and "47.3%" in llm2.prompts[1] and "47.3%" not in md2
+    assert rep2["checks"]["rewrites"] == 1
+
+
+def test_name_variants_with_source_dates():
+    reg = SourceRegistry()
+    a = reg.add_web({"url": "https://a.kr/1", "title": "수확 로봇", "published_date": "2023-11-12",
+                     "content": "메타파머스는 수확 로봇 메타파머를 개발했다"}, "tech", "q", "2026-09-30")
+    b = reg.add_web({"url": "https://b.kr/2", "title": "범용 로봇", "published_date": "2025-08-12",
+                     "content": "메타파머스의 범용 로봇 옴니파머(Omni Farmer)"}, "tech", "q", "2026-09-30")
+    target = {"name": "메타파머스", "profile": {"name": "메타파머스", "evidence_ids": [a, b]}}
+    v = R._name_variants(["농작업 로봇 '옴니파머(Omni Farmer)'와 원격제어 소프트웨어 '탭파머스'", "농업 로봇 '메타파머'"], target, reg)
+    assert v == [{"kind": "하드웨어", "names": {"옴니파머": {"ids": [b], "from": "2025-08-12", "to": "2025-08-12"},
+                                              "메타파머": {"ids": [a], "from": "2023-11-12", "to": "2023-11-12"}}}]
+    assert R._name_note(v).startswith("제품명 표기: ‘메타파머’(2023-11~2023-11 근거 1건) / ‘옴니파머’(2025-08~2025-08 근거 1건)")
+
+
+def test_person_unknown_background_uses_scorecard_quote():
+    reg = SourceRegistry()
+    w = reg.add_web({"url": "https://z.kr/1", "title": "인터뷰", "content": "윤원재 CTO를 비롯한 공동창업자들은 AI 로봇을 전공했다"},
+                    "founder", "q", "2026-09-30")
+    quote = "윤원재 CTO를 비롯한 공동창업자들은 AI 로봇을 전공했다"
+    target = {"profile": {}, "scorecard": {"rows": [{"qid": "F2", "dim": "founder", "answer": "YES", "quote": quote,
+                                                     "evidence_ids": [w]}]},
+              "founder": {"people": [{"name": "윤원재", "role": "기술이사(CTO)", "background": "확인 불가", "evidence_ids": []}]}}
+    x = target["founder"]["people"][0]
+    assert R._person_cell(x, target, reg, []) == f"평가표 F2 원문: “{quote}” [{w}]"
+    assert R._team_conflicts(["CTO 등 AI·로봇 전문 인력 포함"], target, reg) == []
+    target["scorecard"]["rows"] = []   # 원문 문장을 못 찾으면 표는 '확인 불가' → 본문이 CTO 역량을 쓰면 경고
+    assert R._team_conflicts(["CTO 등 AI·로봇 전문 인력 포함"], target, reg)
+
+
+def test_head_to_head_lines(tmp_path, set_cfg):
+    from agents.decision import _qids, load_rubric
+
+    evals = _load("hold")["evaluations"]
+    members = [{"name": e["name"], "region": e["region"], "stage": e["stage"], "segment_id": e["segment_id"],
+                "signals": {r["qid"]: r["x"] for r in e["scorecard"]["rows"]}} for e in evals]
+    ref = tmp_path / "ref.json"
+    ref.write_text(json.dumps({"version": 1, "run_date": "2026-09-30", "rubric_qids": _qids(load_rubric()), "n": len(members),
+                               "members": members, "mean": {}}, ensure_ascii=False), encoding="utf-8")
+    set_cfg("decision.reference_file", str(ref))
+    ranked = sorted(evals, key=lambda e: -e["scorecard"]["multiplier"])
+    lines = R._head_to_head(ranked[0], ranked)
+    assert len(lines) == 3
+    assert lines[0].startswith(f"{ranked[0]['name']} {ranked[0]['scorecard']['multiplier'] * 100:.1f} 대 {ranked[1]['name']}")
+    assert "앞서는 조건" in lines[1] or "넘지 못한다" in lines[1]
+    assert "밀리는 조건" in lines[2] or "보다 높다" in lines[2]
+
+
+def test_reference_institutional_serial_portal_and_byline():
+    krei = {"kind": "doc", "type": "paper", "publisher": "한국농촌경제연구원", "year": 2024, "authors": "박미선", "journal": "세계농업",
+            "volume": 2024, "issue": "겨울호", "pages": "33-48", "title": "스마트 농업과 농업 부문 고용 현황 및 전망",
+            "url": "https://www.krei.re.kr/x"}
+    assert reference_group(krei) == "기관 보고서"   # 연구기관 정기간행물 기고는 학술 논문이 아니다
+    line = format_reference(krei)
+    assert line == ("한국농촌경제연구원(2024). 스마트 농업과 농업 부문 고용 현황 및 전망(박미선, 『세계농업』 2024 겨울호, 33-48쪽). "
+                    "https://www.krei.re.kr/x") and REFERENCE_FORMATS["기관 보고서"].match(line)
+    assert reference_group(dict(krei, journal="Robotics", publisher="MDPI")) == "학술 논문"
+    reg = SourceRegistry()
+    z = reg.add_web({"url": "https://zdnet.co.kr/view?no=1", "title": "메타파머스 인터뷰", "content": "요약",
+                     "published_date": "2024-10-16",
+                     "raw_content": "입력 :2024/10/16 20:45 방은주 기자 기자 페이지 … 방은주 기자ejbang@zdnet.co.kr 다른 기사 김철수 기자"},
+                    "founder", "q", "2026-09-30")
+    assert format_reference(reg.get(z)).startswith("방은주 기자(2024-10-16). ")   # 스니펫에 없던 바이라인을 본문에서
+    d = reg.add_web({"url": "https://v.daum.net/v/abc", "title": "로봇농부가 온다", "published_date": "2023-11-12",
+                     "content": "최효정 기자 … Copyright ⓒ 조선비즈 & Chosun.com"}, "founder", "q", "2026-09-30")
+    assert format_reference(reg.get(d)) == ("최효정 기자(2023-11-12). 로봇농부가 온다. 조선비즈(포털 전재본), "
+                                            "https://v.daum.net/v/abc")
+
+
+def test_table_captions_do_not_repeat_chapter_numbers(run, can_render):
+    rep, md, _ = run(_load("invest"), [INVEST])
+    html = Path(rep["html"]).read_text(encoding="utf-8")
+    caps = re.findall(r'<div class="cap"><b>표 \d+\.</b>([^<]*)</div>', html)
+    assert caps and not [c for c in caps if re.match(r"\s*\d", c)], caps
