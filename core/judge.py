@@ -28,6 +28,9 @@ v3 재검사 (LLM 호출·프롬프트는 그대로. 문항 플래그 3종은 YE
 - numeric(M1·M2·M3·R1·R2·D3): need 가 수치를 요구하는 문항. 인용에 숫자(아라비아 숫자·'세 곳' 같은 수량 표현)가 없으면 UNKNOWN
 - 회사명 근접 검사(±300자)에 회사 제품·서비스 이름도 회사 키로 인정 (기술 요약 에이전트의 tech.product 에서 이름만 뽑음)
 - confidence(상·중·하): 같은 인용이 실린 제3자 출처 수로 정하는 표시용 값. 판정·배수에 쓰지 않는다
+R1 공시 규칙 (DART, tools/dart.py): 후보에 DART 공시(감사보고서·사업보고서)의 연도가 적힌 매출액이 있고 그 공시가 최근 24개월 안에
+접수됐으면, LLM 이 미확인(UNKNOWN)으로 둔 R1 을 코드가 YES 로 판정한다(근거 = 공시 근거 id, 인용 = 공시 근거 본문의 'OO YYYY년 매출액 N원').
+YES·NO 판정은 바꾸지 않고, 공시가 없는 회사(DART 에 없음)는 아무것도 바뀌지 않는다 — DART 에 없다는 사실은 판정에 쓰지 않는다.
 """
 from __future__ import annotations
 
@@ -405,6 +408,21 @@ def _round_rule(c: dict, run_date: str) -> tuple[str, list[str], str]:
     return "YES", ids, f"{rd} {c.get('stage')} {amount} — 적격성 검증에서 원문 인용으로 확인 (코드 판정)"
 
 
+def _dart_revenue(c: dict, pool: list[str], reg: SourceRegistry, run_date: str) -> tuple[list[str], str, str] | None:
+    """R1 공시 규칙: c['dart']['revenue'](최신 공시 먼저) 중 근거 풀에 있고, 인용이 근거 본문에 있으며, 접수일이 최근 24개월인
+    첫 매출액 → (근거 id 목록, 인용, 이유). 없으면 None."""
+    for r in (c.get("dart") or {}).get("revenue") or []:
+        sid, quote = r.get("evidence_id"), r.get("quote") or ""
+        s = reg.get(sid) if sid else None
+        if not s or sid not in pool or (r.get("amount") or 0) <= 0 or not fuzzy_in(quote, reg.text(sid)):
+            continue
+        if not _is_recent(s, run_date):
+            continue
+        return [sid], quote, (f"{r['year']}년 매출액 {r['amount']:,}원 — {r['report_nm']} 공시(금융감독원 전자공시시스템, "
+                              f"{r.get('rcept_dt')} 접수)로 확인 (코드 판정, DART)")
+    return None
+
+
 def _qlines(questions: list[dict], note: dict | None = None) -> str:
     """프롬프트의 질문 목록 (v1 문구 그대로). note: {qid: 문항 끝에 붙일 재질문 안내}."""
     return "\n".join(f"- {q['id']}: {q['text']} (YES 요건: {q['need']})" + (note or {}).get(q["id"], "")
@@ -525,6 +543,9 @@ def judge_dimension(dim_id: str, company: dict, pool_ids: list[str], reg: Source
             elif NO_HEDGE.search(re.sub(r"\s+", "", a.rationale)) and not NEGATED.search(a.quote):
                 # 이유가 "추정·확인되지 않음·근거가 없어" 류이고 인용문 자체에 부정 표현도 없으면 근거 부족
                 verdict, note = "UNKNOWN", f"반대 사실이 아니라 근거 부족 → NO 대신 UNKNOWN ({note})"
+        if q["id"] == "R1" and verdict == "UNKNOWN" and (hit := _dart_revenue(c, pool, reg, run_date)):
+            ev, quote, dart_note = hit  # 공시로 확인된 매출액 (LLM 이 미확인으로 둔 경우만)
+            verdict, note = "YES", f"{dart_note} (LLM 판정: {note})"
         confidence = (_confidence(quote, ev, pool, reg, keys, search_pool=q["id"] != "D1")
                       if verdict in ("YES", "NO") else None)
         rows.append({"dim": d["id"], "qid": q["id"], "short": q.get("short", ""), "point": q.get("point", ""),

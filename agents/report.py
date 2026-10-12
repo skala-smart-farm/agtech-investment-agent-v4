@@ -947,10 +947,27 @@ def _reference_mix() -> str:
             "같은 지역·같은 단계 투자 기업과 비교하라는 Scorecard 원칙을 근사한 것이다")
 
 
+def _dart_notes(evals: list[dict]) -> list[str]:
+    """평가한 후보의 DART 교차 확인 결과 중 보고서에 밝힐 것: 상장 의심 경고(scorecard['warnings'])와
+    DART 설립일이 TIPS·국민연금 값과 다른 경우(founder['t0_check']). DART 에 없는 회사는 아무 줄도 만들지 않는다."""
+    parts = []
+    for e in evals:
+        warn = [w for w in (e.get("scorecard") or {}).get("warnings") or [] if w.startswith("상장 의심")]
+        chk = (e.get("founder") or {}).get("t0_check") or {}
+        diff = [n for n in chk.get("notes") or [] if "= DART" not in n]
+        if warn:
+            parts.append(f"{e['name']} — {warn[0]}")
+        if diff:
+            parts.append(f"{e['name']} — 창업 시점 근거 차이: {'; '.join(diff)} (t0 는 {chk.get('t0_basis')} {chk.get('t0')} 사용)")
+    if not parts:
+        return []
+    return ["DART(금융감독원 전자공시시스템) 교차 확인: " + " / ".join(parts)]
+
+
 def _limitations(cfg, pool: dict, failed_by: dict[str, int], data_limits: list[str], mode: str,
-                 access_dates: list[str]) -> list[str]:
-    """한계점: 검색 실패, 미평가 적격 후보, 상대 평가, 가정, 데이터 한계, 판정 모델 순으로 최대 6개 + 조회일 표기 1줄
-    (REFERENCE 는 목록만 싣고, 게시일 대신 조회일을 쓴 사실은 여기서 밝힌다)."""
+                 access_dates: list[str], dart_notes: list[str] | None = None) -> list[str]:
+    """한계점: 검색 실패, (DART 교차 확인 — 공시가 있는 회사만), 미평가 적격 후보, 상대 평가, 가정, 데이터 한계, 판정 모델 순으로
+    최대 6개 + 조회일 표기 1줄 (REFERENCE 는 목록만 싣고, 게시일 대신 조회일을 쓴 사실은 여기서 밝힌다)."""
     out = []
     if gap := pool.get("ref_gap"):
         out.append(f"이번에 평가한 {pool['evaluated']}곳 중 {len(gap['unseen'])}곳({'·'.join(gap['unseen'])})은 동종 기준 집단"
@@ -961,6 +978,7 @@ def _limitations(cfg, pool: dict, failed_by: dict[str, int], data_limits: list[s
         parts = ", ".join(f"{k} {v}건" for k, v in sorted(failed_by.items(), key=lambda kv: (kv[0] == "분야·경쟁사 검색", -kv[1])))
         out.append(f"웹 검색 질의 {n}건이 실패(검색 한도 초과 등)해 빈 결과로 진행했다 — {parts}. "
                    f"해당 후보의 미확인 판정 일부는 근거 부재가 아니라 검색 실패 때문일 수 있다")
+    out += list(dart_notes or [])[:1]
     if pool["unevaluated"]:
         out.append(f"적격 후보 {pool['eligible']}곳 중 {len(pool['unevaluated'])}곳은 평가하지 않았다({pool['why']}: "
                    f"{'·'.join(u['name'] for u in pool['unevaluated'])})"
@@ -1896,7 +1914,7 @@ def report_node(state: dict) -> dict:
                             else _chapters_hold(ranked, target, d, t, reg, cfg, pool, failed_by))
         _, refs0, _ = _renumber(view, reg)
         t["limitations"] = _limitations(cfg, pool, failed_by, d["data_limits"], mode,
-                                        [r["access_date"] for r in refs0 if r["access_date"]])
+                                        [r["access_date"] for r in refs0 if r["access_date"]], _dart_notes(evals))
         view["chapters"] = (_chapters_invest(target, d, t, reg, cfg, pool, evals) if mode == "invest"
                             else _chapters_hold(ranked, target, d, t, reg, cfg, pool, failed_by))
         numbered, refs, cited = _renumber(view, reg)

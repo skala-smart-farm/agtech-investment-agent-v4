@@ -15,6 +15,9 @@
    - Deal-killer: Payne 워크시트의 deal killer 개념(조건 K1~K3 는 rubric.yaml).
    보류 유형(보고서의 '왜 안 되는가' 이름표, 앞선 것 우선): Deal-killer > 창업자 점수 평균 미만 > 동종 평균 이하.
 4) 보고서 재료(코드): 뒤집힘 조건, 실사 항목, Bessemer 10문, ROI 참고치, 기준 배수 민감도, 동종 순위.
+5) DART 공시(current['dart'], 탐색의 dart_check 가 붙임 — tools/dart.py): 공시 근거(기업개황·감사보고서·사업보고서)를 판정 근거
+   풀에 더해 실적 R1(연도가 적힌 매출액)이 공시로 판정되게 하고(core.judge 의 R1 공시 규칙), 상장 구분이 유가증권·코스닥·코넥스면
+   scorecard['warnings'] 에 '상장 의심'을 남긴다(결정은 바꾸지 않음 — 적격성 관문 G1 은 동결). DART 에 없는 회사는 아무것도 바뀌지 않는다.
 보정 실행(workflow.calibrate)에서는 기준 집단을 만드는 중이라 결정하지 않는다(decision None, 판정·신호만 기록).
 """
 from __future__ import annotations
@@ -27,6 +30,7 @@ from pathlib import Path
 from core.config import ROOT, get_config
 from core.judge import SIGNAL, evidence_pool, judge_company, judge_dimension
 from core.judge import load_rubric  # 판정 공용 모듈로 옮김. agents.report 가 이 이름으로 import 하므로 재수출
+from tools import dart
 from tools.grounding import norm
 from tools.sources import SourceRegistry
 
@@ -486,7 +490,8 @@ def decision_node(state: dict) -> dict:
     c = state["current"]
     name = c["official_name"]
     run_date = state.get("run_date") or datetime.now().strftime("%Y-%m-%d")
-    pool = evidence_pool(state)
+    dart_info = c.get("dart") or {}
+    pool = evidence_pool(state, extra=dart_info.get("evidence_ids") or [])  # 공시가 있는 회사만 더해진다
     analysis = _analysis_text(state)
 
     # 1) 판정: 실적·투자조건은 여기서, 나머지는 담당 에이전트의 criterion (없거나 문항이 모자라면 여기서 보완)
@@ -545,6 +550,9 @@ def decision_node(state: dict) -> dict:
                + (f" ({hold_type})" if hold_type else ""))
     if here:
         msg += f" [여기서 판정한 기준: {', '.join(here)}]"
+    if warn := dart.listed_warning(dart_info):  # 결정은 그대로, 경고만 (보고서 한계점에도 실린다)
+        scorecard["warnings"] = [warn]
+        msg += " · 경고: 상장 의심(DART)"
     print(msg)
 
     evaluation = {"name": name, "region": c.get("region"), "segment_id": c.get("segment_id"), "stage": c.get("stage"),

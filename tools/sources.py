@@ -176,6 +176,24 @@ class SourceRegistry:
         }
         return sid
 
+    def add_dart(self, item: dict, agent: str, query: str, access_date: str) -> str:
+        """DART(금융감독원 전자공시시스템) 공시 근거 (tools/dart.evidence_items 형식: key·url·title·content·date·rcept_no).
+        웹 근거와 같은 'W' id·kind('web')로 두어 판정 코드(최근 24개월·제3자·회사명 근접 검사)와 인용 표기를 그대로 쓰고,
+        dart=True 표지로 REFERENCE 만 기관 보고서 형식(format_reference)으로 쓴다. 같은 공시(key)는 기존 id 를 돌려준다.
+        add_web 을 거치지 않으므로 동결된 사이트명·제목·날짜 추정 규칙(SOURCES_FROZEN)과 무관하다."""
+        key = item["key"]
+        if sid := self._find(key):
+            return sid
+        sid = self._new_id("W", key)
+        self.data[sid] = {
+            "id": sid, "key": key, "kind": "web", "dart": True, "url": item["url"], "site": DART_SITE,
+            "publisher": DART_SITE, "title": item["title"], "date": item.get("date"),
+            "date_is_access": not item.get("date"), "access_date": access_date, "author": DART_SITE,
+            "rcept_no": item.get("rcept_no"), "snippet": item["content"][:1200], "agent": agent, "query": query,
+            "body": "",
+        }
+        return sid
+
     def get(self, sid: str) -> dict | None:
         return self.data.get(sid)
 
@@ -212,6 +230,7 @@ GROUPS = ("기관 보고서", "학술 논문", "웹페이지")  # REFERENCE 소�
 # data/manifest.yaml 의 type 을 바꾸면 코퍼스 해시(rag/index.py _corpus_hash)가 바뀌어 조각·FAISS 재현 캐시가 깨지므로 여기서 보정한다
 INSTITUTIONAL_SERIALS = {"세계농업"}   # 한국농촌경제연구원(KREI)『세계농업』
 UNKNOWN_AUTHOR = "작성자 미표기"       # 바이라인이 없는 기사: 작성자 자리에 매체명을 쓰지 않는다 (매체명은 사이트 자리에)
+DART_SITE = "금융감독원 전자공시시스템"  # DART 공시 근거(SourceRegistry.add_dart)의 발행 기관. REFERENCE 는 기관 보고서 형식
 TRUNCATED = re.compile(r"\s*(?:\.{3,}|…)\s*$")
 _PORTAL_OWN = re.compile(r"nate|daum|kakao|naver", re.I)
 
@@ -244,6 +263,8 @@ def _institutional_serial(s: dict) -> bool:
 def reference_group(s: dict) -> str:
     """기관 보고서 / 학술 논문 / 웹페이지. 저자가 있는 학술지 논문은 학술 논문 형식.
     연구기관 정기간행물 기고(INSTITUTIONAL_SERIALS, 예: KREI『세계농업』)는 저자가 있어도 기관 보고서."""
+    if s.get("dart"):  # 공시(감사보고서·사업보고서·기업개황)는 금융감독원이 공개하는 기관 자료
+        return "기관 보고서"
     if s["kind"] == "web":
         return "웹페이지"
     if _institutional_serial(s):
@@ -308,7 +329,10 @@ def _list_page_org(host: str) -> str | None:
 
 
 def uses_access_date(s: dict) -> bool:
-    """REFERENCE 날짜로 게시일 대신 조회일을 쓰는 웹페이지인지 (게시일 미상, 또는 목록·DB 페이지)."""
+    """REFERENCE 날짜로 게시일 대신 조회일을 쓰는 웹페이지인지 (게시일 미상, 또는 목록·DB 페이지).
+    DART 공시는 접수일을 쓰고, 접수일이 없는 기업개황(DB 페이지)만 조회일을 쓴다."""
+    if s.get("dart"):
+        return not s.get("date")
     if s["kind"] != "web":
         return False
     return bool(_list_page_org(_host(unquote(s["url"]).split("#")[0]))) or not s.get("date")
@@ -316,7 +340,12 @@ def uses_access_date(s: dict) -> bool:
 
 def format_reference(s: dict) -> str:
     """과제에서 지정한 REFERENCE 표기 형식 그대로 쓴다(줄 끝 주석 없음).
-    게시일을 찾지 못한 웹페이지와 목록·DB 페이지는 조회일을 쓴다(uses_access_date, 한계점에서 밝힘)."""
+    게시일을 찾지 못한 웹페이지와 목록·DB 페이지는 조회일을 쓴다(uses_access_date, 한계점에서 밝힘).
+    DART 공시는 기관 보고서 형식: 금융감독원 전자공시시스템(접수 연도). 회사명 감사보고서 (2025.12). 공시 원문 URL
+    (기업개황은 접수일이 없어 조회 연도)."""
+    if s.get("dart"):
+        year = (s.get("date") or s.get("access_date") or "")[:4]
+        return f"{DART_SITE}({year}). {s['title']}. {s['url']}"
     if s["kind"] == "doc":
         if reference_group(s) == "학술 논문":
             vol = f"{s.get('volume') or ''}({s['issue']})" if s.get("issue") else str(s.get("volume") or "")

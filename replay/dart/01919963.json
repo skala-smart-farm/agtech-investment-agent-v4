@@ -1,0 +1,97 @@
+{
+ "corp_code": "01919963",
+ "fetched": "2026-10-12",
+ "window": {
+  "bgn_de": "20210930",
+  "end_de": "20260930"
+ },
+ "company": {
+  "status": "000",
+  "message": "정상",
+  "corp_code": "01919963",
+  "corp_name": "주식회사 대동애그테크",
+  "corp_name_eng": "DAEDONG AGTECH CORPORATION",
+  "stock_name": "대동애그테크",
+  "stock_code": "",
+  "ceo_nm": "원유현",
+  "corp_cls": "E",
+  "jurir_no": "1101118199542",
+  "bizr_no": "1968802423",
+  "adres": "서울특별시 서초구 효령로 328 (서초동,아트리트21빌딩) 2,3층",
+  "hm_url": "",
+  "ir_url": "",
+  "phn_no": "0234739381",
+  "fax_no": "",
+  "induty_code": "62021",
+  "est_dt": "20220215",
+  "acc_mt": "12"
+ },
+ "list_all": {
+  "status": "000",
+  "message": "정상",
+  "page_no": 1,
+  "page_count": 100,
+  "total_count": 1,
+  "total_page": 1,
+  "list": [
+   {
+    "corp_code": "01919963",
+    "corp_name": "대동애그테크",
+    "stock_code": "",
+    "corp_cls": "E",
+    "report_nm": "감사보고서 (2025.12)",
+    "rcept_no": "20260323000196",
+    "flr_nm": "광교회계법인",
+    "rcept_dt": "20260323",
+    "rm": ""
+   }
+  ]
+ },
+ "list_audit": {
+  "status": "000",
+  "message": "정상",
+  "page_no": 1,
+  "page_count": 100,
+  "total_count": 1,
+  "total_page": 1,
+  "list": [
+   {
+    "corp_code": "01919963",
+    "corp_name": "대동애그테크",
+    "stock_code": "",
+    "corp_cls": "E",
+    "report_nm": "감사보고서 (2025.12)",
+    "rcept_no": "20260323000196",
+    "flr_nm": "광교회계법인",
+    "rcept_dt": "20260323",
+    "rm": ""
+   }
+  ]
+ },
+ "fnltt": {
+  "2025": {
+   "status": "013",
+   "message": "조회된 데이타가 없습니다."
+  },
+  "2024": {
+   "status": "013",
+   "message": "조회된 데이타가 없습니다."
+  }
+ },
+ "audit_doc": {
+  "rcept_no": "20260323000196",
+  "report_nm": "감사보고서 (2025.12)",
+  "summary": {
+   "TOT_SALES": 31070,
+   "TOT_ASSETS": 30207,
+   "TOT_DEBTS": 8824,
+   "TOT_EMPL": 71
+  },
+  "sales_row": {
+   "label": "Ⅰ. 매출액",
+   "unit": "원",
+   "current": 31069737635,
+   "prior": 24243504085
+  }
+ }
+}
