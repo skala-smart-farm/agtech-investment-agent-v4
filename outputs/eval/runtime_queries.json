@@ -1,0 +1,7022 @@
+{
+  "rule": "1) 실제 질의 전체 Precision@4 평균 최대 2) 같으면(소수 셋째 자리) 전체 Hit@4 최대 3) 그래도 같으면 지금 런타임(A), 그다음 표의 앞쪽",
+  "pick": "A runtime hybrid 0.4:0.6",
+  "runtime": "A runtime hybrid 0.4:0.6",
+  "k": 4,
+  "candidate_k": 8,
+  "judge": {
+    "model": "gpt-4.1-mini",
+    "temperature": 0,
+    "batch": 4,
+    "max_chars": 1200,
+    "prompt_sha": "f81cf227d28f",
+    "prompt": "너는 투자 분석팀의 검색 결과 평가자다. 아래 검색 질의에 대해 각 문서 조각을 판정하라.\n질의가 찾는 정보(수치, 사실, 정책 내용 등)를 조각이 직접 담고 있어 질의에 답하는 데 쓸 수 있으면 relevant=true,\n주제(분야)만 비슷하고 질의가 찾는 내용이 없으면 false, 목차·표지·참고문헌 목록도 false 다. 애매하면 false.\n조각의 언어(한국어·영어)는 판정에 영향을 주지 않는다.\n\n검색 질의: {query}\n\n조각 목록:\n{chunks}\n\n모든 조각 번호에 대해 판정을 반환하라."
+  },
+  "queries_total": 63,
+  "queries_used": 63,
+  "dropped_for_budget": [],
+  "cost": {
+    "budget_usd": 0.2,
+    "estimate_note": "tiktoken o200k_base 로 센 프롬프트 + 호출당 120 토큰(스키마 등), 출력 10+15×조각, ×1.1 여유, 가격 0.4/1.6 USD/1M",
+    "estimate_fresh": {
+      "calls": 118,
+      "pairs": 350,
+      "input_tokens": 138239,
+      "output_tokens": 6430,
+      "usd": 0.0721
+    },
+    "estimate_this_run": {
+      "calls": 0,
+      "pairs": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "usd": 0
+    },
+    "actual_all_judgment_calls": {
+      "calls": 118,
+      "usd": 0.0645,
+      "input_tokens": 145791,
+      "output_tokens": 3858
+    },
+    "this_run": {
+      "api_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "usd": 0.0
+    }
+  },
+  "rows": [
+    {
+      "name": "A runtime hybrid 0.4:0.6",
+      "runtime": true,
+      "all": {
+        "n": 63,
+        "P@4": 0.627,
+        "Hit@4": 0.841,
+        "MRR@4": 0.725,
+        "en_share": 0.337
+      },
+      "doc_lang:ko": {
+        "n": 33,
+        "P@4": 0.712,
+        "Hit@4": 1.0,
+        "MRR@4": 0.864,
+        "en_share": 0.144
+      },
+      "doc_lang:en": {
+        "n": 9,
+        "P@4": 0.778,
+        "Hit@4": 1.0,
+        "MRR@4": 0.759,
+        "en_share": 0.889
+      },
+      "doc_lang:mixed": {
+        "n": 11,
+        "P@4": 0.818,
+        "Hit@4": 1.0,
+        "MRR@4": 0.939,
+        "en_share": 0.273
+      },
+      "doc_lang:none": {
+        "n": 10,
+        "P@4": 0.0,
+        "Hit@4": 0.0,
+        "MRR@4": 0.0,
+        "en_share": 0.55
+      },
+      "kind:doc": {
+        "n": 53,
+        "P@4": 0.679,
+        "Hit@4": 0.906,
+        "MRR@4": 0.789,
+        "en_share": 0.292
+      },
+      "kind:web": {
+        "n": 10,
+        "P@4": 0.35,
+        "Hit@4": 0.5,
+        "MRR@4": 0.383,
+        "en_share": 0.575
+      },
+      "query_lang:ko": {
+        "n": 59,
+        "P@4": 0.606,
+        "Hit@4": 0.831,
+        "MRR@4": 0.715,
+        "en_share": 0.292
+      },
+      "query_lang:en": {
+        "n": 4,
+        "P@4": 0.938,
+        "Hit@4": 1.0,
+        "MRR@4": 0.875,
+        "en_share": 1.0
+      }
+    },
+    {
+      "name": "B dense only",
+      "runtime": false,
+      "all": {
+        "n": 63,
+        "P@4": 0.563,
+        "Hit@4": 0.81,
+        "MRR@4": 0.692,
+        "en_share": 0.433
+      },
+      "doc_lang:ko": {
+        "n": 33,
+        "P@4": 0.614,
+        "Hit@4": 0.939,
+        "MRR@4": 0.78,
+        "en_share": 0.25
+      },
+      "doc_lang:en": {
+        "n": 9,
+        "P@4": 0.722,
+        "Hit@4": 1.0,
+        "MRR@4": 0.815,
+        "en_share": 0.917
+      },
+      "doc_lang:mixed": {
+        "n": 11,
+        "P@4": 0.795,
+        "Hit@4": 1.0,
+        "MRR@4": 0.955,
+        "en_share": 0.432
+      },
+      "doc_lang:none": {
+        "n": 10,
+        "P@4": 0.0,
+        "Hit@4": 0.0,
+        "MRR@4": 0.0,
+        "en_share": 0.6
+      },
+      "kind:doc": {
+        "n": 53,
+        "P@4": 0.599,
+        "Hit@4": 0.868,
+        "MRR@4": 0.728,
+        "en_share": 0.396
+      },
+      "kind:web": {
+        "n": 10,
+        "P@4": 0.375,
+        "Hit@4": 0.5,
+        "MRR@4": 0.5,
+        "en_share": 0.625
+      },
+      "query_lang:ko": {
+        "n": 59,
+        "P@4": 0.547,
+        "Hit@4": 0.797,
+        "MRR@4": 0.682,
+        "en_share": 0.394
+      },
+      "query_lang:en": {
+        "n": 4,
+        "P@4": 0.812,
+        "Hit@4": 1.0,
+        "MRR@4": 0.833,
+        "en_share": 1.0
+      }
+    },
+    {
+      "name": "C lang-impute 0.4:0.6",
+      "runtime": false,
+      "all": {
+        "n": 63,
+        "P@4": 0.528,
+        "Hit@4": 0.73,
+        "MRR@4": 0.599,
+        "en_share": 0.563
+      },
+      "doc_lang:ko": {
+        "n": 33,
+        "P@4": 0.538,
+        "Hit@4": 0.788,
+        "MRR@4": 0.614,
+        "en_share": 0.356
+      },
+      "doc_lang:en": {
+        "n": 9,
+        "P@4": 0.806,
+        "Hit@4": 1.0,
+        "MRR@4": 0.889,
+        "en_share": 0.972
+      },
+      "doc_lang:mixed": {
+        "n": 11,
+        "P@4": 0.75,
+        "Hit@4": 1.0,
+        "MRR@4": 0.864,
+        "en_share": 0.636
+      },
+      "doc_lang:none": {
+        "n": 10,
+        "P@4": 0.0,
+        "Hit@4": 0.0,
+        "MRR@4": 0.0,
+        "en_share": 0.8
+      },
+      "kind:doc": {
+        "n": 53,
+        "P@4": 0.561,
+        "Hit@4": 0.774,
+        "MRR@4": 0.627,
+        "en_share": 0.5
+      },
+      "kind:web": {
+        "n": 10,
+        "P@4": 0.35,
+        "Hit@4": 0.5,
+        "MRR@4": 0.45,
+        "en_share": 0.9
+      },
+      "query_lang:ko": {
+        "n": 59,
+        "P@4": 0.5,
+        "Hit@4": 0.712,
+        "MRR@4": 0.581,
+        "en_share": 0.534
+      },
+      "query_lang:en": {
+        "n": 4,
+        "P@4": 0.938,
+        "Hit@4": 1.0,
+        "MRR@4": 0.875,
+        "en_share": 1.0
+      }
+    },
+    {
+      "name": "C lang-impute 0.5:0.5",
+      "runtime": false,
+      "all": {
+        "n": 63,
+        "P@4": 0.524,
+        "Hit@4": 0.746,
+        "MRR@4": 0.619,
+        "en_share": 0.556
+      },
+      "doc_lang:ko": {
+        "n": 33,
+        "P@4": 0.53,
+        "Hit@4": 0.818,
+        "MRR@4": 0.652,
+        "en_share": 0.356
+      },
+      "doc_lang:en": {
+        "n": 9,
+        "P@4": 0.806,
+        "Hit@4": 1.0,
+        "MRR@4": 0.889,
+        "en_share": 0.972
+      },
+      "doc_lang:mixed": {
+        "n": 11,
+        "P@4": 0.75,
+        "Hit@4": 1.0,
+        "MRR@4": 0.864,
+        "en_share": 0.614
+      },
+      "doc_lang:none": {
+        "n": 10,
+        "P@4": 0.0,
+        "Hit@4": 0.0,
+        "MRR@4": 0.0,
+        "en_share": 0.775
+      },
+      "kind:doc": {
+        "n": 53,
+        "P@4": 0.557,
+        "Hit@4": 0.792,
+        "MRR@4": 0.651,
+        "en_share": 0.495
+      },
+      "kind:web": {
+        "n": 10,
+        "P@4": 0.35,
+        "Hit@4": 0.5,
+        "MRR@4": 0.45,
+        "en_share": 0.875
+      },
+      "query_lang:ko": {
+        "n": 59,
+        "P@4": 0.496,
+        "Hit@4": 0.729,
+        "MRR@4": 0.602,
+        "en_share": 0.525
+      },
+      "query_lang:en": {
+        "n": 4,
+        "P@4": 0.938,
+        "Hit@4": 1.0,
+        "MRR@4": 0.875,
+        "en_share": 1.0
+      }
+    }
+  ],
+  "paired_vs_runtime_P@4": {
+    "B dense only": {
+      "win": 3,
+      "loss": 17,
+      "tie": 43,
+      "mean_diff": -0.063,
+      "ci95": [
+        -0.107,
+        -0.02
+      ]
+    },
+    "C lang-impute 0.4:0.6": {
+      "win": 2,
+      "loss": 22,
+      "tie": 39,
+      "mean_diff": -0.099,
+      "ci95": [
+        -0.143,
+        -0.06
+      ]
+    },
+    "C lang-impute 0.5:0.5": {
+      "win": 3,
+      "loss": 23,
+      "tie": 37,
+      "mean_diff": -0.103,
+      "ci95": [
+        -0.151,
+        -0.06
+      ]
+    }
+  },
+  "diff_vs_runtime": {
+    "B dense only": {
+      "base": {
+        "ko_rel": 38,
+        "ko_not": 12,
+        "en_rel": 7,
+        "en_not": 0
+      },
+      "other": {
+        "ko_rel": 19,
+        "ko_not": 7,
+        "en_rel": 10,
+        "en_not": 21
+      }
+    },
+    "C lang-impute 0.4:0.6": {
+      "base": {
+        "ko_rel": 38,
+        "ko_not": 19,
+        "en_rel": 0,
+        "en_not": 0
+      },
+      "other": {
+        "ko_rel": 0,
+        "ko_not": 0,
+        "en_rel": 13,
+        "en_not": 44
+      }
+    },
+    "C lang-impute 0.5:0.5": {
+      "base": {
+        "ko_rel": 41,
+        "ko_not": 19,
+        "en_rel": 0,
+        "en_not": 0
+      },
+      "other": {
+        "ko_rel": 3,
+        "ko_not": 2,
+        "en_rel": 12,
+        "en_not": 43
+      }
+    }
+  },
+  "judge_check_vs_runtime_grader": {
+    "queries": 18,
+    "pairs": 72,
+    "both": 15,
+    "ours_only": 10,
+    "runtime_only": 2,
+    "neither": 45,
+    "agreement": 0.833,
+    "kappa": 0.603
+  },
+  "queries": [
+    {
+      "qid": "q01",
+      "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "discovery",
+      "sub_question": "스타트업 사례",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#289",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#100",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#289",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#100",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#288",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#289",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#288",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#289",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#288",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q02",
+      "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "tech",
+      "sub_question": "기술 동향",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#37",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#33",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#398",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#37",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#37",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q03",
+      "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 농업 로봇·자율주행 농기계 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q04",
+      "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 시장의 연평균 성장률은 얼마인가? (market growth rate)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q05",
+      "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 농업 로봇·자율주행 농기계 수요 요인에는 어떤 것들이 있는가? (demand factors)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q06",
+      "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#223",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q07",
+      "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q08",
+      "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q09",
+      "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#223",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#362",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#223",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#362",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q10",
+      "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 농업 로봇·자율주행 농기계 관련 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#36",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#62",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#321",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#321",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#321",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q11",
+      "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 기준으로 국내 및 글로벌 애그테크 분야 투자 동향, 특히 농업 로봇·자율주행 농기계 스타트업에 대한 투자 총액 증감과 국가별 투자 증감 현황은 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#250",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#250",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#250",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#248",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#250",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#248",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q12",
+      "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 기준으로 국내 및 글로벌 애그테크 분야 투자 동향, 특히 농업 로봇·자율주행 농기계 스타트업에 대한 투자 총액 증감과 국가별 투자 증감 현황은 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#223",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#254",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#250",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#223",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#223",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q13",
+      "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "tech",
+      "sub_question": "기술 동향",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#49",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#33",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mafra_plan2025#49",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#33",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#550",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#312",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#550",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q14",
+      "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 농업 생산 데이터 분석·예측 AI(생육·환경 데이터) 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q15",
+      "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트농업·애그테크 분야의 연평균 성장률은 어떻게 되는가? (growth rate)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "kdi_agtech2023#100",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q16",
+      "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야에 대한 수요 요인은 무엇이며, 어떤 요소들이 수요를 촉진하는가? (demand factors)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q17",
+      "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#283",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#283",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q18",
+      "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q19",
+      "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#93",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q20",
+      "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q21",
+      "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "worldbank_ai2025#552",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q22",
+      "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q23",
+      "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q24",
+      "query": "애그테크 투자 동향 2026",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2026년 기준 국내외 애그테크 분야의 최근 투자 동향은 어떠하며, 투자 총액 증감과 국가별 투자 변화는 어떻게 나타나는가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#99",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#100",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "kdi_agtech2023#100",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#99",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#99",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#273",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#99",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#273",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q25",
+      "query": "agrifoodtech funding investment trends 2026",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2026년 기준 국내외 애그테크 분야의 최근 투자 동향은 어떠하며, 투자 총액 증감과 국가별 투자 변화는 어떻게 나타나는가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#187",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#254",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#187",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#187",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q26",
+      "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "tech",
+      "sub_question": "기술 동향",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#460",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#451",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#35",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#460",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#451",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#35",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#460",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#451",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#460",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#451",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q27",
+      "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 작물 생육·병해충 진단 AI 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#451",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#451",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q28",
+      "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 작물 생육·병해충 진단 AI 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q29",
+      "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI에 대한 수요 요인은 무엇인가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#476",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#542",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#476",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#542",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#476",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#542",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#476",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#542",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q30",
+      "query": "작물 생육 병해충 진단 AI 고객 지불 의향",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에서 고객의 지불 의향은 어느 정도인가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#548",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#281",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "frontiers_pd2024#548",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#281",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#548",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#281",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "frontiers_pd2024#548",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#281",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q31",
+      "query": "작물 생육 병해충 진단 AI 고객 지불 의향 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에서 고객의 지불 의향은 어느 정도인가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#449",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q32",
+      "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness)과 관련된 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에서 고객의 지불 의향은 어느 정도인가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q33",
+      "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에서 고객의 지불 의향은 어느 정도인가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q34",
+      "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_dataax2026#147",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#453",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#453",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#453",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#453",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#533",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q35",
+      "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 작물 생육·병해충 진단 AI 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q36",
+      "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2026년 기준 국내외 애그테크 투자 동향은 어떠하며, 특히 작물 생육·병해충 진단 AI 분야에 대한 투자 총액 증감과 국가별 차이는 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#226",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#450",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q37",
+      "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2026년 기준 국내외 애그테크 투자 동향은 어떠하며, 특히 작물 생육·병해충 진단 AI 분야에 대한 투자 총액 증감과 국가별 차이는 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#209",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#182",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#209",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#283",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#209",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#182",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#209",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#182",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q38",
+      "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "tech",
+      "sub_question": "기술 동향",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#30",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#30",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#30",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#1",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q39",
+      "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q40",
+      "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시장의 연평균 성장률은 얼마인가? (market growth rate)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q41",
+      "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어에 대한 수요 요인은 무엇인가? (demand factors)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_dataax2026#149",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#70",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#12",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#70",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_dataax2026#149",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#70",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_dataax2026#149",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#70",
+            "lang": "ko",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q42",
+      "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q43",
+      "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q44",
+      "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#18",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q45",
+      "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#217",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#168",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#217",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q46",
+      "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에 적용되는 정책 및 규제 현황은 어떠한가? (policy and regulation)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#19",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#19",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#59",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mafra_plan2025#32",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#19",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#29",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#1",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q47",
+      "query": "애그테크 투자 동향 스마트팜 AI 시설원예 스타트업",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2025년 이후 국내 및 글로벌 애그테크 분야 투자 동향, 특히 스마트팜·시설원예 AI 환경제어 관련 스타트업의 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#254",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#168",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#254",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#168",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#254",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#168",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#157",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#254",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#168",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q48",
+      "query": "애그테크 투자 동향 2025 이후 스마트팜 시설원예 AI 환경제어 스타트업 국가별 투자 변화",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2025년 이후 국내 및 글로벌 애그테크 분야 투자 동향, 특히 스마트팜·시설원예 AI 환경제어 관련 스타트업의 투자 총액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#288",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#288",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#288",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#288",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#252",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q49",
+      "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "tech",
+      "sub_question": "기술 동향",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#122",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#122",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#34",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#122",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#58",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "kdi_agtech2023#122",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "kdi_agtech2023#111",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q50",
+      "query": "축산 AI 시장 규모 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 축산 AI(가축 건강·사양 관리) 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q51",
+      "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 축산 AI(가축 건강·사양 관리) 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#91",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#122",
+            "lang": "ko",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q52",
+      "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 발표된 국내 및 글로벌 축산 AI(가축 건강·사양 관리) 시장 규모는 어떻게 되는가? (market size)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#91",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q53",
+      "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI(가축 건강·사양 관리) 시장의 연평균 성장률은 얼마인가? (growth rate)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#98",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q54",
+      "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI(가축 건강·사양 관리) 시장의 연평균 성장률은 얼마인가? (growth rate)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#91",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q55",
+      "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI 분야에서 가축 건강 및 사양 관리 솔루션에 대한 수요 요인은 무엇인가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_dataax2026#148",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "worldbank_ai2025#562",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q56",
+      "query": "축산 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#188",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#188",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#188",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#240",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#188",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q57",
+      "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#71",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q58",
+      "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "mixed",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mafra_plan2025#6",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#72",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "krei_market2024#75",
+            "lang": "ko",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q59",
+      "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "none",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#217",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#217",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#217",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#255",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#286",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#217",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#255",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q60",
+      "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "krei_market2024#73",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#169",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#282",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "frontiers_pd2024#452",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q61",
+      "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 축산 AI 분야에 영향을 미치는 정책 및 규제 현황은 어떠한가?",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "ko",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#122",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "nars_act2023#138",
+            "lang": "ko",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "mdpi_robotics2025#399",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "mdpi_robotics2025#396",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#229",
+            "lang": "en",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#290",
+            "lang": "en",
+            "relevant": false
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q62",
+      "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+      "kinds": [
+        "web"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 애그테크 투자 동향 중 축산 AI 분야를 포함한 주요 투자액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "web",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#247",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#99",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#247",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#99",
+            "lang": "ko",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#247",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#249",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#247",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "kdi_agtech2023#96",
+            "lang": "ko",
+            "relevant": false
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#249",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q63",
+      "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+      "kinds": [
+        "doc"
+      ],
+      "agent": "market",
+      "sub_question": "2024년 이후 국내 및 글로벌 애그테크 투자 동향 중 축산 AI 분야를 포함한 주요 투자액 증감과 국가별 투자 변화는 어떠한가? (agrifoodtech funding)",
+      "sources": [
+        "outputs/run_log.json",
+        "outputs/calibration/run_log.json"
+      ],
+      "kind": "doc",
+      "doc_lang": "en",
+      "results": {
+        "A runtime hybrid 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "B dense only": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#165",
+            "lang": "en",
+            "relevant": false
+          }
+        ],
+        "C lang-impute 0.4:0.6": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          }
+        ],
+        "C lang-impute 0.5:0.5": [
+          {
+            "chunk": "agfunder2026#159",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#246",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#211",
+            "lang": "en",
+            "relevant": true
+          },
+          {
+            "chunk": "agfunder2026#160",
+            "lang": "en",
+            "relevant": true
+          }
+        ]
+      }
+    }
+  ]
+}

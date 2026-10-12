@@ -1,0 +1,5627 @@
+{
+ "corpus_hash": "b0d152f7141807d8",
+ "prompt_sha": "f81cf227d28f",
+ "model": "gpt-4.1-mini",
+ "temperature": 0,
+ "max_chars": 1200,
+ "calls": [
+  {
+   "call": 1,
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunks": [
+    "kdi_agtech2023#96",
+    "agfunder2026#289",
+    "kdi_agtech2023#98",
+    "kdi_agtech2023#100"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1784,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 2,
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunks": [
+    "agfunder2026#288",
+    "agfunder2026#211"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 786,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 3,
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunks": [
+    "mafra_plan2025#36",
+    "mdpi_robotics2025#399",
+    "mafra_plan2025#37",
+    "mdpi_robotics2025#312"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1456,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 4,
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunks": [
+    "mafra_plan2025#33",
+    "mafra_plan2025#59",
+    "mdpi_robotics2025#398"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1394,
+    "output_tokens": 33,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 5,
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunks": [
+    "mafra_plan2025#36",
+    "krei_market2024#73",
+    "mdpi_robotics2025#399",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2030,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 6,
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunks": [
+    "krei_market2024#75",
+    "krei_market2024#72",
+    "mdpi_robotics2025#396"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1116,
+    "output_tokens": 33,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 7,
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunks": [
+    "krei_market2024#71",
+    "krei_market2024#73",
+    "krei_market2024#72",
+    "mdpi_robotics2025#399"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1788,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 8,
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunks": [
+    "mafra_plan2025#36",
+    "krei_market2024#75"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1131,
+    "output_tokens": 24,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 9,
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunks": [
+    "mafra_plan2025#36",
+    "mdpi_robotics2025#399",
+    "krei_market2024#71",
+    "mdpi_robotics2025#396"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1837,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 10,
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunks": [
+    "agfunder2026#229",
+    "mdpi_robotics2025#312"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 581,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 11,
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunks": [
+    "mafra_plan2025#59",
+    "mdpi_robotics2025#399",
+    "mafra_plan2025#36",
+    "mdpi_robotics2025#396"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1591,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 12,
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunks": [
+    "krei_market2024#73",
+    "agfunder2026#223"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 989,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 13,
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunks": [
+    "krei_market2024#73",
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "mdpi_robotics2025#399"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1601,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 14,
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunks": [
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 849,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 15,
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunks": [
+    "krei_market2024#73",
+    "mdpi_robotics2025#399",
+    "krei_market2024#72",
+    "mdpi_robotics2025#396"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1620,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 16,
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunks": [
+    "krei_market2024#75"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 624,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 17,
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "krei_market2024#73",
+    "mdpi_robotics2025#396",
+    "mdpi_robotics2025#399",
+    "krei_market2024#72"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1591,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 18,
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "agfunder2026#223",
+    "mdpi_robotics2025#362"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 782,
+    "output_tokens": 24,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 19,
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunks": [
+    "mafra_plan2025#59",
+    "mdpi_robotics2025#399",
+    "mafra_plan2025#36",
+    "mafra_plan2025#62"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1696,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 20,
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunks": [
+    "mdpi_robotics2025#321",
+    "agfunder2026#229"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 596,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 21,
+   "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+   "chunks": [
+    "agfunder2026#250",
+    "kdi_agtech2023#96",
+    "agfunder2026#165",
+    "agfunder2026#246"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1211,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 22,
+   "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+   "chunks": [
+    "agfunder2026#248"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 473,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 23,
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunks": [
+    "agfunder2026#159",
+    "agfunder2026#223",
+    "agfunder2026#254",
+    "agfunder2026#160"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1208,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 24,
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunks": [
+    "agfunder2026#165",
+    "agfunder2026#252",
+    "agfunder2026#250"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 868,
+    "output_tokens": 33,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 25,
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunks": [
+    "mafra_plan2025#49",
+    "mdpi_robotics2025#312",
+    "worldbank_ai2025#552",
+    "worldbank_ai2025#550"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 942,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 26,
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunks": [
+    "mafra_plan2025#33",
+    "agfunder2026#290"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1113,
+    "output_tokens": 24,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 27,
+   "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후",
+   "chunks": [
+    "krei_market2024#75",
+    "krei_market2024#73",
+    "krei_market2024#71",
+    "krei_market2024#72"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1758,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 28,
+   "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+   "chunks": [
+    "kdi_agtech2023#98",
+    "kdi_agtech2023#100",
+    "kdi_agtech2023#96",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2169,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 29,
+   "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+   "chunks": [
+    "krei_market2024#75"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 570,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 30,
+   "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#71",
+    "krei_market2024#73",
+    "worldbank_ai2025#562"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1701,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 31,
+   "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+   "chunks": [
+    "mafra_plan2025#6"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 851,
+    "output_tokens": 15,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 32,
+   "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunks": [
+    "krei_market2024#73",
+    "krei_market2024#75",
+    "krei_market2024#72",
+    "agfunder2026#169"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1459,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 33,
+   "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunks": [
+    "agfunder2026#283"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 554,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 34,
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunks": [
+    "krei_market2024#75",
+    "krei_market2024#72",
+    "krei_market2024#73",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1798,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 35,
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunks": [
+    "mafra_plan2025#6",
+    "agfunder2026#159"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1079,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 36,
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "krei_market2024#73",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1811,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 37,
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunks": [
+    "mdpi_robotics2025#396",
+    "mafra_plan2025#6",
+    "krei_market2024#93"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1422,
+    "output_tokens": 33,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 38,
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#73",
+    "agfunder2026#169",
+    "agfunder2026#159"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1447,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 39,
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "krei_market2024#75",
+    "agfunder2026#240"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 700,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 40,
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunks": [
+    "krei_market2024#75",
+    "krei_market2024#73",
+    "worldbank_ai2025#562",
+    "worldbank_ai2025#552"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1322,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 41,
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunks": [
+    "frontiers_pd2024#452",
+    "agfunder2026#229"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 635,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 42,
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunks": [
+    "krei_market2024#71",
+    "krei_market2024#75",
+    "krei_market2024#72",
+    "mafra_plan2025#6"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1882,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 43,
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunks": [
+    "nars_act2023#138",
+    "krei_market2024#73",
+    "agfunder2026#290"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1698,
+    "output_tokens": 33,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 44,
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunks": [
+    "mafra_plan2025#6",
+    "krei_market2024#71",
+    "krei_market2024#73",
+    "krei_market2024#72"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2108,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 45,
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunks": [
+    "krei_market2024#75",
+    "kdi_agtech2023#96"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 930,
+    "output_tokens": 24,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 46,
+   "query": "애그테크 투자 동향 2026",
+   "chunks": [
+    "kdi_agtech2023#96",
+    "kdi_agtech2023#100",
+    "kdi_agtech2023#99",
+    "kdi_agtech2023#98"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1995,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 47,
+   "query": "애그테크 투자 동향 2026",
+   "chunks": [
+    "agfunder2026#157",
+    "agfunder2026#273"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 702,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 48,
+   "query": "agrifoodtech funding investment trends 2026",
+   "chunks": [
+    "agfunder2026#165",
+    "agfunder2026#159",
+    "agfunder2026#157",
+    "agfunder2026#187"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1097,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 49,
+   "query": "agrifoodtech funding investment trends 2026",
+   "chunks": [
+    "agfunder2026#254"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 593,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 50,
+   "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+   "chunks": [
+    "mafra_plan2025#34",
+    "frontiers_pd2024#460",
+    "frontiers_pd2024#451",
+    "mafra_plan2025#35"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 898,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 51,
+   "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+   "chunks": [
+    "frontiers_pd2024#533"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 596,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 52,
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunks": [
+    "krei_market2024#73",
+    "frontiers_pd2024#452",
+    "krei_market2024#75",
+    "frontiers_pd2024#533"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1461,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 53,
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunks": [
+    "agfunder2026#211",
+    "frontiers_pd2024#451"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 736,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 54,
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "frontiers_pd2024#452",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1582,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 55,
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunks": [
+    "krei_market2024#73",
+    "agfunder2026#252"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1031,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 56,
+   "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후",
+   "chunks": [
+    "frontiers_pd2024#452",
+    "frontiers_pd2024#450",
+    "frontiers_pd2024#476",
+    "frontiers_pd2024#542"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1088,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 57,
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향",
+   "chunks": [
+    "frontiers_pd2024#548",
+    "agfunder2026#281",
+    "frontiers_pd2024#449",
+    "agfunder2026#226"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 946,
+    "output_tokens": 42,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 58,
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향 2024 이후",
+   "chunks": [
+    "frontiers_pd2024#452",
+    "agfunder2026#282",
+    "agfunder2026#211",
+    "frontiers_pd2024#449"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1176,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 59,
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness)과 관련된 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 보고서",
+   "chunks": [
+    "krei_market2024#73",
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1816,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 60,
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "krei_market2024#73",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1814,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 61,
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+   "chunks": [
+    "frontiers_pd2024#452"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 621,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 62,
+   "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+   "chunks": [
+    "mafra_plan2025#34",
+    "frontiers_pd2024#452",
+    "mafra_dataax2026#147",
+    "frontiers_pd2024#453"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1301,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 63,
+   "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+   "chunks": [
+    "frontiers_pd2024#533"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 593,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 64,
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunks": [
+    "krei_market2024#75",
+    "frontiers_pd2024#452",
+    "krei_market2024#73",
+    "mdpi_robotics2025#396"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1496,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 65,
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunks": [
+    "agfunder2026#290",
+    "mdpi_robotics2025#399"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 822,
+    "output_tokens": 24,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 66,
+   "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+   "chunks": [
+    "kdi_agtech2023#96",
+    "agfunder2026#226",
+    "agfunder2026#211",
+    "frontiers_pd2024#450"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1213,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 67,
+   "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+   "chunks": [
+    "agfunder2026#290"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 537,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 68,
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunks": [
+    "agfunder2026#209",
+    "agfunder2026#182",
+    "agfunder2026#290",
+    "agfunder2026#282"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 959,
+    "output_tokens": 42,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 69,
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunks": [
+    "agfunder2026#159",
+    "agfunder2026#283"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 735,
+    "output_tokens": 24,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 70,
+   "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+   "chunks": [
+    "mafra_plan2025#12",
+    "mafra_plan2025#29",
+    "mafra_plan2025#58",
+    "mafra_plan2025#30"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2146,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 71,
+   "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+   "chunks": [
+    "mafra_plan2025#1"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 644,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 72,
+   "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+   "chunks": [
+    "mafra_plan2025#12",
+    "krei_market2024#73",
+    "krei_market2024#71",
+    "mafra_plan2025#32"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2212,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 73,
+   "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+   "chunks": [
+    "krei_market2024#75"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 570,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 74,
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunks": [
+    "krei_market2024#71",
+    "mafra_plan2025#12",
+    "krei_market2024#73",
+    "mafra_plan2025#32"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2216,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 75,
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunks": [
+    "krei_market2024#72",
+    "mafra_plan2025#6"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1164,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 76,
+   "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+   "chunks": [
+    "mafra_dataax2026#148",
+    "mafra_plan2025#32",
+    "mafra_plan2025#12",
+    "mafra_dataax2026#149"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1920,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 77,
+   "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+   "chunks": [
+    "krei_market2024#70"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 540,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 78,
+   "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+   "chunks": [
+    "mafra_plan2025#32",
+    "agfunder2026#169",
+    "mafra_dataax2026#148",
+    "agfunder2026#240"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1180,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 79,
+   "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+   "chunks": [
+    "krei_market2024#72"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 664,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 80,
+   "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "krei_market2024#71",
+    "krei_market2024#73"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1796,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 81,
+   "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+   "chunks": [
+    "agfunder2026#169"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 528,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 82,
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "krei_market2024#71",
+    "krei_market2024#73"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1801,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 83,
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunks": [
+    "mafra_plan2025#32",
+    "mafra_plan2025#18"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1326,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 84,
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "mafra_plan2025#32",
+    "agfunder2026#169",
+    "krei_market2024#73",
+    "agfunder2026#240"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1508,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 85,
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "krei_market2024#72",
+    "agfunder2026#217",
+    "agfunder2026#168"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1084,
+    "output_tokens": 33,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 86,
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunks": [
+    "mafra_plan2025#32",
+    "mafra_plan2025#29",
+    "mafra_plan2025#19",
+    "mafra_plan2025#59"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2116,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 87,
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunks": [
+    "mafra_plan2025#58",
+    "mafra_plan2025#1"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1268,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 88,
+   "query": "애그테크 투자 동향 스마트팜 AI 시설원예 스타트업",
+   "chunks": [
+    "agfunder2026#157",
+    "agfunder2026#254",
+    "agfunder2026#168",
+    "agfunder2026#160"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1203,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 89,
+   "query": "애그테크 투자 동향 2025 이후 스마트팜 시설원예 AI 환경제어 스타트업 국가별 투자 변화",
+   "chunks": [
+    "agfunder2026#246",
+    "agfunder2026#288",
+    "agfunder2026#160",
+    "agfunder2026#252"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1264,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 90,
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunks": [
+    "kdi_agtech2023#122",
+    "nars_act2023#138",
+    "agfunder2026#290",
+    "mafra_plan2025#58"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 2054,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 91,
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunks": [
+    "kdi_agtech2023#111",
+    "mafra_plan2025#34"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 635,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 92,
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunks": [
+    "krei_market2024#71",
+    "krei_market2024#73",
+    "agfunder2026#169",
+    "krei_market2024#75"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1587,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 93,
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunks": [
+    "krei_market2024#72",
+    "mafra_plan2025#6"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1153,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 94,
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunks": [
+    "krei_market2024#71",
+    "krei_market2024#73",
+    "agfunder2026#169",
+    "krei_market2024#72"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1720,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 95,
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunks": [
+    "krei_market2024#75",
+    "mafra_plan2025#6",
+    "krei_market2024#91",
+    "kdi_agtech2023#122"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1627,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 96,
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunks": [
+    "krei_market2024#73",
+    "krei_market2024#75",
+    "krei_market2024#71",
+    "mafra_plan2025#6"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1987,
+    "output_tokens": 42,
+    "usd": 0.0009
+   }
+  },
+  {
+   "call": 97,
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunks": [
+    "krei_market2024#91",
+    "agfunder2026#159"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 886,
+    "output_tokens": 24,
+    "usd": 0.0004
+   }
+  },
+  {
+   "call": 98,
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunks": [
+    "krei_market2024#71",
+    "mafra_plan2025#6",
+    "krei_market2024#75",
+    "krei_market2024#73"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1956,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 99,
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunks": [
+    "agfunder2026#169",
+    "kdi_agtech2023#98",
+    "agfunder2026#159"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1213,
+    "output_tokens": 33,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 100,
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunks": [
+    "krei_market2024#73",
+    "krei_market2024#75",
+    "krei_market2024#71",
+    "mafra_plan2025#6"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1992,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 101,
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunks": [
+    "krei_market2024#72",
+    "krei_market2024#91"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1010,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 102,
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunks": [
+    "agfunder2026#169",
+    "agfunder2026#229",
+    "mafra_plan2025#6",
+    "worldbank_ai2025#562"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1226,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 103,
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunks": [
+    "mafra_dataax2026#148",
+    "frontiers_pd2024#452"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 686,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 104,
+   "query": "축산 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunks": [
+    "agfunder2026#169",
+    "agfunder2026#286",
+    "agfunder2026#240",
+    "agfunder2026#188"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1021,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 105,
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunks": [
+    "krei_market2024#73",
+    "krei_market2024#72",
+    "krei_market2024#75",
+    "krei_market2024#71"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1807,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 106,
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunks": [
+    "agfunder2026#169"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 539,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 107,
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunks": [
+    "krei_market2024#73",
+    "agfunder2026#169",
+    "krei_market2024#75",
+    "krei_market2024#72"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1498,
+    "output_tokens": 42,
+    "usd": 0.0007
+   }
+  },
+  {
+   "call": 108,
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunks": [
+    "mafra_plan2025#6",
+    "agfunder2026#159"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1087,
+    "output_tokens": 24,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 109,
+   "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "agfunder2026#169",
+    "agfunder2026#286",
+    "agfunder2026#217",
+    "krei_market2024#73"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1350,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 110,
+   "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunks": [
+    "agfunder2026#255"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 617,
+    "output_tokens": 15,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 111,
+   "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+   "chunks": [
+    "agfunder2026#229",
+    "agfunder2026#169",
+    "krei_market2024#73",
+    "agfunder2026#282"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1179,
+    "output_tokens": 42,
+    "usd": 0.0005
+   }
+  },
+  {
+   "call": 112,
+   "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+   "chunks": [
+    "frontiers_pd2024#452"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 563,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 113,
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunks": [
+    "kdi_agtech2023#122",
+    "mdpi_robotics2025#399",
+    "mdpi_robotics2025#396",
+    "nars_act2023#138"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1757,
+    "output_tokens": 42,
+    "usd": 0.0008
+   }
+  },
+  {
+   "call": 114,
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunks": [
+    "agfunder2026#229",
+    "agfunder2026#290"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 649,
+    "output_tokens": 24,
+    "usd": 0.0003
+   }
+  },
+  {
+   "call": 115,
+   "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+   "chunks": [
+    "kdi_agtech2023#96",
+    "agfunder2026#247",
+    "agfunder2026#246",
+    "kdi_agtech2023#99"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1356,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 116,
+   "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+   "chunks": [
+    "agfunder2026#249"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 453,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  },
+  {
+   "call": 117,
+   "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+   "chunks": [
+    "agfunder2026#159",
+    "agfunder2026#246",
+    "agfunder2026#160",
+    "agfunder2026#211"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 1232,
+    "output_tokens": 42,
+    "usd": 0.0006
+   }
+  },
+  {
+   "call": 118,
+   "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+   "chunks": [
+    "agfunder2026#165"
+   ],
+   "usage": {
+    "api_calls": 1,
+    "input_tokens": 442,
+    "output_tokens": 15,
+    "usd": 0.0002
+   }
+  }
+ ],
+ "judgments": [
+  {
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunk": "kdi_agtech2023#96",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 96,
+   "page": 1,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 1
+  },
+  {
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunk": "agfunder2026#289",
+   "doc_id": "agfunder2026",
+   "chunk_id": 289,
+   "page": 61,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 1
+  },
+  {
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunk": "kdi_agtech2023#98",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 98,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 1
+  },
+  {
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunk": "kdi_agtech2023#100",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 100,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 1
+  },
+  {
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunk": "agfunder2026#288",
+   "doc_id": "agfunder2026",
+   "chunk_id": 288,
+   "page": 61,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 2
+  },
+  {
+   "query": "국내외 애그테크 스타트업 사례와 투자 동향 (기업명 포함)",
+   "chunk": "agfunder2026#211",
+   "doc_id": "agfunder2026",
+   "chunk_id": 211,
+   "page": 32,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 2
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#36",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 36,
+   "page": 28,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 3
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 3
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#37",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 37,
+   "page": 28,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 3
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mdpi_robotics2025#312",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 312,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 3
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#33",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 33,
+   "page": 27,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 4
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#59",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 59,
+   "page": 42,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 4
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mdpi_robotics2025#398",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 398,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 4
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunk": "mafra_plan2025#36",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 36,
+   "page": 28,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 5
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 5
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 5
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 5
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 6
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 6
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 규모 2024 이후",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 6
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 7
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 7
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 7
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 7
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunk": "mafra_plan2025#36",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 36,
+   "page": 28,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 8
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 8
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunk": "mafra_plan2025#36",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 36,
+   "page": 28,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 9
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 9
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 9
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 9
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunk": "agfunder2026#229",
+   "doc_id": "agfunder2026",
+   "chunk_id": 229,
+   "page": 37,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 10
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 수요 요인 2024 이후",
+   "chunk": "mdpi_robotics2025#312",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 312,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 10
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunk": "mafra_plan2025#59",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 59,
+   "page": 42,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 11
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 11
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunk": "mafra_plan2025#36",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 36,
+   "page": 28,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 11
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 11
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 12
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 구매자 지불 의향 2024 이후",
+   "chunk": "agfunder2026#223",
+   "doc_id": "agfunder2026",
+   "chunk_id": 223,
+   "page": 36,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 12
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 13
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 13
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 13
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 13
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 14
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 15
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 15
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 15
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 15
+  },
+  {
+   "query": "2024년 이후 국내외 농업용 로봇 및 자율주행 농기계 구매자의 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 16
+  },
+  {
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 17
+  },
+  {
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 17
+  },
+  {
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 17
+  },
+  {
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 17
+  },
+  {
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#223",
+   "doc_id": "agfunder2026",
+   "chunk_id": 223,
+   "page": 36,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 18
+  },
+  {
+   "query": "2024년 이후 기준으로 국내 및 글로벌 농업 로봇·자율주행 농기계 구매자들의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "mdpi_robotics2025#362",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 362,
+   "page": 15,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 18
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#59",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 59,
+   "page": 42,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 19
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 19
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#36",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 36,
+   "page": 28,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 19
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#62",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 62,
+   "page": 42,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 19
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunk": "mdpi_robotics2025#321",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 321,
+   "page": 2,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 20
+  },
+  {
+   "query": "농업 로봇 자율주행 농기계 정책 규제 2024 이후",
+   "chunk": "agfunder2026#229",
+   "doc_id": "agfunder2026",
+   "chunk_id": 229,
+   "page": 37,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 20
+  },
+  {
+   "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+   "chunk": "agfunder2026#250",
+   "doc_id": "agfunder2026",
+   "chunk_id": 250,
+   "page": 45,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 21
+  },
+  {
+   "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+   "chunk": "kdi_agtech2023#96",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 96,
+   "page": 1,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 21
+  },
+  {
+   "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+   "chunk": "agfunder2026#165",
+   "doc_id": "agfunder2026",
+   "chunk_id": 165,
+   "page": 12,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 21
+  },
+  {
+   "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+   "chunk": "agfunder2026#246",
+   "doc_id": "agfunder2026",
+   "chunk_id": 246,
+   "page": 44,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 21
+  },
+  {
+   "query": "애그테크 투자 동향 농업 로봇 자율주행 농기계 스타트업 투자 증감 국가별",
+   "chunk": "agfunder2026#248",
+   "doc_id": "agfunder2026",
+   "chunk_id": 248,
+   "page": 44,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 22
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 23
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunk": "agfunder2026#223",
+   "doc_id": "agfunder2026",
+   "chunk_id": 223,
+   "page": 36,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 23
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunk": "agfunder2026#254",
+   "doc_id": "agfunder2026",
+   "chunk_id": 254,
+   "page": 47,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 23
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunk": "agfunder2026#160",
+   "doc_id": "agfunder2026",
+   "chunk_id": 160,
+   "page": 9,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 23
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunk": "agfunder2026#165",
+   "doc_id": "agfunder2026",
+   "chunk_id": 165,
+   "page": 12,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 24
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunk": "agfunder2026#252",
+   "doc_id": "agfunder2026",
+   "chunk_id": 252,
+   "page": 46,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 24
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 2026 agricultural robots autonomous farm machinery startup investment by country",
+   "chunk": "agfunder2026#250",
+   "doc_id": "agfunder2026",
+   "chunk_id": 250,
+   "page": 45,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 24
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunk": "mafra_plan2025#49",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 49,
+   "page": 36,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 25
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunk": "mdpi_robotics2025#312",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 312,
+   "page": 1,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 25
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunk": "worldbank_ai2025#552",
+   "doc_id": "worldbank_ai2025",
+   "chunk_id": 552,
+   "page": 50,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 25
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunk": "worldbank_ai2025#550",
+   "doc_id": "worldbank_ai2025",
+   "chunk_id": 550,
+   "page": 50,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 25
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunk": "mafra_plan2025#33",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 33,
+   "page": 27,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 26
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 기술 동향 상용화 수준 기술 과제",
+   "chunk": "agfunder2026#290",
+   "doc_id": "agfunder2026",
+   "chunk_id": 290,
+   "page": 62,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 26
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 27
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 27
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 27
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 27
+  },
+  {
+   "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+   "chunk": "kdi_agtech2023#98",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 98,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 28
+  },
+  {
+   "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+   "chunk": "kdi_agtech2023#100",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 100,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 28
+  },
+  {
+   "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+   "chunk": "kdi_agtech2023#96",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 96,
+   "page": 1,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 28
+  },
+  {
+   "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 28
+  },
+  {
+   "query": "스마트농업 애그테크 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 29
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 30
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 30
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 30
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+   "chunk": "worldbank_ai2025#562",
+   "doc_id": "worldbank_ai2025",
+   "chunk_id": 562,
+   "page": 52,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 30
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 수요 요인 2024 이후",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 31
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 32
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 32
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 32
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 32
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#283",
+   "doc_id": "agfunder2026",
+   "chunk_id": 283,
+   "page": 59,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 33
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 34
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 34
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 34
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 34
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 35
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 스타트업의 시장 규모, 투자액, 고객 및 기업의 지불 의향(willingness to pay), 스마트팜 보급률, 연평균 성장률 관련 보고서",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 35
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 36
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 36
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 36
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 36
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 37
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 37
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 스타트업의 시장 규모, 투자 현황, 고객 및 기업의 지불 의사(willingness to pay), 스마트팜 보급률, 연평균 성장률 등 경제적 지표에 관한 보고서",
+   "chunk": "krei_market2024#93",
+   "doc_id": "krei_market2024",
+   "chunk_id": 93,
+   "page": 15,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 37
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 38
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 38
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 38
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 38
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 39
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 농업 생산 데이터 분석·예측 AI 분야 스타트업에 대한 고객 및 기업의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#240",
+   "doc_id": "agfunder2026",
+   "chunk_id": 240,
+   "page": 41,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 39
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 40
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 40
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunk": "worldbank_ai2025#562",
+   "doc_id": "worldbank_ai2025",
+   "chunk_id": 562,
+   "page": 52,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 40
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunk": "worldbank_ai2025#552",
+   "doc_id": "worldbank_ai2025",
+   "chunk_id": 552,
+   "page": 50,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 40
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 41
+  },
+  {
+   "query": "농업 생산 데이터 분석 예측 AI 정책 규제 2024 이후",
+   "chunk": "agfunder2026#229",
+   "doc_id": "agfunder2026",
+   "chunk_id": 229,
+   "page": 37,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 41
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 42
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 42
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 42
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 42
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunk": "nars_act2023#138",
+   "doc_id": "nars_act2023",
+   "chunk_id": 138,
+   "page": 2,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 43
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 43
+  },
+  {
+   "query": "2024년 이후 국내외 농업 데이터 분석 및 예측 AI 분야에 영향을 미치는 정책 현황, 규제 동향, 스마트팜 관련 정부 투자액, AI 기반 농업 기술 시장 규모, 연평균 성장률, 스마트농업 보급률 등 정책·규제 관련 주요 지표",
+   "chunk": "agfunder2026#290",
+   "doc_id": "agfunder2026",
+   "chunk_id": 290,
+   "page": 62,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 43
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 44
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 44
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 44
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 44
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 45
+  },
+  {
+   "query": "2024년 이후 국내외 농업 생산 데이터 분석 및 예측 인공지능(AI) 기술에 영향을 주는 정책 및 규제 현황, 관련 법률, 정부 지원 예산, 스마트팜 보급률(Smart Farm adoption rate), AI 농업 기술 시장 규모(Market size), 연평균 성장률(CAGR), 투자 동향 등 주요 정책·규제 지표",
+   "chunk": "kdi_agtech2023#96",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 96,
+   "page": 1,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 45
+  },
+  {
+   "query": "애그테크 투자 동향 2026",
+   "chunk": "kdi_agtech2023#96",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 96,
+   "page": 1,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 46
+  },
+  {
+   "query": "애그테크 투자 동향 2026",
+   "chunk": "kdi_agtech2023#100",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 100,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 46
+  },
+  {
+   "query": "애그테크 투자 동향 2026",
+   "chunk": "kdi_agtech2023#99",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 99,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 46
+  },
+  {
+   "query": "애그테크 투자 동향 2026",
+   "chunk": "kdi_agtech2023#98",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 98,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 46
+  },
+  {
+   "query": "애그테크 투자 동향 2026",
+   "chunk": "agfunder2026#157",
+   "doc_id": "agfunder2026",
+   "chunk_id": 157,
+   "page": 6,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 47
+  },
+  {
+   "query": "애그테크 투자 동향 2026",
+   "chunk": "agfunder2026#273",
+   "doc_id": "agfunder2026",
+   "chunk_id": 273,
+   "page": 54,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 47
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2026",
+   "chunk": "agfunder2026#165",
+   "doc_id": "agfunder2026",
+   "chunk_id": 165,
+   "page": 12,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 48
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2026",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 48
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2026",
+   "chunk": "agfunder2026#157",
+   "doc_id": "agfunder2026",
+   "chunk_id": 157,
+   "page": 6,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 48
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2026",
+   "chunk": "agfunder2026#187",
+   "doc_id": "agfunder2026",
+   "chunk_id": 187,
+   "page": 21,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 48
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2026",
+   "chunk": "agfunder2026#254",
+   "doc_id": "agfunder2026",
+   "chunk_id": 254,
+   "page": 47,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 49
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+   "chunk": "mafra_plan2025#34",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 34,
+   "page": 27,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 50
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+   "chunk": "frontiers_pd2024#460",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 460,
+   "page": 2,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 50
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+   "chunk": "frontiers_pd2024#451",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 451,
+   "page": 1,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 50
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+   "chunk": "mafra_plan2025#35",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 35,
+   "page": 27,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 50
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 기술 동향 상용화 기술적 과제",
+   "chunk": "frontiers_pd2024#533",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 533,
+   "page": 15,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 51
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 52
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 52
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 52
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunk": "frontiers_pd2024#533",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 533,
+   "page": 15,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 52
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunk": "agfunder2026#211",
+   "doc_id": "agfunder2026",
+   "chunk_id": 211,
+   "page": 32,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 53
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 시장 규모 2024 이후",
+   "chunk": "frontiers_pd2024#451",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 451,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 53
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 54
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 54
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 54
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 54
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 55
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장 규모, 연평균 성장률(CAGR), 스마트팜 보급률, 관련 투자액에 관한 보고서",
+   "chunk": "agfunder2026#252",
+   "doc_id": "agfunder2026",
+   "chunk_id": 252,
+   "page": 46,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 55
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 56
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후",
+   "chunk": "frontiers_pd2024#450",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 450,
+   "page": 1,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 56
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후",
+   "chunk": "frontiers_pd2024#476",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 476,
+   "page": 5,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 56
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 수요 요인 2024 이후",
+   "chunk": "frontiers_pd2024#542",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 542,
+   "page": 16,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 56
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향",
+   "chunk": "frontiers_pd2024#548",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 548,
+   "page": 17,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 57
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향",
+   "chunk": "agfunder2026#281",
+   "doc_id": "agfunder2026",
+   "chunk_id": 281,
+   "page": 58,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 57
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향",
+   "chunk": "frontiers_pd2024#449",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 449,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 57
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향",
+   "chunk": "agfunder2026#226",
+   "doc_id": "agfunder2026",
+   "chunk_id": 226,
+   "page": 37,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 57
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향 2024 이후",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 58
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향 2024 이후",
+   "chunk": "agfunder2026#282",
+   "doc_id": "agfunder2026",
+   "chunk_id": 282,
+   "page": 59,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 58
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향 2024 이후",
+   "chunk": "agfunder2026#211",
+   "doc_id": "agfunder2026",
+   "chunk_id": 211,
+   "page": 32,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 58
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 고객 지불 의향 2024 이후",
+   "chunk": "frontiers_pd2024#449",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 449,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 58
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness)과 관련된 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 59
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness)과 관련된 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 보고서",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 59
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness)과 관련된 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 59
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness)과 관련된 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 보고서",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 59
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 60
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 60
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 60
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 60
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 시장에서 고객의 지불 의향(payment willingness), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 61
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#34",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 34,
+   "page": 27,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 62
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 62
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+   "chunk": "mafra_dataax2026#147",
+   "doc_id": "mafra_dataax2026",
+   "chunk_id": 147,
+   "page": 1,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 62
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+   "chunk": "frontiers_pd2024#453",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 453,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 62
+  },
+  {
+   "query": "작물 생육 병해충 진단 AI 정책 규제 2024 이후",
+   "chunk": "frontiers_pd2024#533",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 533,
+   "page": 15,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 63
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 64
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 64
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 64
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 64
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunk": "agfunder2026#290",
+   "doc_id": "agfunder2026",
+   "chunk_id": 290,
+   "page": 62,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 65
+  },
+  {
+   "query": "2024년 이후 국내외 작물 생육 및 병해충 진단 인공지능(AI) 분야 관련 정책 현황, 규제 동향, 스마트팜 정책, AI 농업 규제, 시장 규모, 투자액, 연평균 성장률 등 보고서",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 65
+  },
+  {
+   "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+   "chunk": "kdi_agtech2023#96",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 96,
+   "page": 1,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 66
+  },
+  {
+   "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+   "chunk": "agfunder2026#226",
+   "doc_id": "agfunder2026",
+   "chunk_id": 226,
+   "page": 37,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 66
+  },
+  {
+   "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+   "chunk": "agfunder2026#211",
+   "doc_id": "agfunder2026",
+   "chunk_id": 211,
+   "page": 32,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 66
+  },
+  {
+   "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+   "chunk": "frontiers_pd2024#450",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 450,
+   "page": 1,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 66
+  },
+  {
+   "query": "애그테크 투자 동향 작물 생육 병해충 진단 AI",
+   "chunk": "agfunder2026#290",
+   "doc_id": "agfunder2026",
+   "chunk_id": 290,
+   "page": 62,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 67
+  },
+  {
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunk": "agfunder2026#209",
+   "doc_id": "agfunder2026",
+   "chunk_id": 209,
+   "page": 30,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 68
+  },
+  {
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunk": "agfunder2026#182",
+   "doc_id": "agfunder2026",
+   "chunk_id": 182,
+   "page": 19,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 68
+  },
+  {
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunk": "agfunder2026#290",
+   "doc_id": "agfunder2026",
+   "chunk_id": 290,
+   "page": 62,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 68
+  },
+  {
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunk": "agfunder2026#282",
+   "doc_id": "agfunder2026",
+   "chunk_id": 282,
+   "page": 59,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 68
+  },
+  {
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 69
+  },
+  {
+   "query": "agrifoodtech investment trends 2026 crop growth pest diagnosis AI",
+   "chunk": "agfunder2026#283",
+   "doc_id": "agfunder2026",
+   "chunk_id": 283,
+   "page": 59,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 69
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#12",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 12,
+   "page": 12,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 70
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#29",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 29,
+   "page": 24,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 70
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#58",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 58,
+   "page": 42,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 70
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#30",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 30,
+   "page": 24,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 70
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#1",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 1,
+   "page": 6,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 71
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+   "chunk": "mafra_plan2025#12",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 12,
+   "page": 12,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 72
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 72
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 72
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+   "chunk": "mafra_plan2025#32",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 32,
+   "page": 26,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 72
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 규모 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 73
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 74
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunk": "mafra_plan2025#12",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 12,
+   "page": 12,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 74
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 74
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunk": "mafra_plan2025#32",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 32,
+   "page": 26,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 74
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 75
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 시장 연평균 성장률 2024 이후",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 75
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+   "chunk": "mafra_dataax2026#148",
+   "doc_id": "mafra_dataax2026",
+   "chunk_id": 148,
+   "page": 1,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 76
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+   "chunk": "mafra_plan2025#32",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 32,
+   "page": 26,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 76
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+   "chunk": "mafra_plan2025#12",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 12,
+   "page": 12,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 76
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+   "chunk": "mafra_dataax2026#149",
+   "doc_id": "mafra_dataax2026",
+   "chunk_id": 149,
+   "page": 2,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 76
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 수요 요인 2024 이후",
+   "chunk": "krei_market2024#70",
+   "doc_id": "krei_market2024",
+   "chunk_id": 70,
+   "page": 2,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 77
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "mafra_plan2025#32",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 32,
+   "page": 26,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 78
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 78
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "mafra_dataax2026#148",
+   "doc_id": "mafra_dataax2026",
+   "chunk_id": 148,
+   "page": 1,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 78
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#240",
+   "doc_id": "agfunder2026",
+   "chunk_id": 240,
+   "page": 41,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 78
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 79
+  },
+  {
+   "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 80
+  },
+  {
+   "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 80
+  },
+  {
+   "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 80
+  },
+  {
+   "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 80
+  },
+  {
+   "query": "2024년 이후 국내외 스마트팜 및 시설원예 AI 기반 환경제어 시스템의 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate) 관련 보고서",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 81
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 82
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 82
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 82
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 82
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunk": "mafra_plan2025#32",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 32,
+   "page": 26,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 83
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 시스템 시장 규모, 고객 지불 의향(willingness to pay), 투자액, 연평균 성장률(Compound Annual Growth Rate), 스마트팜 보급률 관련 보고서",
+   "chunk": "mafra_plan2025#18",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 18,
+   "page": 17,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 83
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "mafra_plan2025#32",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 32,
+   "page": 26,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 84
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 84
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 84
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#240",
+   "doc_id": "agfunder2026",
+   "chunk_id": 240,
+   "page": 41,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 84
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 85
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#217",
+   "doc_id": "agfunder2026",
+   "chunk_id": 217,
+   "page": 34,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 85
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 스마트팜·시설원예 AI 환경제어 분야에서 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#168",
+   "doc_id": "agfunder2026",
+   "chunk_id": 168,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 85
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#32",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 32,
+   "page": 26,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 86
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#29",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 29,
+   "page": 24,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 86
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#19",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 19,
+   "page": 18,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 86
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#59",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 59,
+   "page": 42,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 86
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#58",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 58,
+   "page": 42,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 87
+  },
+  {
+   "query": "스마트팜 시설원예 AI 환경제어 정책 규제 2024 이후",
+   "chunk": "mafra_plan2025#1",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 1,
+   "page": 6,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 87
+  },
+  {
+   "query": "애그테크 투자 동향 스마트팜 AI 시설원예 스타트업",
+   "chunk": "agfunder2026#157",
+   "doc_id": "agfunder2026",
+   "chunk_id": 157,
+   "page": 6,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 88
+  },
+  {
+   "query": "애그테크 투자 동향 스마트팜 AI 시설원예 스타트업",
+   "chunk": "agfunder2026#254",
+   "doc_id": "agfunder2026",
+   "chunk_id": 254,
+   "page": 47,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 88
+  },
+  {
+   "query": "애그테크 투자 동향 스마트팜 AI 시설원예 스타트업",
+   "chunk": "agfunder2026#168",
+   "doc_id": "agfunder2026",
+   "chunk_id": 168,
+   "page": 14,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 88
+  },
+  {
+   "query": "애그테크 투자 동향 스마트팜 AI 시설원예 스타트업",
+   "chunk": "agfunder2026#160",
+   "doc_id": "agfunder2026",
+   "chunk_id": 160,
+   "page": 9,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 88
+  },
+  {
+   "query": "애그테크 투자 동향 2025 이후 스마트팜 시설원예 AI 환경제어 스타트업 국가별 투자 변화",
+   "chunk": "agfunder2026#246",
+   "doc_id": "agfunder2026",
+   "chunk_id": 246,
+   "page": 44,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 89
+  },
+  {
+   "query": "애그테크 투자 동향 2025 이후 스마트팜 시설원예 AI 환경제어 스타트업 국가별 투자 변화",
+   "chunk": "agfunder2026#288",
+   "doc_id": "agfunder2026",
+   "chunk_id": 288,
+   "page": 61,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 89
+  },
+  {
+   "query": "애그테크 투자 동향 2025 이후 스마트팜 시설원예 AI 환경제어 스타트업 국가별 투자 변화",
+   "chunk": "agfunder2026#160",
+   "doc_id": "agfunder2026",
+   "chunk_id": 160,
+   "page": 9,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 89
+  },
+  {
+   "query": "애그테크 투자 동향 2025 이후 스마트팜 시설원예 AI 환경제어 스타트업 국가별 투자 변화",
+   "chunk": "agfunder2026#252",
+   "doc_id": "agfunder2026",
+   "chunk_id": 252,
+   "page": 46,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 89
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "kdi_agtech2023#122",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 122,
+   "page": 16,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 90
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "nars_act2023#138",
+   "doc_id": "nars_act2023",
+   "chunk_id": 138,
+   "page": 2,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 90
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "agfunder2026#290",
+   "doc_id": "agfunder2026",
+   "chunk_id": 290,
+   "page": 62,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 90
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#58",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 58,
+   "page": 42,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 90
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "kdi_agtech2023#111",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 111,
+   "page": 10,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 91
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 기술 동향 상용화 수준 기술적 과제",
+   "chunk": "mafra_plan2025#34",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 34,
+   "page": 27,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 91
+  },
+  {
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 92
+  },
+  {
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 92
+  },
+  {
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 92
+  },
+  {
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 92
+  },
+  {
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 93
+  },
+  {
+   "query": "축산 AI 시장 규모 2024 이후",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 93
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 94
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 94
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 94
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 94
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 95
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 95
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "krei_market2024#91",
+   "doc_id": "krei_market2024",
+   "chunk_id": 91,
+   "page": 13,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 95
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 인공지능(AI) 시장 규모 및 연평균 성장률(Compound Annual Growth Rate, CAGR), 가축 건강 관리와 사양 관리 분야의 스마트팜 보급률 및 투자액 현황",
+   "chunk": "kdi_agtech2023#122",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 122,
+   "page": 16,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 95
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 96
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 96
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 96
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 96
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunk": "krei_market2024#91",
+   "doc_id": "krei_market2024",
+   "chunk_id": 91,
+   "page": 13,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 97
+  },
+  {
+   "query": "2024년 이후 발표된 국내외 축산 AI(가축 건강 및 사양 관리) 시장 규모(Market Size), 연평균 성장률(CAGR), 스마트팜 보급률 및 투자액(Investment Amount) 현황",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 97
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 98
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 98
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 98
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 98
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 99
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunk": "kdi_agtech2023#98",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 98,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 99
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 시장 연평균 성장률 2024 이후",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 99
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 100
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 100
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 100
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 100
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 101
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 인공지능(AI) 시장의 연평균 성장률(CAGR), 시장 규모(market size), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#91",
+   "doc_id": "krei_market2024",
+   "chunk_id": 91,
+   "page": 13,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 101
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 102
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunk": "agfunder2026#229",
+   "doc_id": "agfunder2026",
+   "chunk_id": 229,
+   "page": 37,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 102
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 102
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunk": "worldbank_ai2025#562",
+   "doc_id": "worldbank_ai2025",
+   "chunk_id": 562,
+   "page": 52,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 102
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunk": "mafra_dataax2026#148",
+   "doc_id": "mafra_dataax2026",
+   "chunk_id": 148,
+   "page": 1,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 103
+  },
+  {
+   "query": "축산 AI 가축 건강 사양 관리 수요 요인 2024 이후",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 103
+  },
+  {
+   "query": "축산 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 104
+  },
+  {
+   "query": "축산 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#286",
+   "doc_id": "agfunder2026",
+   "chunk_id": 286,
+   "page": 60,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 104
+  },
+  {
+   "query": "축산 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#240",
+   "doc_id": "agfunder2026",
+   "chunk_id": 240,
+   "page": 41,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 104
+  },
+  {
+   "query": "축산 AI 스타트업 고객 지불 의향 willingness to pay 2024 이후",
+   "chunk": "agfunder2026#188",
+   "doc_id": "agfunder2026",
+   "chunk_id": 188,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 104
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 105
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 105
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 105
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "krei_market2024#71",
+   "doc_id": "krei_market2024",
+   "chunk_id": 71,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 105
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 스타트업 시장의 고객 지불 의향(willingness to pay), 시장 규모(market size), 투자액(investment amount), 연평균 성장률(CAGR), 스마트팜 보급률 보조 지표 포함",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 106
+  },
+  {
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 107
+  },
+  {
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 107
+  },
+  {
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#75",
+   "doc_id": "krei_market2024",
+   "chunk_id": 75,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 107
+  },
+  {
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "krei_market2024#72",
+   "doc_id": "krei_market2024",
+   "chunk_id": 72,
+   "page": 3,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 107
+  },
+  {
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "mafra_plan2025#6",
+   "doc_id": "mafra_plan2025",
+   "chunk_id": 6,
+   "page": 9,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 108
+  },
+  {
+   "query": "2024년 이후 국내외 축산 AI 스타트업의 고객 지불 의향(willingness to pay), 시장 규모(market size), 연평균 성장률(CAGR), 투자액(investment amount), 스마트팜 보급률(smart farm adoption rate) 관련 보고서 데이터",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 108
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 109
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#286",
+   "doc_id": "agfunder2026",
+   "chunk_id": 286,
+   "page": 60,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 109
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#217",
+   "doc_id": "agfunder2026",
+   "chunk_id": 217,
+   "page": 34,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 109
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 109
+  },
+  {
+   "query": "2024년 이후 국내 및 글로벌 축산 AI 분야 스타트업에 대한 고객의 지불 의향은 어느 정도인가? (willingness to pay)",
+   "chunk": "agfunder2026#255",
+   "doc_id": "agfunder2026",
+   "chunk_id": 255,
+   "page": 48,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 110
+  },
+  {
+   "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+   "chunk": "agfunder2026#229",
+   "doc_id": "agfunder2026",
+   "chunk_id": 229,
+   "page": 37,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 111
+  },
+  {
+   "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+   "chunk": "agfunder2026#169",
+   "doc_id": "agfunder2026",
+   "chunk_id": 169,
+   "page": 14,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 111
+  },
+  {
+   "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+   "chunk": "krei_market2024#73",
+   "doc_id": "krei_market2024",
+   "chunk_id": 73,
+   "page": 4,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 111
+  },
+  {
+   "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+   "chunk": "agfunder2026#282",
+   "doc_id": "agfunder2026",
+   "chunk_id": 282,
+   "page": 59,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 111
+  },
+  {
+   "query": "축산 AI 정책 규제 2024 이후 국내 글로벌",
+   "chunk": "frontiers_pd2024#452",
+   "doc_id": "frontiers_pd2024",
+   "chunk_id": 452,
+   "page": 1,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 112
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunk": "kdi_agtech2023#122",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 122,
+   "page": 16,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 113
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunk": "mdpi_robotics2025#399",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 399,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 113
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunk": "mdpi_robotics2025#396",
+   "doc_id": "mdpi_robotics2025",
+   "chunk_id": 396,
+   "page": 22,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 113
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunk": "nars_act2023#138",
+   "doc_id": "nars_act2023",
+   "chunk_id": 138,
+   "page": 2,
+   "lang": "ko",
+   "relevant": true,
+   "missing": false,
+   "call": 113
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunk": "agfunder2026#229",
+   "doc_id": "agfunder2026",
+   "chunk_id": 229,
+   "page": 37,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 114
+  },
+  {
+   "query": "2024년 이후 국내외 축산 인공지능(AI) 분야에 영향을 미치는 정부 정책, 규제 현황 및 관련 법률, 스마트축산 정책 동향, AI 축산 기술 투자 및 지원 정책, 국내외 축산 AI 시장 규제 프레임워크",
+   "chunk": "agfunder2026#290",
+   "doc_id": "agfunder2026",
+   "chunk_id": 290,
+   "page": 62,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 114
+  },
+  {
+   "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+   "chunk": "kdi_agtech2023#96",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 96,
+   "page": 1,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 115
+  },
+  {
+   "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+   "chunk": "agfunder2026#247",
+   "doc_id": "agfunder2026",
+   "chunk_id": 247,
+   "page": 44,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 115
+  },
+  {
+   "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+   "chunk": "agfunder2026#246",
+   "doc_id": "agfunder2026",
+   "chunk_id": 246,
+   "page": 44,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 115
+  },
+  {
+   "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+   "chunk": "kdi_agtech2023#99",
+   "doc_id": "kdi_agtech2023",
+   "chunk_id": 99,
+   "page": 3,
+   "lang": "ko",
+   "relevant": false,
+   "missing": false,
+   "call": 115
+  },
+  {
+   "query": "애그테크 투자 동향 축산 AI 국가별 투자 변화",
+   "chunk": "agfunder2026#249",
+   "doc_id": "agfunder2026",
+   "chunk_id": 249,
+   "page": 44,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 116
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+   "chunk": "agfunder2026#159",
+   "doc_id": "agfunder2026",
+   "chunk_id": 159,
+   "page": 8,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 117
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+   "chunk": "agfunder2026#246",
+   "doc_id": "agfunder2026",
+   "chunk_id": 246,
+   "page": 44,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 117
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+   "chunk": "agfunder2026#160",
+   "doc_id": "agfunder2026",
+   "chunk_id": 160,
+   "page": 9,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 117
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+   "chunk": "agfunder2026#211",
+   "doc_id": "agfunder2026",
+   "chunk_id": 211,
+   "page": 32,
+   "lang": "en",
+   "relevant": true,
+   "missing": false,
+   "call": 117
+  },
+  {
+   "query": "agrifoodtech funding investment trends 2024 livestock AI country investment changes",
+   "chunk": "agfunder2026#165",
+   "doc_id": "agfunder2026",
+   "chunk_id": 165,
+   "page": 12,
+   "lang": "en",
+   "relevant": false,
+   "missing": false,
+   "call": 118
+  }
+ ]
+}

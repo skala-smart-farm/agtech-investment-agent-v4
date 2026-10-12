@@ -30,7 +30,8 @@ Judge: config models.judge(gpt-4.1-mini), temperature 0, 질의 하나와 조각
   1) 실제 질의 전체 Precision@4 평균이 가장 높은 검색기
   2) 소수 셋째 자리까지 같으면 전체 Hit@4 가 높은 검색기
   3) 그래도 같으면 지금 런타임(A), 그다음 표의 앞쪽
-보조(판정에 쓰지 않음): A 대비 질의별 Precision@4 차이의 승·패·동 수, 짝지은 부트스트랩 95% 구간(2000회, seed 0)
+보조(판정에 쓰지 않음): A 대비 질의별 Precision@4 차이의 승·패·동 수, 짝지은 부트스트랩 95% 구간(2000회, seed 0),
+  한쪽 앞 4개에만 있는 조각의 언어·관련 판정 분해, 본 실행 런타임 Judge(run_log 의 kept_ranks)와의 판정 일치도
 
 비용: 호출 전에 tiktoken(o200k_base)으로 프롬프트 토큰을 세어 예상 비용을 출력·기록한다. 예산(--budget, 기본 $0.20)을
 넘으면 수집 순서 뒤쪽 질의부터 뺀다. 실제 비용은 응답의 토큰 사용량(core.cost.TRACKER)으로 잰다.
@@ -189,6 +190,48 @@ def paired(a: list[float], b: list[float], n: int = 2000, seed: int = 0) -> dict
             "ci95": [round(means[int(0.025 * n)], 3), round(means[int(0.975 * n) - 1], 3)]}
 
 
+def diff_breakdown(base: dict[str, list[dict]], other: dict[str, list[dict]]) -> dict:
+    """질의마다 한쪽 앞 k개에만 있는 조각을 (언어, 관련 여부)로 센다. 값은 {"chunk", "lang", "relevant"} 목록.
+    두 검색기의 Precision@4 차이는 '다른 쪽에만 있는 관련 조각 수' 차이에서 나온다 (참고값)."""
+    out = {side: {f"{lang}_{rel}": 0 for lang in ("ko", "en") for rel in ("rel", "not")} for side in ("base", "other")}
+    for qid in base:
+        a, b = {x["chunk"]: x for x in base[qid]}, {x["chunk"]: x for x in other[qid]}
+        for side, mine, theirs in (("base", a, b), ("other", b, a)):
+            for key, x in mine.items():
+                if key not in theirs:
+                    out[side][f"{x['lang']}_{'rel' if x['relevant'] else 'not'}"] += 1
+    return out
+
+
+def runtime_agreement(logs: list[tuple[str, dict]], flags_by_query: dict[str, list[bool]], k: int) -> dict:
+    """Judge 점검(참고): 본 실행의 런타임 Judge(prompts/rag_grade.md, 하위 질문 기준, 후보 8개를 한 번에 판정)와
+    이 평가 Judge(질의 기준)의 런타임 검색기 앞 k개 판정 일치도. 각 trace 의 첫 grade 단계 중 dropped == 0 인 것만 쓴다
+    (그때 kept_ranks = 런타임 Judge 가 관련으로 본 순위 전체). 같은 질의는 처음 한 번만. 본 실행의 검색 순서가 지금
+    런타임 검색기와 같다고 가정한다(같은 코퍼스 해시 · 같은 설정)."""
+    c = {"both": 0, "ours_only": 0, "runtime_only": 0, "neither": 0}
+    seen = set()
+    for _, log in logs:
+        for t in log.get("rag_traces") or []:
+            g = next((s for s in t.get("trace") or [] if s.get("step") in (None, "grade") and s.get("query")), None)
+            if not g or g.get("dropped") != 0 or "kept_ranks" not in g:
+                continue
+            q = g["query"].strip()
+            if q in seen or q not in flags_by_query:
+                continue
+            seen.add(q)
+            for i, ours in enumerate(flags_by_query[q][:k]):
+                theirs = (i + 1) in g["kept_ranks"]
+                c["both" if ours and theirs else "ours_only" if ours else "runtime_only" if theirs else "neither"] += 1
+    n = sum(c.values())
+    if not n:
+        return {"queries": 0, **c}
+    po = (c["both"] + c["neither"]) / n
+    p1, p2 = (c["both"] + c["ours_only"]) / n, (c["both"] + c["runtime_only"]) / n
+    pe = p1 * p2 + (1 - p1) * (1 - p2)
+    return {"queries": len(seen), "pairs": n, **c, "agreement": round(po, 3),
+            "kappa": round((po - pe) / (1 - pe), 3) if pe < 1 else 1.0}
+
+
 def fit_budget(cost_by_qid: dict[str, float], order: list[str], budget: float) -> list[str]:
     """수집 순서 앞에서부터 예상 비용 합이 예산 안에 드는 질의까지 남긴다."""
     kept, total = [], 0.0
@@ -292,25 +335,32 @@ def main() -> None:
     calls = plan_calls(queries, ranked, set(judged))
     qtext = {q["qid"]: q["query"] for q in queries}
 
-    # 예상 비용 (호출 전): 실제 프롬프트를 그대로 만들어 토큰을 센다
+    # 예상 비용 (호출 전): 실제 프롬프트를 그대로 만들어 토큰을 센다. 처음부터 다시 판정할 때(캐시 없음)와 이번 실행분을 함께 적는다
     enc = tiktoken.get_encoding("o200k_base")
     pi, po = model_price(cfg.models.judge)
-    cost_by_qid: dict[str, float] = {}
-    est_in = est_out = 0
-    for qid, keys in calls:
-        ti = len(enc.encode(PROMPT.format(query=qtext[qid], chunks=listing([meta[x] for x in keys])))) + EST_IN_OVERHEAD
-        to = EST_OUT_BASE + EST_OUT_PER_ITEM * len(keys)
-        est_in, est_out = est_in + ti, est_out + to
-        cost_by_qid[qid] = cost_by_qid.get(qid, 0.0) + (ti * pi + to * po) / 1e6 * EST_MARGIN
-    est = {"calls": len(calls), "pairs": sum(len(keys) for _, keys in calls),
-           "input_tokens": est_in, "output_tokens": est_out, "usd": round(sum(cost_by_qid.values()), 4), "budget_usd": args.budget,
-           "note": f"tiktoken o200k_base 로 센 프롬프트 + 호출당 {EST_IN_OVERHEAD} 토큰(스키마 등), "
-                   f"출력 {EST_OUT_BASE}+{EST_OUT_PER_ITEM}×조각, ×{EST_MARGIN} 여유, 가격 {pi}/{po} USD/1M"}
-    print(f"예상 비용: 호출 {est['calls']}회 · 판정 쌍 {est['pairs']}개 · 입력 {est_in:,} · 출력 {est_out:,} 토큰 "
-          f"→ ${est['usd']:.4f} (예산 ${args.budget:.2f})")
+
+    def estimate(plan: list[tuple[str, list[str]]]) -> tuple[dict, dict[str, float]]:
+        by_qid: dict[str, float] = {}
+        t_in = t_out = 0
+        for qid, keys in plan:
+            ti = len(enc.encode(PROMPT.format(query=qtext[qid], chunks=listing([meta[x] for x in keys])))) + EST_IN_OVERHEAD
+            to = EST_OUT_BASE + EST_OUT_PER_ITEM * len(keys)
+            t_in, t_out = t_in + ti, t_out + to
+            by_qid[qid] = by_qid.get(qid, 0.0) + (ti * pi + to * po) / 1e6 * EST_MARGIN
+        return ({"calls": len(plan), "pairs": sum(len(keys) for _, keys in plan), "input_tokens": t_in,
+                 "output_tokens": t_out, "usd": round(sum(by_qid.values()), 4)}, by_qid)
+
+    est_note = (f"tiktoken o200k_base 로 센 프롬프트 + 호출당 {EST_IN_OVERHEAD} 토큰(스키마 등), "
+                f"출력 {EST_OUT_BASE}+{EST_OUT_PER_ITEM}×조각, ×{EST_MARGIN} 여유, 가격 {pi}/{po} USD/1M")
+    est_fresh, _ = estimate(plan_calls(queries, ranked, set()))
+    est, cost_by_qid = estimate(calls)
+    spent0 = sum(c["usage"]["usd"] for c in store["calls"])
+    print(f"예상 비용(처음부터): 호출 {est_fresh['calls']}회 · 판정 쌍 {est_fresh['pairs']}개 · 입력 "
+          f"{est_fresh['input_tokens']:,} · 출력 {est_fresh['output_tokens']:,} 토큰 → ${est_fresh['usd']:.4f}")
+    print(f"이번 실행 예상: 호출 {est['calls']}회 · ${est['usd']:.4f} (이미 쓴 ${spent0:.4f}, 예산 ${args.budget:.2f})")
     dropped: list[str] = []
-    if est["usd"] > args.budget:
-        keep = set(fit_budget(cost_by_qid, [q["qid"] for q in queries], args.budget))
+    if spent0 + est["usd"] > args.budget:
+        keep = set(fit_budget(cost_by_qid, [q["qid"] for q in queries], args.budget - spent0))
         dropped = [q["qid"] for q in queries if q["qid"] not in keep]
         queries = [q for q in queries if q["qid"] in keep]
         calls = [c for c in calls if c[0] in keep]
@@ -324,8 +374,8 @@ def main() -> None:
     # 판정 (판정 없는 쌍만). 호출마다 파일에 저장해 중간에 멈춰도 다시 부르지 않는다
     n0 = len(store["calls"])
     for i, (qid, keys) in enumerate(calls, 1):
-        if TRACKER.usd > args.budget:
-            sys.exit(f"실제 비용 ${TRACKER.usd:.4f} 가 예산을 넘어 멈춤 (저장된 판정은 다음 실행에서 재사용)")
+        if spent0 + TRACKER.usd > args.budget:
+            sys.exit(f"실제 비용 ${spent0 + TRACKER.usd:.4f} 가 예산을 넘어 멈춤 (저장된 판정은 다음 실행에서 재사용)")
         before = TRACKER.summary()
         flags = judge_call(qtext[qid], [meta[x] for x in keys])
         if any(f is None for f in flags):  # 번호가 빠진 응답은 한 번 더 묻는다
@@ -369,16 +419,22 @@ def main() -> None:
           for r in rows if r["name"] != runtime}
     actual = TRACKER.summary()
     spent = round(sum(c["usage"]["usd"] for c in store["calls"]), 4)
+    res = {n: {q["qid"]: [{"chunk": x, "lang": meta[x]["lang"], "relevant": judged[(q["query"], x)]} for x in r[q["qid"]]]
+               for q in queries} for n, r in ranked.items()}
+    diff = {n: diff_breakdown(res[runtime], res[n]) for n in ranked if n != runtime}
+    check = runtime_agreement(logs, {q["query"]: per_q[runtime][q["qid"]] for q in queries}, k)
     out = {"rule": RULE, "pick": best["name"], "runtime": runtime, "k": k, "candidate_k": ck,
            "judge": {"model": cfg.models.judge, "temperature": cfg.models.temperature, "batch": BATCH,
                      "max_chars": MAX_CHARS, "prompt_sha": prompt_sha(), "prompt": PROMPT},
            "queries_total": len(queries) + len(dropped), "queries_used": len(queries), "dropped_for_budget": dropped,
-           "cost": {"estimate_before_calls": est, "this_run": actual, "all_judgment_calls_usd": spent,
-                    "all_judgment_calls": len(store["calls"])},
-           "rows": rows, "paired_vs_runtime_P@4": vs,
-           "queries": [{**q, "doc_lang": doc_lang(rel_langs[q["qid"]]),
-                        "results": {n: [{"chunk": x, "lang": meta[x]["lang"], "relevant": judged[(q["query"], x)]}
-                                        for x in ranked[n][q["qid"]]] for n in ranked}} for q in queries]}
+           "cost": {"budget_usd": args.budget, "estimate_note": est_note, "estimate_fresh": est_fresh,
+                    "estimate_this_run": est, "actual_all_judgment_calls": {
+                        "calls": len(store["calls"]), "usd": spent,
+                        **{m: sum(c["usage"][m] for c in store["calls"]) for m in ("input_tokens", "output_tokens")}},
+                    "this_run": actual},
+           "rows": rows, "paired_vs_runtime_P@4": vs, "diff_vs_runtime": diff, "judge_check_vs_runtime_grader": check,
+           "queries": [{**q, "doc_lang": doc_lang(rel_langs[q["qid"]]), "results": {n: res[n][q["qid"]] for n in res}}
+                       for q in queries]}
     path(OUT_JSON).write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     md = render_md(out, groups)
     path(OUT_MD).write_text(md, encoding="utf-8")
@@ -423,13 +479,31 @@ def render_md(out: dict, groups: dict) -> str:
     for name, v in out["paired_vs_runtime_P@4"].items():
         lines.append(f"| {name} | {v['win']} | {v['loss']} | {v['tie']} | {v['mean_diff']:+.3f} | "
                      f"[{v['ci95'][0]:+.3f}, {v['ci95'][1]:+.3f}] |")
+    lines += ["", "## 차이를 만든 조각 (참고): 한쪽 앞 4개에만 있는 조각의 언어 · 관련 판정 수", "",
+              "| 비교 | 런타임(A)에만: 한국어 관련/비관련 · 영어 관련/비관련 | 상대에만: 한국어 관련/비관련 · 영어 관련/비관련 |",
+              "|---|---|---|"]
+    for name, d in out["diff_vs_runtime"].items():
+        a, b = d["base"], d["other"]
+        lines.append(f"| A vs {name} | {a['ko_rel']}/{a['ko_not']} · {a['en_rel']}/{a['en_not']} | "
+                     f"{b['ko_rel']}/{b['ko_not']} · {b['en_rel']}/{b['en_not']} |")
+    j = out["judge_check_vs_runtime_grader"]
+    if j.get("queries"):
+        lines += ["", "## Judge 점검 (참고): 본 실행의 런타임 Judge 와 일치도", "",
+                  f"런타임 검색기 앞 4개 위치에서, 본 실행 run_log 의 첫 grade 단계(dropped 0, 하위 질문 기준 판정)와 "
+                  f"이 평가 Judge(질의 기준)를 비교: 질의 {j['queries']}개 · {j['pairs']}쌍, 둘 다 관련 {j['both']} · "
+                  f"둘 다 비관련 {j['neither']} · 이 평가만 관련 {j['ours_only']} · 런타임만 관련 {j['runtime_only']} → "
+                  f"일치율 {j['agreement']:.3f}, Cohen's kappa {j['kappa']:.3f}. "
+                  "(본 실행의 검색 순서가 지금 런타임 검색기와 같다고 가정)"]
     c = out["cost"]
-    e = c["estimate_before_calls"]
+    e, t, a = c["estimate_fresh"], c["estimate_this_run"], c["actual_all_judgment_calls"]
     lines += ["", "## 비용", "",
-              f"- 호출 전 예상: 호출 {e['calls']}회 · 판정 쌍 {e['pairs']}개 · 입력 {e['input_tokens']:,} · 출력 "
-              f"{e['output_tokens']:,} 토큰 → ${e['usd']:.4f} (예산 ${e['budget_usd']:.2f}; {e['note']})",
-              f"- 실측(저장된 판정 호출 전체): 호출 {c['all_judgment_calls']}회 · ${c['all_judgment_calls_usd']:.4f}",
-              f"- 이번 실행: API 호출 {c['this_run']['api_calls']}회 · ${c['this_run']['usd']:.4f}"]
+              f"- 호출 전 예상(처음부터 판정할 때): 호출 {e['calls']}회 · 판정 쌍 {e['pairs']}개 · 입력 "
+              f"{e['input_tokens']:,} · 출력 {e['output_tokens']:,} 토큰 → ${e['usd']:.4f} (예산 ${c['budget_usd']:.2f}; "
+              f"{c['estimate_note']})",
+              f"- 실측(저장된 판정 호출 전체): 호출 {a['calls']}회 · 입력 {a['input_tokens']:,} · 출력 "
+              f"{a['output_tokens']:,} 토큰 → ${a['usd']:.4f}",
+              f"- 이번 실행: 예상 호출 {t['calls']}회 · ${t['usd']:.4f}, 실제 API 호출 {c['this_run']['api_calls']}회 · "
+              f"${c['this_run']['usd']:.4f}"]
     if out["dropped_for_budget"]:
         lines.append(f"- 예산 때문에 뺀 질의: {', '.join(out['dropped_for_budget'])}")
     lines += ["", f"판정 기록: {JUDGMENTS} (질의 · 조각 id · 관련 여부 · 호출 번호). 다시 계산: "

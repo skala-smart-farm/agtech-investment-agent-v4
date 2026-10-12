@@ -3,8 +3,8 @@ from __future__ import annotations
 
 import pytest
 
-from eval.eval_runtime_queries import (collect_queries, doc_lang, fit_budget, hit_at_k, judge_order, paired, pick,
-                                       plan_calls, precision_at_k, rr_at_k, summarize)
+from eval.eval_runtime_queries import (collect_queries, diff_breakdown, doc_lang, fit_budget, hit_at_k, judge_order,
+                                       paired, pick, plan_calls, precision_at_k, rr_at_k, runtime_agreement, summarize)
 
 
 def test_precision_hit_rr():
@@ -87,3 +87,31 @@ def test_paired_counts_and_interval():
 def test_fit_budget_keeps_prefix_within_budget():
     assert fit_budget({"q1": 0.05, "q2": 0.1, "q3": 0.1}, ["q1", "q2", "q3"], 0.2) == ["q1", "q2"]
     assert fit_budget({"q1": 0.05}, ["q1", "q2"], 0.2) == ["q1", "q2"]   # 판정할 것이 없는 질의는 비용 0
+
+
+def _r(chunk, lang, rel):
+    return {"chunk": chunk, "lang": lang, "relevant": rel}
+
+
+def test_diff_breakdown_counts_only_one_side():
+    base = {"q1": [_r("a", "ko", True), _r("b", "ko", False), _r("c", "en", True)]}
+    other = {"q1": [_r("c", "en", True), _r("d", "en", False), _r("e", "en", True)]}
+    d = diff_breakdown(base, other)
+    assert d["base"] == {"ko_rel": 1, "ko_not": 1, "en_rel": 0, "en_not": 0}     # 공통 c 는 세지 않음
+    assert d["other"] == {"ko_rel": 0, "ko_not": 0, "en_rel": 1, "en_not": 1}
+
+
+def test_runtime_agreement_uses_first_grade_without_drops():
+    log = {"rag_traces": [
+        {"trace": [{"step": "agent", "query": "Q1"},
+                   {"step": "grade", "query": "Q1", "dropped": 0, "kept_ranks": [1, 3, 6]},   # 6위는 앞 4개 밖
+                   {"step": "grade", "query": "Q1b", "dropped": 0, "kept_ranks": [1]}]},      # 두 번째 grade 는 안 씀
+        {"trace": [{"step": "grade", "query": "Q2", "dropped": 2, "kept_ranks": [1, 2, 3, 4]}]},  # dropped>0 제외
+        {"trace": [{"step": "grade", "query": "Q1", "dropped": 0, "kept_ranks": [2]}]}]}         # 같은 질의는 한 번만
+    flags = {"Q1": [True, True, False, False], "Q1b": [True] * 4, "Q2": [True] * 4}
+    a = runtime_agreement([("x", log)], flags, 4)
+    assert (a["queries"], a["pairs"]) == (1, 4)
+    assert (a["both"], a["ours_only"], a["runtime_only"], a["neither"]) == (1, 1, 1, 1)
+    assert a["agreement"] == 0.5 and a["kappa"] == 0.0
+    assert runtime_agreement([("x", {"rag_traces": []})], flags, 4) == {"queries": 0, "both": 0, "ours_only": 0,
+                                                                         "runtime_only": 0, "neither": 0}
