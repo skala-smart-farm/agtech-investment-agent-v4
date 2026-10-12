@@ -2,7 +2,7 @@
   "summary": {
     "relevance": 1.0,
     "faithfulness": 1.0,
-    "correctness": 1.0,
+    "correctness": 0.95,
     "n": 20,
     "route_dist": {
       "docs": 19,
@@ -13,7 +13,8 @@
     "rewrite_rate": 0.45,
     "web_fallback_rate": 0.4,
     "regen_rate": 0.0,
-    "not_found_rate": 0.05
+    "not_found_rate": 0.05,
+    "rule_overrides": 1
   },
   "rows": [
     {
@@ -41,7 +42,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question by explaining that CDMOs are important because they consider the biogeographical context, such as differences between temperate and tropical regions, which matches the key point in the reference answer. Additionally, the system answer provides further relevant details about CDMO capabilities and their role in product development, all supported by the cited references. Therefore, the answer is relevant, factually faithful to the provided references, and correct in relation to the question and the reference answer."
+      "reason": "The system answer directly addresses the question by explaining that CDMOs are important because they consider the biogeographical context, such as differences between temperate and tropical regions, which matches the key point in the reference answer. Additionally, the system answer provides further relevant details about CDMO capabilities and their role in product development, all supported by the cited references. Therefore, the answer is relevant, factually faithful to the provided references, and correct in relation to the question and the reference answer.",
+      "llm_correctness": true
     },
     {
       "id": "q02",
@@ -66,7 +68,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question about the range of light use efficiency (LUEINT) considered in the analysis of vertical farming scenarios for lettuce and tomato. It states that LUEINT ranges from 0.8 to 1.8 in six steps (0.8, 1.0, 1.2, 1.4, 1.6, 1.8), which is consistent with the cited source from the 2026 Frontiers paper. The reference confirms these values and the number of steps, as well as the total number of scenarios evaluated. Although the user answer states the range as 0.8 to 1.6, the system answer provides a more complete and accurate range (0.8 to 1.8), which is supported by the source. Therefore, the system answer is relevant, faithful to the source, and correct."
+      "reason": "The system answer directly addresses the question about the range of light use efficiency (LUEINT) considered in the analysis of vertical farming scenarios for lettuce and tomato. It states that LUEINT ranges from 0.8 to 1.8 in six steps (0.8, 1.0, 1.2, 1.4, 1.6, 1.8), which is consistent with the cited source from the 2026 Frontiers paper. The reference confirms these values and the number of steps, as well as the total number of scenarios evaluated. Although the user answer states the range as 0.8 to 1.6, the system answer provides a more complete and accurate range (0.8 to 1.8), which is supported by the source. Therefore, the system answer is relevant, faithful to the source, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q03",
@@ -87,7 +90,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "시스템 답변은 질문에 정확히 부합하며, 2023년 기준 217개 지구에서 스마트농업 실증 프로젝트가 수행되고 있다는 정보를 명확히 제공하고 있습니다. 또한, 사용된 근거 문서[D3cb93]에서 동일한 수치와 내용을 확인할 수 있어 답변의 신뢰성과 정확성이 보장됩니다."
+      "reason": "시스템 답변은 질문에 정확히 부합하며, 2023년 기준 217개 지구에서 스마트농업 실증 프로젝트가 수행되고 있다는 정보를 명확히 제공하고 있습니다. 또한, 사용된 근거 문서[D3cb93]에서 동일한 수치와 내용을 확인할 수 있어 답변의 신뢰성과 정확성이 보장됩니다.",
+      "llm_correctness": true
     },
     {
       "id": "q04",
@@ -112,7 +116,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question by stating that the smart farm expansion plan announced on April 16, 2018, was jointly prepared at the '관계부처 합동 경제관계장관회의' (Joint Economic Ministers' Meeting of related ministries). This matches the reference answer '경제관계장관회의'. The supporting evidence from multiple sources confirms this fact, making the answer relevant, factually accurate, and correct."
+      "reason": "The system answer directly addresses the question by stating that the smart farm expansion plan announced on April 16, 2018, was jointly prepared at the '관계부처 합동 경제관계장관회의' (Joint Economic Ministers' Meeting of related ministries). This matches the reference answer '경제관계장관회의'. The supporting evidence from multiple sources confirms this fact, making the answer relevant, factually accurate, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q05",
@@ -137,7 +142,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question by stating that from May 2019 to April 2024, a total of 60 companies were selected and introduced monthly by the Ministry of Agriculture, Food and Rural Affairs. This matches the provided correct answer exactly. The system also cites the source document, which lists the selection details and confirms the total number of companies as 60. Therefore, the answer is relevant, factually accurate, and correct."
+      "reason": "The system answer directly addresses the question by stating that from May 2019 to April 2024, a total of 60 companies were selected and introduced monthly by the Ministry of Agriculture, Food and Rural Affairs. This matches the provided correct answer exactly. The system also cites the source document, which lists the selection details and confirms the total number of companies as 60. Therefore, the answer is relevant, factually accurate, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q06",
@@ -160,7 +166,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "시스템 답변은 질문에 대해 정확하게 2026년 농림축산식품부가 국가 인공지능 프로젝트를 통해 확보한 GPU 수량(32장)과 그 활용 계획(16장은 공공 AX데이터 구축에, 나머지 16장은 민간 AI솔루션 개발 지원에 활용)을 상세히 설명하고 있으며, 제공된 근거 문서 내용과 일치한다. 따라서 답변은 질문에 적절히 관련되어 있고, 사실에 부합하며, 정확하다."
+      "reason": "시스템 답변은 질문에 대해 정확하게 2026년 농림축산식품부가 국가 인공지능 프로젝트를 통해 확보한 GPU 수량(32장)과 그 활용 계획(16장은 공공 AX데이터 구축에, 나머지 16장은 민간 AI솔루션 개발 지원에 활용)을 상세히 설명하고 있으며, 제공된 근거 문서 내용과 일치한다. 따라서 답변은 질문에 적절히 관련되어 있고, 사실에 부합하며, 정확하다.",
+      "llm_correctness": true
     },
     {
       "id": "q07",
@@ -185,7 +192,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "시스템 답변은 질문에 정확히 부합하며, 2025년에 농식품 모태펀드가 결성한 자펀드 규모(3,179억원)와 민간투자 비중(64.6%)을 정확하게 제시하고 있습니다. 또한, 제공된 근거 문서들과 일치하는 내용으로, 추가적인 배경 정보도 포함되어 있어 사실에 부합합니다. 따라서 답변은 질문에 적절하고, 사실에 충실하며, 정확합니다."
+      "reason": "시스템 답변은 질문에 정확히 부합하며, 2025년에 농식품 모태펀드가 결성한 자펀드 규모(3,179억원)와 민간투자 비중(64.6%)을 정확하게 제시하고 있습니다. 또한, 제공된 근거 문서들과 일치하는 내용으로, 추가적인 배경 정보도 포함되어 있어 사실에 부합합니다. 따라서 답변은 질문에 적절하고, 사실에 충실하며, 정확합니다.",
+      "llm_correctness": true
     },
     {
       "id": "q08",
@@ -212,7 +220,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "시스템 답변은 질문에 대해 정확하고 구체적으로 답변하고 있으며, 스마트농업 전문교육기관이 2025년 4개소에서 2029년까지 누적 8개소로 확대된다는 점과 스마트농업관리사 자격증 양성과정이 2025년 하반기부터 운영된다는 점을 명확히 언급하고 있다. 이는 제공된 정답과 일치하며, 근거 문서들에서도 동일한 내용을 확인할 수 있다. 따라서 답변은 질문에 적절히 관련되어 있고, 사실에 부합하며, 정확하다."
+      "reason": "시스템 답변은 질문에 대해 정확하고 구체적으로 답변하고 있으며, 스마트농업 전문교육기관이 2025년 4개소에서 2029년까지 누적 8개소로 확대된다는 점과 스마트농업관리사 자격증 양성과정이 2025년 하반기부터 운영된다는 점을 명확히 언급하고 있다. 이는 제공된 정답과 일치하며, 근거 문서들에서도 동일한 내용을 확인할 수 있다. 따라서 답변은 질문에 적절히 관련되어 있고, 사실에 부합하며, 정확하다.",
+      "llm_correctness": true
     },
     {
       "id": "q09",
@@ -237,7 +246,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question by stating that the company developing the AI automation robot 'Omni' selected by the Ministry of Agriculture, Food and Rural Affairs in 2026 is MetaFarmers (메타파머스). This matches the provided correct answer exactly. The system's answer is supported by multiple cited sources ([D12823], [D5391b], [Wdd289]) which confirm that MetaFarmers developed the AI automation robot 'Omni' for strawberry moisture and harvesting tasks and was selected as a smart agriculture excellent company in 2026. Therefore, the answer is relevant, factually accurate, and correct."
+      "reason": "The system answer directly addresses the question by stating that the company developing the AI automation robot 'Omni' selected by the Ministry of Agriculture, Food and Rural Affairs in 2026 is MetaFarmers (메타파머스). This matches the provided correct answer exactly. The system's answer is supported by multiple cited sources ([D12823], [D5391b], [Wdd289]) which confirm that MetaFarmers developed the AI automation robot 'Omni' for strawberry moisture and harvesting tasks and was selected as a smart agriculture excellent company in 2026. Therefore, the answer is relevant, factually accurate, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q10",
@@ -264,7 +274,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question by listing the main tasks performed by agricultural robots, including soil preparation, planting, weeding, plant protection, harvesting, yield estimation, and phenotyping, which matches the provided correct answer. Additionally, it provides more detailed information about specialized tasks and current limitations, all supported by the cited references. Therefore, the answer is relevant, factually faithful to the source, and correct."
+      "reason": "The system answer directly addresses the question by listing the main tasks performed by agricultural robots, including soil preparation, planting, weeding, plant protection, harvesting, yield estimation, and phenotyping, which matches the provided correct answer. Additionally, it provides more detailed information about specialized tasks and current limitations, all supported by the cited references. Therefore, the answer is relevant, factually faithful to the source, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q11",
@@ -289,7 +300,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer comprehensively covers the data-related elements that should be focused on in the smart agriculture policy advancement, including data collection diversification, data value evaluation and assetization, activation of data trading, and standardization of equipment and data based on industry demand. These points are directly supported by the provided references from the Ministry of Agriculture, Food and Rural Affairs' 2025-2029 smart agriculture basic plan documents. The system answer is relevant to the question, faithful to the provided source content, and correct in addressing the key data-related elements emphasized in the policy framework. The user's provided 'correct answer' is a simplified summary focusing on data collection, accumulation, and utilization, which is encompassed within the system's more detailed and accurate response."
+      "reason": "The system answer comprehensively covers the data-related elements that should be focused on in the smart agriculture policy advancement, including data collection diversification, data value evaluation and assetization, activation of data trading, and standardization of equipment and data based on industry demand. These points are directly supported by the provided references from the Ministry of Agriculture, Food and Rural Affairs' 2025-2029 smart agriculture basic plan documents. The system answer is relevant to the question, faithful to the provided source content, and correct in addressing the key data-related elements emphasized in the policy framework. The user's provided 'correct answer' is a simplified summary focusing on data collection, accumulation, and utilization, which is encompassed within the system's more detailed and accurate response.",
+      "llm_correctness": true
     },
     {
       "id": "q12",
@@ -310,7 +322,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question by stating that over 90% of U.S. milk production in 2021 came from farms using individual cow production records, nutritionist-designed feed, or reproduction-related technologies, matching the provided correct answer. The answer cites the USDA Economic Research Service 2026 report as the source, which is consistent with the provided evidence. Therefore, the answer is relevant, faithful to the source, and correct."
+      "reason": "The system answer directly addresses the question by stating that over 90% of U.S. milk production in 2021 came from farms using individual cow production records, nutritionist-designed feed, or reproduction-related technologies, matching the provided correct answer. The answer cites the USDA Economic Research Service 2026 report as the source, which is consistent with the provided evidence. Therefore, the answer is relevant, faithful to the source, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q13",
@@ -335,7 +348,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question about the projected world population in 2050, stating it as approximately 9.7 billion, which aligns with the question's focus. The answer is faithful to the provided references, especially [D7b11f], which cites the UN 2022 projection of about 9.7 billion by 2050. The system's answer is correct as it matches the factual data from the sources and the expected population figure."
+      "reason": "The system answer directly addresses the question about the projected world population in 2050, stating it as approximately 9.7 billion, which aligns with the question's focus. The answer is faithful to the provided references, especially [D7b11f], which cites the UN 2022 projection of about 9.7 billion by 2050. The system's answer is correct as it matches the factual data from the sources and the expected population figure.",
+      "llm_correctness": true
     },
     {
       "id": "q14",
@@ -353,8 +367,10 @@
       ],
       "relevance": true,
       "faithfulness": true,
-      "correctness": true,
-      "reason": "The question asks for the name of a Chinese food delivery startup that received a $3 billion Series D investment in 2021 during the COVID-19 period. The system's answer is '근거에서 확인되지 않음' (not confirmed in the evidence), and the provided evidence does not contain any information about such a startup or investment. Therefore, the system's response is relevant (it addresses the question), faithful (it does not provide unsupported information), and correct (since the evidence does not confirm the answer, stating that it cannot be confirmed is accurate)."
+      "correctness": false,
+      "reason": "The question asks for the name of a Chinese food delivery startup that received a $3 billion Series D investment in 2021 during the COVID-19 period. The system's answer is '근거에서 확인되지 않음' (not confirmed in the evidence), and the provided evidence does not contain any information about such a startup or investment. Therefore, the system's response is relevant (it addresses the question), faithful (it does not provide unsupported information), and correct (since the evidence does not confirm the answer, stating that it cannot be confirmed is accurate).",
+      "llm_correctness": true,
+      "rule": "정답이 있는데 답을 못 함 → Correctness X"
     },
     {
       "id": "q15",
@@ -377,7 +393,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question by providing the exact figures for the reduction in electricity consumption for lettuce and tomato in vertical farming, matching the given correct answer. It also cites the source documents accurately, explaining the context of the reduction due to increased photosynthetic efficiency (LUEINT). Therefore, the answer is relevant, factually faithful to the source, and correct."
+      "reason": "The system answer directly addresses the question by providing the exact figures for the reduction in electricity consumption for lettuce and tomato in vertical farming, matching the given correct answer. It also cites the source documents accurately, explaining the context of the reduction due to increased photosynthetic efficiency (LUEINT). Therefore, the answer is relevant, factually faithful to the source, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q16",
@@ -402,7 +419,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "시스템 답변은 질문에 정확히 부합하는 'WAGRI'라는 농업 데이터 플랫폼의 이름을 명확히 제시하고 있으며, 2019년 4월부터 서비스가 시작되어 2023년 5월 말 현재 90여 개 민간 사업자가 이용 중이라는 사실을 근거 문서에서 직접 인용하여 설명하고 있다. 따라서 답변은 질문에 적절히 관련되어 있고, 근거 문서 내용과 일치하며, 정답과도 정확히 일치한다."
+      "reason": "시스템 답변은 질문에 정확히 부합하는 'WAGRI'라는 농업 데이터 플랫폼의 이름을 명확히 제시하고 있으며, 2019년 4월부터 서비스가 시작되어 2023년 5월 말 현재 90여 개 민간 사업자가 이용 중이라는 사실을 근거 문서에서 직접 인용하여 설명하고 있다. 따라서 답변은 질문에 적절히 관련되어 있고, 근거 문서 내용과 일치하며, 정답과도 정확히 일치한다.",
+      "llm_correctness": true
     },
     {
       "id": "q17",
@@ -429,7 +447,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "시스템 답변은 질문에 대해 BIS Research와 Grand View Research의 2023년 글로벌 스마트 농업 시장 규모 추정치를 정확히 제시하고 있다. BIS Research는 174억 달러, Grand View Research는 226억 5천만 달러로 명확히 언급되어 있으며, 이는 정답과 일치한다. 또한, 시스템 답변은 추가로 두 기관의 연평균 성장률 전망과 시장 성장 가능성에 대한 평가도 포함하고 있어, 질문에 대한 답변으로 적절하고 근거 문서의 내용을 충실히 반영하였다."
+      "reason": "시스템 답변은 질문에 대해 BIS Research와 Grand View Research의 2023년 글로벌 스마트 농업 시장 규모 추정치를 정확히 제시하고 있다. BIS Research는 174억 달러, Grand View Research는 226억 5천만 달러로 명확히 언급되어 있으며, 이는 정답과 일치한다. 또한, 시스템 답변은 추가로 두 기관의 연평균 성장률 전망과 시장 성장 가능성에 대한 평가도 포함하고 있어, 질문에 대한 답변으로 적절하고 근거 문서의 내용을 충실히 반영하였다.",
+      "llm_correctness": true
     },
     {
       "id": "q18",
@@ -450,7 +469,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer correctly provides the name of the exhibition as '농식품 테크 스타트업 박람회(AFRO 2024)' and the year as 2024, which matches the given correct answer. The answer is directly relevant to the question, faithful to the provided source document, and factually correct."
+      "reason": "The system answer correctly provides the name of the exhibition as '농식품 테크 스타트업 박람회(AFRO 2024)' and the year as 2024, which matches the given correct answer. The answer is directly relevant to the question, faithful to the provided source document, and factually correct.",
+      "llm_correctness": true
     },
     {
       "id": "q19",
@@ -479,7 +499,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "The system answer directly addresses the question about the maximum number of GPUs provided to companies selected in the 2026 smart agriculture AI dataset project by the Ministry of Agriculture, Food and Rural Affairs. It states that up to 4 GPUs are provided, which matches the provided correct answer. The system's response is supported by multiple cited sources that confirm the maximum allocation of 4 GPUs per company starting from May 2026. Therefore, the answer is relevant, factually accurate, and correct."
+      "reason": "The system answer directly addresses the question about the maximum number of GPUs provided to companies selected in the 2026 smart agriculture AI dataset project by the Ministry of Agriculture, Food and Rural Affairs. It states that up to 4 GPUs are provided, which matches the provided correct answer. The system's response is supported by multiple cited sources that confirm the maximum allocation of 4 GPUs per company starting from May 2026. Therefore, the answer is relevant, factually accurate, and correct.",
+      "llm_correctness": true
     },
     {
       "id": "q20",
@@ -508,7 +529,8 @@
       "relevance": true,
       "faithfulness": true,
       "correctness": true,
-      "reason": "시스템 답변은 질문에 대해 정확하고 직접적으로 답변하고 있으며, '후속 투자 등 스케일업 지원을 강화하기 위함'이라는 이유를 명확히 제시하고 있다. 또한, 제공된 근거 문서들에서 해당 내용이 상세히 뒷받침되고 있어 답변의 신뢰성과 정확성이 높다. 따라서 답변은 질문과 정답에 모두 부합하며, 사실에 근거한 정확한 설명을 포함하고 있다."
+      "reason": "시스템 답변은 질문에 대해 정확하고 직접적으로 답변하고 있으며, '후속 투자 등 스케일업 지원을 강화하기 위함'이라는 이유를 명확히 제시하고 있다. 또한, 제공된 근거 문서들에서 해당 내용이 상세히 뒷받침되고 있어 답변의 신뢰성과 정확성이 높다. 따라서 답변은 질문과 정답에 모두 부합하며, 사실에 근거한 정확한 설명을 포함하고 있다.",
+      "llm_correctness": true
     }
   ]
 }

@@ -298,6 +298,19 @@ def test_answer_question_signature_and_defaults():
 
 
 
+def test_judge_rule_no_answer_is_not_correct():
+    """정답이 있는데 '근거에서 확인되지 않음'으로 답했으면 LLM 이 O 로 채점해도 Correctness 는 X (q14 오판 재발 방지)."""
+    from eval.eval_judge import apply_rules
+
+    q14 = {"answer": "근거에서 확인되지 않음", "gold": "Xingsheng Youxuan", "status": "not_found", "correctness": True}
+    r = apply_rules(q14)
+    assert r["correctness"] is False and r["llm_correctness"] is True and r["rule"]
+    ok = apply_rules({"answer": "Xingsheng Youxuan 이다 [W1]", "gold": "Xingsheng Youxuan", "status": "grounded",
+                      "correctness": True})
+    assert ok["correctness"] is True and "rule" not in ok
+    assert apply_rules(r) == r                                   # 다시 적용해도 같다 (rescore 를 여러 번 돌려도 안전)
+
+
 def test_judge_eval_summary_keys():
     """judge_eval.json 요약 키는 계약대로 (설계서·README 생성기가 읽는다)."""
     from eval.eval_judge import summarize_rows
@@ -308,7 +321,7 @@ def test_judge_eval_summary_keys():
              "regenerations": 1, "web_fallback": True, "status": "not_found"}]
     s = summarize_rows(rows)
     assert list(s) == ["relevance", "faithfulness", "correctness", "n", "route_dist", "rewrite_rate",
-                       "web_fallback_rate", "regen_rate", "not_found_rate"]
+                       "web_fallback_rate", "regen_rate", "not_found_rate", "rule_overrides"]
     assert (s["relevance"], s["faithfulness"], s["correctness"], s["n"]) == (0.5, 1.0, 0.0, 2)
     assert s["route_dist"] == {"docs": 1, "web": 0, "both": 0, "direct": 1}
     assert (s["rewrite_rate"], s["web_fallback_rate"], s["regen_rate"], s["not_found_rate"]) == (0.5, 0.5, 0.5, 0.5)
