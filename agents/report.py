@@ -1434,7 +1434,8 @@ def _evaluated_blocks(evals: list[dict], target: dict) -> list[dict]:
     return [{"t": "h3", "text": f"평가한 후보 {len(evals)}곳과 대상 선정"},
             _table(["순위", "후보", "단계 · 지역", "동종 평균 대비", "창업자 기준", "판정"], rows,
                    ["7%", "27%", "17%", "15%", "13%", "21%"], small=True, caption=f"평가한 후보 {len(evals)}곳의 동종 평균 대비 점수"),
-            _note(f"보고서 대상: 투자 기준 통과 {len(passed)}곳({'·'.join(passed)}) 중 동종 평균 대비 배수 1위 — {target['name']}. "
+            _note(f"보고서 대상: 투자 기준 통과 {len(passed)}곳({'·'.join(passed)}) 중 동종 평균 대비 배수 1위 — {target['name']}"
+                  + _tie_note(target, [e for e in ranked if e["decision"] == "투자"]) + ". "
                   f"첫 투자 추천에서 멈추지 않고 평가 상한까지 평가해, 평가한 후보 안에서는 평가 순서가 결론을 바꾸지 않는다"),
             *([_ul(head2, "대상과 차점 후보 비교 (코드 계산)")] if head2 else [])]
 
@@ -1455,6 +1456,21 @@ def _eun(w: str) -> str:
 
 def _eul(w: str) -> str:
     return w + ("을" if _batchim(w) else "를")
+
+
+def _tie_note(target: dict, passed: list[dict]) -> str:
+    """대상과 배수가 같은(소수 넷째 자리) 통과 후보가 있으면, 미리 정한 동점 규칙으로 골랐다는 것을 밝힌다."""
+    from agents.decision import _counts
+
+    m = round(target["scorecard"]["multiplier"], 4)
+    tied = [e for e in passed if e is not target and round(e["scorecard"]["multiplier"], 4) == m]
+    if not tied:
+        return ""
+    def desc(e):
+        y, n = _counts(e["scorecard"].get("rows") or [])
+        return f"{e['name']}(창업자 {_s1(e['scorecard'].get('founder_c'))} · 확인된 YES {y} · NO {n})"
+    return (f" (배수 {_s1(target['scorecard']['multiplier'])} 동점: {', '.join(desc(e) for e in [target, *tied])} — "
+            "미리 정한 동점 규칙 '창업자 점수 → 확인된 YES 수 → NO 수 → 이름' 순으로 정함)")
 
 
 def _head_to_head(target: dict, ranked: list[dict]) -> list[str]:

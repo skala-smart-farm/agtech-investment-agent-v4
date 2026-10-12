@@ -30,7 +30,7 @@ SENSITIVITY_FILE = "outputs/eval/threshold_sensitivity.json"     # 기준 배수
 SCREENED_KEYS = ("name", "region", "stage", "round_date", "founded_date", "ceo", "eligible", "reason",
                  "gate_search_failed", "channels", "dart")   # dart: 국내 후보의 DART 공시 조회 요약 (graph/discovery_graph.dart_check)
 EVALUATION_KEYS = ("name", "region", "stage", "decision", "hold_type", "multiplier", "score100", "reasons", "flip")
-ROW_KEYS = ("qid", "answer", "rationale", "quote", "evidence_ids", "confidence")
+ROW_KEYS = ("qid", "answer", "rationale", "quote", "evidence_ids", "confidence", "verifier")
 
 
 def save_graph_image(app) -> str:
